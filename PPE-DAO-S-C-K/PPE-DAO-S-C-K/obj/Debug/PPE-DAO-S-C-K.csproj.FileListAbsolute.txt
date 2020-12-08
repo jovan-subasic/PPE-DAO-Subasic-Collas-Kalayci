@@ -1,1 +1,9 @@
 P:\icof\PPE\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe.config
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe.config
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.pdb
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csprojResolveAssemblyReference.cache
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.Properties.Resources.resources
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.GenerateResource.Cache
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.exe
+P:\icof\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.pdb
