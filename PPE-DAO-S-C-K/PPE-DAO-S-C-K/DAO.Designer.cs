@@ -43,7 +43,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(395, 325);
+            this.tabControl1.Size = new System.Drawing.Size(395, 329);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageAteliers
@@ -61,7 +61,7 @@
             this.tabPageStand.Location = new System.Drawing.Point(4, 22);
             this.tabPageStand.Name = "tabPageStand";
             this.tabPageStand.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStand.Size = new System.Drawing.Size(387, 299);
+            this.tabPageStand.Size = new System.Drawing.Size(387, 303);
             this.tabPageStand.TabIndex = 1;
             this.tabPageStand.Text = "Création de Stand";
             this.tabPageStand.UseVisualStyleBackColor = true;
