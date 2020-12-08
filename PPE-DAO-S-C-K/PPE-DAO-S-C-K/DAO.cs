@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PPE_DAO_S_C_K
 {
-    public partial class Form1 : Form
+    public partial class Maison_des_ligues : Form
     {
-        public Form1()
+        public Maison_des_ligues()
         {
             InitializeComponent();
         }
