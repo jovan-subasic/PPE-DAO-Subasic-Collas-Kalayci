@@ -36,6 +36,7 @@ CREATE TABLE stands(
 ------------------------------------------------------------*/
 CREATE TABLE participants(
 	id                     INT IDENTITY (1,1) NOT NULL ,
+	nom					   VARCHAR (50) NOT NULL ,
 	prenom                 VARCHAR (50) NOT NULL ,
 	adresse                VARCHAR (50) NOT NULL ,
 	portable               VARCHAR (50) NOT NULL ,
