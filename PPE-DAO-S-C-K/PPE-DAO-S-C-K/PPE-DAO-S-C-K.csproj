@@ -54,6 +54,7 @@
     <Compile Include="DAO.Designer.cs">
       <DependentUpon>DAO.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAOParticipant.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
