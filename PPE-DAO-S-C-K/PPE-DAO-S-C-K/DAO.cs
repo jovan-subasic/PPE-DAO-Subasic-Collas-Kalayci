@@ -16,5 +16,10 @@ namespace PPE_DAO_S_C_K
         {
             InitializeComponent();
         }
+
+        private void lab_inscriptionNomP_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

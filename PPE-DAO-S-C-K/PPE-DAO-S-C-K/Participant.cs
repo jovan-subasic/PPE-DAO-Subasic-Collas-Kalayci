@@ -20,7 +20,7 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region constructeur
-        public Participant(int id, string nom, string prenom, string adresse, string portable, string type)
+        public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
         {
             this.id = id;
             this.nom = nom ?? throw new ArgumentNullException(nameof(nom));
@@ -29,10 +29,10 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
-            lesAtelier
+            this.lesAtelier = lesAtelier; 
         }
 
-        public Participant(int id, string nom, string prenom, string adresse, string portable, string type, int nbParticipant)
+        public Participant(int id, string nom, string prenom, string adresse, string portable, string type, int nbParticipant, List<Atelier> lesAtelier)
         {
             this.id = id;
             this.nom = nom ?? throw new ArgumentNullException(nameof(nom));
@@ -41,6 +41,7 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
             this.nbParticipant = nbParticipant;
+            this.lesAtelier = lesAtelier;
         }
         #endregion
 
