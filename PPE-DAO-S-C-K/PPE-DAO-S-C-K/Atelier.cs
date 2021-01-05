@@ -49,6 +49,16 @@ namespace PPE_DAO_S_C_K
         {
             this.participants.Remove(participant);
         }
+
+        // Instancie une collection de tous le Atelier existant dans la table Atelier
+        public List<Atelier> allAteliers()
+        {
+            DAOAtelier dbA = new DAOAtelier(); 
+            List<Atelier> listAteliers;
+            listAteliers = dbA.tousLesAteliers(); 
+            
+            return listAteliers;
+        }
         #endregion
     }
 }
