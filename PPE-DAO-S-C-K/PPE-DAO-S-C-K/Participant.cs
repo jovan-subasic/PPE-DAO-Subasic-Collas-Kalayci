@@ -16,10 +16,23 @@ namespace PPE_DAO_S_C_K
         private String portable ; 
         private String type ; 
         private int nbParticipant ;
-        private List<Atelier> lesAtelier ; 
+        private List<Atelier> lesAtelier ;
         #endregion
 
         #region constructeur
+        public Participant(int id, string nom, string prenom, string adresse, string portable, string type)
+        {
+            this.id = id;
+            this.nom = nom ?? throw new ArgumentNullException(nameof(nom));
+            this.prenom = prenom ?? throw new ArgumentNullException(nameof(prenom));
+            this.adresse = adresse ?? throw new ArgumentNullException(nameof(adresse));
+            this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
+            this.type = type ?? throw new ArgumentNullException(nameof(type));
+
+            this.lesAtelier = lesAtelier;
+
+            //this.participantAtelier();
+        }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
         {
             this.id = id;
@@ -29,7 +42,9 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
-            this.lesAtelier = lesAtelier; 
+            this.lesAtelier = lesAtelier;
+            
+            //this.participantAtelier();
         }
 
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, int nbParticipant, List<Atelier> lesAtelier)
@@ -41,7 +56,10 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
             this.nbParticipant = nbParticipant;
+            
             this.lesAtelier = lesAtelier;
+            
+            //this.participantAtelier(); 
         }
         #endregion
 
@@ -56,7 +74,26 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Methode 
+        public void participantAtelier()
+        {
+            int i = 0;
+            while (i < this.lesAtelier.Count())
+            {
+                this.lesAtelier.ElementAt(i).ajouterParticipant(this);
+                i++;
+            }
+        }
 
+        public void ajouterAtelier(Atelier atelier)
+        {
+            this.lesAtelier.Add(atelier);
+        }
+
+        // Supprimer un participant 
+        public void supprimerAtelier(Atelier atelier)
+        {
+            this.lesAtelier.Remove(atelier);
+        }
         #endregion
 
     }

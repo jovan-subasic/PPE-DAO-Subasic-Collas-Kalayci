@@ -13,6 +13,7 @@ namespace PPE_DAO_S_C_K
         private String nom; 
         private int capacite;
         private Participant intervenant;
+        private List<Participant> participants;
         #endregion
 
 
@@ -35,5 +36,19 @@ namespace PPE_DAO_S_C_K
         internal Participant Intervenant { get => intervenant; set => intervenant = value; }
         #endregion
 
+
+        #region Méthodes 
+        // Ajouter un participant a la liste 
+        public void ajouterParticipant(Participant participant)
+        {
+            this.participants.Add(participant); 
+        }
+
+        // Supprimer un participant 
+        public void supprimerParticipant(Participant participant)
+        {
+            this.participants.Remove(participant);
+        }
+        #endregion
     }
 }
