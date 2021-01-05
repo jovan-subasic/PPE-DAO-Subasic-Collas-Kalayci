@@ -55,9 +55,14 @@ namespace PPE_DAO_S_C_K
         {
             DAOAtelier dbA = new DAOAtelier(); 
             List<Atelier> listAteliers;
-            listAteliers = dbA.tousLesAteliers(); 
-            
+            listAteliers = dbA.tousLesAteliers();
+           
             return listAteliers;
+        }
+        public void participe()
+        {
+            DAOAtelier db = new DAOAtelier();
+            db.dbParticipe(this); 
         }
         #endregion
     }
