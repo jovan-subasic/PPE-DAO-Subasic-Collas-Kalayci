@@ -20,6 +20,10 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region constructeur
+        public Participant() // pour pouvoir déclare des objet Participant sans attribue
+        {
+
+        }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type)
         {
             this.id = id;
@@ -28,8 +32,6 @@ namespace PPE_DAO_S_C_K
             this.adresse = adresse ?? throw new ArgumentNullException(nameof(adresse));
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
-
-            this.lesAtelier = lesAtelier;
 
             //this.participantAtelier();
         }
@@ -93,6 +95,14 @@ namespace PPE_DAO_S_C_K
         public void supprimerAtelier(Atelier atelier)
         {
             this.lesAtelier.Remove(atelier);
+        }
+
+        public List<Participant> allParticipant()
+        {
+            DAOParticipant dbP = new DAOParticipant();
+            List<Participant> laList = dbP.getAllParticipant(); 
+           
+            return laList; 
         }
         #endregion
 

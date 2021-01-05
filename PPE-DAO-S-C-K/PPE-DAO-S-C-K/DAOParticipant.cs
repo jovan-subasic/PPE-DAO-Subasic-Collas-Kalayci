@@ -67,8 +67,8 @@ namespace PPE_DAO_S_C_K
  
                 laListe.Add(leParticipant);                   
             }
-            return laListe; 
-        }
+            return laListe;
+        } // fin getAllParticipant()
         #endregion
     }
 }

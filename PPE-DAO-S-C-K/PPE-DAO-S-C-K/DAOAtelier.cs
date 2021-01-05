@@ -16,19 +16,22 @@ namespace PPE_DAO_S_C_K
         // méthode qui génére la liste de tous les ateliers.
         public List<Atelier> tousLesAteliers()
         {
-            List<Atelier> laList = new List<Atelier>(); 
+            Participant unP = new Participant();
+            List<Participant> listParticipent = unP.allParticipant(); 
+
+            List<Atelier> laList = new List<Atelier>();
             String req = "select * From Atelier;";
 
-            DAOFactory db;
+            DAOFactory db = new DAOFactory();
             SqlDataReader reader = db.excecSQLRead(req);
 
-            while (reader.Read)
+            while (reader.Read())
             {
-                int idIntervenant = int.Parse(reader[3].ToString); 
+                int idIntervenant = int.Parse(reader[3].ToString()); 
                 req = "select * From participants where id = "+ idIntervenant + ";";
                 SqlDataReader readerP = db.excecSQLRead(req);
                 Participant intervenant;
-                while (readerP.Read)
+                while (readerP.Read())
                 {
                     intervenant = new Participant(int.Parse(readerP[0].ToString()),
                                                      readerP[1].ToString(),
