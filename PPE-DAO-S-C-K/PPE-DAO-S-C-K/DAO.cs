@@ -32,11 +32,13 @@ namespace PPE_DAO_S_C_K
 
         }
 
-        public void remplirList(){
-            Participant unP = new Participant(); 
-            Atelier unA = new Atelier(); 
+        public void remplirList()
+        {
+            Participant unP = new Participant();
+            Atelier unA = new Atelier();
 
-            lesParticipants = unP.allParticipant(); 
+            lesParticipants = unP.allParticipant();
             lesAteliers = unA.allAteliers();
+        }
     }
 }
