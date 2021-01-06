@@ -48,7 +48,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbx_inscriptionModifNom = new System.Windows.Forms.ComboBox();
             this.lab_modificationInscriptionMail = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionType = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionNumTel = new System.Windows.Forms.Label();
@@ -204,6 +204,7 @@
             this.tabPageInscription.TabIndex = 2;
             this.tabPageInscription.Text = "Inscription";
             this.tabPageInscription.UseVisualStyleBackColor = true;
+            this.tabPageInscription.Click += new System.EventHandler(this.tabPageInscription_Click);
             // 
             // GrB_modificationInscription
             // 
@@ -214,7 +215,7 @@
             this.GrB_modificationInscription.Controls.Add(this.textBox5);
             this.GrB_modificationInscription.Controls.Add(this.textBox4);
             this.GrB_modificationInscription.Controls.Add(this.comboBox2);
-            this.GrB_modificationInscription.Controls.Add(this.comboBox1);
+            this.GrB_modificationInscription.Controls.Add(this.cbx_inscriptionModifNom);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionMail);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionType);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNumTel);
@@ -282,13 +283,13 @@
             this.comboBox2.Size = new System.Drawing.Size(121, 32);
             this.comboBox2.TabIndex = 7;
             // 
-            // comboBox1
+            // cbx_inscriptionModifNom
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(127, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 32);
-            this.comboBox1.TabIndex = 6;
+            this.cbx_inscriptionModifNom.FormattingEnabled = true;
+            this.cbx_inscriptionModifNom.Location = new System.Drawing.Point(127, 45);
+            this.cbx_inscriptionModifNom.Name = "cbx_inscriptionModifNom";
+            this.cbx_inscriptionModifNom.Size = new System.Drawing.Size(121, 32);
+            this.cbx_inscriptionModifNom.TabIndex = 6;
             // 
             // lab_modificationInscriptionMail
             // 
@@ -632,7 +633,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbx_inscriptionModifNom;
         private System.Windows.Forms.Label lab_modificationInscriptionMail;
         private System.Windows.Forms.Label lab_modificationInscriptionType;
         private System.Windows.Forms.Label lab_modificationInscriptionNumTel;

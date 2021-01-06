@@ -10,6 +10,7 @@ namespace PPE_DAO_S_C_K
     {
         #region Attribue 
         private String email;
+        #endregion
 
         #region Constructeur 
         public Benevoles(int id,

@@ -39,7 +39,7 @@ namespace PPE_DAO_S_C_K
                     {
                        String email = readerBs[1].ToString(); 
                     
-                    Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
+                        Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
                                                             reader[1].ToString(),
                                                             reader[2].ToString(),
                                                             reader[3].ToString(),
@@ -52,12 +52,14 @@ namespace PPE_DAO_S_C_K
                 {
 
                 
-                Participant leParticipant = new Participant(int.Parse(reader[0].ToString()),
+                    Participant leParticipant = new Participant(
+                                                            int.Parse(reader[0].ToString()),
                                                             reader[1].ToString(),
                                                             reader[2].ToString(),
                                                             reader[3].ToString(),
                                                             reader[4].ToString(),
-                                                            reader[5].ToString());
+                                                            reader[5].ToString()
+                                                            );
 
                 }
                 while (readerAt.Read())
@@ -76,17 +78,19 @@ namespace PPE_DAO_S_C_K
                                                                   readerIn[4].ToString(),
                                                                   readerIn[5].ToString()); 
 
-                    }
+                    
 
-                    Atelier MonAtelier = new Atelier(int.Parse(readerAt[0].ToString()),
+                        Atelier MonAtelier = new Atelier(int.Parse(readerAt[0].ToString()),
                                                      readerAt[1].ToString(),
                                                      int.Parse(readerAt[2].ToString()),
                                                      intervenant);
 
-                    leParticipant.ajouterAtelier(MonAtelier);
+                        leParticipant.ajouterAtelier(MonAtelier);
+                        laListe.Add(leParticipant);
+                    }
                 }
  
-                laListe.Add(leParticipant);                   
+                                 
             }
             return laListe;
         } // fin getAllParticipant()
