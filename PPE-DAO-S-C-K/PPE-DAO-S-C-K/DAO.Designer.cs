@@ -40,6 +40,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.tabPageInscription = new System.Windows.Forms.TabPage();
+            this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
+            this.btn_inscriptionModifier = new System.Windows.Forms.Button();
+            this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lab_modificationInscriptionMail = new System.Windows.Forms.Label();
+            this.lab_modificationInscriptionType = new System.Windows.Forms.Label();
+            this.lab_modificationInscriptionNumTel = new System.Windows.Forms.Label();
+            this.lab_modificationInscriptionAdresse = new System.Windows.Forms.Label();
+            this.lab_modificationInscriptionPrenom = new System.Windows.Forms.Label();
+            this.lab_modificationInscriptionNom = new System.Windows.Forms.Label();
             this.GrB_inscriptionP = new System.Windows.Forms.GroupBox();
             this.lab_inscriptionMailP = new System.Windows.Forms.Label();
             this.txt_inscriptionMail = new System.Windows.Forms.TextBox();
@@ -64,28 +79,13 @@
             this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
-            this.lab_modificationInscriptionNom = new System.Windows.Forms.Label();
-            this.lab_modificationInscriptionPrenom = new System.Windows.Forms.Label();
-            this.lab_modificationInscriptionAdresse = new System.Windows.Forms.Label();
-            this.lab_modificationInscriptionNumTel = new System.Windows.Forms.Label();
-            this.lab_modificationInscriptionType = new System.Windows.Forms.Label();
-            this.lab_modificationInscriptionMail = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
-            this.btn_inscriptionModifier = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.tabPageInscription.SuspendLayout();
+            this.GrB_modificationInscription.SuspendLayout();
             this.GrB_inscriptionP.SuspendLayout();
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
-            this.GrB_modificationInscription.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -204,6 +204,145 @@
             this.tabPageInscription.TabIndex = 2;
             this.tabPageInscription.Text = "Inscription";
             this.tabPageInscription.UseVisualStyleBackColor = true;
+            // 
+            // GrB_modificationInscription
+            // 
+            this.GrB_modificationInscription.Controls.Add(this.btn_inscriptionModifier);
+            this.GrB_modificationInscription.Controls.Add(this.CLB_inscriptionModificationAtelier);
+            this.GrB_modificationInscription.Controls.Add(this.textBox7);
+            this.GrB_modificationInscription.Controls.Add(this.textBox6);
+            this.GrB_modificationInscription.Controls.Add(this.textBox5);
+            this.GrB_modificationInscription.Controls.Add(this.textBox4);
+            this.GrB_modificationInscription.Controls.Add(this.comboBox2);
+            this.GrB_modificationInscription.Controls.Add(this.comboBox1);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionMail);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionType);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNumTel);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionAdresse);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionPrenom);
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNom);
+            this.GrB_modificationInscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.GrB_modificationInscription.Location = new System.Drawing.Point(553, 20);
+            this.GrB_modificationInscription.Name = "GrB_modificationInscription";
+            this.GrB_modificationInscription.Size = new System.Drawing.Size(346, 446);
+            this.GrB_modificationInscription.TabIndex = 6;
+            this.GrB_modificationInscription.TabStop = false;
+            this.GrB_modificationInscription.Text = "Formulaire de Modification";
+            // 
+            // btn_inscriptionModifier
+            // 
+            this.btn_inscriptionModifier.Location = new System.Drawing.Point(131, 375);
+            this.btn_inscriptionModifier.Name = "btn_inscriptionModifier";
+            this.btn_inscriptionModifier.Size = new System.Drawing.Size(198, 66);
+            this.btn_inscriptionModifier.TabIndex = 13;
+            this.btn_inscriptionModifier.Text = "Modifier information";
+            this.btn_inscriptionModifier.UseVisualStyleBackColor = true;
+            // 
+            // CLB_inscriptionModificationAtelier
+            // 
+            this.CLB_inscriptionModificationAtelier.FormattingEnabled = true;
+            this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(266, 80);
+            this.CLB_inscriptionModificationAtelier.Name = "CLB_inscriptionModificationAtelier";
+            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(74, 268);
+            this.CLB_inscriptionModificationAtelier.TabIndex = 12;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(131, 330);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(117, 29);
+            this.textBox7.TabIndex = 11;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(127, 210);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(121, 29);
+            this.textBox6.TabIndex = 10;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(127, 156);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(121, 29);
+            this.textBox5.TabIndex = 9;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(127, 102);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(121, 29);
+            this.textBox4.TabIndex = 8;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(127, 273);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 32);
+            this.comboBox2.TabIndex = 7;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(127, 45);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 32);
+            this.comboBox1.TabIndex = 6;
+            // 
+            // lab_modificationInscriptionMail
+            // 
+            this.lab_modificationInscriptionMail.AutoSize = true;
+            this.lab_modificationInscriptionMail.Location = new System.Drawing.Point(66, 335);
+            this.lab_modificationInscriptionMail.Name = "lab_modificationInscriptionMail";
+            this.lab_modificationInscriptionMail.Size = new System.Drawing.Size(59, 24);
+            this.lab_modificationInscriptionMail.TabIndex = 5;
+            this.lab_modificationInscriptionMail.Text = "Mail : ";
+            // 
+            // lab_modificationInscriptionType
+            // 
+            this.lab_modificationInscriptionType.AutoSize = true;
+            this.lab_modificationInscriptionType.Location = new System.Drawing.Point(24, 281);
+            this.lab_modificationInscriptionType.Name = "lab_modificationInscriptionType";
+            this.lab_modificationInscriptionType.Size = new System.Drawing.Size(101, 24);
+            this.lab_modificationInscriptionType.TabIndex = 4;
+            this.lab_modificationInscriptionType.Text = "Categorie :";
+            // 
+            // lab_modificationInscriptionNumTel
+            // 
+            this.lab_modificationInscriptionNumTel.AutoSize = true;
+            this.lab_modificationInscriptionNumTel.Location = new System.Drawing.Point(15, 210);
+            this.lab_modificationInscriptionNumTel.Name = "lab_modificationInscriptionNumTel";
+            this.lab_modificationInscriptionNumTel.Size = new System.Drawing.Size(110, 48);
+            this.lab_modificationInscriptionNumTel.TabIndex = 3;
+            this.lab_modificationInscriptionNumTel.Text = "Numero de\r\n telephone :\r\n";
+            // 
+            // lab_modificationInscriptionAdresse
+            // 
+            this.lab_modificationInscriptionAdresse.AutoSize = true;
+            this.lab_modificationInscriptionAdresse.Location = new System.Drawing.Point(31, 162);
+            this.lab_modificationInscriptionAdresse.Name = "lab_modificationInscriptionAdresse";
+            this.lab_modificationInscriptionAdresse.Size = new System.Drawing.Size(90, 24);
+            this.lab_modificationInscriptionAdresse.TabIndex = 2;
+            this.lab_modificationInscriptionAdresse.Text = "Adresse :";
+            // 
+            // lab_modificationInscriptionPrenom
+            // 
+            this.lab_modificationInscriptionPrenom.AutoSize = true;
+            this.lab_modificationInscriptionPrenom.Location = new System.Drawing.Point(38, 107);
+            this.lab_modificationInscriptionPrenom.Name = "lab_modificationInscriptionPrenom";
+            this.lab_modificationInscriptionPrenom.Size = new System.Drawing.Size(87, 24);
+            this.lab_modificationInscriptionPrenom.TabIndex = 1;
+            this.lab_modificationInscriptionPrenom.Text = "Prenom :";
+            // 
+            // lab_modificationInscriptionNom
+            // 
+            this.lab_modificationInscriptionNom.AutoSize = true;
+            this.lab_modificationInscriptionNom.Location = new System.Drawing.Point(64, 53);
+            this.lab_modificationInscriptionNom.Name = "lab_modificationInscriptionNom";
+            this.lab_modificationInscriptionNom.Size = new System.Drawing.Size(61, 24);
+            this.lab_modificationInscriptionNom.TabIndex = 0;
+            this.lab_modificationInscriptionNom.Text = "Nom :";
             // 
             // GrB_inscriptionP
             // 
@@ -424,145 +563,6 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // GrB_modificationInscription
-            // 
-            this.GrB_modificationInscription.Controls.Add(this.btn_inscriptionModifier);
-            this.GrB_modificationInscription.Controls.Add(this.CLB_inscriptionModificationAtelier);
-            this.GrB_modificationInscription.Controls.Add(this.textBox7);
-            this.GrB_modificationInscription.Controls.Add(this.textBox6);
-            this.GrB_modificationInscription.Controls.Add(this.textBox5);
-            this.GrB_modificationInscription.Controls.Add(this.textBox4);
-            this.GrB_modificationInscription.Controls.Add(this.comboBox2);
-            this.GrB_modificationInscription.Controls.Add(this.comboBox1);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionMail);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionType);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNumTel);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionAdresse);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionPrenom);
-            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNom);
-            this.GrB_modificationInscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.GrB_modificationInscription.Location = new System.Drawing.Point(553, 20);
-            this.GrB_modificationInscription.Name = "GrB_modificationInscription";
-            this.GrB_modificationInscription.Size = new System.Drawing.Size(346, 446);
-            this.GrB_modificationInscription.TabIndex = 6;
-            this.GrB_modificationInscription.TabStop = false;
-            this.GrB_modificationInscription.Text = "Formulaire de Modification";
-            // 
-            // lab_modificationInscriptionNom
-            // 
-            this.lab_modificationInscriptionNom.AutoSize = true;
-            this.lab_modificationInscriptionNom.Location = new System.Drawing.Point(64, 53);
-            this.lab_modificationInscriptionNom.Name = "lab_modificationInscriptionNom";
-            this.lab_modificationInscriptionNom.Size = new System.Drawing.Size(61, 24);
-            this.lab_modificationInscriptionNom.TabIndex = 0;
-            this.lab_modificationInscriptionNom.Text = "Nom :";
-            // 
-            // lab_modificationInscriptionPrenom
-            // 
-            this.lab_modificationInscriptionPrenom.AutoSize = true;
-            this.lab_modificationInscriptionPrenom.Location = new System.Drawing.Point(38, 107);
-            this.lab_modificationInscriptionPrenom.Name = "lab_modificationInscriptionPrenom";
-            this.lab_modificationInscriptionPrenom.Size = new System.Drawing.Size(87, 24);
-            this.lab_modificationInscriptionPrenom.TabIndex = 1;
-            this.lab_modificationInscriptionPrenom.Text = "Prenom :";
-            // 
-            // lab_modificationInscriptionAdresse
-            // 
-            this.lab_modificationInscriptionAdresse.AutoSize = true;
-            this.lab_modificationInscriptionAdresse.Location = new System.Drawing.Point(31, 162);
-            this.lab_modificationInscriptionAdresse.Name = "lab_modificationInscriptionAdresse";
-            this.lab_modificationInscriptionAdresse.Size = new System.Drawing.Size(90, 24);
-            this.lab_modificationInscriptionAdresse.TabIndex = 2;
-            this.lab_modificationInscriptionAdresse.Text = "Adresse :";
-            // 
-            // lab_modificationInscriptionNumTel
-            // 
-            this.lab_modificationInscriptionNumTel.AutoSize = true;
-            this.lab_modificationInscriptionNumTel.Location = new System.Drawing.Point(15, 210);
-            this.lab_modificationInscriptionNumTel.Name = "lab_modificationInscriptionNumTel";
-            this.lab_modificationInscriptionNumTel.Size = new System.Drawing.Size(110, 48);
-            this.lab_modificationInscriptionNumTel.TabIndex = 3;
-            this.lab_modificationInscriptionNumTel.Text = "Numero de\r\n telephone :\r\n";
-            // 
-            // lab_modificationInscriptionType
-            // 
-            this.lab_modificationInscriptionType.AutoSize = true;
-            this.lab_modificationInscriptionType.Location = new System.Drawing.Point(24, 281);
-            this.lab_modificationInscriptionType.Name = "lab_modificationInscriptionType";
-            this.lab_modificationInscriptionType.Size = new System.Drawing.Size(101, 24);
-            this.lab_modificationInscriptionType.TabIndex = 4;
-            this.lab_modificationInscriptionType.Text = "Categorie :";
-            // 
-            // lab_modificationInscriptionMail
-            // 
-            this.lab_modificationInscriptionMail.AutoSize = true;
-            this.lab_modificationInscriptionMail.Location = new System.Drawing.Point(66, 335);
-            this.lab_modificationInscriptionMail.Name = "lab_modificationInscriptionMail";
-            this.lab_modificationInscriptionMail.Size = new System.Drawing.Size(59, 24);
-            this.lab_modificationInscriptionMail.TabIndex = 5;
-            this.lab_modificationInscriptionMail.Text = "Mail : ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(127, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 32);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(127, 273);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 32);
-            this.comboBox2.TabIndex = 7;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(127, 102);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 29);
-            this.textBox4.TabIndex = 8;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(127, 156);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 29);
-            this.textBox5.TabIndex = 9;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(127, 210);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 29);
-            this.textBox6.TabIndex = 10;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(131, 330);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(117, 29);
-            this.textBox7.TabIndex = 11;
-            // 
-            // CLB_inscriptionModificationAtelier
-            // 
-            this.CLB_inscriptionModificationAtelier.FormattingEnabled = true;
-            this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(266, 80);
-            this.CLB_inscriptionModificationAtelier.Name = "CLB_inscriptionModificationAtelier";
-            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(74, 268);
-            this.CLB_inscriptionModificationAtelier.TabIndex = 12;
-            // 
-            // btn_inscriptionModifier
-            // 
-            this.btn_inscriptionModifier.Location = new System.Drawing.Point(131, 375);
-            this.btn_inscriptionModifier.Name = "btn_inscriptionModifier";
-            this.btn_inscriptionModifier.Size = new System.Drawing.Size(198, 66);
-            this.btn_inscriptionModifier.TabIndex = 13;
-            this.btn_inscriptionModifier.Text = "Modifier information";
-            this.btn_inscriptionModifier.UseVisualStyleBackColor = true;
-            // 
             // Maison_des_ligues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,17 +571,18 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Maison_des_ligues";
             this.Text = "Maison des ligues";
+            this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
             this.tabPageAteliers.PerformLayout();
             this.tabPageInscription.ResumeLayout(false);
+            this.GrB_modificationInscription.ResumeLayout(false);
+            this.GrB_modificationInscription.PerformLayout();
             this.GrB_inscriptionP.ResumeLayout(false);
             this.GrB_inscriptionP.PerformLayout();
             this.tabPageListeParticipant.ResumeLayout(false);
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
-            this.GrB_modificationInscription.ResumeLayout(false);
-            this.GrB_modificationInscription.PerformLayout();
             this.ResumeLayout(false);
 
         }

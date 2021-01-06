@@ -20,6 +20,10 @@ namespace PPE_DAO_S_C_K
 
 
         #region Constructeur 
+        public Atelier()
+        {
+
+        }
         public Atelier(int id, string nom, int capacite, Participant intervenant)
         {
             this.id = id;

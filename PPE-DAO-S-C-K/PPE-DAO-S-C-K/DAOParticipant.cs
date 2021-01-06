@@ -30,7 +30,28 @@ namespace PPE_DAO_S_C_K
                       "where Pt.id ="+int.Parse(reader[0].ToString()) + " order by Pt.id ;";
 
                 SqlDataReader readerAt = db.excecSQLRead(req);
+                if (reader[5].ToString() == "Benevole")
+                {
+                    req = "Select * From intervenir where id = " + int.Parse(reader[0].ToString()) + ";" ;
+                    SqlDataReader readerBs = db.excecSQLRead(req);
 
+                    while (readerBs.Read())
+                    {
+                       String email = readerBs[1].ToString(); 
+                    
+                    Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
+                                                            reader[1].ToString(),
+                                                            reader[2].ToString(),
+                                                            reader[3].ToString(),
+                                                            reader[4].ToString(),
+                                                            reader[5].ToString(),
+                                                            email);
+                    }
+                }
+                else
+                {
+
+                
                 Participant leParticipant = new Participant(int.Parse(reader[0].ToString()),
                                                             reader[1].ToString(),
                                                             reader[2].ToString(),
@@ -38,7 +59,7 @@ namespace PPE_DAO_S_C_K
                                                             reader[4].ToString(),
                                                             reader[5].ToString());
 
-
+                }
                 while (readerAt.Read())
                 {
                     req = "Select Pt.id,Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
