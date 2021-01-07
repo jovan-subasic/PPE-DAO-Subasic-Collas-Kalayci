@@ -104,6 +104,12 @@ namespace PPE_DAO_S_C_K
            
             return laList; 
         }
+
+        public void ajoutdbParticipant()
+        {
+            DAOParticipant db = new DAOParticipant();
+            db.executeSQLwrite(this); 
+        }
         #endregion
 
     }

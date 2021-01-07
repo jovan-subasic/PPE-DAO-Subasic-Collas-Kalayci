@@ -394,6 +394,7 @@
             this.Btn_valideInscription.TabIndex = 11;
             this.Btn_valideInscription.Text = "Confirmer Inscription";
             this.Btn_valideInscription.UseVisualStyleBackColor = true;
+            this.Btn_valideInscription.Click += new System.EventHandler(this.Btn_valideInscription_Click);
             // 
             // Cbx_inscriptionType
             // 

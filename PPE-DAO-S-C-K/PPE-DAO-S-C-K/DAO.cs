@@ -62,6 +62,49 @@ namespace PPE_DAO_S_C_K
         {
 
         }
+
+        private void Btn_valideInscription_Click(object sender, EventArgs e)
+        {
+
+            if ( null != txt_inscriptionNom.Text &&
+                 null != txt_inscriptionAdresse.Text &&
+                 null != txt_inscriptionNumtel.Text &&
+                 null != txt_inscriptionPrenom.Text
+                 )
+            {
+                int id = lesParticipants.Count; // pour que l'id sont la nouvelle derni_re valeur
+                // de l'attribue id de la liste lesParticipants. 
+                if (null != txt_inscriptionMail.Text) // construit un objet Benevole et Participant
+                {
+
+                    Benevoles bs = new Benevoles(
+                                   id,
+                                   txt_inscriptionNom.Text,
+                                   txt_inscriptionPrenom.Text,
+                                   txt_inscriptionAdresse.Text,
+                                   txt_inscriptionNumtel.Text,
+                                   Cbx_inscriptionType.Text,
+                                   txt_inscriptionMail.Text
+                                    );
+                    lesParticipants.Add(bs); 
+                }
+                else // construit un objet Participant, uniquement.
+                {
+                    Participant pt = new Participant(
+                                    id,
+                                    txt_inscriptionNom.Text,
+                                    txt_inscriptionPrenom.Text,
+                                    txt_inscriptionAdresse.Text,
+                                    txt_inscriptionNumtel.Text,
+                                    Cbx_inscriptionType.Text
+                                    );
+                    lesParticipants.Add(pt);
+                }
+            } else
+            {
+                MessageBox.Show(" un champs n\'est pas renseigné "); 
+            }
+        }
         #endregion
 
         #region Méthodes  
@@ -73,6 +116,7 @@ namespace PPE_DAO_S_C_K
             lesParticipants = unP.allParticipant();
             lesAteliers = unA.allAteliers();
         }
+
         #endregion
 
 

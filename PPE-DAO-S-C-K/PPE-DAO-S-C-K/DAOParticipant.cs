@@ -37,15 +37,16 @@ namespace PPE_DAO_S_C_K
 
                     while (readerBs.Read())
                     {
-                       String email = readerBs[1].ToString(); 
-                    
-                        Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
-                                                            reader[1].ToString(),
-                                                            reader[2].ToString(),
-                                                            reader[3].ToString(),
-                                                            reader[4].ToString(),
-                                                            reader[5].ToString(),
-                                                            email);
+                       String email = readerBs[1].ToString();
+                        
+                            Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
+                                                                reader[1].ToString(),
+                                                                reader[2].ToString(),
+                                                                reader[3].ToString(),
+                                                                reader[4].ToString(),
+                                                                reader[5].ToString(),
+                                                                email);
+                       
                     }
                 }
                 else
@@ -94,6 +95,37 @@ namespace PPE_DAO_S_C_K
             }
             return laListe;
         } // fin getAllParticipant()
+
+        public void executeSQLwrite(Participant unParticipant)
+        {
+           
+            String req = "insert into participants values " + unParticipant.Id + ", '"
+                         + unParticipant.Nom + "' , '"
+                         + unParticipant.Prenom + "' , '"
+                         + unParticipant.Adresse + "' , '"
+                         + unParticipant.Portable + "' , '"
+                         + unParticipant.Type + "' ;";  
+            DAOFactory db = new DAOFactory();
+            db.execSQLWrite(req); 
+        } 
+        
+        public void executeSQLwrite(Benevoles unParticipant)
+        {
+           
+            String req = "insert into participants values " + unParticipant.Id + ", '"
+                         + unParticipant.Nom + "' , '"
+                         + unParticipant.Prenom + "' , '"
+                         + unParticipant.Adresse + "' , '"
+                         + unParticipant.Portable + "' , '"
+                         + unParticipant.Type + "' ;" +
+
+                         "insert into intervenir values " + unParticipant.Id + ", '"
+                         + unParticipant.Email + "' ;"; 
+
+            DAOFactory db = new DAOFactory();
+            db.connecter(); 
+            db.execSQLWrite(req); 
+        }
         #endregion
     }
 }
