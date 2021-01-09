@@ -43,11 +43,11 @@
             this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
             this.btn_inscriptionModifier = new System.Windows.Forms.Button();
             this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.txt_modifInscriptionMail = new System.Windows.Forms.TextBox();
+            this.txt_modifInscriptionNumTel = new System.Windows.Forms.TextBox();
+            this.txt_modifInscriptionAdresse = new System.Windows.Forms.TextBox();
+            this.txt_modifInscriptionPrenom = new System.Windows.Forms.TextBox();
+            this.cbx_modifInscreptionType = new System.Windows.Forms.ComboBox();
             this.cbx_inscriptionModifNom = new System.Windows.Forms.ComboBox();
             this.lab_modificationInscriptionMail = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionType = new System.Windows.Forms.Label();
@@ -210,11 +210,11 @@
             // 
             this.GrB_modificationInscription.Controls.Add(this.btn_inscriptionModifier);
             this.GrB_modificationInscription.Controls.Add(this.CLB_inscriptionModificationAtelier);
-            this.GrB_modificationInscription.Controls.Add(this.textBox7);
-            this.GrB_modificationInscription.Controls.Add(this.textBox6);
-            this.GrB_modificationInscription.Controls.Add(this.textBox5);
-            this.GrB_modificationInscription.Controls.Add(this.textBox4);
-            this.GrB_modificationInscription.Controls.Add(this.comboBox2);
+            this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionMail);
+            this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionNumTel);
+            this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionAdresse);
+            this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionPrenom);
+            this.GrB_modificationInscription.Controls.Add(this.cbx_modifInscreptionType);
             this.GrB_modificationInscription.Controls.Add(this.cbx_inscriptionModifNom);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionMail);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionType);
@@ -238,6 +238,7 @@
             this.btn_inscriptionModifier.TabIndex = 13;
             this.btn_inscriptionModifier.Text = "Modifier information";
             this.btn_inscriptionModifier.UseVisualStyleBackColor = true;
+            this.btn_inscriptionModifier.Click += new System.EventHandler(this.btn_inscriptionModifier_Click);
             // 
             // CLB_inscriptionModificationAtelier
             // 
@@ -247,41 +248,45 @@
             this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(74, 268);
             this.CLB_inscriptionModificationAtelier.TabIndex = 12;
             // 
-            // textBox7
+            // txt_modifInscriptionMail
             // 
-            this.textBox7.Location = new System.Drawing.Point(131, 330);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(117, 29);
-            this.textBox7.TabIndex = 11;
+            this.txt_modifInscriptionMail.Location = new System.Drawing.Point(131, 330);
+            this.txt_modifInscriptionMail.Name = "txt_modifInscriptionMail";
+            this.txt_modifInscriptionMail.Size = new System.Drawing.Size(117, 29);
+            this.txt_modifInscriptionMail.TabIndex = 11;
             // 
-            // textBox6
+            // txt_modifInscriptionNumTel
             // 
-            this.textBox6.Location = new System.Drawing.Point(127, 210);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 29);
-            this.textBox6.TabIndex = 10;
+            this.txt_modifInscriptionNumTel.Location = new System.Drawing.Point(127, 210);
+            this.txt_modifInscriptionNumTel.Name = "txt_modifInscriptionNumTel";
+            this.txt_modifInscriptionNumTel.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionNumTel.TabIndex = 10;
             // 
-            // textBox5
+            // txt_modifInscriptionAdresse
             // 
-            this.textBox5.Location = new System.Drawing.Point(127, 156);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 29);
-            this.textBox5.TabIndex = 9;
+            this.txt_modifInscriptionAdresse.Location = new System.Drawing.Point(127, 156);
+            this.txt_modifInscriptionAdresse.Name = "txt_modifInscriptionAdresse";
+            this.txt_modifInscriptionAdresse.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionAdresse.TabIndex = 9;
             // 
-            // textBox4
+            // txt_modifInscriptionPrenom
             // 
-            this.textBox4.Location = new System.Drawing.Point(127, 102);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 29);
-            this.textBox4.TabIndex = 8;
+            this.txt_modifInscriptionPrenom.Location = new System.Drawing.Point(127, 102);
+            this.txt_modifInscriptionPrenom.Name = "txt_modifInscriptionPrenom";
+            this.txt_modifInscriptionPrenom.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionPrenom.TabIndex = 8;
             // 
-            // comboBox2
+            // cbx_modifInscreptionType
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(127, 273);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 32);
-            this.comboBox2.TabIndex = 7;
+            this.cbx_modifInscreptionType.FormattingEnabled = true;
+            this.cbx_modifInscreptionType.Items.AddRange(new object[] {
+            "Participant",
+            "Benevole",
+            "Intervenant"});
+            this.cbx_modifInscreptionType.Location = new System.Drawing.Point(127, 273);
+            this.cbx_modifInscreptionType.Name = "cbx_modifInscreptionType";
+            this.cbx_modifInscreptionType.Size = new System.Drawing.Size(121, 32);
+            this.cbx_modifInscreptionType.TabIndex = 7;
             // 
             // cbx_inscriptionModifNom
             // 
@@ -290,6 +295,7 @@
             this.cbx_inscriptionModifNom.Name = "cbx_inscriptionModifNom";
             this.cbx_inscriptionModifNom.Size = new System.Drawing.Size(121, 32);
             this.cbx_inscriptionModifNom.TabIndex = 6;
+            this.cbx_inscriptionModifNom.SelectedIndexChanged += new System.EventHandler(this.cbx_inscriptionModifNom_SelectedIndexChanged);
             // 
             // lab_modificationInscriptionMail
             // 
@@ -399,10 +405,15 @@
             // Cbx_inscriptionType
             // 
             this.Cbx_inscriptionType.FormattingEnabled = true;
+            this.Cbx_inscriptionType.Items.AddRange(new object[] {
+            "Participant",
+            "Benevole",
+            "Intervenant"});
             this.Cbx_inscriptionType.Location = new System.Drawing.Point(108, 226);
             this.Cbx_inscriptionType.Name = "Cbx_inscriptionType";
             this.Cbx_inscriptionType.Size = new System.Drawing.Size(121, 32);
             this.Cbx_inscriptionType.TabIndex = 10;
+            this.Cbx_inscriptionType.SelectedIndexChanged += new System.EventHandler(this.Cbx_inscriptionType_SelectedIndexChanged);
             // 
             // CLB_inscriptionAtelier
             // 
@@ -503,6 +514,7 @@
             this.tabPageListeParticipant.TabIndex = 3;
             this.tabPageListeParticipant.Text = "Liste ";
             this.tabPageListeParticipant.UseVisualStyleBackColor = true;
+            this.tabPageListeParticipant.Click += new System.EventHandler(this.tabPageListeParticipant_Click);
             // 
             // lab_Choix_Liste
             // 
@@ -523,6 +535,7 @@
             this.cbx_choix_liste_Participant.Name = "cbx_choix_liste_Participant";
             this.cbx_choix_liste_Participant.Size = new System.Drawing.Size(206, 28);
             this.cbx_choix_liste_Participant.TabIndex = 1;
+            this.cbx_choix_liste_Participant.SelectedIndexChanged += new System.EventHandler(this.cbx_choix_liste_Participant_SelectedIndexChanged);
             // 
             // DGV_ListeParticipant
             // 
@@ -629,11 +642,11 @@
         private System.Windows.Forms.TextBox txt_inscriptionMail;
         private System.Windows.Forms.GroupBox GrB_modificationInscription;
         private System.Windows.Forms.CheckedListBox CLB_inscriptionModificationAtelier;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox txt_modifInscriptionMail;
+        private System.Windows.Forms.TextBox txt_modifInscriptionNumTel;
+        private System.Windows.Forms.TextBox txt_modifInscriptionAdresse;
+        private System.Windows.Forms.TextBox txt_modifInscriptionPrenom;
+        private System.Windows.Forms.ComboBox cbx_modifInscreptionType;
         private System.Windows.Forms.ComboBox cbx_inscriptionModifNom;
         private System.Windows.Forms.Label lab_modificationInscriptionMail;
         private System.Windows.Forms.Label lab_modificationInscriptionType;

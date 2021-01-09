@@ -108,7 +108,13 @@ namespace PPE_DAO_S_C_K
         public void ajoutdbParticipant()
         {
             DAOParticipant db = new DAOParticipant();
-            db.executeSQLwrite(this); 
+            db.executeSQLinscription(this); 
+        }
+
+        public void modifParticipant()
+        {
+            DAOParticipant db = new DAOParticipant();
+            db.executeSQLmodifInscription(this);
         }
         #endregion
 

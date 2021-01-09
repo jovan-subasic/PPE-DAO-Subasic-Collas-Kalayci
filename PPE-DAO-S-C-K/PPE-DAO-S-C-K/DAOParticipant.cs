@@ -35,8 +35,8 @@ namespace PPE_DAO_S_C_K
                     req = "Select * From intervenir where id = " + int.Parse(reader[0].ToString()) + ";" ;
                     SqlDataReader readerBs = db.excecSQLRead(req);
 
-                    while (readerBs.Read())
-                    {
+                    readerBs.Read(); 
+                    
                        String email = readerBs[1].ToString();
                         
                             Benevoles leParticipant = new Benevoles(int.Parse(reader[0].ToString()),
@@ -47,7 +47,7 @@ namespace PPE_DAO_S_C_K
                                                                 reader[5].ToString(),
                                                                 email);
                        
-                    }
+                    
                 }
                 else
                 {
@@ -96,7 +96,8 @@ namespace PPE_DAO_S_C_K
             return laListe;
         } // fin getAllParticipant()
 
-        public void executeSQLwrite(Participant unParticipant)
+        #region execution BDD inscription 
+        public void executeSQLinscription(Participant unParticipant)
         {
            
             String req = "insert into participants values " + unParticipant.Id + ", '"
@@ -109,7 +110,7 @@ namespace PPE_DAO_S_C_K
             db.execSQLWrite(req); 
         } 
         
-        public void executeSQLwrite(Benevoles unParticipant)
+        public void executeSQLinscription(Benevoles unParticipant)
         {
            
             String req = "insert into participants values " + unParticipant.Id + ", '"
@@ -126,6 +127,43 @@ namespace PPE_DAO_S_C_K
             db.connecter(); 
             db.execSQLWrite(req); 
         }
+        #endregion
+
+        #region modification BDD
+        public void executeSQLmodifInscription(Participant unParticipant )
+        {
+            String req = "update participants set (" + unParticipant.Id + ", '"
+             + unParticipant.Nom + "' , '"
+             + unParticipant.Prenom + "' , '"
+             + unParticipant.Adresse + "' , '"
+             + unParticipant.Portable + "' , '"
+             + unParticipant.Type + "') "
+             + "where id =" + unParticipant.Id + " ;"; 
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+            db.execSQLWrite(req);
+        }
+        public void executeSQLmodifInscription(Benevoles unB)
+        {
+            String req = "update participants set (" + unB.Id + ", '"
+                         + unB.Nom + "' , '"
+                         + unB.Prenom + "' , '"
+                         + unB.Adresse + "' , '"
+                         + unB.Portable + "' , '"
+                         + unB.Type + "') " 
+                         + "where id ="+ unB.Id + " ;" +
+
+                         "update intervenir set " + unB.Id + ", '"
+                         + unB.Email + "' " 
+                         + "where id ="+ unB.Id + " ;";
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+            db.execSQLWrite(req);
+        }
+        #endregion
+
         #endregion
     }
 }
