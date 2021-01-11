@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -10,14 +11,15 @@ namespace PPE_DAO_S_C_K
 
         public List<Participant> getAllParticipant()
         {
-            List<Participant> laListe = new List<Participant>(); 
+            List<Participant> laListe = new List<Participant>(); /**/
             string req; 
-            req = "Select Pt.id,Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
-                  "From participant Pt " +
+            req = "Select Pt.id, Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
+            //req = "Select * " +
+                  "From participants Pt " +
                   "order by Pt.id ;";
 
-            DAOFactory db = new DAOFactory();            
-
+            DAOFactory db = new DAOFactory();
+            db.connecter();
             SqlDataReader reader = db.excecSQLRead(req);
 
 
@@ -25,14 +27,15 @@ namespace PPE_DAO_S_C_K
             {
                 req = "Select A.id, A.nom, A.capacite, A.id_participants" +
                       "From participer Pr " +
-                      "inner join participant Pt Pt.id on Pr.id " +
+                      "inner join participants Pt Pt.id on Pr.id " +
                       "inner join atelier A A.id on Pr.id_atelier " +
                       "where Pt.id ="+int.Parse(reader[0].ToString()) + " order by Pt.id ;";
-
+                //db.connecter();
                 SqlDataReader readerAt = db.excecSQLRead(req);
                 if (reader[5].ToString() == "Benevole")
                 {
                     req = "Select * From intervenir where id = " + int.Parse(reader[0].ToString()) + ";" ;
+                    //db.connecter();
                     SqlDataReader readerBs = db.excecSQLRead(req);
 
                     readerBs.Read(); 
@@ -46,8 +49,37 @@ namespace PPE_DAO_S_C_K
                                                                 reader[4].ToString(),
                                                                 reader[5].ToString(),
                                                                 email);
-                       
-                    
+
+                    while (readerAt.Read())
+                    {
+                        req = "Select Pt.id,Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
+                              "From participants Pt where Pt.id = " + int.Parse(readerAt[3].ToString()) + " " +
+                              "order by Pt.id ;";
+                        //db.connecter();
+                        SqlDataReader readerIn = db.excecSQLRead(req);
+                        Participant intervenant;
+                        while (readerIn.Read())
+                        {
+                            intervenant = new Participant(int.Parse(readerIn[0].ToString()),
+                                                                      readerIn[1].ToString(),
+                                                                      readerIn[2].ToString(),
+                                                                      readerIn[3].ToString(),
+                                                                      readerIn[4].ToString(),
+                                                                      readerIn[5].ToString());
+
+
+
+                            Atelier MonAtelier = new Atelier(int.Parse(readerAt[0].ToString()),
+                                                         readerAt[1].ToString(),
+                                                         int.Parse(readerAt[2].ToString()),
+                                                         intervenant);
+
+                            leParticipant.ajouterAtelier(MonAtelier);
+                            laListe.Add(leParticipant);
+                        }
+                    }
+
+
                 }
                 else
                 {
@@ -61,38 +93,40 @@ namespace PPE_DAO_S_C_K
                                                             reader[4].ToString(),
                                                             reader[5].ToString()
                                                             );
-
-                }
-                while (readerAt.Read())
-                {
-                    req = "Select Pt.id,Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
-                          "From participant Pt where Pt.id = "+ int.Parse(readerAt[3].ToString()) + " " +
-                          "order by Pt.id ;";
-                    SqlDataReader readerIn = db.excecSQLRead(req);
-                    Participant intervenant; 
-                    while (readerIn.Read()) 
+                    while (readerAt.Read())
                     {
-                        intervenant = new Participant(int.Parse(readerIn[0].ToString()), 
-                                                                  readerIn[1].ToString(),
-                                                                  readerIn[2].ToString(),
-                                                                  readerIn[3].ToString(),
-                                                                  readerIn[4].ToString(),
-                                                                  readerIn[5].ToString()); 
+                        req = "Select Pt.id,Pt.nom, Pt.prenom, Pt.adresse, Pt.portable, Pt.type " +
+                              "From participants Pt where Pt.id = " + int.Parse(readerAt[3].ToString()) + " " +
+                              "order by Pt.id ;";
+                        db.connecter();
+                        SqlDataReader readerIn = db.excecSQLRead(req);
+                        Participant intervenant;
+                        while (readerIn.Read())
+                        {
+                            intervenant = new Participant(int.Parse(readerIn[0].ToString()),
+                                                                      readerIn[1].ToString(),
+                                                                      readerIn[2].ToString(),
+                                                                      readerIn[3].ToString(),
+                                                                      readerIn[4].ToString(),
+                                                                      readerIn[5].ToString());
 
-                    
 
-                        Atelier MonAtelier = new Atelier(int.Parse(readerAt[0].ToString()),
-                                                     readerAt[1].ToString(),
-                                                     int.Parse(readerAt[2].ToString()),
-                                                     intervenant);
 
-                        leParticipant.ajouterAtelier(MonAtelier);
-                        laListe.Add(leParticipant);
+                            Atelier MonAtelier = new Atelier(int.Parse(readerAt[0].ToString()),
+                                                         readerAt[1].ToString(),
+                                                         int.Parse(readerAt[2].ToString()),
+                                                         intervenant);
+
+                            leParticipant.ajouterAtelier(MonAtelier);
+                            laListe.Add(leParticipant);
+                        }
                     }
+
                 }
+
  
                                  
-            }
+            }/**/
             return laListe;
         } // fin getAllParticipant()
 
@@ -107,6 +141,7 @@ namespace PPE_DAO_S_C_K
                          + unParticipant.Portable + "' , '"
                          + unParticipant.Type + "' ;";  
             DAOFactory db = new DAOFactory();
+            db.connecter();
             db.execSQLWrite(req); 
         } 
         
@@ -161,6 +196,27 @@ namespace PPE_DAO_S_C_K
             DAOFactory db = new DAOFactory();
             db.connecter();
             db.execSQLWrite(req);
+        }
+
+        public void executeParticipe(Participant unP)
+        {
+            Atelier unA; 
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+            String req = "Delete From participer where id =" + unP.Id + ";";
+            db.execSQLWrite(req);
+
+            int i = 0;
+            while ( i < unP.LesAtelier.Count)
+            {
+                unA = unP.LesAtelier.ElementAt(i); 
+                req = "insert into participer values " + unP.Id + ", "
+                + unA.Id + ";";
+                i++ ;
+                db.execSQLWrite(req);
+            }
+
+
         }
         #endregion
 

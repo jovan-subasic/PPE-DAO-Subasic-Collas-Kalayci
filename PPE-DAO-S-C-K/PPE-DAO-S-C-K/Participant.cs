@@ -73,6 +73,7 @@ namespace PPE_DAO_S_C_K
         public string Portable { get => portable; set => portable = value; }
         public string Type { get => type; set => type = value; }
         public int NbParticipant { get => nbParticipant; set => nbParticipant = value; }
+        internal List<Atelier> LesAtelier { get => lesAtelier; set => lesAtelier = value; }
         #endregion
 
         #region Methode 
@@ -116,7 +117,14 @@ namespace PPE_DAO_S_C_K
             DAOParticipant db = new DAOParticipant();
             db.executeSQLmodifInscription(this);
         }
-        #endregion
 
+        public void dbParticipe()
+        {
+            DAOParticipant db = new DAOParticipant();
+            db.executeParticipe(this); 
+          
+        }
+        #endregion
+    
     }
 }

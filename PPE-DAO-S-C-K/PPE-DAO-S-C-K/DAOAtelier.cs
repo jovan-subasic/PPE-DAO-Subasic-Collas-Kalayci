@@ -18,16 +18,18 @@ namespace PPE_DAO_S_C_K
         public List<Atelier> tousLesAteliers()
         {
 
-            List<Atelier> laList = new List<Atelier>();
+            List<Atelier> laList = new List<Atelier>();/*/*/
             String req = "select * From Atelier;";
 
             DAOFactory db = new DAOFactory();
+            db.connecter(); 
             SqlDataReader reader = db.excecSQLRead(req);
 
             while (reader.Read())
             {
                 int idIntervenant = int.Parse(reader[3].ToString()); 
                 req = "select * From participants where id = "+ idIntervenant + ";";
+                //db.connecter();
                 SqlDataReader readerP = db.excecSQLRead(req);
                 Participant intervenant;
                 while (readerP.Read())
@@ -49,7 +51,7 @@ namespace PPE_DAO_S_C_K
                     laList.Add(unAtelier); 
                 } // fin while 
                
-            } // fin while 
+            } // fin while /*/
             return laList;
         } // fin tousLesAteliers()
 
@@ -62,11 +64,12 @@ namespace PPE_DAO_S_C_K
             int idA = unAtelier.Id;  
             String req = "Select Pt.id " +
                       "From participer Pr " +
-                      "inner join participant Pt Pt.id on Pr.id " +
+                      "inner join participants Pt Pt.id on Pr.id " +
                       "inner join atelier A A.id on Pr.id_atelier " +
                       "where A.id =" + idA + " order by Pt.id ;";
 
             DAOFactory db = new DAOFactory();
+            db.connecter();
             SqlDataReader reader = db.excecSQLRead(req);
 
             while (reader.Read())
@@ -80,6 +83,6 @@ namespace PPE_DAO_S_C_K
         #endregion
     }
 
-
+        
 
 }

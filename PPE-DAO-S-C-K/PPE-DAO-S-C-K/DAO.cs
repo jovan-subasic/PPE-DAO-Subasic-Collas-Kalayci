@@ -35,6 +35,8 @@ namespace PPE_DAO_S_C_K
             int i = 0;
             int unId;
 
+
+
             String leNom;
             Participant unP; 
             while (i < lesParticipants.Count())
@@ -66,20 +68,30 @@ namespace PPE_DAO_S_C_K
         #region inscription d'un participant
         private void Cbx_inscriptionType_SelectedIndexChanged(object sender, EventArgs e)
         {
+           if (Cbx_inscriptionType.Text == "Benevole")
+            {
+                txt_inscriptionMail.Visible = true;
+                lab_inscriptionMailP.Visible = true; 
+            }
+            else
+            {
+                txt_inscriptionMail.Visible = false;
+                lab_inscriptionMailP.Visible = false;
+               txt_inscriptionMail.Text =  ""; 
+            }
 
         }
         private void Btn_valideInscription_Click(object sender, EventArgs e)
-        {
-
-            if ( null != txt_inscriptionNom.Text &&
-                 null != txt_inscriptionAdresse.Text &&
-                 null != txt_inscriptionNumtel.Text &&
-                 null != txt_inscriptionPrenom.Text
+        {           
+            if (0 != txt_inscriptionNom.Text.Length &&
+                 0 != txt_inscriptionAdresse.Text.Length &&
+                 0 != txt_inscriptionNumtel.Text.Length &&
+                 0 != txt_inscriptionPrenom.Text.Length
                  )
             {
                 int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
                 // de l'attribue id de la liste lesParticipants. 
-                if (null != txt_inscriptionMail.Text) // construit un objet Benevole et Participant
+                if (0 != txt_inscriptionMail.Text.Length) // construit un objet Benevole et Participant
                 {
 
                     Benevoles bs = new Benevoles(
@@ -92,7 +104,19 @@ namespace PPE_DAO_S_C_K
                                    txt_inscriptionMail.Text
                                     );
                     bs.ajoutdbParticipant(); 
-                    lesParticipants.Add(bs); 
+                    lesParticipants.Add(bs);
+                    CLB_inscriptionAtelier.SelectedIndex.ToString();
+
+                    bs.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i)); 
+                        bs.ajouterAtelier(unA);
+                        i++; 
+                    }
+
                 }
                 else // construit un objet Participant uniquement.
                 {
@@ -106,6 +130,16 @@ namespace PPE_DAO_S_C_K
                                     );
                     pt.ajoutdbParticipant(); 
                     lesParticipants.Add(pt);
+
+                    pt.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        pt.ajouterAtelier(unA);
+                        i++;
+                    }
                 }
             } else
             {
@@ -134,8 +168,19 @@ namespace PPE_DAO_S_C_K
                     bs.Portable = txt_modifInscriptionNumTel.Text ;
                     bs.Type = cbx_modifInscreptionType.Text; 
                     bs.Email = txt_modifInscriptionMail.Text;
-                    bs.modifParticipant(); 
-                    
+                    bs.modifParticipant();
+
+                    unP.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        bs.ajouterAtelier(unA);
+                        i++;
+                    }
+                    bs.dbParticipe(); 
+
                 }
                 else // construit un objet Participant uniquement.
                 {
@@ -144,9 +189,18 @@ namespace PPE_DAO_S_C_K
                     unP.Adresse = txt_modifInscriptionAdresse.Text;
                     unP.Portable = txt_modifInscriptionNumTel.Text;
                     unP.Type = cbx_modifInscreptionType.Text;
-
                     unP.modifParticipant();
 
+                    unP.LesAtelier.Clear(); 
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        unP.ajouterAtelier(unA);
+                        i++;
+                    }
+                    unP.dbParticipe();
                 }
             }
             else
@@ -169,7 +223,20 @@ namespace PPE_DAO_S_C_K
                 txt_modifInscriptionMail.Text = unB.Email;
             }
 
-
+        }
+        private void cbx_modifInscreptionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbx_modifInscreptionType.Text == "Benevole")
+            {
+                txt_modifInscriptionMail.Visible = true;
+                lab_modificationInscriptionMail.Visible = true;
+            }
+            else
+            {
+                txt_modifInscriptionMail.Visible = false;
+                lab_modificationInscriptionMail.Visible = false;
+                txt_modifInscriptionMail.Text = "";
+            }
         }
         #endregion
 
@@ -226,6 +293,7 @@ namespace PPE_DAO_S_C_K
             lesParticipants = unP.allParticipant();
             lesAteliers = unA.allAteliers();
         }
+
 
 
 

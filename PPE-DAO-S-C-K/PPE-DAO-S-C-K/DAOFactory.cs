@@ -13,7 +13,7 @@ namespace PPE_DAO_S_C_K
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost";
             builder.IntegratedSecurity = true;
-            builder.InitialCatalog = "banque";
+            builder.InitialCatalog = "asl";
             Console.WriteLine("Connexion info created : " + builder.ConnectionString);
 
             connexion = new SqlConnection(builder.ConnectionString);

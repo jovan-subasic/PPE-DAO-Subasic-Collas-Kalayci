@@ -79,6 +79,7 @@
             this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.tabPageInscription.SuspendLayout();
@@ -254,6 +255,7 @@
             this.txt_modifInscriptionMail.Name = "txt_modifInscriptionMail";
             this.txt_modifInscriptionMail.Size = new System.Drawing.Size(117, 29);
             this.txt_modifInscriptionMail.TabIndex = 11;
+            this.txt_modifInscriptionMail.Visible = false;
             // 
             // txt_modifInscriptionNumTel
             // 
@@ -287,6 +289,7 @@
             this.cbx_modifInscreptionType.Name = "cbx_modifInscreptionType";
             this.cbx_modifInscreptionType.Size = new System.Drawing.Size(121, 32);
             this.cbx_modifInscreptionType.TabIndex = 7;
+            this.cbx_modifInscreptionType.SelectedIndexChanged += new System.EventHandler(this.cbx_modifInscreptionType_SelectedIndexChanged);
             // 
             // cbx_inscriptionModifNom
             // 
@@ -305,6 +308,7 @@
             this.lab_modificationInscriptionMail.Size = new System.Drawing.Size(59, 24);
             this.lab_modificationInscriptionMail.TabIndex = 5;
             this.lab_modificationInscriptionMail.Text = "Mail : ";
+            this.lab_modificationInscriptionMail.Visible = false;
             // 
             // lab_modificationInscriptionType
             // 
@@ -384,6 +388,7 @@
             this.lab_inscriptionMailP.Size = new System.Drawing.Size(100, 20);
             this.lab_inscriptionMailP.TabIndex = 13;
             this.lab_inscriptionMailP.Text = "Votre mail : ";
+            this.lab_inscriptionMailP.Visible = false;
             // 
             // txt_inscriptionMail
             // 
@@ -391,6 +396,7 @@
             this.txt_inscriptionMail.Name = "txt_inscriptionMail";
             this.txt_inscriptionMail.Size = new System.Drawing.Size(142, 29);
             this.txt_inscriptionMail.TabIndex = 12;
+            this.txt_inscriptionMail.Visible = false;
             // 
             // Btn_valideInscription
             // 
@@ -655,6 +661,7 @@
         private System.Windows.Forms.Label lab_modificationInscriptionPrenom;
         private System.Windows.Forms.Label lab_modificationInscriptionNom;
         private System.Windows.Forms.Button btn_inscriptionModifier;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
