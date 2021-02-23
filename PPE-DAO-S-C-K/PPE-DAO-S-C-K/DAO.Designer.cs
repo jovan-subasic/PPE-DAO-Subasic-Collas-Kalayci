@@ -83,6 +83,14 @@
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.GrB_situation = new System.Windows.Forms.GroupBox();
             this.GrB_equipement = new System.Windows.Forms.GroupBox();
+            this.txt_surface = new System.Windows.Forms.TextBox();
+            this.txt_montantFacture = new System.Windows.Forms.TextBox();
+            this.lab_surface = new System.Windows.Forms.Label();
+            this.lab_montantFacture = new System.Windows.Forms.Label();
+            this.txt_Nalle = new System.Windows.Forms.TextBox();
+            this.txt_Nordre = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.tabPageStand.SuspendLayout();
@@ -92,6 +100,7 @@
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
             this.GrB_creationStand.SuspendLayout();
+            this.GrB_situation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -593,6 +602,10 @@
             // 
             // GrB_creationStand
             // 
+            this.GrB_creationStand.Controls.Add(this.lab_montantFacture);
+            this.GrB_creationStand.Controls.Add(this.lab_surface);
+            this.GrB_creationStand.Controls.Add(this.txt_montantFacture);
+            this.GrB_creationStand.Controls.Add(this.txt_surface);
             this.GrB_creationStand.Controls.Add(this.GrB_equipement);
             this.GrB_creationStand.Controls.Add(this.GrB_situation);
             this.GrB_creationStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -605,7 +618,11 @@
             // 
             // GrB_situation
             // 
-            this.GrB_situation.Location = new System.Drawing.Point(474, 61);
+            this.GrB_situation.Controls.Add(this.label6);
+            this.GrB_situation.Controls.Add(this.label5);
+            this.GrB_situation.Controls.Add(this.txt_Nordre);
+            this.GrB_situation.Controls.Add(this.txt_Nalle);
+            this.GrB_situation.Location = new System.Drawing.Point(474, 51);
             this.GrB_situation.Name = "GrB_situation";
             this.GrB_situation.Size = new System.Drawing.Size(250, 129);
             this.GrB_situation.TabIndex = 0;
@@ -614,12 +631,80 @@
             // 
             // GrB_equipement
             // 
-            this.GrB_equipement.Location = new System.Drawing.Point(25, 61);
+            this.GrB_equipement.Location = new System.Drawing.Point(23, 51);
             this.GrB_equipement.Name = "GrB_equipement";
             this.GrB_equipement.Size = new System.Drawing.Size(414, 304);
             this.GrB_equipement.TabIndex = 1;
             this.GrB_equipement.TabStop = false;
-            this.GrB_equipement.Text = "groupBox1";
+            this.GrB_equipement.Text = "Equipement";
+            // 
+            // txt_surface
+            // 
+            this.txt_surface.Location = new System.Drawing.Point(616, 186);
+            this.txt_surface.Name = "txt_surface";
+            this.txt_surface.Size = new System.Drawing.Size(108, 29);
+            this.txt_surface.TabIndex = 2;
+            // 
+            // txt_montantFacture
+            // 
+            this.txt_montantFacture.Location = new System.Drawing.Point(616, 221);
+            this.txt_montantFacture.Name = "txt_montantFacture";
+            this.txt_montantFacture.Size = new System.Drawing.Size(108, 29);
+            this.txt_montantFacture.TabIndex = 3;
+            // 
+            // lab_surface
+            // 
+            this.lab_surface.AutoSize = true;
+            this.lab_surface.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_surface.Location = new System.Drawing.Point(528, 193);
+            this.lab_surface.Name = "lab_surface";
+            this.lab_surface.Size = new System.Drawing.Size(67, 18);
+            this.lab_surface.TabIndex = 4;
+            this.lab_surface.Text = "Surface :";
+            // 
+            // lab_montantFacture
+            // 
+            this.lab_montantFacture.AutoSize = true;
+            this.lab_montantFacture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_montantFacture.Location = new System.Drawing.Point(471, 228);
+            this.lab_montantFacture.Name = "lab_montantFacture";
+            this.lab_montantFacture.Size = new System.Drawing.Size(124, 18);
+            this.lab_montantFacture.TabIndex = 5;
+            this.lab_montantFacture.Text = "Montant Facturé :";
+            // 
+            // txt_Nalle
+            // 
+            this.txt_Nalle.Location = new System.Drawing.Point(118, 40);
+            this.txt_Nalle.Name = "txt_Nalle";
+            this.txt_Nalle.Size = new System.Drawing.Size(100, 29);
+            this.txt_Nalle.TabIndex = 0;
+            // 
+            // txt_Nordre
+            // 
+            this.txt_Nordre.Location = new System.Drawing.Point(118, 85);
+            this.txt_Nordre.Name = "txt_Nordre";
+            this.txt_Nordre.Size = new System.Drawing.Size(100, 29);
+            this.txt_Nordre.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(33, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 18);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "N°d\'ordre :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(38, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 18);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "N°d\'allée :";
             // 
             // Maison_des_ligues
             // 
@@ -643,6 +728,9 @@
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
             this.GrB_creationStand.ResumeLayout(false);
+            this.GrB_creationStand.PerformLayout();
+            this.GrB_situation.ResumeLayout(false);
+            this.GrB_situation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -704,6 +792,14 @@
         private System.Windows.Forms.GroupBox GrB_creationStand;
         private System.Windows.Forms.GroupBox GrB_situation;
         private System.Windows.Forms.GroupBox GrB_equipement;
+        private System.Windows.Forms.Label lab_montantFacture;
+        private System.Windows.Forms.Label lab_surface;
+        private System.Windows.Forms.TextBox txt_montantFacture;
+        private System.Windows.Forms.TextBox txt_surface;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_Nordre;
+        private System.Windows.Forms.TextBox txt_Nalle;
     }
 }
 
