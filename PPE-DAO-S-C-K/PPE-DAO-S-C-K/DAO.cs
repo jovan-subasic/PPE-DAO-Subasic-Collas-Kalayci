@@ -300,8 +300,12 @@ namespace PPE_DAO_S_C_K
 
 
 
+
         #endregion
 
+        private void tabPageStand_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
