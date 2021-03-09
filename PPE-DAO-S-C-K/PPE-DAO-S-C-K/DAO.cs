@@ -307,5 +307,74 @@ namespace PPE_DAO_S_C_K
         {
 
         }
+
+        private void Btn_creationStand_Click(object sender, EventArgs e)
+        {
+            if (0 != txt_nomStand.Text.Length &&
+                0 != txt_equipement.Text.Length &&
+                0 != txt_montantFacture.Text.Length &&
+                0 != txt_Nalle.Text.Length &&
+                0 != txt_Nordre.Text.Length &&
+                0 != txt_surface.Text.Length 
+                )
+            {
+                int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
+                // de l'attribue id de la liste lesParticipants. 
+                if (0 != txt_inscriptionMail.Text.Length) // construit un objet Benevole et Participant
+                {
+
+                    Benevoles bs = new Benevoles(
+                                   id,
+                                   txt_inscriptionNom.Text,
+                                   txt_inscriptionPrenom.Text,
+                                   txt_inscriptionAdresse.Text,
+                                   txt_inscriptionNumtel.Text,
+                                   Cbx_inscriptionType.Text,
+                                   txt_inscriptionMail.Text
+                                    );
+                    bs.ajoutdbParticipant();
+                    lesParticipants.Add(bs);
+                    CLB_inscriptionAtelier.SelectedIndex.ToString();
+
+                    bs.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        bs.ajouterAtelier(unA);
+                        i++;
+                    }
+
+                }
+                else // construit un objet Participant uniquement.
+                {
+                    Participant pt = new Participant(
+                                    id,
+                                    txt_inscriptionNom.Text,
+                                    txt_inscriptionPrenom.Text,
+                                    txt_inscriptionAdresse.Text,
+                                    txt_inscriptionNumtel.Text,
+                                    Cbx_inscriptionType.Text
+                                    );
+                    pt.ajoutdbParticipant();
+                    lesParticipants.Add(pt);
+
+                    pt.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        pt.ajouterAtelier(unA);
+                        i++;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
+            }
+        }
     }
 }
