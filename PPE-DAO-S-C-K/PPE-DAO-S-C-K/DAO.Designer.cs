@@ -238,7 +238,7 @@
             // 
             this.lab_montantFacture.AutoSize = true;
             this.lab_montantFacture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_montantFacture.Location = new System.Drawing.Point(421, 132);
+            this.lab_montantFacture.Location = new System.Drawing.Point(421, 128);
             this.lab_montantFacture.Name = "lab_montantFacture";
             this.lab_montantFacture.Size = new System.Drawing.Size(124, 18);
             this.lab_montantFacture.TabIndex = 5;
