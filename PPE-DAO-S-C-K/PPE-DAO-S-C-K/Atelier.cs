@@ -16,9 +16,6 @@ namespace PPE_DAO_S_C_K
         private List<Participant> participants;
         #endregion
 
-
-
-
         #region Constructeur 
         public Atelier()
         {
