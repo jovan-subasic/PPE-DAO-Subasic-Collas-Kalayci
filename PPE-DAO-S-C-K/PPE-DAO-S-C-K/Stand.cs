@@ -10,6 +10,7 @@ namespace PPE_DAO_S_C_K
     {
         #region attribue Privé 
 
+            private List<Stand> listAteliers = new List<Stand>();
             private int id;
             private int idAllee;
             private int idOrdre;

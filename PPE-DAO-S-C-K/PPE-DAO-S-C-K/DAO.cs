@@ -14,6 +14,7 @@ namespace PPE_DAO_S_C_K
     {
         #region Attribue 
         private List<Participant> lesParticipants = new List<Participant>();
+        private List<Stand> lesStands = new List<Stand>();
         private List<Atelier> lesAteliers = new List<Atelier>(); 
         #endregion
 
@@ -318,9 +319,8 @@ namespace PPE_DAO_S_C_K
                 0 != txt_surface.Text.Length 
                 )
             {
-                int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
-                // de l'attribue id de la liste lesParticipants. 
-                if (0 != txt_inscriptionMail.Text.Length) // construit un objet Benevole et Participant
+                int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
+                if (0 != txt_inscriptionMail.Text.Length) 
                 {
 
                     Benevoles bs = new Benevoles(
@@ -357,8 +357,8 @@ namespace PPE_DAO_S_C_K
                                     txt_inscriptionNumtel.Text,
                                     Cbx_inscriptionType.Text
                                     );
-                    pt.ajoutdbParticipant();
-                    lesParticipants.Add(pt);
+                    pt.ajoutdbStand();
+                    lesStands.Add();
 
                     pt.LesAtelier.Clear();
                     int i = 0;
