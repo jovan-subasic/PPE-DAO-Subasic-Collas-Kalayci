@@ -14,7 +14,8 @@ namespace PPE_DAO_S_C_K
     {
         #region Attribue 
         private List<Participant> lesParticipants = new List<Participant>();
-        private List<Atelier> lesAteliers = new List<Atelier>(); 
+        //private List<Stand> lesStands = new List<Stand>();
+        private List<Atelier> lesAteliers = new List<Atelier>();
         #endregion
 
         public Maison_des_ligues()
@@ -25,7 +26,7 @@ namespace PPE_DAO_S_C_K
         #region Formulaire M2L
         private void Maison_des_ligues_Load(object sender, EventArgs e)
         {
-            remplirList(); 
+            remplirList();
         }
         #endregion
 
@@ -38,23 +39,23 @@ namespace PPE_DAO_S_C_K
 
 
             String leNom;
-            Participant unP; 
+            Participant unP;
             while (i < lesParticipants.Count())
             {
                 unP = lesParticipants.ElementAt(i);
                 unId = unP.Id;
                 leNom = unP.Nom;
                 cbx_inscriptionModifNom.Items.Add("n°" + unId + " " + leNom);
-                i++; 
+                i++;
             }
 
             Atelier unA;
             while (i < lesAteliers.Count())
             {
                 unA = lesAteliers.ElementAt(i);
-                leNom = unA.Nom; 
+                leNom = unA.Nom;
                 CLB_inscriptionAtelier.Items.Add(leNom);
-                CLB_inscriptionModificationAtelier.Items.Add(leNom); 
+                CLB_inscriptionModificationAtelier.Items.Add(leNom);
             }
 
 
@@ -68,21 +69,21 @@ namespace PPE_DAO_S_C_K
         #region inscription d'un participant
         private void Cbx_inscriptionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-           if (Cbx_inscriptionType.Text == "Benevole")
+            if (Cbx_inscriptionType.Text == "Benevole")
             {
                 txt_inscriptionMail.Visible = true;
-                lab_inscriptionMailP.Visible = true; 
+                lab_inscriptionMailP.Visible = true;
             }
             else
             {
                 txt_inscriptionMail.Visible = false;
                 lab_inscriptionMailP.Visible = false;
-               txt_inscriptionMail.Text =  ""; 
+                txt_inscriptionMail.Text = "";
             }
 
         }
         private void Btn_valideInscription_Click(object sender, EventArgs e)
-        {           
+        {
             if (0 != txt_inscriptionNom.Text.Length &&
                  0 != txt_inscriptionAdresse.Text.Length &&
                  0 != txt_inscriptionNumtel.Text.Length &&
@@ -103,7 +104,7 @@ namespace PPE_DAO_S_C_K
                                    Cbx_inscriptionType.Text,
                                    txt_inscriptionMail.Text
                                     );
-                    bs.ajoutdbParticipant(); 
+                    bs.ajoutdbParticipant();
                     lesParticipants.Add(bs);
                     CLB_inscriptionAtelier.SelectedIndex.ToString();
 
@@ -112,9 +113,9 @@ namespace PPE_DAO_S_C_K
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
                         Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i)); 
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
                         bs.ajouterAtelier(unA);
-                        i++; 
+                        i++;
                     }
 
                 }
@@ -128,10 +129,10 @@ namespace PPE_DAO_S_C_K
                                     txt_inscriptionNumtel.Text,
                                     Cbx_inscriptionType.Text
                                     );
-                    pt.ajoutdbParticipant(); 
+                    pt.ajoutdbParticipant();
                     lesParticipants.Add(pt);
 
-                    //pt.LesAtelier.Clear();
+                    pt.LesAtelier.Clear();
                     int i = 0;
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
@@ -140,14 +141,11 @@ namespace PPE_DAO_S_C_K
                         pt.ajouterAtelier(unA);
                         i++;
                     }
-                } // Clear les differants champ du formulaire une fois une Inscription realiser 
-                txt_inscriptionPrenom.Text = "";
-                txt_inscriptionAdresse.Text = "";
-                txt_inscriptionNumtel.Text = "";
-                Cbx_inscriptionType.Text = "";
-            } else
+                }
+            }
+            else
             {
-                MessageBox.Show(" un champs n\'est pas renseigné "); 
+                MessageBox.Show(" un champs n\'est pas renseigné ");
             }
         }
         #endregion
@@ -161,16 +159,16 @@ namespace PPE_DAO_S_C_K
                  null != txt_modifInscriptionNumTel.Text
                  )
             {
-                
+
                 // de l'attribue id de la liste lesParticipants. 
-                if ( cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
+                if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
                 {
-                   Participant unP =  lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
+                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
                     Benevoles bs = (Benevoles)unP;
-                    bs.Prenom = txt_modifInscriptionPrenom.Text ; 
-                    bs.Adresse = txt_modifInscriptionAdresse.Text ;
-                    bs.Portable = txt_modifInscriptionNumTel.Text ;
-                    bs.Type = cbx_modifInscreptionType.Text; 
+                    bs.Prenom = txt_modifInscriptionPrenom.Text;
+                    bs.Adresse = txt_modifInscriptionAdresse.Text;
+                    bs.Portable = txt_modifInscriptionNumTel.Text;
+                    bs.Type = cbx_modifInscreptionType.Text;
                     bs.Email = txt_modifInscriptionMail.Text;
                     bs.modifParticipant();
 
@@ -183,7 +181,7 @@ namespace PPE_DAO_S_C_K
                         bs.ajouterAtelier(unA);
                         i++;
                     }
-                    bs.dbParticipe(); 
+                    bs.dbParticipe();
 
                 }
                 else // construit un objet Participant uniquement.
@@ -195,7 +193,7 @@ namespace PPE_DAO_S_C_K
                     unP.Type = cbx_modifInscreptionType.Text;
                     unP.modifParticipant();
 
-                    unP.LesAtelier.Clear(); 
+                    unP.LesAtelier.Clear();
                     int i = 0;
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
@@ -214,13 +212,13 @@ namespace PPE_DAO_S_C_K
         }
         private void cbx_inscriptionModifNom_SelectedIndexChanged(object sender, EventArgs e)
         {
-           Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex); 
+            Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
 
             txt_modifInscriptionAdresse.Text = unP.Adresse;
             txt_modifInscriptionPrenom.Text = unP.Prenom;
             txt_modifInscriptionNumTel.Text = unP.Portable;
             cbx_modifInscreptionType.SelectedItem.Equals(unP.Type);
-           
+
             if (unP.Type == "Benevole")
             {
                 Benevoles unB = (Benevoles)unP;
@@ -249,16 +247,16 @@ namespace PPE_DAO_S_C_K
         #region Liste 
         private void tabPageListeParticipant_Click(object sender, EventArgs e)
         {
-          
-            int i = 0; 
-            while ( i < lesAteliers.Count())
+
+            int i = 0;
+            while (i < lesAteliers.Count())
             {
-                Atelier unA = lesAteliers.ElementAt(i); 
-                cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom ); 
-                i++; 
+                Atelier unA = lesAteliers.ElementAt(i);
+                cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom);
+                i++;
             }
             cbx_choix_liste_Participant.Items.Add("Tous les participant");
-            cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant"); 
+            cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
         }
         private void cbx_choix_liste_Participant_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -275,15 +273,15 @@ namespace PPE_DAO_S_C_K
             {
                 Atelier unA;
                 unA = lesAteliers.ElementAt(cbx_choix_liste_Participant.SelectedIndex);
-                
+
                 while (i < unA.Participants.Count())
                 {
-                    
+
                     Participant unP = unA.Participants.ElementAt(i);
                     DGV_ListeParticipant.Rows.Add(unP);
                 }
             }
-       
+
 
         }
         #endregion
@@ -304,8 +302,81 @@ namespace PPE_DAO_S_C_K
 
 
 
+
         #endregion
 
+        private void tabPageStand_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void Btn_creationStand_Click(object sender, EventArgs e)
+        {
+            /*if (0 != txt_nomStand.Text.Length &&
+                0 != txt_equipement.Text.Length &&
+                0 != txt_montantFacture.Text.Length &&
+                0 != txt_Nalle.Text.Length &&
+                0 != txt_Nordre.Text.Length &&
+                0 != txt_surface.Text.Length 
+                )
+            {
+                int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
+                if (0 != txt_inscriptionMail.Text.Length) 
+                {
+
+                    Benevoles bs = new Benevoles(
+                                   id,
+                                   txt_inscriptionNom.Text,
+                                   txt_inscriptionPrenom.Text,
+                                   txt_inscriptionAdresse.Text,
+                                   txt_inscriptionNumtel.Text,
+                                   Cbx_inscriptionType.Text,
+                                   txt_inscriptionMail.Text
+                                    );
+                    bs.ajoutdbParticipant();
+                    lesParticipants.Add(bs);
+                    CLB_inscriptionAtelier.SelectedIndex.ToString();
+
+                    bs.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        bs.ajouterAtelier(unA);
+                        i++;
+                    }
+
+                }
+                else // construit un objet Participant uniquement.
+                {
+                    Participant pt = new Participant(
+                                    id,
+                                    txt_inscriptionNom.Text,
+                                    txt_inscriptionPrenom.Text,
+                                    txt_inscriptionAdresse.Text,
+                                    txt_inscriptionNumtel.Text,
+                                    Cbx_inscriptionType.Text
+                                    );
+                    pt.ajoutdbStand();
+                    lesStands.Add();
+
+                    pt.LesAtelier.Clear();
+                    int i = 0;
+                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    {
+                        Atelier unA;
+                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        pt.ajouterAtelier(unA);
+                        i++;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
+            }
+        }*/
+        }
     }
 }
