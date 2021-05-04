@@ -40,6 +40,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
+            this.Btn_creationStand = new System.Windows.Forms.Button();
+            this.txt_equipement = new System.Windows.Forms.TextBox();
+            this.lab_equipement = new System.Windows.Forms.Label();
+            this.txt_nomStand = new System.Windows.Forms.TextBox();
+            this.lab_nomStand = new System.Windows.Forms.Label();
             this.lab_montantFacture = new System.Windows.Forms.Label();
             this.lab_surface = new System.Windows.Forms.Label();
             this.txt_montantFacture = new System.Windows.Forms.TextBox();
@@ -90,11 +95,7 @@
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lab_nomStand = new System.Windows.Forms.Label();
-            this.txt_nomStand = new System.Windows.Forms.TextBox();
-            this.lab_equipement = new System.Windows.Forms.Label();
-            this.txt_equipement = new System.Windows.Forms.TextBox();
-            this.Btn_creationStand = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.tabPageStand.SuspendLayout();
@@ -105,6 +106,7 @@
             this.GrB_inscriptionP.SuspendLayout();
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,14 +123,7 @@
             // 
             // tabPageAteliers
             // 
-            this.tabPageAteliers.Controls.Add(this.textBox3);
-            this.tabPageAteliers.Controls.Add(this.label4);
-            this.tabPageAteliers.Controls.Add(this.textBox2);
-            this.tabPageAteliers.Controls.Add(this.label3);
-            this.tabPageAteliers.Controls.Add(this.label2);
-            this.tabPageAteliers.Controls.Add(this.textBox1);
-            this.tabPageAteliers.Controls.Add(this.cbx_ChoixAteliers);
-            this.tabPageAteliers.Controls.Add(this.label1);
+            this.tabPageAteliers.Controls.Add(this.groupBox1);
             this.tabPageAteliers.Location = new System.Drawing.Point(4, 22);
             this.tabPageAteliers.Name = "tabPageAteliers";
             this.tabPageAteliers.Padding = new System.Windows.Forms.Padding(3);
@@ -139,7 +134,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(135, 195);
+            this.textBox3.Location = new System.Drawing.Point(169, 210);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 7;
@@ -147,7 +142,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 198);
+            this.label4.Location = new System.Drawing.Point(38, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 6;
@@ -155,7 +150,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(135, 159);
+            this.textBox2.Location = new System.Drawing.Point(169, 174);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
@@ -163,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 96);
+            this.label3.Location = new System.Drawing.Point(103, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 4;
@@ -172,7 +167,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 162);
+            this.label2.Location = new System.Drawing.Point(92, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
@@ -180,7 +175,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 93);
+            this.textBox1.Location = new System.Drawing.Point(169, 108);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 2;
@@ -188,7 +183,14 @@
             // cbx_ChoixAteliers
             // 
             this.cbx_ChoixAteliers.FormattingEnabled = true;
-            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(135, 23);
+            this.cbx_ChoixAteliers.Items.AddRange(new object[] {
+            "La Maison des Ligues de Lorraine et son projet",
+            "Le fonctionnement de la Maison des Ligues",
+            "Les outils à disposition et remis aux clubs",
+            "Le sport lorrain et les collectivités",
+            "Le Ministère des Sports",
+            "Développement durable"});
+            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(169, 38);
             this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
             this.cbx_ChoixAteliers.Size = new System.Drawing.Size(121, 21);
             this.cbx_ChoixAteliers.TabIndex = 1;
@@ -196,7 +198,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Location = new System.Drawing.Point(40, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 0;
@@ -233,6 +235,50 @@
             this.GrB_creationStand.TabIndex = 0;
             this.GrB_creationStand.TabStop = false;
             this.GrB_creationStand.Text = "Création Stand";
+            // 
+            // Btn_creationStand
+            // 
+            this.Btn_creationStand.Location = new System.Drawing.Point(495, 233);
+            this.Btn_creationStand.Name = "Btn_creationStand";
+            this.Btn_creationStand.Size = new System.Drawing.Size(186, 71);
+            this.Btn_creationStand.TabIndex = 10;
+            this.Btn_creationStand.Text = "Créer";
+            this.Btn_creationStand.UseVisualStyleBackColor = true;
+            this.Btn_creationStand.Click += new System.EventHandler(this.Btn_creationStand_Click);
+            // 
+            // txt_equipement
+            // 
+            this.txt_equipement.Location = new System.Drawing.Point(146, 132);
+            this.txt_equipement.Name = "txt_equipement";
+            this.txt_equipement.Size = new System.Drawing.Size(108, 29);
+            this.txt_equipement.TabIndex = 9;
+            // 
+            // lab_equipement
+            // 
+            this.lab_equipement.AutoSize = true;
+            this.lab_equipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_equipement.Location = new System.Drawing.Point(46, 139);
+            this.lab_equipement.Name = "lab_equipement";
+            this.lab_equipement.Size = new System.Drawing.Size(94, 18);
+            this.lab_equipement.TabIndex = 8;
+            this.lab_equipement.Text = "Equipement :";
+            // 
+            // txt_nomStand
+            // 
+            this.txt_nomStand.Location = new System.Drawing.Point(146, 70);
+            this.txt_nomStand.Name = "txt_nomStand";
+            this.txt_nomStand.Size = new System.Drawing.Size(108, 29);
+            this.txt_nomStand.TabIndex = 7;
+            // 
+            // lab_nomStand
+            // 
+            this.lab_nomStand.AutoSize = true;
+            this.lab_nomStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_nomStand.Location = new System.Drawing.Point(91, 77);
+            this.lab_nomStand.Name = "lab_nomStand";
+            this.lab_nomStand.Size = new System.Drawing.Size(49, 18);
+            this.lab_nomStand.TabIndex = 6;
+            this.lab_nomStand.Text = "Nom :";
             // 
             // lab_montantFacture
             // 
@@ -705,49 +751,22 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // lab_nomStand
+            // groupBox1
             // 
-            this.lab_nomStand.AutoSize = true;
-            this.lab_nomStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_nomStand.Location = new System.Drawing.Point(91, 77);
-            this.lab_nomStand.Name = "lab_nomStand";
-            this.lab_nomStand.Size = new System.Drawing.Size(49, 18);
-            this.lab_nomStand.TabIndex = 6;
-            this.lab_nomStand.Text = "Nom :";
-            // 
-            // txt_nomStand
-            // 
-            this.txt_nomStand.Location = new System.Drawing.Point(146, 70);
-            this.txt_nomStand.Name = "txt_nomStand";
-            this.txt_nomStand.Size = new System.Drawing.Size(108, 29);
-            this.txt_nomStand.TabIndex = 7;
-            // 
-            // lab_equipement
-            // 
-            this.lab_equipement.AutoSize = true;
-            this.lab_equipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_equipement.Location = new System.Drawing.Point(46, 139);
-            this.lab_equipement.Name = "lab_equipement";
-            this.lab_equipement.Size = new System.Drawing.Size(94, 18);
-            this.lab_equipement.TabIndex = 8;
-            this.lab_equipement.Text = "Equipement :";
-            // 
-            // txt_equipement
-            // 
-            this.txt_equipement.Location = new System.Drawing.Point(146, 132);
-            this.txt_equipement.Name = "txt_equipement";
-            this.txt_equipement.Size = new System.Drawing.Size(108, 29);
-            this.txt_equipement.TabIndex = 9;
-            // 
-            // Btn_creationStand
-            // 
-            this.Btn_creationStand.Location = new System.Drawing.Point(495, 233);
-            this.Btn_creationStand.Name = "Btn_creationStand";
-            this.Btn_creationStand.Size = new System.Drawing.Size(186, 71);
-            this.Btn_creationStand.TabIndex = 10;
-            this.Btn_creationStand.Text = "Créer";
-            this.Btn_creationStand.UseVisualStyleBackColor = true;
-            this.Btn_creationStand.Click += new System.EventHandler(this.Btn_creationStand_Click);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbx_ChoixAteliers);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(17, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(492, 402);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // Maison_des_ligues
             // 
@@ -760,7 +779,6 @@
             this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
-            this.tabPageAteliers.PerformLayout();
             this.tabPageStand.ResumeLayout(false);
             this.GrB_creationStand.ResumeLayout(false);
             this.GrB_creationStand.PerformLayout();
@@ -774,6 +792,8 @@
             this.tabPageListeParticipant.ResumeLayout(false);
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -847,6 +867,7 @@
         private System.Windows.Forms.Label lab_equipement;
         private System.Windows.Forms.TextBox txt_nomStand;
         private System.Windows.Forms.Label lab_nomStand;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
