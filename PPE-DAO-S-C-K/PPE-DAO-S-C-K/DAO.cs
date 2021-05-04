@@ -131,7 +131,7 @@ namespace PPE_DAO_S_C_K
                     pt.ajoutdbParticipant(); 
                     lesParticipants.Add(pt);
 
-                    pt.LesAtelier.Clear();
+                    //pt.LesAtelier.Clear();
                     int i = 0;
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
@@ -140,7 +140,11 @@ namespace PPE_DAO_S_C_K
                         pt.ajouterAtelier(unA);
                         i++;
                     }
-                }
+                } // Clear les differants champ du formulaire une fois une Inscription realiser 
+                txt_inscriptionPrenom.Text = "";
+                txt_inscriptionAdresse.Text = "";
+                txt_inscriptionNumtel.Text = "";
+                Cbx_inscriptionType.Text = "";
             } else
             {
                 MessageBox.Show(" un champs n\'est pas renseigné "); 

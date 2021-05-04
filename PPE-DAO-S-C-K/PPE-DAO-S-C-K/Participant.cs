@@ -33,6 +33,8 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
+            this.nbParticipant = 0; 
+            this.lesAtelier = null;
             //this.participantAtelier();
         }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
@@ -44,6 +46,7 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
+            this.nbParticipant = lesAtelier.Count ; 
             this.lesAtelier = lesAtelier;
             
             //this.participantAtelier();
