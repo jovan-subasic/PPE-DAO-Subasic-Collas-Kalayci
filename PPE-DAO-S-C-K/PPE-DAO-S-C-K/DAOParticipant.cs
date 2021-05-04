@@ -134,9 +134,10 @@ namespace PPE_DAO_S_C_K
             // on  veut recuperai la liste de tous les participants et les rangers dans leurs Class : 
             // Soit Participant || Soit Benevoles 
             List<Participant> laListe = new List<Participant>();
-            
-            /**/
 
+            /**//*
+
+           
             String req = "select * from participants Pt " +
                 "left join participer Pr on Pr.id = Pt.id " +
                 "left join atelier Ar on Ar.id = Pr.id " +
@@ -339,5 +340,17 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #endregion
+
+        /* CODE GENERER LES ATELIERS 
+          
+SET IDENTITY_INSERT dbo.atelier ON
+
+INSERT INTO ASL.dbo.atelier(id,nom,capacite,id_participants) VALUES 
+(1,'La Maison des Ligues et son projet',50,1),
+(2,'Observatoire du metier des sports',80,1),
+(3,'Le fonctionnement de la Maison des Ligues',70,1),
+(4,'Le sport lorrain et les collectivités',60,1),
+(5,'Les outils à disposition et remis aux clubs',40,1),
+(6,'Développement durable',90,1); */
     }
 }
