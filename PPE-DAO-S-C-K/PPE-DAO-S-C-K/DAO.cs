@@ -108,7 +108,8 @@ namespace PPE_DAO_S_C_K
                     lesParticipants.Add(bs);
                     CLB_inscriptionAtelier.SelectedIndex.ToString();
 
-                    bs.LesAtelier.Clear();
+                    //bs.LesAtelier.Clear();
+                    txt_inscriptionMail.Text = ""; 
                     int i = 0;
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
@@ -132,7 +133,7 @@ namespace PPE_DAO_S_C_K
                     pt.ajoutdbParticipant();
                     lesParticipants.Add(pt);
 
-                    pt.LesAtelier.Clear();
+                   // pt.LesAtelier.Clear();
                     int i = 0;
                     while (i < CLB_inscriptionAtelier.CheckedItems.Count)
                     {
@@ -142,6 +143,12 @@ namespace PPE_DAO_S_C_K
                         i++;
                     }
                 }
+
+                txt_inscriptionNom.Text = ""; 
+                txt_inscriptionPrenom.Text = "";
+                txt_inscriptionAdresse.Text = "";
+                txt_inscriptionNumtel.Text = "";
+                Cbx_inscriptionType.Text = "";
             }
             else
             {

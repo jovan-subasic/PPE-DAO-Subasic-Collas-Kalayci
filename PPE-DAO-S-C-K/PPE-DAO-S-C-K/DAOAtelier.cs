@@ -17,10 +17,10 @@ namespace PPE_DAO_S_C_K
         // méthode qui génére la liste de tous les ateliers.
         public List<Atelier> tousLesAteliers()
         {
-
-            List<Atelier> laList = new List<Atelier>();/*/*/
+            
+            List<Atelier> laList = new List<Atelier>();/**//*
             String req = "select * From Atelier;";
-
+            
             DAOFactory db = new DAOFactory();
             db.connecter(); 
             SqlDataReader reader = db.excecSQLRead(req);
@@ -51,7 +51,7 @@ namespace PPE_DAO_S_C_K
                     laList.Add(unAtelier); 
                 } // fin while 
                
-            } // fin while /*/
+            } // fin while /**/
             return laList;
         } // fin tousLesAteliers()
 
