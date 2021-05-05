@@ -135,7 +135,7 @@ namespace PPE_DAO_S_C_K
             // Soit Participant || Soit Benevoles 
             List<Participant> laListe = new List<Participant>();
             
-            /**/
+            /**//*
 
             String req = "select * from participants Pt " +
                 "left join participer Pr on Pr.id = Pt.id " +

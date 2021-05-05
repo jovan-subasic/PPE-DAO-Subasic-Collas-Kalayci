@@ -14,7 +14,7 @@ namespace PPE_DAO_S_C_K
             builder.DataSource = "localhost";
             builder.IntegratedSecurity = true;
             //builder.InitialCatalog = "asl";
-            builder.InitialCatalog = "M2L-ASL";
+            builder.InitialCatalog = "asl";
             Console.WriteLine("Connexion info created : " + builder.ConnectionString);
 
             connexion = new SqlConnection(builder.ConnectionString);
