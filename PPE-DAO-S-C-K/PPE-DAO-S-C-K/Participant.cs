@@ -104,6 +104,7 @@ namespace PPE_DAO_S_C_K
         public List<Participant> allParticipant()
         {
             DAOParticipant dbP = new DAOParticipant();
+            //List<Participant> laList = dbP.getAllParticipant(); 
             List<Participant> laList = dbP.getAllParticipant(); 
            
             return laList; 

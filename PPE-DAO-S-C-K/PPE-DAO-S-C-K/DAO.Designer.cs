@@ -30,14 +30,15 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAteliers = new System.Windows.Forms.TabPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.Btn_creationStand = new System.Windows.Forms.Button();
@@ -95,9 +96,9 @@
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPageStand.SuspendLayout();
             this.GrB_creationStand.SuspendLayout();
             this.GrB_situation.SuspendLayout();
@@ -106,7 +107,6 @@
             this.GrB_inscriptionP.SuspendLayout();
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -132,12 +132,22 @@
             this.tabPageAteliers.Text = "Ateliers";
             this.tabPageAteliers.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // groupBox1
             // 
-            this.textBox3.Location = new System.Drawing.Point(169, 210);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbx_ChoixAteliers);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(17, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(492, 402);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // label4
             // 
@@ -148,12 +158,50 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Nombre de Places";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(169, 210);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Choix Des Ateliers";
+            // 
+            // cbx_ChoixAteliers
+            // 
+            this.cbx_ChoixAteliers.FormattingEnabled = true;
+            this.cbx_ChoixAteliers.Items.AddRange(new object[] {
+            "La Maison des Ligues de Lorraine et son projet",
+            "Le fonctionnement de la Maison des Ligues",
+            "Les outils à disposition et remis aux clubs",
+            "Le sport lorrain et les collectivités",
+            "Le Ministère des Sports",
+            "Développement durable"});
+            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(169, 38);
+            this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
+            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(121, 21);
+            this.cbx_ChoixAteliers.TabIndex = 1;
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(169, 174);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(169, 108);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
             // 
             // label3
             // 
@@ -172,37 +220,6 @@
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Thème";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(169, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // cbx_ChoixAteliers
-            // 
-            this.cbx_ChoixAteliers.FormattingEnabled = true;
-            this.cbx_ChoixAteliers.Items.AddRange(new object[] {
-            "La Maison des Ligues de Lorraine et son projet",
-            "Le fonctionnement de la Maison des Ligues",
-            "Les outils à disposition et remis aux clubs",
-            "Le sport lorrain et les collectivités",
-            "Le Ministère des Sports",
-            "Développement durable"});
-            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(169, 38);
-            this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
-            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(121, 21);
-            this.cbx_ChoixAteliers.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Choix Des Ateliers";
             // 
             // tabPageStand
             // 
@@ -688,6 +705,7 @@
             this.tabPageListeParticipant.Text = "Liste ";
             this.tabPageListeParticipant.UseVisualStyleBackColor = true;
             this.tabPageListeParticipant.Click += new System.EventHandler(this.tabPageListeParticipant_Click);
+            this.tabPageListeParticipant.Enter += new System.EventHandler(this.tabPageListeParticipant_Enter);
             // 
             // lab_Choix_Liste
             // 
@@ -751,23 +769,6 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbx_ChoixAteliers);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(17, 15);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(492, 402);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
             // Maison_des_ligues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -779,6 +780,8 @@
             this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPageStand.ResumeLayout(false);
             this.GrB_creationStand.ResumeLayout(false);
             this.GrB_creationStand.PerformLayout();
@@ -792,8 +795,6 @@
             this.tabPageListeParticipant.ResumeLayout(false);
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -252,18 +252,48 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Liste 
-        private void tabPageListeParticipant_Click(object sender, EventArgs e)
+        private void tabPageListeParticipant_Enter(object sender, EventArgs e)
         {
-
-            int i = 0;
-            while (i < lesAteliers.Count())
+            try
             {
-                Atelier unA = lesAteliers.ElementAt(i);
-                cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom);
-                i++;
+
+                int i = 0;
+                while (i < lesAteliers.Count())
+                {
+                    Atelier unA = lesAteliers.ElementAt(i);
+                    cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom);
+                    i++;
+                }
+
+                cbx_choix_liste_Participant.Items.Add("Tous les participant");
             }
-            cbx_choix_liste_Participant.Items.Add("Tous les participant");
-            cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
+        }
+        private void tabPageListeParticipant_Click(object sender, EventArgs e)
+        {/*
+            try
+            {
+                           
+                int i = 0;
+                while (i < lesAteliers.Count())
+                {
+                    Atelier unA = lesAteliers.ElementAt(i);
+                    cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom);
+                    i++;
+                }
+
+                cbx_choix_liste_Participant.Items.Add("Tous les participant");
+            }
+            catch( Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
+            }
+            //cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
+            */
         }
         private void cbx_choix_liste_Participant_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -273,7 +303,9 @@ namespace PPE_DAO_S_C_K
                 while (i < lesParticipants.Count)
                 {
                     Participant unP = lesParticipants.ElementAt(i);
-                    DGV_ListeParticipant.Rows.Add(unP);
+                    DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                    i++; 
                 }
             }
             else
@@ -286,10 +318,12 @@ namespace PPE_DAO_S_C_K
 
                     Participant unP = unA.Participants.ElementAt(i);
                     DGV_ListeParticipant.Rows.Add(unP);
+
+                    i++;
                 }
             }
 
-
+            
         }
         #endregion
 
@@ -385,5 +419,7 @@ namespace PPE_DAO_S_C_K
             }
         }*/
         }
+
+
     }
 }
