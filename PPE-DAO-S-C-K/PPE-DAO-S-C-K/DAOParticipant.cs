@@ -135,7 +135,7 @@ namespace PPE_DAO_S_C_K
             // Soit Participant || Soit Benevoles 
             List<Participant> laListe = new List<Participant>();
             
-            /**//*
+            /**/
 
             String req = "select * from participants Pt " +
                 "left join participer Pr on Pr.id = Pt.id " +
@@ -166,9 +166,20 @@ namespace PPE_DAO_S_C_K
                 int nbParticipation = int.Parse(reader[6].ToString()) ;
 
                 // permets d'avoir les informations sur l'atelier 
-                int idAtelier = int.Parse(reader[9].ToString()) ;
-                String nomA = reader[10].ToString() ; 
-                int capa = int.Parse(reader[11].ToString()) ;
+
+                int idAtelier = 1;
+                String nomA = " null ";
+                int capa = 1; 
+                if (reader[9].ToString().Length > 0 &&
+                    reader[10].ToString().Length > 0 &&
+                    reader[11].ToString().Length > 0)
+                {
+                     idAtelier = int.Parse(reader[9].ToString());
+                     nomA = reader[10].ToString();
+                     capa = int.Parse(reader[11].ToString());
+                }
+
+
                 //int id_Responsable = int.Parse(reader[12].ToString()) ;
 
                 // sert si l'inscript est un Benevole 
@@ -184,13 +195,31 @@ namespace PPE_DAO_S_C_K
 
 
                 // sert pour avoir les informations sur l'intervenant de l'atelier 
-                int idI = int.Parse(reader[17].ToString());
-                String nomI = reader[18].ToString();
-                String prenomI = reader[19].ToString();
-                String adresseI = reader[20].ToString();
-                String portableI = reader[21].ToString();
-                String typeI = reader[22].ToString();
-                int nbParticipationI = int.Parse(reader[23].ToString());
+
+                int idI = 1;
+                String nomI = " null "; 
+                String prenomI = " null ";
+                String adresseI = " null ";
+                String portableI = " null ";
+                String typeI = " null ";
+                int nbParticipationI = 1;
+
+                if (reader[17].ToString().Length > 0 &&
+                    reader[18].ToString().Length > 0 &&
+                    reader[19].ToString().Length > 0 &&
+                    reader[20].ToString().Length > 0 &&
+                    reader[21].ToString().Length > 0 &&
+                    reader[22].ToString().Length > 0)
+                {
+              
+                    idI = int.Parse(reader[17].ToString());
+                    nomI = reader[18].ToString();
+                    prenomI = reader[19].ToString();
+                    adresseI = reader[20].ToString();
+                    portableI = reader[21].ToString();
+                    typeI = reader[22].ToString();
+                    nbParticipationI = int.Parse(reader[23].ToString());
+                }
 
                 // on sait qu'il s'agit d'un intervenant, donc on peu l'initialiser ici
                 Participant intervenant = new Participant(idI, nomI, prenomI, adresseI, portableI, typeI);
@@ -207,7 +236,7 @@ namespace PPE_DAO_S_C_K
                             next = idP;
                             pt = new Participant(idP, nomP, prenomP, adresseP, portableP, typeP);
 
-                            pt.LesAtelier.Add(Ar); 
+                           // pt.LesAtelier.Add(Ar);
 
                             laListe.Add(pt);
                         }
@@ -229,7 +258,7 @@ namespace PPE_DAO_S_C_K
                                                      portableP,
                                                      typeP,
                                                      emailB);
-                            bs.LesAtelier.Add(Ar);
+                            //bs.LesAtelier.Add(Ar);
                             laListe.Add(bs);
                         }
                         else
@@ -339,5 +368,17 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #endregion
+
+
+        /* CODE GENERER LES ATELIERS 
+          
+        SET IDENTITY_INSERT dbo.atelier ON
+        INSERT INTO ASL.dbo.atelier(id,nom,capacite,id_participants) VALUES 
+        (1,'La Maison des Ligues et son projet',50,1),
+        (2,'Observatoire du metier des sports',80,1),
+        (3,'Le fonctionnement de la Maison des Ligues',70,1),
+        (4,'Le sport lorrain et les collectivités',60,1),
+        (5,'Les outils à disposition et remis aux clubs',40,1),
+        (6,'Développement durable',90,1); /**/
     }
 }
