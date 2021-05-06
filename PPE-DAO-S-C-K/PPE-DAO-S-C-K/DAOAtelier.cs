@@ -15,44 +15,173 @@ namespace PPE_DAO_S_C_K
 
 
         // méthode qui génére la liste de tous les ateliers.
+
         public List<Atelier> tousLesAteliers()
         {
-            
-            List<Atelier> laList = new List<Atelier>();/**//*
-            String req = "select * From Atelier;";
-            
+            // on  veut recuperai la liste de tous les participants et les rangers dans leurs Class : 
+            // Soit Participant || Soit Benevoles 
+            List<Atelier> laListe = new List<Atelier>();
+
+            /**//*
+
+            String req = "select * from participants Pt " +
+                "left join participer Pr on Pr.id = Pt.id " +
+                "left join atelier Ar on Ar.id = Pr.id " +
+                "left join intervenir Ir on  Pt.id = Ir.id " +
+                "left join intervention I on Ir.email = I.email " +
+                "left join participants on Pt.id = Ar.id_participants " +
+                "order by Pt.id;"; 
+            */
+            String req = "select * from atelier Ar " +
+                "left join participants Pt on Pt.id = Ar.id_participants " +
+                "left join participer Pr on Ar.id = Pr.id " +
+                "left join participants Ps on Pr.id = Ps.id " +
+                "left join intervenir Ir on Pt.id = Ir.id " +
+                "left join intervention I on Ir.email = I.email " +
+                "order by Ar.id;";
+
             DAOFactory db = new DAOFactory();
-            db.connecter(); 
+            db.connecter();
             SqlDataReader reader = db.excecSQLRead(req);
 
-            while (reader.Read())
+            int next = -1; // va servir a savoir si on change d'inscript 
+
+
+            while (reader.Read()) // pour chaque ligne on associe 1 inscript a un atelier et son intervenant
             {
-                int idIntervenant = int.Parse(reader[3].ToString()); 
-                req = "select * From participants where id = "+ idIntervenant + ";";
-                //db.connecter();
-                SqlDataReader readerP = db.excecSQLRead(req);
-                Participant intervenant;
-                while (readerP.Read())
+
+                // permets d'avoir les informations sur l'atelier 
+                int idAtelier = 0;
+                String nomA = " null ";
+                int capa = 0;
+                if (reader[0].ToString().Length > 0 &&
+                    reader[1].ToString().Length > 0 &&
+                    reader[2].ToString().Length > 0)
                 {
-                    intervenant = new Participant(int.Parse(readerP[0].ToString()),
-                                                     readerP[1].ToString(),
-                                                     readerP[2].ToString(),
-                                                     readerP[3].ToString(),
-                                                     readerP[4].ToString(),
-                                                     readerP[5].ToString());
+                    idAtelier = int.Parse(reader[0].ToString());
+                    nomA = reader[1].ToString();
+                    capa = int.Parse(reader[2].ToString());
+                }
 
-                    Atelier unAtelier = new Atelier(int.Parse(reader[0].ToString()),
-                                                    reader[1].ToString(),
-                                                    int.Parse(reader[2].ToString()),
-                                                    intervenant);
+                // sert pour avoir les informations sur l'intervenant de l'atelier 
+                int idI = 0;
+                String nomI = " null ";
+                String prenomI = " null ";
+                String adresseI = " null ";
+                String portableI = " null ";
+                String typeI = " null ";
+                int nbParticipationI = 0;
 
-                    unAtelier.participe(); // insère la liste des participants
+                if (reader[4].ToString().Length > 0 &&
+                    reader[5].ToString().Length > 0 &&
+                    reader[6].ToString().Length > 0 &&
+                    reader[7].ToString().Length > 0 &&
+                    reader[8].ToString().Length > 0 &&
+                    reader[9].ToString().Length > 0 &&
+                    reader[10].ToString().Length > 0)
+                {
 
-                    laList.Add(unAtelier); 
-                } // fin while 
-               
-            } // fin while /**/
-            return laList;
+                    idI = int.Parse(reader[4].ToString());
+                    nomI = reader[5].ToString();
+                    prenomI = reader[6].ToString();
+                    adresseI = reader[7].ToString();
+                    portableI = reader[8].ToString();
+                    typeI = reader[9].ToString();
+                    nbParticipationI = int.Parse(reader[10].ToString());
+                }
+
+                // Permets d'avoir les informations de l'inscript 
+                int idP = 0 ;
+                String nomP = "";
+                String prenomP = "";
+                String adresseP = "";
+                String portableP = "";
+                String typeP = "";
+                int nbParticipation = 0;
+
+                if(reader[12].ToString().Length > 0 &&
+                   reader[13].ToString().Length > 0 &&
+                   reader[14].ToString().Length > 0 &&
+                   reader[15].ToString().Length > 0 &&
+                   reader[16].ToString().Length > 0 &&
+                   reader[17].ToString().Length > 0 &&
+                   reader[18].ToString().Length > 0)
+                {
+                                    
+                     idP = int.Parse(reader[12].ToString());
+                     nomP = reader[13].ToString();
+                     prenomP = reader[14].ToString();
+                     adresseP = reader[15].ToString();
+                     portableP = reader[16].ToString();
+                     typeP = reader[17].ToString();
+                     nbParticipation = int.Parse(reader[18].ToString());
+                }
+
+                // sert si l'inscript est un Benevole 
+                String emailB;
+                if (reader[21].ToString().Length > 0)
+                {
+                    emailB = reader[21].ToString();
+                }
+                else
+                {
+                    emailB = "impossible";
+                }
+
+
+                
+
+                // on sait qu'il s'agit d'un intervenant, donc on peu l'initialiser ici
+                Participant intervenant = new Participant(idI, nomI, prenomI, adresseI, portableI, typeI);
+
+                // on initialise egalement l'atelier
+                Atelier Ar = new Atelier(idAtelier, nomA, capa, intervenant);
+
+                // on verifie qu'on a bien toute les donnee pour cree le Participant
+                if (idP.ToString().Length > 0 &&
+                    nomP.ToString().Length > 0 &&
+                    prenomP.ToString().Length > 0 &&
+                    adresseP.ToString().Length > 0 &&
+                    portableP.ToString().Length > 0 &&
+                    typeP.ToString().Length > 0)
+                {
+
+                    // on verifie s'il ne s'agit pas d'un Benevole
+                    if (emailB == "impossible")
+                    {
+
+                        Participant pt = new Participant(idP, nomP, prenomP, adresseP, portableP, typeP);
+
+                        Ar.ajouterParticipant(pt);
+                    }
+                    else // sinonil s'agit d'un Benevole
+                    {
+
+                        Benevoles bs = new Benevoles(idP,
+                            nomP,
+                            prenomP,
+                            adresseP,
+                            portableP,
+                            typeP,
+                            emailB);
+
+                        Ar.ajouterParticipant(bs);
+                    }
+                }
+                if (next != Ar.Id)
+                {
+                    next = Ar.Id;
+
+                    laListe.Add(Ar);
+                }
+                else
+                {
+                    // il ne se passe rien 
+                }
+
+
+            } /**/
+            return laListe;
         } // fin tousLesAteliers()
 
         // permets de définir la liste de participant a un atelier 

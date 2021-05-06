@@ -390,6 +390,7 @@
             this.tabPageInscription.Text = "Inscription";
             this.tabPageInscription.UseVisualStyleBackColor = true;
             this.tabPageInscription.Click += new System.EventHandler(this.tabPageInscription_Click);
+            this.tabPageInscription.Enter += new System.EventHandler(this.tabPageInscription_Enter);
             // 
             // GrB_modificationInscription
             // 

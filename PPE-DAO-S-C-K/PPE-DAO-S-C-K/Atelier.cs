@@ -36,6 +36,7 @@ namespace PPE_DAO_S_C_K
         public int Capacite { get => capacite; set => capacite = value; }
         internal Participant Intervenant { get => intervenant; set => intervenant = value; }
         internal List<Participant> Participants { get => participants; set => participants = value; }
+    
         #endregion
 
 

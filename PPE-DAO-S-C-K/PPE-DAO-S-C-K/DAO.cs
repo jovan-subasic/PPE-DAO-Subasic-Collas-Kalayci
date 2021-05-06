@@ -31,7 +31,7 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Inscription 
-        private void tabPageInscription_Click(object sender, EventArgs e)
+        private void tabPageInscription_Enter(object sender, EventArgs e)
         {
             int i = 0;
             int unId;
@@ -59,6 +59,10 @@ namespace PPE_DAO_S_C_K
             }
 
 
+        }
+         private void tabPageInscription_Click(object sender, EventArgs e)
+        {
+           // inutile 
         }
 
         private void lab_inscriptionNomP_Click(object sender, EventArgs e)
@@ -224,7 +228,7 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionAdresse.Text = unP.Adresse;
             txt_modifInscriptionPrenom.Text = unP.Prenom;
             txt_modifInscriptionNumTel.Text = unP.Portable;
-            cbx_modifInscreptionType.SelectedItem.Equals(unP.Type);
+            //cbx_modifInscreptionType.SelectedItem.Equals(unP.Type);
 
             if (unP.Type == "Benevole")
             {
@@ -274,29 +278,13 @@ namespace PPE_DAO_S_C_K
             //cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
         }
         private void tabPageListeParticipant_Click(object sender, EventArgs e)
-        {/*
-            try
-            {
-                           
-                int i = 0;
-                while (i < lesAteliers.Count())
-                {
-                    Atelier unA = lesAteliers.ElementAt(i);
-                    cbx_choix_liste_Participant.Items.Add(" Atelier : " + unA.Nom);
-                    i++;
-                }
-
-                cbx_choix_liste_Participant.Items.Add("Tous les participant");
-            }
-            catch( Exception ex)
-            {
-                MessageBox.Show(ex.Message); 
-            }
-            //cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
-            */
+        {
+            // methode inutile ! 
         }
         private void cbx_choix_liste_Participant_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DGV_ListeParticipant.ClearSelection();
+            DGV_ListeParticipant.Rows.Clear(); 
             int i = 0;
             if (cbx_choix_liste_Participant.SelectedItem.ToString() == "Tous les participant")
             {
@@ -419,7 +407,6 @@ namespace PPE_DAO_S_C_K
             }
         }*/
         }
-
 
     }
 }
