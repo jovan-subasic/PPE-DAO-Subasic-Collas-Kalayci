@@ -47,9 +47,9 @@ namespace PPE_DAO_S_C_K
 
                 // permets d'avoir les informations sur l'atelier 
 
-                int idAtelier = 1;
-                String nomA = " null ";
-                int capa = 1; 
+                int idAtelier = 0;
+                String nomA = "";
+                int capa = 0; 
                 if (reader[9].ToString().Length > 0 &&
                     reader[10].ToString().Length > 0 &&
                     reader[11].ToString().Length > 0)
@@ -108,44 +108,73 @@ namespace PPE_DAO_S_C_K
                 Atelier Ar = new Atelier(idAtelier, nomA, capa, intervenant);
 
                     
-                    if(typeP != "Benevole")
-                    {
+                if(typeP != "Benevole")
+                {
                     Participant pt = new Participant(); 
-                        if (next != idP)
-                        {
-                            next = idP;
-                            pt = new Participant(idP, nomP, prenomP, adresseP, portableP, typeP);
+                    if (next != idP)
+                    {
+                        next = idP;
+                        pt = new Participant(idP, nomP, prenomP, adresseP, portableP, typeP);
 
-                           // pt.LesAtelier.Add(Ar);
-
-                            laListe.Add(pt);
-                        }
-                        else
+                        if(idAtelier.ToString().Length > 0 &&
+                            nomA.ToString().Length > 0 &&
+                            capa.ToString().Length > 0 &&
+                            intervenant.ToString().Length > 0)
                         {
-                            pt.LesAtelier.Add(Ar);
+
+                            pt.ajouterAtelier(Ar); 
                         }
+
+                        laListe.Add(pt);
                     }
                     else
                     {
-                        Benevoles bs = new Benevoles(); 
-                        if (next != idP)
+                        if (idAtelier.ToString().Length > 0 &&
+                            nomA.ToString().Length > 0 &&
+                            capa.ToString().Length > 0 &&
+                            intervenant.ToString().Length > 0)
                         {
-                            next = idP;
-                             bs = new Benevoles(idP,
-                                                     nomP,
-                                                     prenomP,
-                                                     adresseP,
-                                                     portableP,
-                                                     typeP,
-                                                     emailB);
-                            //bs.LesAtelier.Add(Ar);
-                            laListe.Add(bs);
-                        }
-                        else
-                        {
-                            bs.LesAtelier.Add(Ar);
+
+                            pt.ajouterAtelier(Ar);
                         }
                     }
+                }
+                else
+                {
+                    Benevoles bs = new Benevoles(); 
+                    if (next != idP)
+                    {
+                        next = idP;
+                            bs = new Benevoles(idP,
+                                                    nomP,
+                                                    prenomP,
+                                                    adresseP,
+                                                    portableP,
+                                                    typeP,
+                                                    emailB);
+
+                        if (idAtelier.ToString().Length > 0 &&
+                            nomA.ToString().Length > 0 &&
+                            capa.ToString().Length > 0 &&
+                            intervenant.ToString().Length > 0)
+                        {
+
+                            bs.ajouterAtelier(Ar);
+                        }
+                        laListe.Add(bs);
+                    }
+                    else
+                    {
+                        if (idAtelier.ToString().Length > 0 &&
+                            nomA.ToString().Length > 0 &&
+                            capa.ToString().Length > 0 &&
+                            intervenant.ToString().Length > 0)
+                        {
+
+                            bs.ajouterAtelier(Ar);
+                        }
+                    }
+                }
             }
             /**/
              return laListe;

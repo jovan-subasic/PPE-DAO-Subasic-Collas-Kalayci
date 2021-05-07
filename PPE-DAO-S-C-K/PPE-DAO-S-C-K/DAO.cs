@@ -228,7 +228,10 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionAdresse.Text = unP.Adresse;
             txt_modifInscriptionPrenom.Text = unP.Prenom;
             txt_modifInscriptionNumTel.Text = unP.Portable;
-            //cbx_modifInscreptionType.SelectedItem.Equals(unP.Type);
+            if (cbx_modifInscreptionType.SelectedItem.Equals(unP.Type))
+            {
+                cbx_modifInscreptionType.SelectedItem = unP.Type; 
+            }
 
             if (unP.Type == "Benevole")
             {
@@ -270,12 +273,13 @@ namespace PPE_DAO_S_C_K
                 }
 
                 cbx_choix_liste_Participant.Items.Add("Tous les participant");
+                cbx_choix_liste_Participant.SelectedItem = "Tous les participant";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //cbx_choix_liste_Participant.SelectedItem.Equals("Tous les participant");
+            
         }
         private void tabPageListeParticipant_Click(object sender, EventArgs e)
         {
@@ -300,14 +304,22 @@ namespace PPE_DAO_S_C_K
             {
                 Atelier unA;
                 unA = lesAteliers.ElementAt(cbx_choix_liste_Participant.SelectedIndex);
-
-                while (i < unA.Participants.Count())
+                if (unA.Participants is null)
+                {
+                    MessageBox.Show("Cette Liste est actuellement vide"); // on informe l'utilisateur du probleme 
+                    cbx_choix_liste_Participant.SelectedItem = "Tous les participant"; // on renvoie la liste de tous les participants
+                }
+                else
                 {
 
-                    Participant unP = unA.Participants.ElementAt(i);
-                    DGV_ListeParticipant.Rows.Add(unP);
+                    while (i < unA.Participants.Count())
+                    {
 
-                    i++;
+                        Participant unP = unA.Participants.ElementAt(i);
+                        DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                        i++;
+                    }
                 }
             }
 
