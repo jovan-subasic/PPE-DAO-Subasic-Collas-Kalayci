@@ -37,7 +37,10 @@ namespace PPE_DAO_S_C_K
             int unId;
 
 
+            // ajoute la possibilite de cree un participants 
+           cbx_inscriptionModifNom.Items.Add("New inscription");
 
+            // boucle pour afficher la liste de tous les participants 
             String leNom;
             Participant unP;
             while (i < lesParticipants.Count())
@@ -223,20 +226,36 @@ namespace PPE_DAO_S_C_K
         }
         private void cbx_inscriptionModifNom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
+            // on mets un type par defaut pour le cbx
+            cbx_modifInscreptionType.SelectedItem = "Participant";
 
-            txt_modifInscriptionAdresse.Text = unP.Adresse;
-            txt_modifInscriptionPrenom.Text = unP.Prenom;
-            txt_modifInscriptionNumTel.Text = unP.Portable;
-            if (cbx_modifInscreptionType.SelectedItem.Equals(unP.Type))
-            {
-                cbx_modifInscreptionType.SelectedItem = unP.Type; 
-            }
+            // on clear le reste 
+            txt_modifInscriptionAdresse.Text = "";
+            txt_modifInscriptionPrenom.Text = "";
+            txt_modifInscriptionNumTel.Text = "";
 
-            if (unP.Type == "Benevole")
+
+            if(cbx_inscriptionModifNom.SelectedIndex != 0)
             {
-                Benevoles unB = (Benevoles)unP;
-                txt_modifInscriptionMail.Text = unB.Email;
+                            
+                Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex-1);
+
+                txt_modifInscriptionAdresse.Text = unP.Adresse;
+                txt_modifInscriptionPrenom.Text = unP.Prenom;
+                txt_modifInscriptionNumTel.Text = unP.Portable;
+
+
+                if (cbx_modifInscreptionType.Items.Contains(unP.Type))
+                {
+                    cbx_modifInscreptionType.SelectedItem = unP.Type;
+
+                }
+
+                if (unP.Type == "Benevole")
+                {
+                    Benevoles unB = (Benevoles)unP;
+                    txt_modifInscriptionMail.Text = unB.Email;
+                }
             }
 
         }

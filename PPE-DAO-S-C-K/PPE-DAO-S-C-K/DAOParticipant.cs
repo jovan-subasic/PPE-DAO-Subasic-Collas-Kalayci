@@ -14,7 +14,7 @@ namespace PPE_DAO_S_C_K
             // on  veut recuperai la liste de tous les participants et les rangers dans leurs Class : 
             // Soit Participant || Soit Benevoles 
             List<Participant> laListe = new List<Participant>();
-            
+
             /**/
 
             String req = "select * from participants Pt " +
