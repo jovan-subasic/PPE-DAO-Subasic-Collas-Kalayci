@@ -131,6 +131,7 @@
             this.tabPageAteliers.TabIndex = 0;
             this.tabPageAteliers.Text = "Ateliers";
             this.tabPageAteliers.UseVisualStyleBackColor = true;
+            this.tabPageAteliers.Click += new System.EventHandler(this.tabPageAteliers_Click);
             // 
             // groupBox1
             // 

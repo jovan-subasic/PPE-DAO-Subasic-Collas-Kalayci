@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -167,6 +168,8 @@ namespace PPE_DAO_S_C_K
         #region modification d'un participant 
         private void btn_inscriptionModifier_Click(object sender, EventArgs e)
         {
+
+            String erreur = ""; 
             if (!cbx_inscriptionModifNom.SelectedIndex.Equals(null) &&
                  null != txt_modifInscriptionPrenom.Text &&
                  null != txt_modifInscriptionAdresse.Text &&
@@ -174,6 +177,34 @@ namespace PPE_DAO_S_C_K
                  )
             {
 
+                // verifie la validiter du nom
+                Regex myNom = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+               
+                // verifie la validiter du Prenom 
+                Regex myPrenom = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+                
+                // verifie la validiter de l'Adresse 
+                Regex myAdresse = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+                
+                // verifie la validiter du nom de telephone 
+                Regex myTel = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+
+                // expression qui verifie la validiter d'un mail
+                Regex myMail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);                
+                    /*   
+                if (txt_modifInscriptionPrenom.Text.Length >= 50 || myPrenom.IsMatch(txt_modifInscriptionPrenom.Text))
+                {
+                    erreur += " erreur : Prenom invalide ! "; 
+                }if (txt_modifInscriptionAdresse.Text)
+                {
+                    erreur += " erreur : Adresse invalide ! "; 
+                }if (txt_modifInscriptionNumTel.Text)
+                {
+                    erreur += " erreur : numero de telephone invalide ! "; 
+                }if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
+                {
+                    erreur += " erreur : numero de telephone invalide ! "; 
+                }*/
                 // de l'attribue id de la liste lesParticipants. 
                 if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
                 {
@@ -439,5 +470,9 @@ namespace PPE_DAO_S_C_K
         }*/
         }
 
+        private void tabPageAteliers_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
