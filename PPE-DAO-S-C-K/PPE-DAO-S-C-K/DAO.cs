@@ -39,7 +39,7 @@ namespace PPE_DAO_S_C_K
 
 
             // ajoute la possibilite de cree un participants 
-           cbx_inscriptionModifNom.Items.Add("New inscription");
+           cbx_inscriptionModif_Id.Items.Add("New inscription");
 
             // boucle pour afficher la liste de tous les participants 
             String leNom;
@@ -49,7 +49,7 @@ namespace PPE_DAO_S_C_K
                 unP = lesParticipants.ElementAt(i);
                 unId = unP.Id;
                 leNom = unP.Nom;
-                cbx_inscriptionModifNom.Items.Add("n°" + unId + " " + leNom);
+                cbx_inscriptionModif_Id.Items.Add("n°" + unId + " " + leNom);
                 i++;
             }
 
@@ -58,7 +58,6 @@ namespace PPE_DAO_S_C_K
             {
                 unA = lesAteliers.ElementAt(i);
                 leNom = unA.Nom;
-                CLB_inscriptionAtelier.Items.Add(leNom);
                 CLB_inscriptionModificationAtelier.Items.Add(leNom);
             }
 
@@ -75,6 +74,7 @@ namespace PPE_DAO_S_C_K
         }
 
         #region inscription d'un participant
+        /*
         private void Cbx_inscriptionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Cbx_inscriptionType.Text == "Benevole")
@@ -163,6 +163,7 @@ namespace PPE_DAO_S_C_K
                 MessageBox.Show(" un champs n\'est pas renseigné ");
             }
         }
+        /**/
         #endregion
 
         #region modification d'un participant 
@@ -170,7 +171,7 @@ namespace PPE_DAO_S_C_K
         {
 
             String erreur = ""; 
-            if (!cbx_inscriptionModifNom.SelectedIndex.Equals(null) &&
+            if (!cbx_inscriptionModif_Id.SelectedIndex.Equals(null) &&
                  null != txt_modifInscriptionPrenom.Text &&
                  null != txt_modifInscriptionAdresse.Text &&
                  null != txt_modifInscriptionNumTel.Text
@@ -208,7 +209,7 @@ namespace PPE_DAO_S_C_K
                 // de l'attribue id de la liste lesParticipants. 
                 if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
                 {
-                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
+                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex);
                     Benevoles bs = (Benevoles)unP;
                     bs.Prenom = txt_modifInscriptionPrenom.Text;
                     bs.Adresse = txt_modifInscriptionAdresse.Text;
@@ -219,10 +220,10 @@ namespace PPE_DAO_S_C_K
 
                     unP.LesAtelier.Clear();
                     int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                     {
                         Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
                         bs.ajouterAtelier(unA);
                         i++;
                     }
@@ -231,7 +232,7 @@ namespace PPE_DAO_S_C_K
                 }
                 else // construit un objet Participant uniquement.
                 {
-                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex);
+                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex);
                     unP.Prenom = txt_modifInscriptionPrenom.Text;
                     unP.Adresse = txt_modifInscriptionAdresse.Text;
                     unP.Portable = txt_modifInscriptionNumTel.Text;
@@ -240,10 +241,10 @@ namespace PPE_DAO_S_C_K
 
                     unP.LesAtelier.Clear();
                     int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
+                    while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                     {
                         Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
+                        unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
                         unP.ajouterAtelier(unA);
                         i++;
                     }
@@ -266,10 +267,10 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionNumTel.Text = "";
 
 
-            if(cbx_inscriptionModifNom.SelectedIndex != 0)
+            if(cbx_inscriptionModif_Id.SelectedIndex != 0)
             {
                             
-                Participant unP = lesParticipants.ElementAt(cbx_inscriptionModifNom.SelectedIndex-1);
+                Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex-1);
 
                 txt_modifInscriptionAdresse.Text = unP.Adresse;
                 txt_modifInscriptionPrenom.Text = unP.Prenom;
