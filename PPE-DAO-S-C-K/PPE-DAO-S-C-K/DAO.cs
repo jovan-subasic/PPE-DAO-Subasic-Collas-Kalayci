@@ -178,34 +178,40 @@ namespace PPE_DAO_S_C_K
                  )
             {
 
-                // verifie la validiter du nom
-                Regex myNom = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
-               
-                // verifie la validiter du Prenom 
-                Regex myPrenom = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
-                
-                // verifie la validiter de l'Adresse 
-                Regex myAdresse = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
-                
-                // verifie la validiter du nom de telephone 
-                Regex myTel = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+
+                // verifie la validiter du Prenom et du Nom
+                // /[a-zA-Z]+/g
+                Regex myString = new Regex(@"(/[a-zA-Z]+/g)", RegexOptions.IgnoreCase);
+
+                // verifie la validiter du num de telephone 
+                // (0|\+33)[1-9]( *[0-9]{2}){4}
+                Regex myTel = new Regex(@"(0|\+33)[1-9]( *[0-9]{2}){4}", RegexOptions.IgnoreCase);
 
                 // expression qui verifie la validiter d'un mail
                 Regex myMail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);                
-                    /*   
-                if (txt_modifInscriptionPrenom.Text.Length >= 50 || myPrenom.IsMatch(txt_modifInscriptionPrenom.Text))
-                {
+                    
+                if (txt_modifInscriptionNom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
+                { // si le nom n'est pas bon 
+                    erreur += " erreur : Nom invalide ! "; 
+
+                } if (txt_modifInscriptionPrenom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
+                { // si le prenom n'est pas bon 
                     erreur += " erreur : Prenom invalide ! "; 
-                }if (txt_modifInscriptionAdresse.Text)
-                {
-                    erreur += " erreur : Adresse invalide ! "; 
-                }if (txt_modifInscriptionNumTel.Text)
-                {
+
+                }if (txt_modifInscriptionAdresse.Text.Length >= 50)
+                {// si l'adresse n'est pas bon 
+                    erreur += " erreur : Adresse invalide ! ";
+                    
+                }if (txt_modifInscriptionNumTel.Text.Length >= 50 || myTel.IsMatch(txt_modifInscriptionPrenom.Text))
+                {// si le numero de telephone n'est pas bon 
                     erreur += " erreur : numero de telephone invalide ! "; 
+
                 }if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
-                {
-                    erreur += " erreur : numero de telephone invalide ! "; 
-                }*/
+                {// si le mail n'est pas bon 
+                    erreur += " erreur : mail invalide ! ";
+                    
+                }
+                /**/
                 // de l'attribue id de la liste lesParticipants. 
                 if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
                 {
@@ -265,6 +271,7 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionAdresse.Text = "";
             txt_modifInscriptionPrenom.Text = "";
             txt_modifInscriptionNumTel.Text = "";
+            txt_modifInscriptionMail.Text = "";
 
 
             if(cbx_inscriptionModif_Id.SelectedIndex != 0)

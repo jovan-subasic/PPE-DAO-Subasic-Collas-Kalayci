@@ -400,13 +400,13 @@
             this.GrB_modificationInscription.Size = new System.Drawing.Size(845, 443);
             this.GrB_modificationInscription.TabIndex = 6;
             this.GrB_modificationInscription.TabStop = false;
-            this.GrB_modificationInscription.Text = "Formulaire de Modification";
+            this.GrB_modificationInscription.Text = "Formulaire d\'Inscription ou Modification";
             // 
             // btn_inscriptionModifier
             // 
-            this.btn_inscriptionModifier.Location = new System.Drawing.Point(131, 375);
+            this.btn_inscriptionModifier.Location = new System.Drawing.Point(374, 335);
             this.btn_inscriptionModifier.Name = "btn_inscriptionModifier";
-            this.btn_inscriptionModifier.Size = new System.Drawing.Size(198, 66);
+            this.btn_inscriptionModifier.Size = new System.Drawing.Size(202, 66);
             this.btn_inscriptionModifier.TabIndex = 13;
             this.btn_inscriptionModifier.Text = "Modifier information";
             this.btn_inscriptionModifier.UseVisualStyleBackColor = true;
@@ -417,7 +417,7 @@
             this.CLB_inscriptionModificationAtelier.FormattingEnabled = true;
             this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(374, 102);
             this.CLB_inscriptionModificationAtelier.Name = "CLB_inscriptionModificationAtelier";
-            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(277, 220);
+            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(277, 196);
             this.CLB_inscriptionModificationAtelier.TabIndex = 12;
             // 
             // txt_modifInscriptionMail
