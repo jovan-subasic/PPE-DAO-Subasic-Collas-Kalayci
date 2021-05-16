@@ -193,7 +193,7 @@ namespace PPE_DAO_S_C_K
 
                 // verifie la validiter du num de telephone 
                 // ^(0|\+33)[1-9]( *[0-9]{2}){4}$
-                Regex myTel = new Regex(@"^(0|\+33)[1-9]( *[0-9]{2}){4}$", RegexOptions.IgnoreCase);
+                Regex myTel = new Regex(@"^\s*(0|\+33)[1-9]( *[0-9]{2}){4}\s*$", RegexOptions.IgnoreCase);
 
                 // expression qui verifie la validiter d'un mail
                 Regex myMail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)\s*$", RegexOptions.IgnoreCase);
