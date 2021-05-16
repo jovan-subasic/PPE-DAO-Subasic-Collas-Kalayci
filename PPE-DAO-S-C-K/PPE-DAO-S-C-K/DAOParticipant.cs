@@ -216,6 +216,41 @@ namespace PPE_DAO_S_C_K
             db.connecter(); 
             db.execSQLWrite(req); 
         }
+
+        public void dbAjoutAtelier(Participant unParticipant, List<Atelier> lesAteliers)
+        {
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            while (lesAteliers.GetEnumerator().MoveNext())
+            {
+                Atelier unA = lesAteliers.GetEnumerator().Current;
+
+                String req = "insert into participer values ( '"
+                    + unParticipant.Id + "' , '"
+                    + unA.Id + "' , '";
+               
+
+                db.execSQLWrite(req); 
+            }
+        } 
+        public void dbAjoutAtelier(Benevoles unParticipant, List<Atelier> lesAteliers)
+        {
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            while (lesAteliers.GetEnumerator().MoveNext())
+            {
+                Atelier unA = lesAteliers.GetEnumerator().Current;
+
+                String req = "insert into participer values ( '"
+                    + unParticipant.Id + "' , '"
+                    + unA.Id + "' , '";
+               
+
+                db.execSQLWrite(req); 
+            }
+        }
         #endregion
 
         #region modification BDD

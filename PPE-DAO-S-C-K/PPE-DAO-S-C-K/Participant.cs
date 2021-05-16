@@ -122,6 +122,18 @@ namespace PPE_DAO_S_C_K
             db.executeSQLmodifInscription(this);
         }
 
+
+        public void inscriptiondbParticipe(List<Atelier> lesAteliers = null)
+        {
+            if(lesAtelier.Count() < 1)
+            {
+                lesAtelier = this.LesAtelier; 
+            }
+            DAOParticipant db = new DAOParticipant();
+            db.dbAjoutAtelier(this, lesAteliers); 
+          
+        } 
+        
         public void dbParticipe()
         {
             DAOParticipant db = new DAOParticipant();
