@@ -245,9 +245,7 @@ namespace PPE_DAO_S_C_K
                                             );
                             bs.ajoutdbParticipant(); // ajout le benevole en bdd
                             lesParticipants.Add(bs); // ajout le benevole a la liste d'inscript 
-                            CLB_inscriptionModificationAtelier.SelectedIndex.ToString();
 
-                            //bs.LesAtelier.Clear();
                             txt_modifInscriptionMail.Text = "";
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
@@ -273,7 +271,6 @@ namespace PPE_DAO_S_C_K
                             pt.ajoutdbParticipant(); // ajout le Participant en bdd
                             lesParticipants.Add(pt); // ajout le Participant a la liste d'inscript 
 
-                            // pt.LesAtelier.Clear();
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
