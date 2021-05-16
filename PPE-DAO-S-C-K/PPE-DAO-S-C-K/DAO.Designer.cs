@@ -57,6 +57,7 @@
             this.txt_Nalle = new System.Windows.Forms.TextBox();
             this.tabPageInscription = new System.Windows.Forms.TabPage();
             this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
+            this.txt_modifInscriptionNom = new System.Windows.Forms.TextBox();
             this.btn_inscriptionModifier = new System.Windows.Forms.Button();
             this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
             this.txt_modifInscriptionMail = new System.Windows.Forms.TextBox();
@@ -81,7 +82,7 @@
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.txt_modifInscriptionNom = new System.Windows.Forms.TextBox();
+            this.lab_modificationInscriptionAtelier = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -379,6 +380,7 @@
             // 
             // GrB_modificationInscription
             // 
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionAtelier);
             this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionNom);
             this.GrB_modificationInscription.Controls.Add(this.btn_inscriptionModifier);
             this.GrB_modificationInscription.Controls.Add(this.CLB_inscriptionModificationAtelier);
@@ -402,6 +404,13 @@
             this.GrB_modificationInscription.TabStop = false;
             this.GrB_modificationInscription.Text = "Formulaire d\'Inscription ou Modification";
             // 
+            // txt_modifInscriptionNom
+            // 
+            this.txt_modifInscriptionNom.Location = new System.Drawing.Point(131, 53);
+            this.txt_modifInscriptionNom.Name = "txt_modifInscriptionNom";
+            this.txt_modifInscriptionNom.Size = new System.Drawing.Size(202, 29);
+            this.txt_modifInscriptionNom.TabIndex = 14;
+            // 
             // btn_inscriptionModifier
             // 
             this.btn_inscriptionModifier.Location = new System.Drawing.Point(374, 335);
@@ -417,8 +426,9 @@
             this.CLB_inscriptionModificationAtelier.FormattingEnabled = true;
             this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(374, 102);
             this.CLB_inscriptionModificationAtelier.Name = "CLB_inscriptionModificationAtelier";
-            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(277, 196);
+            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(436, 196);
             this.CLB_inscriptionModificationAtelier.TabIndex = 12;
+            this.CLB_inscriptionModificationAtelier.Tag = "";
             // 
             // txt_modifInscriptionMail
             // 
@@ -603,12 +613,15 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // txt_modifInscriptionNom
+            // lab_modificationInscriptionAtelier
             // 
-            this.txt_modifInscriptionNom.Location = new System.Drawing.Point(131, 53);
-            this.txt_modifInscriptionNom.Name = "txt_modifInscriptionNom";
-            this.txt_modifInscriptionNom.Size = new System.Drawing.Size(202, 29);
-            this.txt_modifInscriptionNom.TabIndex = 14;
+            this.lab_modificationInscriptionAtelier.AutoSize = true;
+            this.lab_modificationInscriptionAtelier.Location = new System.Drawing.Point(370, 75);
+            this.lab_modificationInscriptionAtelier.Name = "lab_modificationInscriptionAtelier";
+            this.lab_modificationInscriptionAtelier.Size = new System.Drawing.Size(210, 24);
+            this.lab_modificationInscriptionAtelier.TabIndex = 15;
+            this.lab_modificationInscriptionAtelier.Text = "Participation au Atelier : ";
+            this.lab_modificationInscriptionAtelier.Click += new System.EventHandler(this.label7_Click);
             // 
             // Maison_des_ligues
             // 
@@ -694,6 +707,7 @@
         private System.Windows.Forms.Label lab_nomStand;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_modifInscriptionNom;
+        private System.Windows.Forms.Label lab_modificationInscriptionAtelier;
     }
 }
 

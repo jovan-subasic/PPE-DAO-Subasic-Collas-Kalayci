@@ -41,6 +41,9 @@ namespace PPE_DAO_S_C_K
             // ajoute la possibilite de cree un participants 
            cbx_inscriptionModif_Id.Items.Add("New inscription");
 
+            // par default on selectionne le fait de realiser une nouvelle inscription 
+           cbx_inscriptionModif_Id.SelectedIndex = 0;
+
             // boucle pour afficher la liste de tous les participants 
             String leNom;
             Participant unP;
@@ -53,12 +56,14 @@ namespace PPE_DAO_S_C_K
                 i++;
             }
 
+            i = 0; // on remet la variable iterateur a 0 
             Atelier unA;
             while (i < lesAteliers.Count())
             {
                 unA = lesAteliers.ElementAt(i);
                 leNom = unA.Nom;
                 CLB_inscriptionModificationAtelier.Items.Add(leNom);
+                i++;
             }
 
 
@@ -178,7 +183,8 @@ namespace PPE_DAO_S_C_K
                  )
             {
 
-
+                /****************** on realise toute les verification neccessaire pour valider les champs de formulaire ********************/
+                #region verification 
                 // verifie la validiter du Prenom et du Nom
                 // /[a-zA-Z]+/g
                 Regex myString = new Regex(@"(/[a-zA-Z]+/g)", RegexOptions.IgnoreCase);
@@ -192,69 +198,148 @@ namespace PPE_DAO_S_C_K
                     
                 if (txt_modifInscriptionNom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
                 { // si le nom n'est pas bon 
-                    erreur += " erreur : Nom invalide ! "; 
+                    erreur += Environment.NewLine + " erreur : Nom invalide ! "; 
 
                 } if (txt_modifInscriptionPrenom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
                 { // si le prenom n'est pas bon 
-                    erreur += " erreur : Prenom invalide ! "; 
+                    erreur += Environment.NewLine + " erreur : Prenom invalide ! "; 
 
                 }if (txt_modifInscriptionAdresse.Text.Length >= 50)
                 {// si l'adresse n'est pas bon 
-                    erreur += " erreur : Adresse invalide ! ";
+                    erreur += Environment.NewLine + " erreur : Adresse invalide ! ";
                     
                 }if (txt_modifInscriptionNumTel.Text.Length >= 50 || myTel.IsMatch(txt_modifInscriptionPrenom.Text))
                 {// si le numero de telephone n'est pas bon 
-                    erreur += " erreur : numero de telephone invalide ! "; 
+                    erreur += Environment.NewLine + " erreur : numero de telephone invalide ! "; 
 
-                }if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
+                }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
-                    erreur += " erreur : mail invalide ! ";
+                    erreur += Environment.NewLine + " erreur : mail invalide ! ";
                     
                 }
-                /**/
-                // de l'attribue id de la liste lesParticipants. 
-                if (cbx_modifInscreptionType.SelectedIndex.Equals("Benevole")) // construit un objet Benevole et Participant
+                #endregion
+                /******************************************* fin des verification ! *************************************************/
+
+
+                // s'il n'y a pas d'erreur alors le message d'erreur a une longeur inferieur a 1 
+                if (erreur.Length < 1)
                 {
-                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex);
-                    Benevoles bs = (Benevoles)unP;
-                    bs.Prenom = txt_modifInscriptionPrenom.Text;
-                    bs.Adresse = txt_modifInscriptionAdresse.Text;
-                    bs.Portable = txt_modifInscriptionNumTel.Text;
-                    bs.Type = cbx_modifInscreptionType.Text;
-                    bs.Email = txt_modifInscriptionMail.Text;
-                    bs.modifParticipant();
-
-                    unP.LesAtelier.Clear();
-                    int i = 0;
-                    while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
+                    #region nouvelle Inscript 
+                    // si l'index selectionner est 0, alors il s'agit d'une nouvelle inscription ! 
+                    if (cbx_inscriptionModif_Id.SelectedIndex.Equals(0))
                     {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
-                        bs.ajouterAtelier(unA);
-                        i++;
-                    }
-                    bs.dbParticipe();
+                        int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
+                                                        // de l'attribue id de la liste lesParticipants. 
 
+                        if (cbx_modifInscreptionType.Items.Equals("Benevole")) // verif s'il s'agit d'un Benevole
+                        {
+                            // construit un objet Benevole et Participant
+                            Benevoles bs = new Benevoles(
+                                           id,
+                                           txt_modifInscriptionNom.Text,
+                                           txt_modifInscriptionPrenom.Text,
+                                           txt_modifInscriptionAdresse.Text,
+                                           txt_modifInscriptionNumTel.Text,
+                                           cbx_modifInscreptionType.Text,
+                                           txt_modifInscriptionMail.Text
+                                            );
+                            bs.ajoutdbParticipant(); // ajout le benevole en bdd
+                            lesParticipants.Add(bs); // ajout le benevole a la liste d'inscript 
+                            CLB_inscriptionModificationAtelier.SelectedIndex.ToString();
+
+                            //bs.LesAtelier.Clear();
+                            txt_modifInscriptionMail.Text = "";
+                            int i = 0;
+                            while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
+                            {
+                                Atelier unA;
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
+                                bs.ajouterAtelier(unA);
+                                i++;
+                            }
+
+                        }
+                        else // construit un objet Participant uniquement.
+                        {
+
+                            Participant pt = new Participant(
+                                            id,
+                                            txt_modifInscriptionNom.Text,
+                                            txt_modifInscriptionPrenom.Text,
+                                            txt_modifInscriptionAdresse.Text,
+                                            txt_modifInscriptionNumTel.Text,
+                                            cbx_modifInscreptionType.Text
+                                            );
+                            pt.ajoutdbParticipant(); // ajout le Participant en bdd
+                            lesParticipants.Add(pt); // ajout le Participant a la liste d'inscript 
+
+                            // pt.LesAtelier.Clear();
+                            int i = 0;
+                            while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
+                            {
+                                Atelier unA;
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
+                                pt.ajouterAtelier(unA);
+                                i++;
+                            }
+                        }
+                    }
+                    #endregion
+                    #region modifier un Inscript  
+                    else // l'index selectionner n'est pas 0, on modifie donc un inscript ! 
+                    { 
+                        // verifie si la valeurs de l'objet selectionne est Benevole
+                        if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole")) // construit un objet Benevole et Participant
+                        {
+                            Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex - 1);// la collection est decaler de 1 
+                            Benevoles bs = (Benevoles)unP;
+                            bs.Prenom = txt_modifInscriptionPrenom.Text;
+                            bs.Adresse = txt_modifInscriptionAdresse.Text;
+                            bs.Portable = txt_modifInscriptionNumTel.Text;
+                            bs.Type = cbx_modifInscreptionType.Text;
+                            bs.Email = txt_modifInscriptionMail.Text;
+                            bs.modifParticipant();
+
+                            //unP.LesAtelier.Clear();
+                            int i = 0;
+                            while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
+                            {
+                                Atelier unA;
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
+                                bs.ajouterAtelier(unA);
+                                i++;
+                            }
+                            bs.dbParticipe();
+
+                        }
+                        else // construit un objet Participant uniquement.
+                        {
+                            Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex - 1);// la collection est decaler de 1 
+                            unP.Prenom = txt_modifInscriptionPrenom.Text;
+                            unP.Adresse = txt_modifInscriptionAdresse.Text;
+                            unP.Portable = txt_modifInscriptionNumTel.Text;
+                            unP.Type = cbx_modifInscreptionType.Text;
+
+                            // modifier le participant 
+                            unP.modifParticipant();
+
+                            //unP.LesAtelier.Clear();
+                            int i = 0;
+                            while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
+                            {
+                                Atelier unA;
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
+                                unP.ajouterAtelier(unA);
+                                i++;
+                            }
+                            unP.dbParticipe();
+                        }
+                    }
+                    #endregion
                 }
-                else // construit un objet Participant uniquement.
+                else // il y a un ou plusieurs messages d'erreur a retourner ! 
                 {
-                    Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex);
-                    unP.Prenom = txt_modifInscriptionPrenom.Text;
-                    unP.Adresse = txt_modifInscriptionAdresse.Text;
-                    unP.Portable = txt_modifInscriptionNumTel.Text;
-                    unP.Type = cbx_modifInscreptionType.Text;
-                    unP.modifParticipant();
-
-                    unP.LesAtelier.Clear();
-                    int i = 0;
-                    while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
-                    {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
-                        unP.ajouterAtelier(unA);
-                        i++;
-                    }
-                    unP.dbParticipe();
+                    MessageBox.Show("Liste des erreurs rencontrer : " + Environment.NewLine + erreur);
                 }
             }
             else
@@ -269,6 +354,7 @@ namespace PPE_DAO_S_C_K
 
             // on clear le reste 
             txt_modifInscriptionAdresse.Text = "";
+            txt_modifInscriptionNom.Text = "";
             txt_modifInscriptionPrenom.Text = "";
             txt_modifInscriptionNumTel.Text = "";
             txt_modifInscriptionMail.Text = "";
@@ -280,6 +366,7 @@ namespace PPE_DAO_S_C_K
                 Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex-1);
 
                 txt_modifInscriptionAdresse.Text = unP.Adresse;
+                txt_modifInscriptionNom.Text = unP.Nom;
                 txt_modifInscriptionPrenom.Text = unP.Prenom;
                 txt_modifInscriptionNumTel.Text = unP.Portable;
 
@@ -481,6 +568,11 @@ namespace PPE_DAO_S_C_K
         private void tabPageAteliers_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            // non neccessaire 
         }
     }
 }

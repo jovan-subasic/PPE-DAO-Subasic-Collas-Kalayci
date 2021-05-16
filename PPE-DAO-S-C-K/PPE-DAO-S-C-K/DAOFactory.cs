@@ -49,7 +49,7 @@ namespace PPE_DAO_S_C_K
             return monDR;
         }
 
-        // Exécution d'une requete d'écriture (Insert ou Update) ; ne retourne rien
+        // Exécution d'une requete d'ecriture (Insert ou Update) ; ne retourne rien
         public void execSQLWrite(string requete)
         {
 
