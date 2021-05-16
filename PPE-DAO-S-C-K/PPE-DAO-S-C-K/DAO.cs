@@ -175,32 +175,39 @@ namespace PPE_DAO_S_C_K
         private void btn_inscriptionModifier_Click(object sender, EventArgs e)
         {
 
-            String erreur = ""; 
-            if (!cbx_inscriptionModif_Id.SelectedIndex.Equals(null) &&
-                 null != txt_modifInscriptionPrenom.Text &&
-                 null != txt_modifInscriptionAdresse.Text &&
-                 null != txt_modifInscriptionNumTel.Text
+            String erreur = "";
+            if (
+                 "" != txt_modifInscriptionNom.Text &&
+                 "" != txt_modifInscriptionPrenom.Text &&
+                 "" != txt_modifInscriptionAdresse.Text &&
+                 "" != txt_modifInscriptionNumTel.Text
                  )
             {
+
 
                 /****************** on realise toute les verification neccessaire pour valider les champs de formulaire ********************/
                 #region verification 
                 // verifie la validiter du Prenom et du Nom
                 // /[a-zA-Z]+/g
-                Regex myString = new Regex(@"(/[a-zA-Z]+/g)", RegexOptions.IgnoreCase);
+                Regex myString = new Regex(@"^[a-zA-Z]+$", RegexOptions.IgnoreCase);
 
                 // verifie la validiter du num de telephone 
                 // (0|\+33)[1-9]( *[0-9]{2}){4}
                 Regex myTel = new Regex(@"(0|\+33)[1-9]( *[0-9]{2}){4}", RegexOptions.IgnoreCase);
 
                 // expression qui verifie la validiter d'un mail
-                Regex myMail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);                
-                    
-                if (txt_modifInscriptionNom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
+                Regex myMail = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.IgnoreCase);
+
+
+                if (cbx_inscriptionModif_Id.SelectedItem == null || cbx_inscriptionModif_Id.Items.Contains(cbx_inscriptionModif_Id.SelectedItem.ToString()) == false )
+                { // si l'id selectionner n'existe pas 
+                    erreur += Environment.NewLine + " erreur : id selectionner invalide ! "; 
+
+                } if (txt_modifInscriptionNom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text) == false )
                 { // si le nom n'est pas bon 
                     erreur += Environment.NewLine + " erreur : Nom invalide ! "; 
 
-                } if (txt_modifInscriptionPrenom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text))
+                } if (txt_modifInscriptionPrenom.Text.Length >= 50 || myString.IsMatch(txt_modifInscriptionPrenom.Text) == false)
                 { // si le prenom n'est pas bon 
                     erreur += Environment.NewLine + " erreur : Prenom invalide ! "; 
 
@@ -208,9 +215,13 @@ namespace PPE_DAO_S_C_K
                 {// si l'adresse n'est pas bon 
                     erreur += Environment.NewLine + " erreur : Adresse invalide ! ";
                     
-                }if (txt_modifInscriptionNumTel.Text.Length >= 50 || myTel.IsMatch(txt_modifInscriptionPrenom.Text))
+                }if (txt_modifInscriptionNumTel.Text.Length >= 50 || myTel.IsMatch(txt_modifInscriptionPrenom.Text) == false)
                 {// si le numero de telephone n'est pas bon 
                     erreur += Environment.NewLine + " erreur : numero de telephone invalide ! "; 
+
+                }if (cbx_modifInscreptionType.SelectedItem == null || cbx_modifInscreptionType.Items.Contains(cbx_modifInscreptionType.SelectedItem) == false)
+                {// si le type selectionner n'existe pas 
+                    erreur += Environment.NewLine + " erreur : type selectionner invalide ! "; 
 
                 }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
