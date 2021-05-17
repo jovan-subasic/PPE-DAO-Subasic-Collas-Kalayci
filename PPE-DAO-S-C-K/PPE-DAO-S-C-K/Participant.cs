@@ -34,7 +34,7 @@ namespace PPE_DAO_S_C_K
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
             this.nbParticipant = 0; 
-            this.lesAtelier = null;
+            this.lesAtelier = new List<Atelier>();
             //this.participantAtelier();
         }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
@@ -47,7 +47,7 @@ namespace PPE_DAO_S_C_K
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
             this.nbParticipant = lesAtelier.Count ; 
-            this.lesAtelier = lesAtelier;
+            this.lesAtelier = new List<Atelier>(lesAtelier);
             
             //this.participantAtelier();
         }

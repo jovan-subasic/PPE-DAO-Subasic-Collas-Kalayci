@@ -27,6 +27,8 @@ namespace PPE_DAO_S_C_K
             this.nom = nom;
             this.capacite = capacite;
             this.intervenant = intervenant;
+
+            this.participants = new List<Participant>(); 
         }
         #endregion
 

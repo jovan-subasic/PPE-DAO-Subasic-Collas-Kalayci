@@ -286,7 +286,7 @@ namespace PPE_DAO_S_C_K
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
                                 Atelier unA; lesAteliers.ElementAt(1); 
-                             unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices.IndexOf(i));
+                             unA = lesAteliers.ElementAt(1);  // lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices.IndexOf(i));
                                 pt.ajouterAtelier(unA);
                                 i++;
                             }
