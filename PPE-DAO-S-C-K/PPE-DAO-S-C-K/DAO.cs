@@ -239,7 +239,7 @@ namespace PPE_DAO_S_C_K
                     // si l'index selectionner est 0, alors il s'agit d'une nouvelle inscription ! 
                     if (cbx_inscriptionModif_Id.SelectedIndex.Equals(0))
                     {
-                        int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
+                        int id = lesParticipants.Count; // pour que l'id soit la nouvelle derniere valeur
                                                         // de l'attribue id de la liste lesParticipants. 
 
                         if (cbx_modifInscreptionType.Items.Equals("Benevole")) // verif s'il s'agit d'un Benevole
@@ -266,7 +266,7 @@ namespace PPE_DAO_S_C_K
                                 bs.ajouterAtelier(unA);
                                 i++;
                             }
-
+                            bs.inscriptiondbParticipe();  // permets l'inscription en bdd table participer
                         }
                         else // construit un objet Participant uniquement.
                         {
@@ -285,11 +285,12 @@ namespace PPE_DAO_S_C_K
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
-                                   Atelier unA; 
+                                Atelier unA; 
                                 unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices[i]);
                                 pt.ajouterAtelier(unA);
                                 i++;
                             }
+                            pt.inscriptiondbParticipe(); // permets l'inscription en bdd table participer
                         }
                     }
                     #endregion

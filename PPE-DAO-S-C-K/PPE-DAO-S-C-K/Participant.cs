@@ -35,7 +35,7 @@ namespace PPE_DAO_S_C_K
 
             this.nbParticipant = 0; 
             this.lesAtelier = new List<Atelier>();
-            //this.participantAtelier();
+
         }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
         {
@@ -48,8 +48,7 @@ namespace PPE_DAO_S_C_K
 
             this.nbParticipant = lesAtelier.Count ; 
             this.lesAtelier = new List<Atelier>(lesAtelier);
-            
-            //this.participantAtelier();
+
         }
 
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, int nbParticipant, List<Atelier> lesAtelier)
@@ -63,8 +62,7 @@ namespace PPE_DAO_S_C_K
             this.nbParticipant = nbParticipant;
             
             this.lesAtelier = lesAtelier;
-            
-            //this.participantAtelier(); 
+
         }
         #endregion
 
@@ -122,15 +120,21 @@ namespace PPE_DAO_S_C_K
             db.executeSQLmodifInscription(this);
         }
 
-
-        public void inscriptiondbParticipe(List<Atelier> lesAteliers = null)
+        // update l'id pour qu'il soit raccord avec la bdd pour un nouveau participant
+        public void updateID()
         {
-            if(lesAtelier.Count() < 1)
+            DAOParticipant use = new DAOParticipant();
+            use.bddUpdateID(this); 
+        }
+
+        public void inscriptiondbParticipe(List<Atelier> mesAteliers = null)
+        {
+            if(mesAteliers is null)
             {
-                lesAtelier = this.LesAtelier; 
+                mesAteliers = this.LesAtelier; 
             }
             DAOParticipant db = new DAOParticipant();
-            db.dbAjoutAtelier(this, lesAteliers); 
+            db.dbAjoutAtelier(this, mesAteliers); 
           
         } 
         

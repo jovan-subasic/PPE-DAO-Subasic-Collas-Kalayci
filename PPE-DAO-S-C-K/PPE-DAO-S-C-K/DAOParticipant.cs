@@ -219,37 +219,68 @@ namespace PPE_DAO_S_C_K
 
         public void dbAjoutAtelier(Participant unParticipant, List<Atelier> lesAteliers)
         {
+            unParticipant.updateID();
             DAOFactory db = new DAOFactory();
             db.connecter();
 
-            while (lesAteliers.GetEnumerator().MoveNext())
+            int i = 0 ; 
+            while (lesAteliers.Count > i)
             {
-                Atelier unA = lesAteliers.GetEnumerator().Current;
+                Atelier unA = lesAteliers[i]; 
 
                 String req = "insert into participer values ( '"
                     + unParticipant.Id + "' , '"
-                    + unA.Id + "' , '";
+                    + unA.Id + "' ); ";
                
 
-                db.execSQLWrite(req); 
+                db.execSQLWrite(req);
+                i++; 
             }
-        } 
+        }  
+        // ne va servir que lors de la creation d'un nouveau benevoles dans la bdd
+        // va update l'id pour qu'il colle a celui en bdd puis va 
         public void dbAjoutAtelier(Benevoles unParticipant, List<Atelier> lesAteliers)
+        {
+            unParticipant.updateID();
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            int i = 0 ; 
+            while (lesAteliers.Count > i)
+            {
+                Atelier unA = lesAteliers[i];
+
+                String req = "insert into participer values ( '"
+                    + unParticipant.Id + "' , '"
+                    + unA.Id + "' ); ";
+
+
+                db.execSQLWrite(req);
+                i++;
+            }
+        }
+
+        public void bddUpdateID(Participant unParticipant)
         {
             DAOFactory db = new DAOFactory();
             db.connecter();
 
-            while (lesAteliers.GetEnumerator().MoveNext())
-            {
-                Atelier unA = lesAteliers.GetEnumerator().Current;
+            String req = "select max(id) from participants;";
+            SqlDataReader reader = db.excecSQLRead(req);
 
-                String req = "insert into participer values ( '"
-                    + unParticipant.Id + "' , '"
-                    + unA.Id + "' , '";
-               
+            reader.Read(); 
+            unParticipant.Id = int.Parse(reader[0].ToString()); 
+        }
+        public void bddUpdateID(Benevoles unParticipant)
+        {
+            DAOFactory db = new DAOFactory();
+            db.connecter();
 
-                db.execSQLWrite(req); 
-            }
+            String req = "select max(id) from participants;";
+            SqlDataReader reader = db.excecSQLRead(req);
+
+            reader.Read();
+            unParticipant.Id = int.Parse(reader[0].ToString());
         }
         #endregion
 
