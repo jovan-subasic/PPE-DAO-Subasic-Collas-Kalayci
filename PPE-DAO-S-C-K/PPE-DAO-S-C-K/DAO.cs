@@ -262,7 +262,7 @@ namespace PPE_DAO_S_C_K
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
                                 Atelier unA;
-                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices.IndexOf(i));
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices[i]);
                                 bs.ajouterAtelier(unA);
                                 i++;
                             }
@@ -285,8 +285,8 @@ namespace PPE_DAO_S_C_K
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
-                                Atelier unA; lesAteliers.ElementAt(1); 
-                             unA = lesAteliers.ElementAt(1);  // lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices.IndexOf(i));
+                                   Atelier unA; 
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices[i]);
                                 pt.ajouterAtelier(unA);
                                 i++;
                             }
@@ -313,7 +313,7 @@ namespace PPE_DAO_S_C_K
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
                                 Atelier unA;
-                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i+1));
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices[i]);
                                 bs.ajouterAtelier(unA);
                                 i++;
                             }
@@ -336,7 +336,7 @@ namespace PPE_DAO_S_C_K
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
                                 Atelier unA;
-                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedItems.IndexOf(i));
+                                unA = lesAteliers.ElementAt(CLB_inscriptionModificationAtelier.CheckedIndices[i]);
                                 unP.ajouterAtelier(unA);
                                 i++;
                             }
