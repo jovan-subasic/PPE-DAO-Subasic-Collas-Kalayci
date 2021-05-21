@@ -13,6 +13,11 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Constructeur 
+        public Benevoles()
+        {
+
+        }
+
         public Benevoles(int id,
                          string nom,
                          string prenom,

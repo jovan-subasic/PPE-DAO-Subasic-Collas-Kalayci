@@ -30,16 +30,22 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAteliers = new System.Windows.Forms.TabPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
+            this.Btn_creationStand = new System.Windows.Forms.Button();
+            this.txt_equipement = new System.Windows.Forms.TextBox();
+            this.lab_equipement = new System.Windows.Forms.Label();
+            this.txt_nomStand = new System.Windows.Forms.TextBox();
+            this.lab_nomStand = new System.Windows.Forms.Label();
             this.lab_montantFacture = new System.Windows.Forms.Label();
             this.lab_surface = new System.Windows.Forms.Label();
             this.txt_montantFacture = new System.Windows.Forms.TextBox();
@@ -51,6 +57,7 @@
             this.txt_Nalle = new System.Windows.Forms.TextBox();
             this.tabPageInscription = new System.Windows.Forms.TabPage();
             this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
+            this.txt_modifInscriptionNom = new System.Windows.Forms.TextBox();
             this.btn_inscriptionModifier = new System.Windows.Forms.Button();
             this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
             this.txt_modifInscriptionMail = new System.Windows.Forms.TextBox();
@@ -58,28 +65,13 @@
             this.txt_modifInscriptionAdresse = new System.Windows.Forms.TextBox();
             this.txt_modifInscriptionPrenom = new System.Windows.Forms.TextBox();
             this.cbx_modifInscreptionType = new System.Windows.Forms.ComboBox();
-            this.cbx_inscriptionModifNom = new System.Windows.Forms.ComboBox();
+            this.cbx_inscriptionModif_Id = new System.Windows.Forms.ComboBox();
             this.lab_modificationInscriptionMail = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionType = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionNumTel = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionAdresse = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionPrenom = new System.Windows.Forms.Label();
             this.lab_modificationInscriptionNom = new System.Windows.Forms.Label();
-            this.GrB_inscriptionP = new System.Windows.Forms.GroupBox();
-            this.lab_inscriptionMailP = new System.Windows.Forms.Label();
-            this.txt_inscriptionMail = new System.Windows.Forms.TextBox();
-            this.Btn_valideInscription = new System.Windows.Forms.Button();
-            this.Cbx_inscriptionType = new System.Windows.Forms.ComboBox();
-            this.CLB_inscriptionAtelier = new System.Windows.Forms.CheckedListBox();
-            this.txt_inscriptionNom = new System.Windows.Forms.TextBox();
-            this.txt_inscriptionNumtel = new System.Windows.Forms.TextBox();
-            this.txt_inscriptionAdresse = new System.Windows.Forms.TextBox();
-            this.txt_inscriptionPrenom = new System.Windows.Forms.TextBox();
-            this.lab_inscriptionNomP = new System.Windows.Forms.Label();
-            this.lab_inscriptionTypeP = new System.Windows.Forms.Label();
-            this.lab_inscriptionPrenomP = new System.Windows.Forms.Label();
-            this.lab_inscriptionPortableP = new System.Windows.Forms.Label();
-            this.lab_inscriptionAdresseP = new System.Windows.Forms.Label();
             this.tabPageListeParticipant = new System.Windows.Forms.TabPage();
             this.lab_Choix_Liste = new System.Windows.Forms.Label();
             this.cbx_choix_liste_Participant = new System.Windows.Forms.ComboBox();
@@ -90,19 +82,15 @@
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lab_nomStand = new System.Windows.Forms.Label();
-            this.txt_nomStand = new System.Windows.Forms.TextBox();
-            this.lab_equipement = new System.Windows.Forms.Label();
-            this.txt_equipement = new System.Windows.Forms.TextBox();
-            this.Btn_creationStand = new System.Windows.Forms.Button();
+            this.lab_modificationInscriptionAtelier = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPageStand.SuspendLayout();
             this.GrB_creationStand.SuspendLayout();
             this.GrB_situation.SuspendLayout();
             this.tabPageInscription.SuspendLayout();
             this.GrB_modificationInscription.SuspendLayout();
-            this.GrB_inscriptionP.SuspendLayout();
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
             this.SuspendLayout();
@@ -121,14 +109,7 @@
             // 
             // tabPageAteliers
             // 
-            this.tabPageAteliers.Controls.Add(this.textBox3);
-            this.tabPageAteliers.Controls.Add(this.label4);
-            this.tabPageAteliers.Controls.Add(this.textBox2);
-            this.tabPageAteliers.Controls.Add(this.label3);
-            this.tabPageAteliers.Controls.Add(this.label2);
-            this.tabPageAteliers.Controls.Add(this.textBox1);
-            this.tabPageAteliers.Controls.Add(this.cbx_ChoixAteliers);
-            this.tabPageAteliers.Controls.Add(this.label1);
+            this.tabPageAteliers.Controls.Add(this.groupBox1);
             this.tabPageAteliers.Location = new System.Drawing.Point(4, 22);
             this.tabPageAteliers.Name = "tabPageAteliers";
             this.tabPageAteliers.Padding = new System.Windows.Forms.Padding(3);
@@ -136,34 +117,83 @@
             this.tabPageAteliers.TabIndex = 0;
             this.tabPageAteliers.Text = "Ateliers";
             this.tabPageAteliers.UseVisualStyleBackColor = true;
+            this.tabPageAteliers.Click += new System.EventHandler(this.tabPageAteliers_Click);
             // 
-            // textBox3
+            // groupBox1
             // 
-            this.textBox3.Location = new System.Drawing.Point(135, 195);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbx_ChoixAteliers);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(17, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(492, 402);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 198);
+            this.label4.Location = new System.Drawing.Point(38, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Nombre de Places";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(169, 210);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Choix Des Ateliers";
+            // 
+            // cbx_ChoixAteliers
+            // 
+            this.cbx_ChoixAteliers.FormattingEnabled = true;
+            this.cbx_ChoixAteliers.Items.AddRange(new object[] {
+            "La Maison des Ligues de Lorraine et son projet",
+            "Le fonctionnement de la Maison des Ligues",
+            "Les outils à disposition et remis aux clubs",
+            "Le sport lorrain et les collectivités",
+            "Le Ministère des Sports",
+            "Développement durable"});
+            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(169, 38);
+            this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
+            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(121, 21);
+            this.cbx_ChoixAteliers.TabIndex = 1;
+            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(135, 159);
+            this.textBox2.Location = new System.Drawing.Point(169, 174);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(169, 108);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 96);
+            this.label3.Location = new System.Drawing.Point(103, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 4;
@@ -172,35 +202,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 162);
+            this.label2.Location = new System.Drawing.Point(92, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Thème";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(135, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // cbx_ChoixAteliers
-            // 
-            this.cbx_ChoixAteliers.FormattingEnabled = true;
-            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(135, 23);
-            this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
-            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(121, 21);
-            this.cbx_ChoixAteliers.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Choix Des Ateliers";
             // 
             // tabPageStand
             // 
@@ -233,6 +239,50 @@
             this.GrB_creationStand.TabIndex = 0;
             this.GrB_creationStand.TabStop = false;
             this.GrB_creationStand.Text = "Création Stand";
+            // 
+            // Btn_creationStand
+            // 
+            this.Btn_creationStand.Location = new System.Drawing.Point(495, 233);
+            this.Btn_creationStand.Name = "Btn_creationStand";
+            this.Btn_creationStand.Size = new System.Drawing.Size(186, 71);
+            this.Btn_creationStand.TabIndex = 10;
+            this.Btn_creationStand.Text = "Créer";
+            this.Btn_creationStand.UseVisualStyleBackColor = true;
+            this.Btn_creationStand.Click += new System.EventHandler(this.Btn_creationStand_Click);
+            // 
+            // txt_equipement
+            // 
+            this.txt_equipement.Location = new System.Drawing.Point(146, 132);
+            this.txt_equipement.Name = "txt_equipement";
+            this.txt_equipement.Size = new System.Drawing.Size(108, 29);
+            this.txt_equipement.TabIndex = 9;
+            // 
+            // lab_equipement
+            // 
+            this.lab_equipement.AutoSize = true;
+            this.lab_equipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_equipement.Location = new System.Drawing.Point(46, 139);
+            this.lab_equipement.Name = "lab_equipement";
+            this.lab_equipement.Size = new System.Drawing.Size(94, 18);
+            this.lab_equipement.TabIndex = 8;
+            this.lab_equipement.Text = "Equipement :";
+            // 
+            // txt_nomStand
+            // 
+            this.txt_nomStand.Location = new System.Drawing.Point(146, 70);
+            this.txt_nomStand.Name = "txt_nomStand";
+            this.txt_nomStand.Size = new System.Drawing.Size(108, 29);
+            this.txt_nomStand.TabIndex = 7;
+            // 
+            // lab_nomStand
+            // 
+            this.lab_nomStand.AutoSize = true;
+            this.lab_nomStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_nomStand.Location = new System.Drawing.Point(91, 77);
+            this.lab_nomStand.Name = "lab_nomStand";
+            this.lab_nomStand.Size = new System.Drawing.Size(49, 18);
+            this.lab_nomStand.TabIndex = 6;
+            this.lab_nomStand.Text = "Nom :";
             // 
             // lab_montantFacture
             // 
@@ -318,7 +368,6 @@
             // tabPageInscription
             // 
             this.tabPageInscription.Controls.Add(this.GrB_modificationInscription);
-            this.tabPageInscription.Controls.Add(this.GrB_inscriptionP);
             this.tabPageInscription.Location = new System.Drawing.Point(4, 22);
             this.tabPageInscription.Name = "tabPageInscription";
             this.tabPageInscription.Padding = new System.Windows.Forms.Padding(3);
@@ -327,9 +376,12 @@
             this.tabPageInscription.Text = "Inscription";
             this.tabPageInscription.UseVisualStyleBackColor = true;
             this.tabPageInscription.Click += new System.EventHandler(this.tabPageInscription_Click);
+            this.tabPageInscription.Enter += new System.EventHandler(this.tabPageInscription_Enter);
             // 
             // GrB_modificationInscription
             // 
+            this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionAtelier);
+            this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionNom);
             this.GrB_modificationInscription.Controls.Add(this.btn_inscriptionModifier);
             this.GrB_modificationInscription.Controls.Add(this.CLB_inscriptionModificationAtelier);
             this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionMail);
@@ -337,7 +389,7 @@
             this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionAdresse);
             this.GrB_modificationInscription.Controls.Add(this.txt_modifInscriptionPrenom);
             this.GrB_modificationInscription.Controls.Add(this.cbx_modifInscreptionType);
-            this.GrB_modificationInscription.Controls.Add(this.cbx_inscriptionModifNom);
+            this.GrB_modificationInscription.Controls.Add(this.cbx_inscriptionModif_Id);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionMail);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionType);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNumTel);
@@ -345,18 +397,25 @@
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionPrenom);
             this.GrB_modificationInscription.Controls.Add(this.lab_modificationInscriptionNom);
             this.GrB_modificationInscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.GrB_modificationInscription.Location = new System.Drawing.Point(553, 20);
+            this.GrB_modificationInscription.Location = new System.Drawing.Point(24, 18);
             this.GrB_modificationInscription.Name = "GrB_modificationInscription";
-            this.GrB_modificationInscription.Size = new System.Drawing.Size(346, 446);
+            this.GrB_modificationInscription.Size = new System.Drawing.Size(845, 443);
             this.GrB_modificationInscription.TabIndex = 6;
             this.GrB_modificationInscription.TabStop = false;
-            this.GrB_modificationInscription.Text = "Formulaire de Modification";
+            this.GrB_modificationInscription.Text = "Formulaire d\'Inscription ou Modification";
+            // 
+            // txt_modifInscriptionNom
+            // 
+            this.txt_modifInscriptionNom.Location = new System.Drawing.Point(131, 53);
+            this.txt_modifInscriptionNom.Name = "txt_modifInscriptionNom";
+            this.txt_modifInscriptionNom.Size = new System.Drawing.Size(202, 29);
+            this.txt_modifInscriptionNom.TabIndex = 14;
             // 
             // btn_inscriptionModifier
             // 
-            this.btn_inscriptionModifier.Location = new System.Drawing.Point(131, 375);
+            this.btn_inscriptionModifier.Location = new System.Drawing.Point(374, 335);
             this.btn_inscriptionModifier.Name = "btn_inscriptionModifier";
-            this.btn_inscriptionModifier.Size = new System.Drawing.Size(198, 66);
+            this.btn_inscriptionModifier.Size = new System.Drawing.Size(202, 66);
             this.btn_inscriptionModifier.TabIndex = 13;
             this.btn_inscriptionModifier.Text = "Modifier information";
             this.btn_inscriptionModifier.UseVisualStyleBackColor = true;
@@ -365,16 +424,17 @@
             // CLB_inscriptionModificationAtelier
             // 
             this.CLB_inscriptionModificationAtelier.FormattingEnabled = true;
-            this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(266, 80);
+            this.CLB_inscriptionModificationAtelier.Location = new System.Drawing.Point(374, 102);
             this.CLB_inscriptionModificationAtelier.Name = "CLB_inscriptionModificationAtelier";
-            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(74, 268);
+            this.CLB_inscriptionModificationAtelier.Size = new System.Drawing.Size(436, 196);
             this.CLB_inscriptionModificationAtelier.TabIndex = 12;
+            this.CLB_inscriptionModificationAtelier.Tag = "";
             // 
             // txt_modifInscriptionMail
             // 
             this.txt_modifInscriptionMail.Location = new System.Drawing.Point(131, 330);
             this.txt_modifInscriptionMail.Name = "txt_modifInscriptionMail";
-            this.txt_modifInscriptionMail.Size = new System.Drawing.Size(117, 29);
+            this.txt_modifInscriptionMail.Size = new System.Drawing.Size(198, 29);
             this.txt_modifInscriptionMail.TabIndex = 11;
             this.txt_modifInscriptionMail.Visible = false;
             // 
@@ -382,21 +442,21 @@
             // 
             this.txt_modifInscriptionNumTel.Location = new System.Drawing.Point(127, 210);
             this.txt_modifInscriptionNumTel.Name = "txt_modifInscriptionNumTel";
-            this.txt_modifInscriptionNumTel.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionNumTel.Size = new System.Drawing.Size(202, 29);
             this.txt_modifInscriptionNumTel.TabIndex = 10;
             // 
             // txt_modifInscriptionAdresse
             // 
             this.txt_modifInscriptionAdresse.Location = new System.Drawing.Point(127, 156);
             this.txt_modifInscriptionAdresse.Name = "txt_modifInscriptionAdresse";
-            this.txt_modifInscriptionAdresse.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionAdresse.Size = new System.Drawing.Size(202, 29);
             this.txt_modifInscriptionAdresse.TabIndex = 9;
             // 
             // txt_modifInscriptionPrenom
             // 
             this.txt_modifInscriptionPrenom.Location = new System.Drawing.Point(127, 102);
             this.txt_modifInscriptionPrenom.Name = "txt_modifInscriptionPrenom";
-            this.txt_modifInscriptionPrenom.Size = new System.Drawing.Size(121, 29);
+            this.txt_modifInscriptionPrenom.Size = new System.Drawing.Size(202, 29);
             this.txt_modifInscriptionPrenom.TabIndex = 8;
             // 
             // cbx_modifInscreptionType
@@ -408,18 +468,18 @@
             "Intervenant"});
             this.cbx_modifInscreptionType.Location = new System.Drawing.Point(127, 273);
             this.cbx_modifInscreptionType.Name = "cbx_modifInscreptionType";
-            this.cbx_modifInscreptionType.Size = new System.Drawing.Size(121, 32);
+            this.cbx_modifInscreptionType.Size = new System.Drawing.Size(202, 32);
             this.cbx_modifInscreptionType.TabIndex = 7;
             this.cbx_modifInscreptionType.SelectedIndexChanged += new System.EventHandler(this.cbx_modifInscreptionType_SelectedIndexChanged);
             // 
-            // cbx_inscriptionModifNom
+            // cbx_inscriptionModif_Id
             // 
-            this.cbx_inscriptionModifNom.FormattingEnabled = true;
-            this.cbx_inscriptionModifNom.Location = new System.Drawing.Point(127, 45);
-            this.cbx_inscriptionModifNom.Name = "cbx_inscriptionModifNom";
-            this.cbx_inscriptionModifNom.Size = new System.Drawing.Size(121, 32);
-            this.cbx_inscriptionModifNom.TabIndex = 6;
-            this.cbx_inscriptionModifNom.SelectedIndexChanged += new System.EventHandler(this.cbx_inscriptionModifNom_SelectedIndexChanged);
+            this.cbx_inscriptionModif_Id.FormattingEnabled = true;
+            this.cbx_inscriptionModif_Id.Location = new System.Drawing.Point(374, 28);
+            this.cbx_inscriptionModif_Id.Name = "cbx_inscriptionModif_Id";
+            this.cbx_inscriptionModif_Id.Size = new System.Drawing.Size(202, 32);
+            this.cbx_inscriptionModif_Id.TabIndex = 6;
+            this.cbx_inscriptionModif_Id.SelectedIndexChanged += new System.EventHandler(this.cbx_inscriptionModifNom_SelectedIndexChanged);
             // 
             // lab_modificationInscriptionMail
             // 
@@ -476,159 +536,6 @@
             this.lab_modificationInscriptionNom.TabIndex = 0;
             this.lab_modificationInscriptionNom.Text = "Nom :";
             // 
-            // GrB_inscriptionP
-            // 
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionMailP);
-            this.GrB_inscriptionP.Controls.Add(this.txt_inscriptionMail);
-            this.GrB_inscriptionP.Controls.Add(this.Btn_valideInscription);
-            this.GrB_inscriptionP.Controls.Add(this.Cbx_inscriptionType);
-            this.GrB_inscriptionP.Controls.Add(this.CLB_inscriptionAtelier);
-            this.GrB_inscriptionP.Controls.Add(this.txt_inscriptionNom);
-            this.GrB_inscriptionP.Controls.Add(this.txt_inscriptionNumtel);
-            this.GrB_inscriptionP.Controls.Add(this.txt_inscriptionAdresse);
-            this.GrB_inscriptionP.Controls.Add(this.txt_inscriptionPrenom);
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionNomP);
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionTypeP);
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionPrenomP);
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionPortableP);
-            this.GrB_inscriptionP.Controls.Add(this.lab_inscriptionAdresseP);
-            this.GrB_inscriptionP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.GrB_inscriptionP.Location = new System.Drawing.Point(6, 20);
-            this.GrB_inscriptionP.Name = "GrB_inscriptionP";
-            this.GrB_inscriptionP.Size = new System.Drawing.Size(541, 333);
-            this.GrB_inscriptionP.TabIndex = 5;
-            this.GrB_inscriptionP.TabStop = false;
-            this.GrB_inscriptionP.Text = "Formulaire d\'Inscription";
-            // 
-            // lab_inscriptionMailP
-            // 
-            this.lab_inscriptionMailP.AutoSize = true;
-            this.lab_inscriptionMailP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionMailP.Location = new System.Drawing.Point(265, 168);
-            this.lab_inscriptionMailP.Name = "lab_inscriptionMailP";
-            this.lab_inscriptionMailP.Size = new System.Drawing.Size(100, 20);
-            this.lab_inscriptionMailP.TabIndex = 13;
-            this.lab_inscriptionMailP.Text = "Votre mail : ";
-            this.lab_inscriptionMailP.Visible = false;
-            // 
-            // txt_inscriptionMail
-            // 
-            this.txt_inscriptionMail.Location = new System.Drawing.Point(371, 162);
-            this.txt_inscriptionMail.Name = "txt_inscriptionMail";
-            this.txt_inscriptionMail.Size = new System.Drawing.Size(142, 29);
-            this.txt_inscriptionMail.TabIndex = 12;
-            this.txt_inscriptionMail.Visible = false;
-            // 
-            // Btn_valideInscription
-            // 
-            this.Btn_valideInscription.Location = new System.Drawing.Point(322, 238);
-            this.Btn_valideInscription.Name = "Btn_valideInscription";
-            this.Btn_valideInscription.Size = new System.Drawing.Size(191, 67);
-            this.Btn_valideInscription.TabIndex = 11;
-            this.Btn_valideInscription.Text = "Confirmer Inscription";
-            this.Btn_valideInscription.UseVisualStyleBackColor = true;
-            this.Btn_valideInscription.Click += new System.EventHandler(this.Btn_valideInscription_Click);
-            // 
-            // Cbx_inscriptionType
-            // 
-            this.Cbx_inscriptionType.FormattingEnabled = true;
-            this.Cbx_inscriptionType.Items.AddRange(new object[] {
-            "Participant",
-            "Benevole",
-            "Intervenant"});
-            this.Cbx_inscriptionType.Location = new System.Drawing.Point(108, 226);
-            this.Cbx_inscriptionType.Name = "Cbx_inscriptionType";
-            this.Cbx_inscriptionType.Size = new System.Drawing.Size(121, 32);
-            this.Cbx_inscriptionType.TabIndex = 10;
-            this.Cbx_inscriptionType.SelectedIndexChanged += new System.EventHandler(this.Cbx_inscriptionType_SelectedIndexChanged);
-            // 
-            // CLB_inscriptionAtelier
-            // 
-            this.CLB_inscriptionAtelier.FormattingEnabled = true;
-            this.CLB_inscriptionAtelier.Location = new System.Drawing.Point(322, 45);
-            this.CLB_inscriptionAtelier.Name = "CLB_inscriptionAtelier";
-            this.CLB_inscriptionAtelier.Size = new System.Drawing.Size(191, 76);
-            this.CLB_inscriptionAtelier.TabIndex = 9;
-            // 
-            // txt_inscriptionNom
-            // 
-            this.txt_inscriptionNom.Location = new System.Drawing.Point(108, 39);
-            this.txt_inscriptionNom.Name = "txt_inscriptionNom";
-            this.txt_inscriptionNom.Size = new System.Drawing.Size(100, 29);
-            this.txt_inscriptionNom.TabIndex = 6;
-            // 
-            // txt_inscriptionNumtel
-            // 
-            this.txt_inscriptionNumtel.Location = new System.Drawing.Point(108, 173);
-            this.txt_inscriptionNumtel.Name = "txt_inscriptionNumtel";
-            this.txt_inscriptionNumtel.Size = new System.Drawing.Size(100, 29);
-            this.txt_inscriptionNumtel.TabIndex = 8;
-            // 
-            // txt_inscriptionAdresse
-            // 
-            this.txt_inscriptionAdresse.Location = new System.Drawing.Point(108, 126);
-            this.txt_inscriptionAdresse.Name = "txt_inscriptionAdresse";
-            this.txt_inscriptionAdresse.Size = new System.Drawing.Size(100, 29);
-            this.txt_inscriptionAdresse.TabIndex = 7;
-            // 
-            // txt_inscriptionPrenom
-            // 
-            this.txt_inscriptionPrenom.Location = new System.Drawing.Point(108, 80);
-            this.txt_inscriptionPrenom.Name = "txt_inscriptionPrenom";
-            this.txt_inscriptionPrenom.Size = new System.Drawing.Size(100, 29);
-            this.txt_inscriptionPrenom.TabIndex = 5;
-            // 
-            // lab_inscriptionNomP
-            // 
-            this.lab_inscriptionNomP.AutoSize = true;
-            this.lab_inscriptionNomP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionNomP.Location = new System.Drawing.Point(45, 45);
-            this.lab_inscriptionNomP.Name = "lab_inscriptionNomP";
-            this.lab_inscriptionNomP.Size = new System.Drawing.Size(59, 20);
-            this.lab_inscriptionNomP.TabIndex = 0;
-            this.lab_inscriptionNomP.Text = "Nom : ";
-            this.lab_inscriptionNomP.Click += new System.EventHandler(this.lab_inscriptionNomP_Click);
-            // 
-            // lab_inscriptionTypeP
-            // 
-            this.lab_inscriptionTypeP.AutoSize = true;
-            this.lab_inscriptionTypeP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionTypeP.Location = new System.Drawing.Point(6, 238);
-            this.lab_inscriptionTypeP.Name = "lab_inscriptionTypeP";
-            this.lab_inscriptionTypeP.Size = new System.Drawing.Size(96, 20);
-            this.lab_inscriptionTypeP.TabIndex = 4;
-            this.lab_inscriptionTypeP.Text = "Categorie : ";
-            // 
-            // lab_inscriptionPrenomP
-            // 
-            this.lab_inscriptionPrenomP.AutoSize = true;
-            this.lab_inscriptionPrenomP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionPrenomP.Location = new System.Drawing.Point(22, 86);
-            this.lab_inscriptionPrenomP.Name = "lab_inscriptionPrenomP";
-            this.lab_inscriptionPrenomP.Size = new System.Drawing.Size(82, 20);
-            this.lab_inscriptionPrenomP.TabIndex = 1;
-            this.lab_inscriptionPrenomP.Text = "Prenom : ";
-            // 
-            // lab_inscriptionPortableP
-            // 
-            this.lab_inscriptionPortableP.AutoSize = true;
-            this.lab_inscriptionPortableP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionPortableP.Location = new System.Drawing.Point(8, 162);
-            this.lab_inscriptionPortableP.Name = "lab_inscriptionPortableP";
-            this.lab_inscriptionPortableP.Size = new System.Drawing.Size(96, 40);
-            this.lab_inscriptionPortableP.TabIndex = 3;
-            this.lab_inscriptionPortableP.Text = "Numero de \r\ntelephone : ";
-            // 
-            // lab_inscriptionAdresseP
-            // 
-            this.lab_inscriptionAdresseP.AutoSize = true;
-            this.lab_inscriptionAdresseP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_inscriptionAdresseP.Location = new System.Drawing.Point(18, 126);
-            this.lab_inscriptionAdresseP.Name = "lab_inscriptionAdresseP";
-            this.lab_inscriptionAdresseP.Size = new System.Drawing.Size(86, 20);
-            this.lab_inscriptionAdresseP.TabIndex = 2;
-            this.lab_inscriptionAdresseP.Text = "Adresse : ";
-            // 
             // tabPageListeParticipant
             // 
             this.tabPageListeParticipant.Controls.Add(this.lab_Choix_Liste);
@@ -642,6 +549,7 @@
             this.tabPageListeParticipant.Text = "Liste ";
             this.tabPageListeParticipant.UseVisualStyleBackColor = true;
             this.tabPageListeParticipant.Click += new System.EventHandler(this.tabPageListeParticipant_Click);
+            this.tabPageListeParticipant.Enter += new System.EventHandler(this.tabPageListeParticipant_Enter);
             // 
             // lab_Choix_Liste
             // 
@@ -705,49 +613,15 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // lab_nomStand
+            // lab_modificationInscriptionAtelier
             // 
-            this.lab_nomStand.AutoSize = true;
-            this.lab_nomStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_nomStand.Location = new System.Drawing.Point(91, 77);
-            this.lab_nomStand.Name = "lab_nomStand";
-            this.lab_nomStand.Size = new System.Drawing.Size(49, 18);
-            this.lab_nomStand.TabIndex = 6;
-            this.lab_nomStand.Text = "Nom :";
-            // 
-            // txt_nomStand
-            // 
-            this.txt_nomStand.Location = new System.Drawing.Point(146, 70);
-            this.txt_nomStand.Name = "txt_nomStand";
-            this.txt_nomStand.Size = new System.Drawing.Size(108, 29);
-            this.txt_nomStand.TabIndex = 7;
-            // 
-            // lab_equipement
-            // 
-            this.lab_equipement.AutoSize = true;
-            this.lab_equipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_equipement.Location = new System.Drawing.Point(46, 139);
-            this.lab_equipement.Name = "lab_equipement";
-            this.lab_equipement.Size = new System.Drawing.Size(94, 18);
-            this.lab_equipement.TabIndex = 8;
-            this.lab_equipement.Text = "Equipement :";
-            // 
-            // txt_equipement
-            // 
-            this.txt_equipement.Location = new System.Drawing.Point(146, 132);
-            this.txt_equipement.Name = "txt_equipement";
-            this.txt_equipement.Size = new System.Drawing.Size(108, 29);
-            this.txt_equipement.TabIndex = 9;
-            // 
-            // Btn_creationStand
-            // 
-            this.Btn_creationStand.Location = new System.Drawing.Point(495, 233);
-            this.Btn_creationStand.Name = "Btn_creationStand";
-            this.Btn_creationStand.Size = new System.Drawing.Size(186, 71);
-            this.Btn_creationStand.TabIndex = 10;
-            this.Btn_creationStand.Text = "Créer";
-            this.Btn_creationStand.UseVisualStyleBackColor = true;
-            this.Btn_creationStand.Click += new System.EventHandler(this.Btn_creationStand_Click);
+            this.lab_modificationInscriptionAtelier.AutoSize = true;
+            this.lab_modificationInscriptionAtelier.Location = new System.Drawing.Point(370, 75);
+            this.lab_modificationInscriptionAtelier.Name = "lab_modificationInscriptionAtelier";
+            this.lab_modificationInscriptionAtelier.Size = new System.Drawing.Size(210, 24);
+            this.lab_modificationInscriptionAtelier.TabIndex = 15;
+            this.lab_modificationInscriptionAtelier.Text = "Participation au Atelier : ";
+            this.lab_modificationInscriptionAtelier.Click += new System.EventHandler(this.label7_Click);
             // 
             // Maison_des_ligues
             // 
@@ -760,7 +634,8 @@
             this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
-            this.tabPageAteliers.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPageStand.ResumeLayout(false);
             this.GrB_creationStand.ResumeLayout(false);
             this.GrB_creationStand.PerformLayout();
@@ -769,8 +644,6 @@
             this.tabPageInscription.ResumeLayout(false);
             this.GrB_modificationInscription.ResumeLayout(false);
             this.GrB_modificationInscription.PerformLayout();
-            this.GrB_inscriptionP.ResumeLayout(false);
-            this.GrB_inscriptionP.PerformLayout();
             this.tabPageListeParticipant.ResumeLayout(false);
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
@@ -801,21 +674,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Nom_Participant;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Prenom_Participant;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Adresse_Participant;
-        private System.Windows.Forms.Label lab_inscriptionPrenomP;
-        private System.Windows.Forms.Label lab_inscriptionNomP;
-        private System.Windows.Forms.Label lab_inscriptionAdresseP;
-        private System.Windows.Forms.Label lab_inscriptionPortableP;
-        private System.Windows.Forms.Label lab_inscriptionTypeP;
-        private System.Windows.Forms.GroupBox GrB_inscriptionP;
-        private System.Windows.Forms.TextBox txt_inscriptionNom;
-        private System.Windows.Forms.TextBox txt_inscriptionNumtel;
-        private System.Windows.Forms.TextBox txt_inscriptionAdresse;
-        private System.Windows.Forms.TextBox txt_inscriptionPrenom;
-        private System.Windows.Forms.Button Btn_valideInscription;
-        private System.Windows.Forms.ComboBox Cbx_inscriptionType;
-        private System.Windows.Forms.CheckedListBox CLB_inscriptionAtelier;
-        private System.Windows.Forms.Label lab_inscriptionMailP;
-        private System.Windows.Forms.TextBox txt_inscriptionMail;
         private System.Windows.Forms.GroupBox GrB_modificationInscription;
         private System.Windows.Forms.CheckedListBox CLB_inscriptionModificationAtelier;
         private System.Windows.Forms.TextBox txt_modifInscriptionMail;
@@ -823,7 +681,7 @@
         private System.Windows.Forms.TextBox txt_modifInscriptionAdresse;
         private System.Windows.Forms.TextBox txt_modifInscriptionPrenom;
         private System.Windows.Forms.ComboBox cbx_modifInscreptionType;
-        private System.Windows.Forms.ComboBox cbx_inscriptionModifNom;
+        private System.Windows.Forms.ComboBox cbx_inscriptionModif_Id;
         private System.Windows.Forms.Label lab_modificationInscriptionMail;
         private System.Windows.Forms.Label lab_modificationInscriptionType;
         private System.Windows.Forms.Label lab_modificationInscriptionNumTel;
@@ -847,6 +705,9 @@
         private System.Windows.Forms.Label lab_equipement;
         private System.Windows.Forms.TextBox txt_nomStand;
         private System.Windows.Forms.Label lab_nomStand;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txt_modifInscriptionNom;
+        private System.Windows.Forms.Label lab_modificationInscriptionAtelier;
     }
 }
 

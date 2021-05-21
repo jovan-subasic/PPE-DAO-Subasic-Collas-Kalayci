@@ -33,7 +33,9 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
-            //this.participantAtelier();
+            this.nbParticipant = 0; 
+            this.lesAtelier = new List<Atelier>();
+
         }
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, List<Atelier> lesAtelier)
         {
@@ -44,9 +46,9 @@ namespace PPE_DAO_S_C_K
             this.portable = portable ?? throw new ArgumentNullException(nameof(portable));
             this.type = type ?? throw new ArgumentNullException(nameof(type));
 
-            this.lesAtelier = lesAtelier;
-            
-            //this.participantAtelier();
+            this.nbParticipant = lesAtelier.Count ; 
+            this.lesAtelier = new List<Atelier>(lesAtelier);
+
         }
 
         public Participant(int id, string nom, string prenom, string adresse, string portable, string type, int nbParticipant, List<Atelier> lesAtelier)
@@ -60,8 +62,7 @@ namespace PPE_DAO_S_C_K
             this.nbParticipant = nbParticipant;
             
             this.lesAtelier = lesAtelier;
-            
-            //this.participantAtelier(); 
+
         }
         #endregion
 
@@ -101,6 +102,7 @@ namespace PPE_DAO_S_C_K
         public List<Participant> allParticipant()
         {
             DAOParticipant dbP = new DAOParticipant();
+            //List<Participant> laList = dbP.getAllParticipant(); 
             List<Participant> laList = dbP.getAllParticipant(); 
            
             return laList; 
@@ -118,6 +120,24 @@ namespace PPE_DAO_S_C_K
             db.executeSQLmodifInscription(this);
         }
 
+        // update l'id pour qu'il soit raccord avec la bdd pour un nouveau participant
+        public void updateID()
+        {
+            DAOParticipant use = new DAOParticipant();
+            use.bddUpdateID(this); 
+        }
+
+        public void inscriptiondbParticipe(List<Atelier> mesAteliers = null)
+        {
+            if(mesAteliers is null)
+            {
+                mesAteliers = this.LesAtelier; 
+            }
+            DAOParticipant db = new DAOParticipant();
+            db.dbAjoutAtelier(this, mesAteliers); 
+          
+        } 
+        
         public void dbParticipe()
         {
             DAOParticipant db = new DAOParticipant();
