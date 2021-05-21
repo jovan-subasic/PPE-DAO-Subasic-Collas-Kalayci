@@ -7,34 +7,19 @@ namespace PPE_DAO_S_C_K
 {
     class DAOStand
     {
-        public List<Stand> tousLesStand()
+        public void AjouterStand(Stands unStand)
         {
-            List<Stand> laListe = new List<Stand>(); 
-            string req;
-            req = "Select * From stands order by id ;";
+            String req = "INSERT INTO stands values ( '"
+                         + unStand.Nom + "' , '"
+                         + unStand.Prenom + "' , '"
+                         + unStand.Adresse + "' , '"
+                         + unStand.Portable + "' , '"
+                         + unStand.Type + "' , '"
+                         + unStand.NbParticipant + "' );";
 
-            DAOFactory db = new DAOFactory();
-            db.connecter();
-            SqlDataReader reader = db.excecSQLRead(req);
-
-
-            while (reader.Read())
-            {
-                req = "Select * From equipements eq inner join stands st eq.id on st.id where st.id =" + int.Parse(reader[0].ToString()) + " order by st.id ;";
-                //db.connecter();
-                SqlDataReader readerAt = db.excecSQLRead(req);
-
-                Stand leStand = new Stand(
-                                                           int.Parse(reader[0].ToString()),
-                                                           reader[1].ToString(),
-                                                           reader[2].ToString(),
-                                                           reader[3].ToString(),
-                                                           reader[4].ToString(),
-                                                           reader[5].ToString(),
-                                                           reader[6].ToString(),
-                                                           reader[7].ToString()
-                                                           );
-            }
+            DAOFactory daoAddStand = new DAOFactory();
+            daoAddStand.connecter();
+            daoAddStand.excecSQLRead(req);
         }
     }
 }

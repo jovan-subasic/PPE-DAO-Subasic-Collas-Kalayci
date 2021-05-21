@@ -10,11 +10,10 @@ namespace PPE_DAO_S_C_K
     {
         #region attribue Privé 
 
-            private List<Stand> listAteliers = new List<Stand>();
             private int id;
             private int idAllee;
             private int idOrdre;
-            private String equipement;
+            private int id_equipement;
             private int montantFacture;
             private int prix;
             private String nom;
@@ -24,12 +23,12 @@ namespace PPE_DAO_S_C_K
 
         #region constructeur
 
-            public Stand(int id, int idAllee, int idOrdre, string equipement, int montantFacture, int prix, string nom, int id_partenaires)
+            public Stand(int id, int idAllee, int idOrdre, int id_equipement, int montantFacture, int prix, string nom, int id_partenaires)
             {
                 this.id = id;
                 this.idAllee = idAllee;
                 this.idOrdre = idOrdre;
-                this.equipement = equipement;
+                this.id_equipement = id_equipement;
                 this.montantFacture = montantFacture;
                 this.prix = prix;
                 this.nom = nom;
@@ -56,9 +55,9 @@ namespace PPE_DAO_S_C_K
                 get => idOrdre; set => idOrdre = value;
             }
 
-            public String Equipement
+            public int Equipement
             {
-                get => equipement; set => equipement = value;
+                get => id_equipement; set => id_equipement = value;
             }
 
             public int MontantFacture

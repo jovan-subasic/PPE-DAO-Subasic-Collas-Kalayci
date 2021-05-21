@@ -42,8 +42,6 @@
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.Btn_creationStand = new System.Windows.Forms.Button();
-            this.txt_equipement = new System.Windows.Forms.TextBox();
-            this.lab_equipement = new System.Windows.Forms.Label();
             this.txt_nomStand = new System.Windows.Forms.TextBox();
             this.lab_nomStand = new System.Windows.Forms.Label();
             this.lab_montantFacture = new System.Windows.Forms.Label();
@@ -57,6 +55,7 @@
             this.txt_Nalle = new System.Windows.Forms.TextBox();
             this.tabPageInscription = new System.Windows.Forms.TabPage();
             this.GrB_modificationInscription = new System.Windows.Forms.GroupBox();
+            this.lab_modificationInscriptionAtelier = new System.Windows.Forms.Label();
             this.txt_modifInscriptionNom = new System.Windows.Forms.TextBox();
             this.btn_inscriptionModifier = new System.Windows.Forms.Button();
             this.CLB_inscriptionModificationAtelier = new System.Windows.Forms.CheckedListBox();
@@ -82,7 +81,14 @@
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lab_modificationInscriptionAtelier = new System.Windows.Forms.Label();
+            this.GrB_equipement = new System.Windows.Forms.GroupBox();
+            this.cbx_connexionReseauFilaire = new System.Windows.Forms.CheckBox();
+            this.cbx_bar = new System.Windows.Forms.CheckBox();
+            this.cbx_salonReception = new System.Windows.Forms.CheckBox();
+            this.cbx_tablesFournis = new System.Windows.Forms.CheckBox();
+            this.cbx_cabineEssayage = new System.Windows.Forms.CheckBox();
+            this.nUD_nbrSiege = new System.Windows.Forms.NumericUpDown();
+            this.lbl_nbrSiege = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -93,6 +99,8 @@
             this.GrB_modificationInscription.SuspendLayout();
             this.tabPageListeParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
+            this.GrB_equipement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUD_nbrSiege)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -222,9 +230,8 @@
             // 
             // GrB_creationStand
             // 
+            this.GrB_creationStand.Controls.Add(this.GrB_equipement);
             this.GrB_creationStand.Controls.Add(this.Btn_creationStand);
-            this.GrB_creationStand.Controls.Add(this.txt_equipement);
-            this.GrB_creationStand.Controls.Add(this.lab_equipement);
             this.GrB_creationStand.Controls.Add(this.txt_nomStand);
             this.GrB_creationStand.Controls.Add(this.lab_nomStand);
             this.GrB_creationStand.Controls.Add(this.lab_montantFacture);
@@ -242,30 +249,13 @@
             // 
             // Btn_creationStand
             // 
-            this.Btn_creationStand.Location = new System.Drawing.Point(495, 233);
+            this.Btn_creationStand.Location = new System.Drawing.Point(518, 304);
             this.Btn_creationStand.Name = "Btn_creationStand";
             this.Btn_creationStand.Size = new System.Drawing.Size(186, 71);
             this.Btn_creationStand.TabIndex = 10;
             this.Btn_creationStand.Text = "Créer";
             this.Btn_creationStand.UseVisualStyleBackColor = true;
             this.Btn_creationStand.Click += new System.EventHandler(this.Btn_creationStand_Click);
-            // 
-            // txt_equipement
-            // 
-            this.txt_equipement.Location = new System.Drawing.Point(146, 132);
-            this.txt_equipement.Name = "txt_equipement";
-            this.txt_equipement.Size = new System.Drawing.Size(108, 29);
-            this.txt_equipement.TabIndex = 9;
-            // 
-            // lab_equipement
-            // 
-            this.lab_equipement.AutoSize = true;
-            this.lab_equipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_equipement.Location = new System.Drawing.Point(46, 139);
-            this.lab_equipement.Name = "lab_equipement";
-            this.lab_equipement.Size = new System.Drawing.Size(94, 18);
-            this.lab_equipement.TabIndex = 8;
-            this.lab_equipement.Text = "Equipement :";
             // 
             // txt_nomStand
             // 
@@ -324,7 +314,7 @@
             this.GrB_situation.Controls.Add(this.label5);
             this.GrB_situation.Controls.Add(this.txt_Nordre);
             this.GrB_situation.Controls.Add(this.txt_Nalle);
-            this.GrB_situation.Location = new System.Drawing.Point(36, 194);
+            this.GrB_situation.Location = new System.Drawing.Point(481, 156);
             this.GrB_situation.Name = "GrB_situation";
             this.GrB_situation.Size = new System.Drawing.Size(250, 129);
             this.GrB_situation.TabIndex = 0;
@@ -403,6 +393,16 @@
             this.GrB_modificationInscription.TabIndex = 6;
             this.GrB_modificationInscription.TabStop = false;
             this.GrB_modificationInscription.Text = "Formulaire d\'Inscription ou Modification";
+            // 
+            // lab_modificationInscriptionAtelier
+            // 
+            this.lab_modificationInscriptionAtelier.AutoSize = true;
+            this.lab_modificationInscriptionAtelier.Location = new System.Drawing.Point(370, 75);
+            this.lab_modificationInscriptionAtelier.Name = "lab_modificationInscriptionAtelier";
+            this.lab_modificationInscriptionAtelier.Size = new System.Drawing.Size(210, 24);
+            this.lab_modificationInscriptionAtelier.TabIndex = 15;
+            this.lab_modificationInscriptionAtelier.Text = "Participation au Atelier : ";
+            this.lab_modificationInscriptionAtelier.Click += new System.EventHandler(this.label7_Click);
             // 
             // txt_modifInscriptionNom
             // 
@@ -613,15 +613,88 @@
             this.Col_Adresse_Participant.HeaderText = "Adresse";
             this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
             // 
-            // lab_modificationInscriptionAtelier
+            // GrB_equipement
             // 
-            this.lab_modificationInscriptionAtelier.AutoSize = true;
-            this.lab_modificationInscriptionAtelier.Location = new System.Drawing.Point(370, 75);
-            this.lab_modificationInscriptionAtelier.Name = "lab_modificationInscriptionAtelier";
-            this.lab_modificationInscriptionAtelier.Size = new System.Drawing.Size(210, 24);
-            this.lab_modificationInscriptionAtelier.TabIndex = 15;
-            this.lab_modificationInscriptionAtelier.Text = "Participation au Atelier : ";
-            this.lab_modificationInscriptionAtelier.Click += new System.EventHandler(this.label7_Click);
+            this.GrB_equipement.Controls.Add(this.lbl_nbrSiege);
+            this.GrB_equipement.Controls.Add(this.nUD_nbrSiege);
+            this.GrB_equipement.Controls.Add(this.cbx_cabineEssayage);
+            this.GrB_equipement.Controls.Add(this.cbx_tablesFournis);
+            this.GrB_equipement.Controls.Add(this.cbx_salonReception);
+            this.GrB_equipement.Controls.Add(this.cbx_bar);
+            this.GrB_equipement.Controls.Add(this.cbx_connexionReseauFilaire);
+            this.GrB_equipement.Location = new System.Drawing.Point(67, 105);
+            this.GrB_equipement.Name = "GrB_equipement";
+            this.GrB_equipement.Size = new System.Drawing.Size(289, 267);
+            this.GrB_equipement.TabIndex = 11;
+            this.GrB_equipement.TabStop = false;
+            this.GrB_equipement.Text = "Equipement";
+            // 
+            // cbx_connexionReseauFilaire
+            // 
+            this.cbx_connexionReseauFilaire.AutoSize = true;
+            this.cbx_connexionReseauFilaire.Location = new System.Drawing.Point(6, 43);
+            this.cbx_connexionReseauFilaire.Name = "cbx_connexionReseauFilaire";
+            this.cbx_connexionReseauFilaire.Size = new System.Drawing.Size(230, 28);
+            this.cbx_connexionReseauFilaire.TabIndex = 0;
+            this.cbx_connexionReseauFilaire.Text = "connexion réseau filaire";
+            this.cbx_connexionReseauFilaire.UseVisualStyleBackColor = true;
+            // 
+            // cbx_bar
+            // 
+            this.cbx_bar.AutoSize = true;
+            this.cbx_bar.Location = new System.Drawing.Point(6, 77);
+            this.cbx_bar.Name = "cbx_bar";
+            this.cbx_bar.Size = new System.Drawing.Size(56, 28);
+            this.cbx_bar.TabIndex = 1;
+            this.cbx_bar.Text = "bar";
+            this.cbx_bar.UseVisualStyleBackColor = true;
+            // 
+            // cbx_salonReception
+            // 
+            this.cbx_salonReception.AutoSize = true;
+            this.cbx_salonReception.Location = new System.Drawing.Point(6, 111);
+            this.cbx_salonReception.Name = "cbx_salonReception";
+            this.cbx_salonReception.Size = new System.Drawing.Size(185, 28);
+            this.cbx_salonReception.TabIndex = 2;
+            this.cbx_salonReception.Text = "salon de reception";
+            this.cbx_salonReception.UseVisualStyleBackColor = true;
+            // 
+            // cbx_tablesFournis
+            // 
+            this.cbx_tablesFournis.AutoSize = true;
+            this.cbx_tablesFournis.Location = new System.Drawing.Point(6, 179);
+            this.cbx_tablesFournis.Name = "cbx_tablesFournis";
+            this.cbx_tablesFournis.Size = new System.Drawing.Size(139, 28);
+            this.cbx_tablesFournis.TabIndex = 4;
+            this.cbx_tablesFournis.Text = "tables fournis";
+            this.cbx_tablesFournis.UseVisualStyleBackColor = true;
+            // 
+            // cbx_cabineEssayage
+            // 
+            this.cbx_cabineEssayage.AutoSize = true;
+            this.cbx_cabineEssayage.Location = new System.Drawing.Point(6, 145);
+            this.cbx_cabineEssayage.Name = "cbx_cabineEssayage";
+            this.cbx_cabineEssayage.Size = new System.Drawing.Size(186, 28);
+            this.cbx_cabineEssayage.TabIndex = 5;
+            this.cbx_cabineEssayage.Text = "cabine d\'éssayage";
+            this.cbx_cabineEssayage.UseVisualStyleBackColor = true;
+            // 
+            // nUD_nbrSiege
+            // 
+            this.nUD_nbrSiege.Location = new System.Drawing.Point(152, 209);
+            this.nUD_nbrSiege.Name = "nUD_nbrSiege";
+            this.nUD_nbrSiege.Size = new System.Drawing.Size(56, 29);
+            this.nUD_nbrSiege.TabIndex = 6;
+            // 
+            // lbl_nbrSiege
+            // 
+            this.lbl_nbrSiege.AutoSize = true;
+            this.lbl_nbrSiege.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nbrSiege.Location = new System.Drawing.Point(6, 215);
+            this.lbl_nbrSiege.Name = "lbl_nbrSiege";
+            this.lbl_nbrSiege.Size = new System.Drawing.Size(137, 18);
+            this.lbl_nbrSiege.TabIndex = 7;
+            this.lbl_nbrSiege.Text = "Nombre de sièges :";
             // 
             // Maison_des_ligues
             // 
@@ -647,6 +720,9 @@
             this.tabPageListeParticipant.ResumeLayout(false);
             this.tabPageListeParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).EndInit();
+            this.GrB_equipement.ResumeLayout(false);
+            this.GrB_equipement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUD_nbrSiege)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -701,13 +777,19 @@
         private System.Windows.Forms.TextBox txt_Nordre;
         private System.Windows.Forms.TextBox txt_Nalle;
         private System.Windows.Forms.Button Btn_creationStand;
-        private System.Windows.Forms.TextBox txt_equipement;
-        private System.Windows.Forms.Label lab_equipement;
         private System.Windows.Forms.TextBox txt_nomStand;
         private System.Windows.Forms.Label lab_nomStand;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_modifInscriptionNom;
         private System.Windows.Forms.Label lab_modificationInscriptionAtelier;
+        private System.Windows.Forms.GroupBox GrB_equipement;
+        private System.Windows.Forms.Label lbl_nbrSiege;
+        private System.Windows.Forms.NumericUpDown nUD_nbrSiege;
+        private System.Windows.Forms.CheckBox cbx_cabineEssayage;
+        private System.Windows.Forms.CheckBox cbx_tablesFournis;
+        private System.Windows.Forms.CheckBox cbx_salonReception;
+        private System.Windows.Forms.CheckBox cbx_bar;
+        private System.Windows.Forms.CheckBox cbx_connexionReseauFilaire;
     }
 }
 
