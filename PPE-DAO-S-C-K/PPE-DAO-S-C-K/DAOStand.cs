@@ -10,12 +10,13 @@ namespace PPE_DAO_S_C_K
         public void AjouterStand(Stands unStand)
         {
             String req = "INSERT INTO stands values ( '"
+                         + unStand.IdAllee + "' , '"
+                         + unStand.IdOrdre + "' , '"
+                         + unStand.Equipement + "' , '"
+                         + unStand.MontantFacture + "' , '"
+                         + unStand.Prix + "' , '"
                          + unStand.Nom + "' , '"
-                         + unStand.Prenom + "' , '"
-                         + unStand.Adresse + "' , '"
-                         + unStand.Portable + "' , '"
-                         + unStand.Type + "' , '"
-                         + unStand.NbParticipant + "' );";
+                         + unStand.Id_partenaires + "' );";
 
             DAOFactory daoAddStand = new DAOFactory();
             daoAddStand.connecter();
