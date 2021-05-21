@@ -278,7 +278,7 @@
             // 
             this.lab_montantFacture.AutoSize = true;
             this.lab_montantFacture.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_montantFacture.Location = new System.Drawing.Point(421, 128);
+            this.lab_montantFacture.Location = new System.Drawing.Point(442, 255);
             this.lab_montantFacture.Name = "lab_montantFacture";
             this.lab_montantFacture.Size = new System.Drawing.Size(124, 18);
             this.lab_montantFacture.TabIndex = 5;
@@ -288,7 +288,7 @@
             // 
             this.lab_surface.AutoSize = true;
             this.lab_surface.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_surface.Location = new System.Drawing.Point(478, 77);
+            this.lab_surface.Location = new System.Drawing.Point(487, 216);
             this.lab_surface.Name = "lab_surface";
             this.lab_surface.Size = new System.Drawing.Size(67, 18);
             this.lab_surface.TabIndex = 4;
@@ -296,14 +296,14 @@
             // 
             // txt_montantFacture
             // 
-            this.txt_montantFacture.Location = new System.Drawing.Point(551, 121);
+            this.txt_montantFacture.Location = new System.Drawing.Point(572, 249);
             this.txt_montantFacture.Name = "txt_montantFacture";
             this.txt_montantFacture.Size = new System.Drawing.Size(108, 29);
             this.txt_montantFacture.TabIndex = 3;
             // 
             // txt_surface
             // 
-            this.txt_surface.Location = new System.Drawing.Point(551, 70);
+            this.txt_surface.Location = new System.Drawing.Point(572, 209);
             this.txt_surface.Name = "txt_surface";
             this.txt_surface.Size = new System.Drawing.Size(108, 29);
             this.txt_surface.TabIndex = 2;
@@ -314,7 +314,7 @@
             this.GrB_situation.Controls.Add(this.label5);
             this.GrB_situation.Controls.Add(this.txt_Nordre);
             this.GrB_situation.Controls.Add(this.txt_Nalle);
-            this.GrB_situation.Location = new System.Drawing.Point(481, 156);
+            this.GrB_situation.Location = new System.Drawing.Point(454, 70);
             this.GrB_situation.Name = "GrB_situation";
             this.GrB_situation.Size = new System.Drawing.Size(250, 129);
             this.GrB_situation.TabIndex = 0;
