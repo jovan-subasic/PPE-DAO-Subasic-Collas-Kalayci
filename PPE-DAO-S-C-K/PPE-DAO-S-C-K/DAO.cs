@@ -640,5 +640,31 @@ namespace PPE_DAO_S_C_K
                 MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void Btn_creationPartenaire_Click(object sender, EventArgs e)
+        {
+            if (0 != txt_nomPartenaire.Text.Length &&
+                0 != cbx_typePartenaire.Text.Length )
+            {
+                DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+
+                int id_partenaire = lesPartenaires.Count;
+
+                int idTypePartenaire = DAOdbPartenaire.getIdTypePartenaire(cbx_typePartenaire.SelectedItem.ToString());
+
+                Partenaire Part = new Partenaire(
+                                id_partenaire,
+                                txt_nomPartenaire.Text,
+                                idTypePartenaire
+                                );
+                lesPartenaires.Add(Part);
+                Part.ajoutdbPartenaire();
+
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
+            }
+        }
     }
 }

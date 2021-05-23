@@ -737,6 +737,7 @@
             this.Btn_creationPartenaire.TabIndex = 12;
             this.Btn_creationPartenaire.Text = "Créer";
             this.Btn_creationPartenaire.UseVisualStyleBackColor = true;
+            this.Btn_creationPartenaire.Click += new System.EventHandler(this.Btn_creationPartenaire_Click);
             // 
             // label8
             // 

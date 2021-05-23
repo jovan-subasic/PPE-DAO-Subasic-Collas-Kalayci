@@ -46,5 +46,14 @@ namespace PPE_DAO_S_C_K
 
         #endregion
 
+        #region Methode 
+
+        public void ajoutdbPartenaire()
+        {
+            DAOPartenaire db = new DAOPartenaire();
+            db.AjouterPartenaire(this);
+        }
+
+        #endregion
     }
 }
