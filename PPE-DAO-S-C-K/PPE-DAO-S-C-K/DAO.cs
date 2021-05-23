@@ -15,7 +15,8 @@ namespace PPE_DAO_S_C_K
     {
         #region Attribue 
         private List<Participant> lesParticipants = new List<Participant>();
-        //private List<Stand> lesStands = new List<Stand>();
+        private List<Stand> lesStands = new List<Stand>();
+        private List<Equipement> lesEquipements = new List<Equipement>();
         private List<Atelier> lesAteliers = new List<Atelier>();
         #endregion
 
@@ -515,7 +516,6 @@ namespace PPE_DAO_S_C_K
         private void Btn_creationStand_Click(object sender, EventArgs e)
         {
             /*if (0 != txt_nomStand.Text.Length &&
-                0 != txt_equipement.Text.Length &&
                 0 != txt_montantFacture.Text.Length &&
                 0 != txt_Nalle.Text.Length &&
                 0 != txt_Nordre.Text.Length &&
@@ -523,56 +523,37 @@ namespace PPE_DAO_S_C_K
                 )
             {
                 int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
-                if (0 != txt_inscriptionMail.Text.Length) 
-                {
+                id = id + 1 ;
 
-                    Benevoles bs = new Benevoles(
-                                   id,
-                                   txt_inscriptionNom.Text,
-                                   txt_inscriptionPrenom.Text,
-                                   txt_inscriptionAdresse.Text,
-                                   txt_inscriptionNumtel.Text,
-                                   Cbx_inscriptionType.Text,
-                                   txt_inscriptionMail.Text
-                                    );
-                    bs.ajoutdbParticipant();
-                    lesParticipants.Add(bs);
-                    CLB_inscriptionAtelier.SelectedIndex.ToString();
+                int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
+                id = id + 1 ;
 
-                    bs.LesAtelier.Clear();
-                    int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
-                    {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
-                        bs.ajouterAtelier(unA);
-                        i++;
-                    }
+                int id_partenaire = 0; 
 
-                }
-                else // construit un objet Participant uniquement.
-                {
-                    Participant pt = new Participant(
-                                    id,
-                                    txt_inscriptionNom.Text,
-                                    txt_inscriptionPrenom.Text,
-                                    txt_inscriptionAdresse.Text,
-                                    txt_inscriptionNumtel.Text,
-                                    Cbx_inscriptionType.Text
-                                    );
-                    pt.ajoutdbStand();
-                    lesStands.Add();
+                Equipement eq = new Equipement(
+                                id_equipement,
+                                cbx_connexionReseauFilaire.Text,
+                                cbx_bar.Text,
+                                cbx_salonReception.Text,
+                                cbx_cabineEssayage.Text,
+                                cbx_tablesFournis.Text,
+                                nUD_nbrSiege.Text,
+                                );
+                eq.AjouterEquipement(eq);
+                lesEquipements.Add(eq);
 
-                    pt.LesAtelier.Clear();
-                    int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
-                    {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
-                        pt.ajouterAtelier(unA);
-                        i++;
-                    }
-                }
+                Stand Sd = new Stand(
+                                id,
+                                txt_Nalle.Text,
+                                txt_Nordre.Text,
+                                txt_inscriptionNumtel.Text,
+                                id_equipement,
+                                txt_nomStand.Text,
+                                id_partenaire,
+                                );
+                Sd.AjouterStand(Sd);
+                lesStands.Add(Sd);
+                
             }
             else
             {
@@ -589,6 +570,18 @@ namespace PPE_DAO_S_C_K
         private void label7_Click(object sender, EventArgs e)
         {
             // non neccessaire 
+        }
+
+        private void cbx_typePartenaire_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*DAOPartenaire dp = new DAOPartenaire();
+            lesTypesPartenaires =  dp.typePartenaire();
+
+            foreach (var tp:typePartenaire in lesTypesPartenaires)
+            {
+                cbx_typePartenaire.Items.Add(tp)
+            }
+              */
         }
     }
 }

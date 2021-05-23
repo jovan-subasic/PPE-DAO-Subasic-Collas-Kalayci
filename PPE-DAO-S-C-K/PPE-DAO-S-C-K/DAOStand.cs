@@ -7,34 +7,46 @@ namespace PPE_DAO_S_C_K
 {
     class DAOStand
     {
-        public List<Stand> tousLesStand()
+        public void AjouterStand(Stands unStand)
         {
-            List<Stand> laListe = new List<Stand>(); 
-            string req;
-            req = "Select * From stands order by id ;";
+            String req = "INSERT INTO stands values ( '"
+                         + unStand.IdAllee + "' , '"
+                         + unStand.IdOrdre + "' , '"
+                         + unStand.Equipement + "' , '"
+                         + unStand.MontantFacture + "' , '"
+                         + unStand.Prix + "' , '"
+                         + unStand.Nom + "' , '"
+                         + unStand.Id_partenaires + "' );";
 
+            DAOFactory daoAddStand = new DAOFactory();
+            daoAddStand.connecter();
+            daoAddStand.excecSQLRead(req);
+        }
+
+        public void AjouterEquipement(Equipements unEquipement)
+        {
+            String req = "INSERT INTO equipements values ( '"
+                         + unEquipement.connexionReseauFilaire + "' , '"
+                         + unEquipement.bar + "' , '"
+                         + unEquipement.salonReception + "' , '"
+                         + unEquipement.cabineEssayage + "' , '"
+                         + unEquipement.tablesFournis + "' , '"
+                         + unEquipement.nbrSiege + "' );";
+
+            DAOFactory daoAddEquipement = new DAOFactory();
+            daoAddEquipement.connecter();
+            daoAddEquipement.excecSQLRead(req);
+        }
+
+        public void typePartenaire()
+        {
             DAOFactory db = new DAOFactory();
             db.connecter();
+
+            String req = "select nom from typePartenaire;";
             SqlDataReader reader = db.excecSQLRead(req);
 
-
-            while (reader.Read())
-            {
-                req = "Select * From equipements eq inner join stands st eq.id on st.id where st.id =" + int.Parse(reader[0].ToString()) + " order by st.id ;";
-                //db.connecter();
-                SqlDataReader readerAt = db.excecSQLRead(req);
-
-                Stand leStand = new Stand(
-                                                           int.Parse(reader[0].ToString()),
-                                                           reader[1].ToString(),
-                                                           reader[2].ToString(),
-                                                           reader[3].ToString(),
-                                                           reader[4].ToString(),
-                                                           reader[5].ToString(),
-                                                           reader[6].ToString(),
-                                                           reader[7].ToString()
-                                                           );
-            }
+            reader.Read();
         }
     }
 }
