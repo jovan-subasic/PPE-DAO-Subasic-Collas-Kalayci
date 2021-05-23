@@ -17,7 +17,6 @@ namespace PPE_DAO_S_C_K
         private int montantFacture;
         private String nom;
         private int id_partenaires;
-        private List<Stand> lesStands;
 
 
         #endregion

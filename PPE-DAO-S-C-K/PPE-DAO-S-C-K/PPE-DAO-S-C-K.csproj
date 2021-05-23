@@ -48,7 +48,11 @@
   <ItemGroup>
     <Compile Include="Atelier.cs" />
     <Compile Include="Benevoles.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="DAOEquipement.cs" />
+    <Compile Include="DAOPartenaire.cs" />
+    <Compile Include="DAOStand.cs" />
+    <Compile Include="Equipement.cs" />
+    <Compile Include="Partenaire.cs" />
     <Compile Include="Stand.cs" />
     <Compile Include="DAOAtelier.cs" />
     <Compile Include="DAOFactory.cs" />
@@ -62,6 +66,7 @@
     <Compile Include="Participant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypePartenaire.cs" />
     <EmbeddedResource Include="DAO.resx">
       <DependentUpon>DAO.cs</DependentUpon>
     </EmbeddedResource>

@@ -22,30 +22,5 @@ namespace PPE_DAO_S_C_K
             daoAddStand.excecSQLRead(req);
         }
 
-        public void AjouterEquipement(Equipement unEquipement)
-        {
-            String req = "INSERT INTO equipements values ( '"
-                         + unEquipement.connexionReseauFilaire + "' , '"
-                         + unEquipement.bar + "' , '"
-                         + unEquipement.salonReception + "' , '"
-                         + unEquipement.cabineEssayage + "' , '"
-                         + unEquipement.tablesFournis + "' , '"
-                         + unEquipement.nbrSiege + "' );";
-
-            DAOFactory daoAddEquipement = new DAOFactory();
-            daoAddEquipement.connecter();
-            daoAddEquipement.excecSQLRead(req);
-        }
-
-        public void typePartenaire()
-        {
-            DAOFactory db = new DAOFactory();
-            db.connecter();
-
-            String req = "select nom from typePartenaire;";
-            SqlDataReader reader = db.excecSQLRead(req);
-
-            reader.Read();
-        }
     }
 }

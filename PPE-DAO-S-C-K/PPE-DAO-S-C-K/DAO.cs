@@ -18,6 +18,8 @@ namespace PPE_DAO_S_C_K
         private List<Stand> lesStands = new List<Stand>();
         private List<Equipement> lesEquipements = new List<Equipement>();
         private List<Atelier> lesAteliers = new List<Atelier>();
+        private List<TypePartenaire> lesTypesPartenaires = new List<TypePartenaire>();
+
         #endregion
 
         public Maison_des_ligues()
@@ -515,7 +517,7 @@ namespace PPE_DAO_S_C_K
 
         private void Btn_creationStand_Click(object sender, EventArgs e)
         {
-            /*if (0 != txt_nomStand.Text.Length &&
+            if (0 != txt_nomStand.Text.Length &&
                 0 != txt_montantFacture.Text.Length &&
                 0 != txt_Nalle.Text.Length &&
                 0 != txt_Nordre.Text.Length &&
@@ -537,19 +539,20 @@ namespace PPE_DAO_S_C_K
                                 cbx_salonReception.Text,
                                 cbx_cabineEssayage.Text,
                                 cbx_tablesFournis.Text,
-                                nUD_nbrSiege.Text,
+                                nUD_nbrSiege.Text
                                 );
-                eq.AjouterEquipement(eq);
+                eq.ajoutdbEquipement();
                 lesEquipements.Add(eq);
+
 
                 Stand Sd = new Stand(
                                 id,
                                 txt_Nalle.Text,
-                                txt_Nordre.Text,
-                                txt_inscriptionNumtel.Text,
+                                txt_Nordre.Text,                               
                                 id_equipement,
+                                txt_montantFacture.Text,
                                 txt_nomStand.Text,
-                                id_partenaire,
+                                id_partenaire
                                 );
                 Sd.AjouterStand(Sd);
                 lesStands.Add(Sd);
@@ -559,7 +562,7 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
-        }*/
+        
         }
 
         private void tabPageAteliers_Click(object sender, EventArgs e)
@@ -574,14 +577,14 @@ namespace PPE_DAO_S_C_K
 
         private void cbx_typePartenaire_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*DAOPartenaire dp = new DAOPartenaire();
-            lesTypesPartenaires =  dp.typePartenaire();
+            DAOPartenaire dp = new DAOPartenaire();
+            lesTypesPartenaires =  dp.listeTypePartenaire();
 
-            foreach (var tp:typePartenaire in lesTypesPartenaires)
+            foreach (var typePartenaire in lesTypesPartenaires)
             {
-                cbx_typePartenaire.Items.Add(tp)
+                cbx_typePartenaire.Items.Add(typePartenaire);
             }
-              */
+              
         }
     }
 }

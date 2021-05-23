@@ -77,6 +77,11 @@ namespace PPE_DAO_S_C_K
 
         #region Methode 
 
+        public void ajoutdbEquipement()
+        {
+            DAOEquipement db = new DAOEquipement();
+            db.AjouterEquipement(this);
+        }
 
         #endregion
     }
