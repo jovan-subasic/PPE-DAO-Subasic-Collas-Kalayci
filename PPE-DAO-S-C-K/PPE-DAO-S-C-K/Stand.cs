@@ -80,11 +80,11 @@ namespace PPE_DAO_S_C_K
 
         #region Methode 
 
-        /*public void ajoutdbStand()
+        public void ajoutdbStand()
         {
             DAOStand db = new DAOStand();
             db.AjouterStand(this);
-        }*/
+        }
 
         #endregion
     }

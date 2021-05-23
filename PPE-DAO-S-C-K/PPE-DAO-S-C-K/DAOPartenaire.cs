@@ -7,6 +7,8 @@ namespace PPE_DAO_S_C_K
 {
     class DAOPartenaire
     {
+        private List<TypePartenaire> lesIdTypesPartenaires = new List<TypePartenaire>();
+
         public void AjouterPartenaire(Partenaire unPartenaire)
         {
             String req = "INSERT INTO partenaires values ( '"
@@ -44,5 +46,23 @@ namespace PPE_DAO_S_C_K
 
             return lesTypesPartenaires;
         }
+
+        public int getIdTypePartenaire(string type)
+        {
+
+            DAOPartenaire dp = new DAOPartenaire();
+            lesIdTypesPartenaires = dp.listeTypePartenaire();
+
+            foreach (var nomtypePartenaire in lesIdTypesPartenaires)
+            {
+                if(nomtypePartenaire.Nom == type)
+                {
+                    return nomtypePartenaire.Id;
+                }
+            }
+
+            return 0;
+        }
+
     }
 }

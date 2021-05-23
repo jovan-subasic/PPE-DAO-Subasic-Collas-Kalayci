@@ -38,6 +38,14 @@ namespace PPE_DAO_S_C_K
         private void Maison_des_ligues_Load(object sender, EventArgs e)
         {
             remplirList();
+
+            DAOPartenaire dp = new DAOPartenaire();
+            lesTypesPartenaires = dp.listeTypePartenaire();
+
+            foreach (var typePartenaire in lesTypesPartenaires)
+            {
+                cbx_typePartenaire.Items.Add(typePartenaire.Nom);
+            }
         }
         #endregion
 
@@ -296,20 +304,8 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionNumTel.Text = "";
             txt_modifInscriptionMail.Text = "";
 
-            // desactif tous les items de la collection du CheckListBox
-            if (CLB_inscriptionModificationAtelier.CheckedItems.Count > 0)
-            {
-                int disable = 0; // iterateur 
-                while(disable < CLB_inscriptionModificationAtelier.Items.Count)
-                {
-                    CLB_inscriptionModificationAtelier.SetItemChecked(disable, false);
-                    disable++; 
-                }
-                 
-            }
 
-
-            if (cbx_inscriptionModif_Id.SelectedIndex != 0)
+            if(cbx_inscriptionModif_Id.SelectedIndex != 0)
             {
                             
                 Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex-1);
@@ -326,6 +322,7 @@ namespace PPE_DAO_S_C_K
 
                 }
 
+                #region nouvelle occurence 
                 if (unP.LesAtelier is null)
                 {
                    
@@ -338,25 +335,24 @@ namespace PPE_DAO_S_C_K
                         
                         int a = 0; // iterateur de la nouvelle boucle 
                         int index = default; // recup le resultat
+
                         Atelier atelier = unP.LesAtelier[i];
 
                         while (a <lesAteliers.Count)
                         {
-                            if (lesAteliers[a].Id.Equals(atelier.Id))
+                            if (lesAteliers[a].Equals(atelier))
                             {
-                                 index = a;
-
-
+                                 index = a; 
                             }
-                            a++; 
                         }
+                        
                         CLB_inscriptionModificationAtelier.SetItemChecked(index, true);
 
                         i++; 
                     }
 
                 }
-
+                #endregion
 
                 if (unP.Type == "Benevole")
                 {
@@ -477,6 +473,7 @@ namespace PPE_DAO_S_C_K
 
         }
 
+        #region Création Stand
         private void Btn_creationStand_Click(object sender, EventArgs e)
         {
             if (0 != txt_nomStand.Text.Length &&
@@ -486,10 +483,14 @@ namespace PPE_DAO_S_C_K
                 0 != txt_surface.Text.Length 
                 )
             {
+                DAOStand DAOdbStand = new DAOStand();
+
                 int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
-                int id_equipement = lesEquipements.Count; // pour que l'id soit la nouvelle derniere valeur
+        
+
+                int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
                 int id_partenaire = lesPartenaires.Count; 
@@ -536,7 +537,7 @@ namespace PPE_DAO_S_C_K
                     tablesFournis = false;
                 }
 
-                DAOStand DAOdbStand = new DAOStand();
+                // DAOStand DAOdbStand = new DAOStand();
 
                 Equipement eq = new Equipement(
                                 id_equipement,
@@ -555,16 +556,16 @@ namespace PPE_DAO_S_C_K
                 Stand Sd = new Stand(
                                 id,
                                 txt_Nalle.Text,
-                                txt_Nordre.Text,                               
-                                id_equipement,
+                                txt_Nordre.Text,
+                                DAOdbStand.bddUpdateID(),
                                 txt_montantFacture.Text,
                                 txt_nomStand.Text,
                                 id_partenaire
                                 );
                 lesStands.Add(Sd);
-                //Sd.ajoutdbStand();
+                Sd.ajoutdbStand();
 
-                DAOdbStand.AjouterStand(Sd, eq);
+                //DAOdbStand.AjouterStand(Sd, eq);
 
             }
             else
@@ -573,6 +574,8 @@ namespace PPE_DAO_S_C_K
             }
         
         }
+
+        #endregion
 
         private void tabPageAteliers_Click(object sender, EventArgs e)
         {
@@ -586,13 +589,7 @@ namespace PPE_DAO_S_C_K
 
         private void cbx_typePartenaire_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DAOPartenaire dp = new DAOPartenaire();
-            lesTypesPartenaires =  dp.listeTypePartenaire();
-
-            foreach (var typePartenaire in lesTypesPartenaires)
-            {
-                cbx_typePartenaire.Items.Add(typePartenaire);
-            }
+            
               
         }
 
@@ -645,6 +642,32 @@ namespace PPE_DAO_S_C_K
             {
                 e.Handled = true;
                 MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Btn_creationPartenaire_Click(object sender, EventArgs e)
+        {
+            if (0 != txt_nomPartenaire.Text.Length &&
+                0 != cbx_typePartenaire.Text.Length )
+            {
+                DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+
+                int id_partenaire = lesPartenaires.Count;
+
+                int idTypePartenaire = DAOdbPartenaire.getIdTypePartenaire(cbx_typePartenaire.SelectedItem.ToString());
+
+                Partenaire Part = new Partenaire(
+                                id_partenaire,
+                                txt_nomPartenaire.Text,
+                                idTypePartenaire
+                                );
+                lesPartenaires.Add(Part);
+                Part.ajoutdbPartenaire();
+
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
             }
         }
     }
