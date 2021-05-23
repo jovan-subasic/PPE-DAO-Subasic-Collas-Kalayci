@@ -43,7 +43,6 @@
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.GrB_equipement = new System.Windows.Forms.GroupBox();
             this.lbl_nbrSiege = new System.Windows.Forms.Label();
-            this.nUD_nbrSiege = new System.Windows.Forms.NumericUpDown();
             this.cbx_cabineEssayage = new System.Windows.Forms.CheckBox();
             this.cbx_tablesFournis = new System.Windows.Forms.CheckBox();
             this.cbx_salonReception = new System.Windows.Forms.CheckBox();
@@ -88,21 +87,21 @@
             this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPagePartenaire = new System.Windows.Forms.TabPage();
             this.GrB_creationPartenaire = new System.Windows.Forms.GroupBox();
-            this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbx_typePartenaire = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.Btn_creationPartenaire = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbx_typePartenaire = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.tbx_nbrSiege = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPageStand.SuspendLayout();
             this.GrB_creationStand.SuspendLayout();
             this.GrB_equipement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUD_nbrSiege)).BeginInit();
             this.GrB_situation.SuspendLayout();
             this.tabPageInscription.SuspendLayout();
             this.GrB_modificationInscription.SuspendLayout();
@@ -259,8 +258,8 @@
             // 
             // GrB_equipement
             // 
+            this.GrB_equipement.Controls.Add(this.tbx_nbrSiege);
             this.GrB_equipement.Controls.Add(this.lbl_nbrSiege);
-            this.GrB_equipement.Controls.Add(this.nUD_nbrSiege);
             this.GrB_equipement.Controls.Add(this.cbx_cabineEssayage);
             this.GrB_equipement.Controls.Add(this.cbx_tablesFournis);
             this.GrB_equipement.Controls.Add(this.cbx_salonReception);
@@ -282,13 +281,6 @@
             this.lbl_nbrSiege.Size = new System.Drawing.Size(137, 18);
             this.lbl_nbrSiege.TabIndex = 7;
             this.lbl_nbrSiege.Text = "Nombre de sièges :";
-            // 
-            // nUD_nbrSiege
-            // 
-            this.nUD_nbrSiege.Location = new System.Drawing.Point(152, 209);
-            this.nUD_nbrSiege.Name = "nUD_nbrSiege";
-            this.nUD_nbrSiege.Size = new System.Drawing.Size(56, 29);
-            this.nUD_nbrSiege.TabIndex = 6;
             // 
             // cbx_cabineEssayage
             // 
@@ -393,6 +385,8 @@
             this.txt_montantFacture.Name = "txt_montantFacture";
             this.txt_montantFacture.Size = new System.Drawing.Size(108, 29);
             this.txt_montantFacture.TabIndex = 3;
+            this.txt_montantFacture.TextChanged += new System.EventHandler(this.txt_montantFacture_TextChanged);
+            this.txt_montantFacture.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_montantFacture_KeyPress);
             // 
             // txt_surface
             // 
@@ -400,6 +394,7 @@
             this.txt_surface.Name = "txt_surface";
             this.txt_surface.Size = new System.Drawing.Size(108, 29);
             this.txt_surface.TabIndex = 2;
+            this.txt_surface.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_surface_KeyPress);
             // 
             // GrB_situation
             // 
@@ -440,6 +435,7 @@
             this.txt_Nordre.Name = "txt_Nordre";
             this.txt_Nordre.Size = new System.Drawing.Size(100, 29);
             this.txt_Nordre.TabIndex = 1;
+            this.txt_Nordre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Nordre_KeyPress);
             // 
             // txt_Nalle
             // 
@@ -447,6 +443,7 @@
             this.txt_Nalle.Name = "txt_Nalle";
             this.txt_Nalle.Size = new System.Drawing.Size(100, 29);
             this.txt_Nalle.TabIndex = 0;
+            this.txt_Nalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Nalle_KeyPress);
             // 
             // tabPageInscription
             // 
@@ -732,31 +729,14 @@
             this.GrB_creationPartenaire.TabStop = false;
             this.GrB_creationPartenaire.Text = "Création Partenaire";
             // 
-            // txt_nomPartenaire
+            // Btn_creationPartenaire
             // 
-            this.txt_nomPartenaire.Location = new System.Drawing.Point(94, 85);
-            this.txt_nomPartenaire.Name = "txt_nomPartenaire";
-            this.txt_nomPartenaire.Size = new System.Drawing.Size(108, 29);
-            this.txt_nomPartenaire.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 92);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 18);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Nom :";
-            // 
-            // cbx_typePartenaire
-            // 
-            this.cbx_typePartenaire.FormattingEnabled = true;
-            this.cbx_typePartenaire.Location = new System.Drawing.Point(131, 144);
-            this.cbx_typePartenaire.Name = "cbx_typePartenaire";
-            this.cbx_typePartenaire.Size = new System.Drawing.Size(135, 32);
-            this.cbx_typePartenaire.TabIndex = 10;
-            this.cbx_typePartenaire.SelectedIndexChanged += new System.EventHandler(this.cbx_typePartenaire_SelectedIndexChanged);
+            this.Btn_creationPartenaire.Location = new System.Drawing.Point(35, 221);
+            this.Btn_creationPartenaire.Name = "Btn_creationPartenaire";
+            this.Btn_creationPartenaire.Size = new System.Drawing.Size(186, 71);
+            this.Btn_creationPartenaire.TabIndex = 12;
+            this.Btn_creationPartenaire.Text = "Créer";
+            this.Btn_creationPartenaire.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -768,14 +748,39 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Type Partenaire :";
             // 
-            // Btn_creationPartenaire
+            // cbx_typePartenaire
             // 
-            this.Btn_creationPartenaire.Location = new System.Drawing.Point(35, 221);
-            this.Btn_creationPartenaire.Name = "Btn_creationPartenaire";
-            this.Btn_creationPartenaire.Size = new System.Drawing.Size(186, 71);
-            this.Btn_creationPartenaire.TabIndex = 12;
-            this.Btn_creationPartenaire.Text = "Créer";
-            this.Btn_creationPartenaire.UseVisualStyleBackColor = true;
+            this.cbx_typePartenaire.FormattingEnabled = true;
+            this.cbx_typePartenaire.Location = new System.Drawing.Point(131, 144);
+            this.cbx_typePartenaire.Name = "cbx_typePartenaire";
+            this.cbx_typePartenaire.Size = new System.Drawing.Size(135, 32);
+            this.cbx_typePartenaire.TabIndex = 10;
+            this.cbx_typePartenaire.SelectedIndexChanged += new System.EventHandler(this.cbx_typePartenaire_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 92);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 18);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Nom :";
+            // 
+            // txt_nomPartenaire
+            // 
+            this.txt_nomPartenaire.Location = new System.Drawing.Point(94, 85);
+            this.txt_nomPartenaire.Name = "txt_nomPartenaire";
+            this.txt_nomPartenaire.Size = new System.Drawing.Size(108, 29);
+            this.txt_nomPartenaire.TabIndex = 8;
+            // 
+            // tbx_nbrSiege
+            // 
+            this.tbx_nbrSiege.Location = new System.Drawing.Point(149, 208);
+            this.tbx_nbrSiege.Name = "tbx_nbrSiege";
+            this.tbx_nbrSiege.Size = new System.Drawing.Size(100, 29);
+            this.tbx_nbrSiege.TabIndex = 8;
+            this.tbx_nbrSiege.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_nbrSiege_KeyPress);
             // 
             // Maison_des_ligues
             // 
@@ -795,7 +800,6 @@
             this.GrB_creationStand.PerformLayout();
             this.GrB_equipement.ResumeLayout(false);
             this.GrB_equipement.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUD_nbrSiege)).EndInit();
             this.GrB_situation.ResumeLayout(false);
             this.GrB_situation.PerformLayout();
             this.tabPageInscription.ResumeLayout(false);
@@ -868,7 +872,6 @@
         private System.Windows.Forms.Label lab_modificationInscriptionAtelier;
         private System.Windows.Forms.GroupBox GrB_equipement;
         private System.Windows.Forms.Label lbl_nbrSiege;
-        private System.Windows.Forms.NumericUpDown nUD_nbrSiege;
         private System.Windows.Forms.CheckBox cbx_cabineEssayage;
         private System.Windows.Forms.CheckBox cbx_tablesFournis;
         private System.Windows.Forms.CheckBox cbx_salonReception;
@@ -881,6 +884,7 @@
         private System.Windows.Forms.ComboBox cbx_typePartenaire;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_nomPartenaire;
+        private System.Windows.Forms.TextBox tbx_nbrSiege;
     }
 }
 

@@ -7,12 +7,12 @@ namespace PPE_DAO_S_C_K
 {
     class DAOStand
     {
-        public void AjouterStand(Stand unStand)
+        public void AjouterStand(Stand unStand, Equipement unEquipement)
         {
             String req = "INSERT INTO stands values ( '"
                          + unStand.IdAllee + "' , '"
                          + unStand.IdOrdre + "' , '"
-                         + unStand.Equipement + "' , '"
+                         + unEquipement.Id + "' , '"
                          + unStand.MontantFacture + "' , '"
                          + unStand.Nom + "' , '"
                          + unStand.Id_partenaires + "' );";

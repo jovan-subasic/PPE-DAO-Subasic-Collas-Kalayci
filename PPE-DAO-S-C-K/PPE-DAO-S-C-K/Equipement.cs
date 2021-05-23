@@ -16,13 +16,13 @@ namespace PPE_DAO_S_C_K
         private bool salonReception;
         private bool cabineEssayage;
         private bool tablesFournis;
-        private int nbrSiege;
+        private String nbrSiege;
 
         #endregion
 
         #region constructeur
 
-        public Equipement(int id, bool connexionReseauFilaire, bool bar, bool salonReception, bool cabineEssayage, bool tablesFournis, int nbrSiege)
+        public Equipement(int id, bool connexionReseauFilaire, bool bar, bool salonReception, bool cabineEssayage, bool tablesFournis, String nbrSiege)
         {
             this.id = id;
             this.connexionReseauFilaire = connexionReseauFilaire;
@@ -68,7 +68,7 @@ namespace PPE_DAO_S_C_K
             get => tablesFournis; set => tablesFournis = value;
         }
 
-        public int NbrSiege
+        public String NbrSiege
         {
             get => nbrSiege; set => nbrSiege = value;
         }

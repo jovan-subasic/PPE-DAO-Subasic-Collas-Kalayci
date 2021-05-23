@@ -11,10 +11,10 @@ namespace PPE_DAO_S_C_K
         #region attribue Privé 
 
         private int id;
-        private int idAllee;
-        private int idOrdre;
+        private String idAllee;
+        private String idOrdre;
         private int id_equipement;
-        private int montantFacture;
+        private String montantFacture;
         private String nom;
         private int id_partenaires;
 
@@ -23,7 +23,7 @@ namespace PPE_DAO_S_C_K
 
         #region constructeur
 
-        public Stand(int id, int idAllee, int idOrdre, int id_equipement, int montantFacture, string nom, int id_partenaires)
+        public Stand(int id, String idAllee, String idOrdre, int id_equipement, String montantFacture, string nom, int id_partenaires)
         {
             this.id = id;
             this.idAllee = idAllee;
@@ -44,12 +44,12 @@ namespace PPE_DAO_S_C_K
             get => id; set => id = value;
         }
 
-        public int IdAllee
+        public String IdAllee
         {
             get => idAllee; set => idAllee = value;
         }
 
-        public int IdOrdre
+        public String IdOrdre
         {
             get => idOrdre; set => idOrdre = value;
         }
@@ -59,7 +59,7 @@ namespace PPE_DAO_S_C_K
             get => id_equipement; set => id_equipement = value;
         }
 
-        public int MontantFacture
+        public String MontantFacture
         {
             get => montantFacture; set => montantFacture = value;
         }
@@ -80,6 +80,11 @@ namespace PPE_DAO_S_C_K
 
         #region Methode 
 
+        /*public void ajoutdbStand()
+        {
+            DAOStand db = new DAOStand();
+            db.AjouterStand(this);
+        }*/
 
         #endregion
     }

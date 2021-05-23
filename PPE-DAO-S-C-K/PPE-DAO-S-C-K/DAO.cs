@@ -19,6 +19,13 @@ namespace PPE_DAO_S_C_K
         private List<Equipement> lesEquipements = new List<Equipement>();
         private List<Atelier> lesAteliers = new List<Atelier>();
         private List<TypePartenaire> lesTypesPartenaires = new List<TypePartenaire>();
+        private List<Partenaire> lesPartenaires = new List<Partenaire>();
+
+        private bool connexionReseauFilaire;
+        private bool bar;
+        private bool salonReception;
+        private bool cabineEssayage;
+        private bool tablesFournis;
 
         #endregion
 
@@ -469,19 +476,64 @@ namespace PPE_DAO_S_C_K
                 int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
-                int id_partenaire = 0; 
+                int id_partenaire = lesPartenaires.Count; 
+
+                if(cbx_connexionReseauFilaire.Checked)
+                {
+                    connexionReseauFilaire = true;
+                }
+                else
+                {
+                    connexionReseauFilaire = false;
+                }
+
+                if (cbx_bar.Checked)
+                {
+                    bar = true;
+                }
+                else
+                {
+                    bar = false;
+                }
+                if (cbx_salonReception.Checked)
+                {
+                    salonReception = true;
+                }
+                else
+                {
+                    salonReception = false;
+                }
+                if (cbx_cabineEssayage.Checked)
+                {
+                    cabineEssayage = true;
+                }
+                else
+                {
+                    cabineEssayage = false;
+                }
+                if (cbx_tablesFournis.Checked)
+                {
+                    tablesFournis = true;
+                }
+                else
+                {
+                    tablesFournis = false;
+                }
+
+                DAOStand DAOdbStand = new DAOStand();
 
                 Equipement eq = new Equipement(
                                 id_equipement,
-                                cbx_connexionReseauFilaire.Text,
-                                cbx_bar.Text,
-                                cbx_salonReception.Text,
-                                cbx_cabineEssayage.Text,
-                                cbx_tablesFournis.Text,
-                                nUD_nbrSiege.Text
+                                connexionReseauFilaire,
+                                bar,
+                                salonReception,
+                                cabineEssayage,
+                                tablesFournis,
+                                tbx_nbrSiege.Text
                                 );
-                eq.ajoutdbEquipement();
                 lesEquipements.Add(eq);
+                eq.ajoutdbEquipement();
+                
 
 
                 Stand Sd = new Stand(
@@ -493,9 +545,11 @@ namespace PPE_DAO_S_C_K
                                 txt_nomStand.Text,
                                 id_partenaire
                                 );
-                Sd.AjouterStand(Sd);
                 lesStands.Add(Sd);
-                
+                //Sd.ajoutdbStand();
+
+                DAOdbStand.AjouterStand(Sd, eq);
+
             }
             else
             {
@@ -524,6 +578,58 @@ namespace PPE_DAO_S_C_K
                 cbx_typePartenaire.Items.Add(typePartenaire);
             }
               
+        }
+
+        private void txt_montantFacture_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Nalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txt_montantFacture_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txt_Nordre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txt_surface_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+        private void tbx_nbrSiege_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Caractères numériques seulement", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
