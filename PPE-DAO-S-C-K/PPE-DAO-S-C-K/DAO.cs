@@ -16,7 +16,7 @@ namespace PPE_DAO_S_C_K
         #region Attribue 
         private List<Participant> lesParticipants = new List<Participant>();
         private List<Stand> lesStands = new List<Stand>();
-        //private List<Equipement> lesEquipements = new List<Equipement>();
+        private List<Equipement> lesEquipements = new List<Equipement>();
         private List<Atelier> lesAteliers = new List<Atelier>();
         private List<TypePartenaire> lesTypesPartenaires = new List<TypePartenaire>();
         private List<Partenaire> lesPartenaires = new List<Partenaire>();
@@ -486,7 +486,7 @@ namespace PPE_DAO_S_C_K
                 int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
-                int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
+                int id_equipement = lesEquipements.Count; // pour que l'id soit la nouvelle derniere valeur
                 id = id + 1 ;
 
                 int id_partenaire = lesPartenaires.Count; 
