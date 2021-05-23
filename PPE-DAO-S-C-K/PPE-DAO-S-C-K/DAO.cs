@@ -322,7 +322,6 @@ namespace PPE_DAO_S_C_K
 
                 }
 
-                #region nouvelle occurence 
                 if (unP.LesAtelier is null)
                 {
                    
@@ -353,7 +352,7 @@ namespace PPE_DAO_S_C_K
                     }
 
                 }
-                #endregion
+
 
                 if (unP.Type == "Benevole")
                 {

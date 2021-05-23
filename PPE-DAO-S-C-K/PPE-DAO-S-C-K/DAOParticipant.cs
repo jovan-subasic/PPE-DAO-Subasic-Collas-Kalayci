@@ -111,7 +111,7 @@ namespace PPE_DAO_S_C_K
                     
                 if(typeP != "Benevole")
                 {
-                    Participant pt = new Participant(); 
+                    Participant pt;
                     if (next != idP)
                     {
                         next = idP;
@@ -135,7 +135,7 @@ namespace PPE_DAO_S_C_K
                             capa.ToString().Length > 0 &&
                             intervenant.ToString().Length > 0)
                         {
-
+                            pt = laListe[laListe.Count()-1];
                             pt.ajouterAtelier(Ar);
                         }
                     }
@@ -171,8 +171,11 @@ namespace PPE_DAO_S_C_K
                             capa.ToString().Length > 0 &&
                             intervenant.ToString().Length > 0)
                         {
+                            Participant pt;
+                            pt = laListe[laListe.Count() - 1]; // ou recup le dernier element de la liste
 
-                            bs.ajouterAtelier(Ar);
+                            bs = (Benevoles)pt; // on lui rend sont type Benevole
+                            bs.ajouterAtelier(Ar); // on ajoute l'atelier a la liste d'ateliers 
                         }
                     }
                 }
