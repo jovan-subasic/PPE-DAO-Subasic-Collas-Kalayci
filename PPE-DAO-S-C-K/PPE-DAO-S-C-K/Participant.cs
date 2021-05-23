@@ -16,7 +16,7 @@ namespace PPE_DAO_S_C_K
         private String portable ; 
         private String type ; 
         private int nbParticipant ;
-        private List<Atelier> lesAtelier ;
+        private List<Atelier> lesAtelier = new List<Atelier>();
         #endregion
 
         #region constructeur
