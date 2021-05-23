@@ -38,6 +38,14 @@ namespace PPE_DAO_S_C_K
         private void Maison_des_ligues_Load(object sender, EventArgs e)
         {
             remplirList();
+
+            DAOPartenaire dp = new DAOPartenaire();
+            lesTypesPartenaires = dp.listeTypePartenaire();
+
+            foreach (var typePartenaire in lesTypesPartenaires)
+            {
+                cbx_typePartenaire.Items.Add(typePartenaire.Nom);
+            }
         }
         #endregion
 
@@ -461,6 +469,7 @@ namespace PPE_DAO_S_C_K
 
         }
 
+        #region Création Stand
         private void Btn_creationStand_Click(object sender, EventArgs e)
         {
             if (0 != txt_nomStand.Text.Length &&
@@ -470,8 +479,12 @@ namespace PPE_DAO_S_C_K
                 0 != txt_surface.Text.Length 
                 )
             {
+                DAOStand DAOdbStand = new DAOStand();
+
                 int id = lesStands.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
+
+        
 
                 int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
@@ -520,7 +533,7 @@ namespace PPE_DAO_S_C_K
                     tablesFournis = false;
                 }
 
-                DAOStand DAOdbStand = new DAOStand();
+                // DAOStand DAOdbStand = new DAOStand();
 
                 Equipement eq = new Equipement(
                                 id_equipement,
@@ -539,16 +552,16 @@ namespace PPE_DAO_S_C_K
                 Stand Sd = new Stand(
                                 id,
                                 txt_Nalle.Text,
-                                txt_Nordre.Text,                               
-                                id_equipement,
+                                txt_Nordre.Text,
+                                DAOdbStand.bddUpdateID(),
                                 txt_montantFacture.Text,
                                 txt_nomStand.Text,
                                 id_partenaire
                                 );
                 lesStands.Add(Sd);
-                //Sd.ajoutdbStand();
+                Sd.ajoutdbStand();
 
-                DAOdbStand.AjouterStand(Sd, eq);
+                //DAOdbStand.AjouterStand(Sd, eq);
 
             }
             else
@@ -557,6 +570,8 @@ namespace PPE_DAO_S_C_K
             }
         
         }
+
+        #endregion
 
         private void tabPageAteliers_Click(object sender, EventArgs e)
         {
@@ -570,13 +585,7 @@ namespace PPE_DAO_S_C_K
 
         private void cbx_typePartenaire_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DAOPartenaire dp = new DAOPartenaire();
-            lesTypesPartenaires =  dp.listeTypePartenaire();
-
-            foreach (var typePartenaire in lesTypesPartenaires)
-            {
-                cbx_typePartenaire.Items.Add(typePartenaire);
-            }
+            
               
         }
 

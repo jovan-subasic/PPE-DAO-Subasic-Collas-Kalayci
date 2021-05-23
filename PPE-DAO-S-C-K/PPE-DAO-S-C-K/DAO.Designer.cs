@@ -724,14 +724,14 @@
             this.GrB_creationPartenaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.GrB_creationPartenaire.Location = new System.Drawing.Point(36, 45);
             this.GrB_creationPartenaire.Name = "GrB_creationPartenaire";
-            this.GrB_creationPartenaire.Size = new System.Drawing.Size(272, 343);
+            this.GrB_creationPartenaire.Size = new System.Drawing.Size(327, 343);
             this.GrB_creationPartenaire.TabIndex = 0;
             this.GrB_creationPartenaire.TabStop = false;
             this.GrB_creationPartenaire.Text = "Création Partenaire";
             // 
             // Btn_creationPartenaire
             // 
-            this.Btn_creationPartenaire.Location = new System.Drawing.Point(35, 221);
+            this.Btn_creationPartenaire.Location = new System.Drawing.Point(69, 209);
             this.Btn_creationPartenaire.Name = "Btn_creationPartenaire";
             this.Btn_creationPartenaire.Size = new System.Drawing.Size(186, 71);
             this.Btn_creationPartenaire.TabIndex = 12;
@@ -753,7 +753,7 @@
             this.cbx_typePartenaire.FormattingEnabled = true;
             this.cbx_typePartenaire.Location = new System.Drawing.Point(131, 144);
             this.cbx_typePartenaire.Name = "cbx_typePartenaire";
-            this.cbx_typePartenaire.Size = new System.Drawing.Size(135, 32);
+            this.cbx_typePartenaire.Size = new System.Drawing.Size(190, 32);
             this.cbx_typePartenaire.TabIndex = 10;
             this.cbx_typePartenaire.SelectedIndexChanged += new System.EventHandler(this.cbx_typePartenaire_SelectedIndexChanged);
             // 
@@ -761,7 +761,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 92);
+            this.label7.Location = new System.Drawing.Point(76, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 18);
             this.label7.TabIndex = 9;
@@ -769,9 +769,9 @@
             // 
             // txt_nomPartenaire
             // 
-            this.txt_nomPartenaire.Location = new System.Drawing.Point(94, 85);
+            this.txt_nomPartenaire.Location = new System.Drawing.Point(131, 61);
             this.txt_nomPartenaire.Name = "txt_nomPartenaire";
-            this.txt_nomPartenaire.Size = new System.Drawing.Size(108, 29);
+            this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
             // 
             // tbx_nbrSiege

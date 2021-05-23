@@ -14,8 +14,8 @@ namespace PPE_DAO_S_C_K
                          + unEquipement.Bar + "' , '"
                          + unEquipement.SalonReception + "' , '"
                          + unEquipement.CabineEssayage + "' , '"
-                         + unEquipement.TablesFournis + "' , '"
-                         + unEquipement.NbrSiege + "' );";
+                         + unEquipement.NbrSiege + "' , '"
+                         + unEquipement.TablesFournis + "' );";
 
             DAOFactory daoAddEquipement = new DAOFactory();
             daoAddEquipement.connecter();
