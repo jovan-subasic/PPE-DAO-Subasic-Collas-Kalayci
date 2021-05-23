@@ -283,8 +283,20 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionNumTel.Text = "";
             txt_modifInscriptionMail.Text = "";
 
+            // desactif tous les items de la collection du CheckListBox
+            if (CLB_inscriptionModificationAtelier.CheckedItems.Count > 0)
+            {
+                int disable = 0; // iterateur 
+                while(disable < CLB_inscriptionModificationAtelier.Items.Count)
+                {
+                    CLB_inscriptionModificationAtelier.SetItemChecked(disable, false);
+                    disable++; 
+                }
+                 
+            }
 
-            if(cbx_inscriptionModif_Id.SelectedIndex != 0)
+
+            if (cbx_inscriptionModif_Id.SelectedIndex != 0)
             {
                             
                 Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex-1);
@@ -314,17 +326,18 @@ namespace PPE_DAO_S_C_K
                         
                         int a = 0; // iterateur de la nouvelle boucle 
                         int index = default; // recup le resultat
-
                         Atelier atelier = unP.LesAtelier[i];
 
                         while (a <lesAteliers.Count)
                         {
-                            if (lesAteliers[a].Equals(atelier))
+                            if (lesAteliers[a].Id.Equals(atelier.Id))
                             {
-                                 index = a; 
+                                 index = a;
+
+
                             }
+                            a++; 
                         }
-                        
                         CLB_inscriptionModificationAtelier.SetItemChecked(index, true);
 
                         i++; 

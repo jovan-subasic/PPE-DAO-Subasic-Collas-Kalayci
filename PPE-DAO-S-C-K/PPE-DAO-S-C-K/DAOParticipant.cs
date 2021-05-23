@@ -9,6 +9,7 @@ namespace PPE_DAO_S_C_K
     {
         #region Méthodes 
 
+        // recupere la liste de tous les participants existant en bdd
         public List<Participant> getAllParticipant()
         {
             // on  veut recuperai la liste de tous les participants et les rangers dans leurs Class : 
@@ -19,10 +20,10 @@ namespace PPE_DAO_S_C_K
 
             String req = "select * from participants Pt " +
                 "left join participer Pr on Pr.id = Pt.id " +
-                "left join atelier Ar on Ar.id = Pr.id " +
+                "left join atelier Ar on Ar.id = Pr.id_atelier " +
                 "left join intervenir Ir on  Pt.id = Ir.id " +
                 "left join intervention I on Ir.email = I.email " +
-                "left join participants on Pt.id = Ar.id_participants " +
+                "left join participants Ps on Ps.id = Ar.id_participants " +
                 "order by Pt.id;"; 
             
             DAOFactory db = new DAOFactory();

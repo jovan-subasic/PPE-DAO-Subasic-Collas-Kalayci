@@ -34,7 +34,7 @@ namespace PPE_DAO_S_C_K
             */
             String req = "select * from atelier Ar " +
                 "left join participants Pt on Pt.id = Ar.id_participants " +
-                "left join participer Pr on Ar.id = Pr.id " +
+                "left join participer Pr on Ar.id = Pr.id_atelier " +
                 "left join participants Ps on Pr.id = Ps.id " +
                 "left join intervenir Ir on Pt.id = Ir.id " +
                 "left join intervention I on Ir.email = I.email " +
@@ -114,7 +114,7 @@ namespace PPE_DAO_S_C_K
                      adresseP = reader[15].ToString();
                      portableP = reader[16].ToString();
                      typeP = reader[17].ToString();
-                     nbParticipation = int.Parse(reader[18].ToString());
+                    // nbParticipation = int.Parse(reader[18].ToString());
                 }
 
                 // sert si l'inscript est un Benevole 
