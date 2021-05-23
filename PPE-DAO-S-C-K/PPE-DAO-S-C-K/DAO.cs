@@ -16,7 +16,7 @@ namespace PPE_DAO_S_C_K
         #region Attribue 
         private List<Participant> lesParticipants = new List<Participant>();
         private List<Stand> lesStands = new List<Stand>();
-        private List<Equipement> lesEquipements = new List<Equipement>();
+        //private List<Equipement> lesEquipements = new List<Equipement>();
         private List<Atelier> lesAteliers = new List<Atelier>();
         #endregion
 
