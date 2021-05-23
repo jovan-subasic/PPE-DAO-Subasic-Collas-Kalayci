@@ -291,14 +291,14 @@ namespace PPE_DAO_S_C_K
         #region modification BDD
         public void executeSQLmodifInscription(Participant unParticipant )
         {
-            String req = "update participants set (" + unParticipant.Id + ", '"
-             + unParticipant.Nom + "' , '"
-             + unParticipant.Prenom + "' , '"
-             + unParticipant.Adresse + "' , '"
-             + unParticipant.Portable + "' , '"
-             + unParticipant.Type + "' , '"
-             + unParticipant.NbParticipant + "') "
-             + "where id =" + unParticipant.Id + " ;"; 
+            String req = "update participants set "
+             + " nom = '" + unParticipant.Nom + "' , "
+             + "prenom = '" + unParticipant.Prenom + "' , "
+             + "adresse = '" + unParticipant.Adresse + "' , "
+             + "portable = " + unParticipant.Portable + " , "
+             + "type = '" + unParticipant.Type + "' , "
+             + "nombre_Participation = " + unParticipant.NbParticipant
+             + "where id = " + unParticipant.Id + " ;"; 
 
             DAOFactory db = new DAOFactory();
             db.connecter();
@@ -306,17 +306,17 @@ namespace PPE_DAO_S_C_K
         }
         public void executeSQLmodifInscription(Benevoles unB)
         {
-            String req = "update participants set (" + unB.Id + ", '"
-                         + unB.Nom + "' , '"
-                         + unB.Prenom + "' , '"
-                         + unB.Adresse + "' , '"
-                         + unB.Portable + "' , '"
-                         + unB.Type + "' , '"
-                         + unB.NbParticipant + "') " 
-                         + "where id ="+ unB.Id + " ;" +
+            String req = "update participants set "
+             + " nom = '" + unB.Nom + "' , "
+             + "prenom = '" + unB.Prenom + "' , "
+             + "adresse = '" + unB.Adresse + "' , "
+             + "portable = " + unB.Portable + " , "
+             + "type = '" + unB.Type + "' , "
+             + "nombre_Participation = " + unB.NbParticipant
+             + "where id = " + unB.Id + " ;" +
 
-                         "update intervenir set " + unB.Id + ", '"
-                         + unB.Email + "' " 
+                         " update intervenir set "
+                         + " email = '" + unB.Email + "' " 
                          + "where id ="+ unB.Id + " ;";
 
             DAOFactory db = new DAOFactory();
