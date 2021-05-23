@@ -47,35 +47,38 @@ namespace PPE_DAO_S_C_K
             int i = 0;
             int unId;
 
-
-            // ajoute la possibilite de cree un participants 
-           cbx_inscriptionModif_Id.Items.Add("New inscription");
-
-            // par default on selectionne le fait de realiser une nouvelle inscription 
-           cbx_inscriptionModif_Id.SelectedIndex = 0;
-
-            // boucle pour afficher la liste de tous les participants 
-            String leNom;
-            Participant unP;
-            while (i < lesParticipants.Count())
+            if(cbx_inscriptionModif_Id.Items.Count < lesParticipants.Count())
             {
-                unP = lesParticipants.ElementAt(i);
-                unId = unP.Id;
-                leNom = unP.Nom;
-                cbx_inscriptionModif_Id.Items.Add("n°" + unId + " " + leNom);
-                i++;
-            }
 
-            i = 0; // on remet la variable iterateur a 0 
-            Atelier unA;
-            while (i < lesAteliers.Count())
-            {
-                unA = lesAteliers.ElementAt(i);
-                leNom = unA.Nom;
-                CLB_inscriptionModificationAtelier.Items.Add(leNom);
-                i++;
-            }
+            
+                // ajoute la possibilite de cree un participants 
+               cbx_inscriptionModif_Id.Items.Add("New inscription");
 
+                // par default on selectionne le fait de realiser une nouvelle inscription 
+               cbx_inscriptionModif_Id.SelectedIndex = 0;
+
+                // boucle pour afficher la liste de tous les participants 
+                String leNom;
+                Participant unP;
+                while (i < lesParticipants.Count())
+                {
+                    unP = lesParticipants.ElementAt(i);
+                    unId = unP.Id;
+                    leNom = unP.Nom;
+                    cbx_inscriptionModif_Id.Items.Add("n°" + unId + " " + leNom);
+                    i++;
+                }
+
+                i = 0; // on remet la variable iterateur a 0 
+                Atelier unA;
+                while (i < lesAteliers.Count())
+                {
+                    unA = lesAteliers.ElementAt(i);
+                    leNom = unA.Nom;
+                    CLB_inscriptionModificationAtelier.Items.Add(leNom);
+                    i++;
+                }
+            }
 
         }
          private void tabPageInscription_Click(object sender, EventArgs e)
@@ -211,6 +214,7 @@ namespace PPE_DAO_S_C_K
                         }
                     }
                     #endregion
+
                     #region modifier un Inscript  
                     else // l'index selectionner n'est pas 0, on modifie donc un inscript ! 
                     { 
@@ -226,7 +230,7 @@ namespace PPE_DAO_S_C_K
                             bs.Email = txt_modifInscriptionMail.Text;
                             bs.modifParticipant();
 
-                            //unP.LesAtelier.Clear();
+                            unP.LesAtelier.Clear(); // permets de reset la liste d'atelier
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
@@ -249,7 +253,7 @@ namespace PPE_DAO_S_C_K
                             // modifier le participant 
                             unP.modifParticipant();
 
-                            //unP.LesAtelier.Clear();
+                            unP.LesAtelier.Clear(); // permets de reset la liste d'atelier
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {

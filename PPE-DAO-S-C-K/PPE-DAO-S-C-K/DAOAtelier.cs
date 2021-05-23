@@ -97,7 +97,7 @@ namespace PPE_DAO_S_C_K
                 String adresseP = "";
                 String portableP = "";
                 String typeP = "";
-                int nbParticipation = 0;
+                // int nbParticipation = 0;
 
                 if(reader[12].ToString().Length > 0 &&
                    reader[13].ToString().Length > 0 &&

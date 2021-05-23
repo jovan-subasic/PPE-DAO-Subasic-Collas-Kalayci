@@ -295,7 +295,7 @@ namespace PPE_DAO_S_C_K
              + " nom = '" + unParticipant.Nom + "' , "
              + "prenom = '" + unParticipant.Prenom + "' , "
              + "adresse = '" + unParticipant.Adresse + "' , "
-             + "portable = " + unParticipant.Portable + " , "
+             + "portable = '" + unParticipant.Portable + "' , "
              + "type = '" + unParticipant.Type + "' , "
              + "nombre_Participation = " + unParticipant.NbParticipant
              + "where id = " + unParticipant.Id + " ;"; 
@@ -310,7 +310,7 @@ namespace PPE_DAO_S_C_K
              + " nom = '" + unB.Nom + "' , "
              + "prenom = '" + unB.Prenom + "' , "
              + "adresse = '" + unB.Adresse + "' , "
-             + "portable = " + unB.Portable + " , "
+             + "portable = '" + unB.Portable + "' , "
              + "type = '" + unB.Type + "' , "
              + "nombre_Participation = " + unB.NbParticipant
              + "where id = " + unB.Id + " ;" +
@@ -329,15 +329,19 @@ namespace PPE_DAO_S_C_K
             Atelier unA; 
             DAOFactory db = new DAOFactory();
             db.connecter();
-            String req = "Delete From participer where id =" + unP.Id + ";";
+
+            String req = "Delete From participer where id = " + unP.Id + " ;";
+            /*
+            String req = "Delete From participer where EXISTS " +
+            "( select * from participer where id = " + unP.Id + ");";*/
             db.execSQLWrite(req);
 
             int i = 0;
             while ( i < unP.LesAtelier.Count)
             {
                 unA = unP.LesAtelier.ElementAt(i); 
-                req = "insert into participer values " + unP.Id + ", "
-                + unA.Id + ";";
+                req = "insert into participer values (" + unP.Id + ", "
+                + unA.Id + ") ;";
                 i++ ;
                 db.execSQLWrite(req);
             }
