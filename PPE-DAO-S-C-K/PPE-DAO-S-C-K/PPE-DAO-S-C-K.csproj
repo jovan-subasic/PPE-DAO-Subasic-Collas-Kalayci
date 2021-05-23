@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Atelier.cs" />
     <Compile Include="Benevoles.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Stand.cs" />
     <Compile Include="DAOAtelier.cs" />
     <Compile Include="DAOFactory.cs" />
     <Compile Include="DAO.cs">

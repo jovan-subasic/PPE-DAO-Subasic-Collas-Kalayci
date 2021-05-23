@@ -7,13 +7,14 @@ namespace PPE_DAO_S_C_K
 {
     class DAOStand
     {
-        public void AjouterStand(Stand unStand)
+        public void AjouterStand(Stands unStand)
         {
             String req = "INSERT INTO stands values ( '"
                          + unStand.IdAllee + "' , '"
                          + unStand.IdOrdre + "' , '"
                          + unStand.Equipement + "' , '"
                          + unStand.MontantFacture + "' , '"
+                         + unStand.Prix + "' , '"
                          + unStand.Nom + "' , '"
                          + unStand.Id_partenaires + "' );";
 
@@ -22,7 +23,7 @@ namespace PPE_DAO_S_C_K
             daoAddStand.excecSQLRead(req);
         }
 
-        public void AjouterEquipement(Equipement unEquipement)
+        public void AjouterEquipement(Equipements unEquipement)
         {
             String req = "INSERT INTO equipements values ( '"
                          + unEquipement.connexionReseauFilaire + "' , '"
