@@ -79,99 +79,6 @@ namespace PPE_DAO_S_C_K
 
         }
 
-        #region inscription d'un participant
-        /*
-        private void Cbx_inscriptionType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (Cbx_inscriptionType.Text == "Benevole")
-            {
-                txt_inscriptionMail.Visible = true;
-                lab_inscriptionMailP.Visible = true;
-            }
-            else
-            {
-                txt_inscriptionMail.Visible = false;
-                lab_inscriptionMailP.Visible = false;
-                txt_inscriptionMail.Text = "";
-            }
-
-        }
-        private void Btn_valideInscription_Click(object sender, EventArgs e)
-        {
-            if (0 != txt_inscriptionNom.Text.Length &&
-                 0 != txt_inscriptionAdresse.Text.Length &&
-                 0 != txt_inscriptionNumtel.Text.Length &&
-                 0 != txt_inscriptionPrenom.Text.Length
-                 )
-            {
-                int id = lesParticipants.Count; // pour que l'id sont la nouvelle derniere valeur
-                // de l'attribue id de la liste lesParticipants. 
-                if (0 != txt_inscriptionMail.Text.Length) // construit un objet Benevole et Participant
-                {
-
-                    Benevoles bs = new Benevoles(
-                                   id,
-                                   txt_inscriptionNom.Text,
-                                   txt_inscriptionPrenom.Text,
-                                   txt_inscriptionAdresse.Text,
-                                   txt_inscriptionNumtel.Text,
-                                   Cbx_inscriptionType.Text,
-                                   txt_inscriptionMail.Text
-                                    );
-                    bs.ajoutdbParticipant();
-                    lesParticipants.Add(bs);
-                    CLB_inscriptionAtelier.SelectedIndex.ToString();
-
-                    //bs.LesAtelier.Clear();
-                    txt_inscriptionMail.Text = ""; 
-                    int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
-                    {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
-                        bs.ajouterAtelier(unA);
-                        i++;
-                    }
-
-                }
-                else // construit un objet Participant uniquement.
-                {
-                    Participant pt = new Participant(
-                                    id,
-                                    txt_inscriptionNom.Text,
-                                    txt_inscriptionPrenom.Text,
-                                    txt_inscriptionAdresse.Text,
-                                    txt_inscriptionNumtel.Text,
-                                    Cbx_inscriptionType.Text
-                                    );
-                    pt.ajoutdbParticipant();
-                    lesParticipants.Add(pt);
-
-                   // pt.LesAtelier.Clear();
-                    int i = 0;
-                    while (i < CLB_inscriptionAtelier.CheckedItems.Count)
-                    {
-                        Atelier unA;
-                        unA = lesAteliers.ElementAt(CLB_inscriptionAtelier.CheckedItems.IndexOf(i));
-                        pt.ajouterAtelier(unA);
-                        i++;
-                    }
-                }
-
-                txt_inscriptionNom.Text = ""; 
-                txt_inscriptionPrenom.Text = "";
-                txt_inscriptionAdresse.Text = "";
-                txt_inscriptionNumtel.Text = "";
-                Cbx_inscriptionType.Text = "";
-            }
-            else
-            {
-                MessageBox.Show(" un champs n\'est pas renseigné ");
-            }
-        }
-        /**/
-        #endregion
-
         #region modification d'un participant 
         private void btn_inscriptionModifier_Click(object sender, EventArgs e)
         {
@@ -387,12 +294,44 @@ namespace PPE_DAO_S_C_K
                 txt_modifInscriptionPrenom.Text = unP.Prenom;
                 txt_modifInscriptionNumTel.Text = unP.Portable;
 
-
+               
                 if (cbx_modifInscreptionType.Items.Contains(unP.Type))
                 {
                     cbx_modifInscreptionType.SelectedItem = unP.Type;
 
                 }
+
+                #region nouvelle occurence 
+                if (unP.LesAtelier is null)
+                {
+                   
+                }
+                else
+                { // SelectedValue
+                    int i = 0; 
+                    while (i < unP.LesAtelier.Count)
+                    {
+                        
+                        int a = 0; // iterateur de la nouvelle boucle 
+                        int index = default; // recup le resultat
+
+                        Atelier atelier = unP.LesAtelier[i];
+
+                        while (a <lesAteliers.Count)
+                        {
+                            if (lesAteliers[a].Equals(atelier))
+                            {
+                                 index = a; 
+                            }
+                        }
+                        
+                        CLB_inscriptionModificationAtelier.SetItemChecked(index, true);
+
+                        i++; 
+                    }
+
+                }
+                #endregion
 
                 if (unP.Type == "Benevole")
                 {
