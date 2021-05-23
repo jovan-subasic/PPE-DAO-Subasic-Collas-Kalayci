@@ -15,26 +15,27 @@ namespace PPE_DAO_S_C_K
             private int idOrdre;
             private int id_equipement;
             private int montantFacture;
-            private int prix;
             private String nom;
             private int id_partenaires;
+            private List<Stand> lesStands;
+
 
         #endregion
 
         #region constructeur
 
-            public Stand(int id, int idAllee, int idOrdre, int id_equipement, int montantFacture, int prix, string nom, int id_partenaires)
+        public Stand(int id, int idAllee, int idOrdre, int id_equipement, int montantFacture, string nom, int id_partenaires)
             {
                 this.id = id;
                 this.idAllee = idAllee;
                 this.idOrdre = idOrdre;
                 this.id_equipement = id_equipement;
                 this.montantFacture = montantFacture;
-                this.prix = prix;
                 this.nom = nom;
                 this.id_patenaires = id_partenaires;
+                this.lesStands = new List<Stand>();
 
-            }
+        }
 
         #endregion
 
@@ -65,11 +66,6 @@ namespace PPE_DAO_S_C_K
                 get => montantFacture; set => montantFacture = value;
             }
 
-            public int Prix
-            {
-                get => prix; set => prix = value;
-            }
-
             public string Nom 
             { 
                 get => nom; set => nom = value; 
@@ -80,12 +76,14 @@ namespace PPE_DAO_S_C_K
                 get => id_partenaires; set => id_partenaires = value;
             }
 
+            internal List<Stand> lesStands { get => lesStands; set => lesStands = value; }
+
 
         #endregion
 
         #region Methode 
 
-            public void ajoutdbStand()
+        public void ajoutdbStand()
             {
                 DAOStand db = new DAOStand();
                 db.executeSQLinscription(this);
