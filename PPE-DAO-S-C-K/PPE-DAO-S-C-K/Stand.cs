@@ -32,8 +32,7 @@ namespace PPE_DAO_S_C_K
             this.id_equipement = id_equipement;
             this.montantFacture = montantFacture;
             this.nom = nom;
-            this.id_patenaires = id_partenaires;
-            this.lesStands = new List<Stand>();
+            this.id_partenaires = id_partenaires;
 
         }
 
@@ -76,25 +75,12 @@ namespace PPE_DAO_S_C_K
             get => id_partenaires; set => id_partenaires = value;
         }
 
-        internal List<Stand> lesStands { get => lesStands; set => lesStands = value; }
 
 
         #endregion
 
         #region Methode 
 
-        public void ajoutdbStand()
-        {
-            DAOStand db = new DAOStand();
-            db.executeSQLinscription(this);
-        }
-
-        public void dbStand()
-        {
-            DAOStand db = new DAOStand();
-            db.executeParticipe(this);
-
-        }
 
         #endregion
     }
