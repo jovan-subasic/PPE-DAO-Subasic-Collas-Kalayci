@@ -708,7 +708,38 @@ namespace PPE_DAO_S_C_K
             cbx_typePartenaire.Items.Clear();
             cbx_typePartenaire.ResetText();
 
-            #endregion
+            
         }
+        #endregion
+
+        #region Affectation Stand
+        private void Btn_affectationStand_Click(object sender, EventArgs e)
+        {
+
+            if (0 != cbx_stands.Text.Length &&
+                0 != cbx_partenaire.Text.Length)
+            {
+                DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+                DAOStand DAOdbStand = new DAOStand();
+
+
+                int idStand = DAOdbStand.getIdStand(cbx_stands.SelectedItem.ToString());
+
+                int idPartenaire = DAOdbPartenaire.getIdPartenaire(cbx_partenaire.SelectedItem.ToString());
+
+                String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
+
+
+                DAOdbStand.ModifierStand(idPartenaire, montantDepart, idStand);
+
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
+            }
+
+        }
+
+        #endregion
     }
 }

@@ -818,6 +818,7 @@
             this.Btn_affectationStand.TabIndex = 12;
             this.Btn_affectationStand.Text = "Affecter";
             this.Btn_affectationStand.UseVisualStyleBackColor = true;
+            this.Btn_affectationStand.Click += new System.EventHandler(this.Btn_affectationStand_Click);
             // 
             // label9
             // 

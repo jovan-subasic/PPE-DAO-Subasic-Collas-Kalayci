@@ -8,6 +8,8 @@ namespace PPE_DAO_S_C_K
     class DAOPartenaire
     {
         private List<TypePartenaire> lesIdTypesPartenaires = new List<TypePartenaire>();
+        private List<Partenaire> lesIdPartenaires = new List<Partenaire>();
+
 
         public void AjouterPartenaire(Partenaire unPartenaire)
         {
@@ -78,14 +80,29 @@ namespace PPE_DAO_S_C_K
         public int getIdTypePartenaire(string type)
         {
 
-            DAOPartenaire dp = new DAOPartenaire();
-            lesIdTypesPartenaires = dp.listeTypePartenaire();
+            lesIdTypesPartenaires = listeTypePartenaire();
 
             foreach (var nomtypePartenaire in lesIdTypesPartenaires)
             {
                 if(nomtypePartenaire.Nom == type)
                 {
                     return nomtypePartenaire.Id;
+                }
+            }
+
+            return 0;
+        }
+
+        public int getIdPartenaire(string type)
+        {
+
+            lesIdPartenaires = listePartenaire();
+
+            foreach (var nomPartenaire in lesIdPartenaires)
+            {
+                if (nomPartenaire.Nom == type)
+                {
+                    return nomPartenaire.Id;
                 }
             }
 

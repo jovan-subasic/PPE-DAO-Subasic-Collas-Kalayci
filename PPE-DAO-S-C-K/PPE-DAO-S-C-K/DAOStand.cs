@@ -7,6 +7,8 @@ namespace PPE_DAO_S_C_K
 {
     class DAOStand
     {
+        private List<Stand> lesIdStands = new List<Stand>();
+
         public void AjouterStand(Stand unStand )
         {
             String req = "INSERT INTO stands values ( '"
@@ -21,6 +23,16 @@ namespace PPE_DAO_S_C_K
             DAOFactory daoAddStand = new DAOFactory();
             daoAddStand.connecter();
             daoAddStand.excecSQLRead(req);
+        }
+
+        public void ModifierStand(int id_partenaire , String montant, int idStand)
+        {
+            String req = "UPDATE stands SET id_partenaires = " + id_partenaire +
+                ", montantFacture " + montant + " where id = " + idStand ;
+
+            DAOFactory daoModifStand = new DAOFactory();
+            daoModifStand.connecter();
+            daoModifStand.excecSQLRead(req);
         }
 
         public int bddUpdateID()
@@ -70,6 +82,38 @@ namespace PPE_DAO_S_C_K
             }
 
             return lesStands;
+        }
+
+        public int getIdStand(string type)
+        {
+
+            lesIdStands = listeStand();
+
+            foreach (var nomStand in lesIdStands)
+            {
+                if (nomStand.Nom == type)
+                {
+                    return nomStand.Id;
+                }
+            }
+
+            return 0;
+        }
+
+        public String getMontantStand(string type)
+        {
+
+            lesIdStands = listeStand();
+
+            foreach (var nomStand in lesIdStands)
+            {
+                if (nomStand.Nom == type)
+                {
+                    return nomStand.MontantFacture;
+                }
+            }
+
+            return "";
         }
     }
 }
