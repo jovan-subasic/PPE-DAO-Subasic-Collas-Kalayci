@@ -734,7 +734,7 @@ namespace PPE_DAO_S_C_K
 
                 int montantDepartInt = int.Parse(montantDepart);
 
-                String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_stands.SelectedItem.ToString());
+                String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_partenaire.SelectedItem.ToString());
 
                 if (NomTypePartenaire == "equipementier")
                 {
@@ -777,7 +777,7 @@ namespace PPE_DAO_S_C_K
 
             String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
 
-            String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_stands.SelectedItem.ToString());
+            String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_partenaire.SelectedItem.ToString());
 
             int montantDepartInt = int.Parse(montantDepart);
 
