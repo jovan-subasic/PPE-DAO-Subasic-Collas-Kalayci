@@ -692,6 +692,22 @@ namespace PPE_DAO_S_C_K
             cbx_cabineEssayage.Checked = false;
             cbx_tablesFournis.Checked = false;
 
+            cbx_partenaire.Items.Clear();
+            cbx_partenaire.ResetText();
+
+            foreach (var Partenaire in lesPartenaires)
+            {
+                cbx_partenaire.Items.Add(Partenaire.Nom);
+            }
+
+            cbx_stands.Items.Clear();
+            cbx_stands.ResetText();
+
+            foreach (var Stand in lesStands)
+            {
+                cbx_stands.Items.Add(Stand.Nom);
+            }
+
         }
 
         #endregion
@@ -859,22 +875,7 @@ namespace PPE_DAO_S_C_K
             }
             cbx_stands.ResetText();
             cbx_partenaire.ResetText();
-
-            cbx_partenaire.Items.Clear();
-            cbx_partenaire.ResetText();
-
-            foreach (var Partenaire in lesPartenaires)
-            {
-                cbx_partenaire.Items.Add(Partenaire.Nom);
-            }
-
-            cbx_stands.Items.Clear();
-            cbx_stands.ResetText();
-
-            foreach (var Stand in lesStands)
-            {
-                cbx_stands.Items.Add(Stand.Nom);
-            }
+  
         }
 
         #endregion
