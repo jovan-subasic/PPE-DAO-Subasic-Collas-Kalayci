@@ -38,11 +38,13 @@ namespace PPE_DAO_S_C_K
         public int Capacite { get => capacite; set => capacite = value; }
         internal Participant Intervenant { get => intervenant; set => intervenant = value; }
         internal List<Participant> Participants { get => participants; set => participants = value; }
-    
+
         #endregion
 
 
         #region Méthodes 
+
+        #region Ajout / Suppression Participant
         // Ajouter un participant a la liste 
         public void ajouterParticipant(Participant participant)
         {
@@ -54,8 +56,10 @@ namespace PPE_DAO_S_C_K
         {
             this.participants.Remove(participant);
         }
+        #endregion
 
-        // Instancie une collection de tous le Atelier existant dans la table Atelier
+        #region Liste Atelier
+        // Instancie une collection de tous le Atelier existant dans la table Atelier en utilisant tousLesAteliers() de DAOAtelier
         public List<Atelier> allAteliers()
         {
             DAOAtelier dbA = new DAOAtelier(); 
@@ -64,11 +68,17 @@ namespace PPE_DAO_S_C_K
            
             return listAteliers;
         }
+        #endregion
+
+        #region participer
+        // Appel la fonction dbParticipe( Atelier ) de DAOAtelier pour inscrire ou modifier une occurence de la table participer en BDD
         public void participe()
         {
             DAOAtelier db = new DAOAtelier();
             db.dbParticipe(this); 
         }
+        #endregion
+
         #endregion
     }
 }

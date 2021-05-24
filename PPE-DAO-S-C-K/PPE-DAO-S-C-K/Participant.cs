@@ -78,6 +78,9 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Methode 
+
+        #region Ajout / Modification / Suppression Atelier
+        // ajoute un participant a chaque atelier de sa collection d'atelier 
         public void participantAtelier()
         {
             int i = 0;
@@ -88,17 +91,33 @@ namespace PPE_DAO_S_C_K
             }
         }
 
+        // ajouter un Atelier a la liste d'atelier du participant 
         public void ajouterAtelier(Atelier atelier)
         {
             this.lesAtelier.Add(atelier);
         }
 
-        // Supprimer un participant 
+        // Supprimer un Atelier a la liste d'atelier du participant 
         public void supprimerAtelier(Atelier atelier)
         {
             this.lesAtelier.Remove(atelier);
         }
 
+        // Appel la fonction dbAjoutAtelier(Participant ou Benevoles, Liste <Atelier>) de DAOParticipant pour modifier une occurence de la table participer en BDD
+        public void inscriptiondbParticipe(List<Atelier> mesAteliers = null)
+        {
+            if (mesAteliers is null)
+            {
+                mesAteliers = this.LesAtelier;
+            }
+            DAOParticipant db = new DAOParticipant();
+            db.dbAjoutAtelier(this, mesAteliers);
+
+        }
+        #endregion
+
+        #region Liste de participant 
+        // permets d'obtenir la liste de tous les participants en Bdd 
         public List<Participant> allParticipant()
         {
             DAOParticipant dbP = new DAOParticipant();
@@ -107,37 +126,35 @@ namespace PPE_DAO_S_C_K
            
             return laList; 
         }
+        #endregion
 
+        #region Ajouter Participant 
+        // Appel la fonction executeSQLinscription(Participant ou Benevole) de DAOParticipant pour ajouter une occurence de la table participants en BDD
         public void ajoutdbParticipant()
         {
             DAOParticipant db = new DAOParticipant();
             db.executeSQLinscription(this); 
         }
 
+        // update l'id local pour qu'il soit raccord avec l'id en bdd pour un nouveau participant
+        public void updateID()
+        {
+            DAOParticipant use = new DAOParticipant();
+            use.bddUpdateID(this);
+        }
+        #endregion
+
+        #region Modification Participant
+        // Appel la fonction executeSQLmodifInscription(Participant ou Benevole) de DAOParticipant pour modifier une occurence de la table participants en BDD
         public void modifParticipant()
         {
             DAOParticipant db = new DAOParticipant();
             db.executeSQLmodifInscription(this);
         }
+        #endregion
 
-        // update l'id pour qu'il soit raccord avec la bdd pour un nouveau participant
-        public void updateID()
-        {
-            DAOParticipant use = new DAOParticipant();
-            use.bddUpdateID(this); 
-        }
-
-        public void inscriptiondbParticipe(List<Atelier> mesAteliers = null)
-        {
-            if(mesAteliers is null)
-            {
-                mesAteliers = this.LesAtelier; 
-            }
-            DAOParticipant db = new DAOParticipant();
-            db.dbAjoutAtelier(this, mesAteliers); 
-          
-        } 
-        
+        #region Ajout ou Modification participer
+        // Appel la fonction executeSQLinscription(Participant ou Benevole) de DAOParticipant pour ajouter une occurence de la table participer en BDD
         public void dbParticipe()
         {
             DAOParticipant db = new DAOParticipant();
@@ -145,6 +162,8 @@ namespace PPE_DAO_S_C_K
           
         }
         #endregion
-    
+
+        #endregion
+
     }
 }
