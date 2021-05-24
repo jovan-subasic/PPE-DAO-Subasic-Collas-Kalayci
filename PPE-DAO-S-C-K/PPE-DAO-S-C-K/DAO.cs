@@ -729,8 +729,28 @@ namespace PPE_DAO_S_C_K
 
                 String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
 
+                int montantDepartInt = int.Parse(montantDepart);
 
-                DAOdbStand.ModifierStand(idPartenaire, montantDepart, idStand);
+                String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_stands.SelectedItem.ToString());
+
+                if (NomTypePartenaire == "equipementier")
+                {
+                    String montantFinal = montantDepart;
+
+                    DAOdbStand.ModifierStand(idPartenaire, montantFinal, idStand);
+                }
+                else
+                {
+                    int montantFinalInt = montantDepartInt * 2;
+                    String montantFinal = montantFinalInt.ToString();
+
+                    DAOdbStand.ModifierStand(idPartenaire, montantFinal, idStand);
+                }
+
+                cbx_stands.Items.Clear();
+                cbx_partenaire.Items.Clear();
+
+
 
             }
             else

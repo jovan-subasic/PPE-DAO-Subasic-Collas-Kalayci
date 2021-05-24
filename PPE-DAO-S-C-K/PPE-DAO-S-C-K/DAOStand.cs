@@ -28,7 +28,8 @@ namespace PPE_DAO_S_C_K
         public void ModifierStand(int id_partenaire , String montant, int idStand)
         {
             String req = "UPDATE stands SET id_partenaires = " + id_partenaire +
-                ", montantFacture " + montant + " where id = " + idStand ;
+                ", montantFacture = " + montant + " where id = " + idStand ;
+
 
             DAOFactory daoModifStand = new DAOFactory();
             daoModifStand.connecter();

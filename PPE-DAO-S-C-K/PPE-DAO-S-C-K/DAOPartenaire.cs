@@ -93,6 +93,7 @@ namespace PPE_DAO_S_C_K
             return 0;
         }
 
+
         public int getIdPartenaire(string type)
         {
 
@@ -107,6 +108,31 @@ namespace PPE_DAO_S_C_K
             }
 
             return 0;
+        }
+
+        public String getNomTypePartenaire(string type)
+        {
+
+            lesIdPartenaires = listePartenaire();
+
+            foreach (var nomPartenaire in lesIdPartenaires)
+            {
+                if (nomPartenaire.Nom == type)
+                {
+                    int IdTypePartenaires = nomPartenaire.TypePartenaire;
+
+                    if(IdTypePartenaires == 1)
+                    {
+                        return "equipementier";
+                    }
+                    else
+                    {
+                        return "club";
+                    }
+                }
+            }
+
+            return "";
         }
 
     }
