@@ -565,8 +565,8 @@ namespace PPE_DAO_S_C_K
             + "(nom, id_atelier); "
 
             + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
-            + "(id, nom), "
-            + "(id, nom); "
+            + "(1, equipementier), "
+            + "(2, club); "
             ;
 
             db.execSQLWrite(req);
