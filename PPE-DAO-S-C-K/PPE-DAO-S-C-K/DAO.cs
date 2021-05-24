@@ -880,10 +880,13 @@ namespace PPE_DAO_S_C_K
 
         #endregion
 
+
         private void cbx_stands_SelectedValueChanged(object sender, EventArgs e)
         {
 
         }
+
+        #region SelectedValueChanged 
 
         private void cbx_partenaire_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -916,6 +919,8 @@ namespace PPE_DAO_S_C_K
                 MessageBox.Show(" Veuillez selectionner un Stand ");
             }
         }
+
+        #endregion
 
         private void GrB_creationPartenaire_Enter(object sender, EventArgs e)
         {
