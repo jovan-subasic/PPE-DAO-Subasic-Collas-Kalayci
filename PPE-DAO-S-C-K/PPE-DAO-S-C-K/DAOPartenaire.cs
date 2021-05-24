@@ -109,37 +109,32 @@ namespace PPE_DAO_S_C_K
 
             return 0;
         }
-
-        public String getNomTypePartenaire(string type)
+        
+        public String getNomTypePartenaire(string nom)
         {
-            String nomTypePartenaire;
-            int idTypePartenaire;
 
+            lesIdPartenaires = listePartenaire();
+            String nomTypePartenaire = "";
 
-            DAOFactory db = new DAOFactory();
-            db.connecter();
-
-            String req = "select * from partenaires where nom = " + type + " ;";
-            SqlDataReader reader = db.excecSQLRead(req);
-
-
-
-            reader.Read();
-
-            idTypePartenaire = int.Parse(reader[2].ToString());
-
-            if (idTypePartenaire == 1)
+            foreach (var nomPartenaire in lesIdPartenaires)
             {
-                nomTypePartenaire = "equipementier";
-            }
-            else
-            {
-                nomTypePartenaire = "club";
-            }
+                if (nomPartenaire.Nom == nom)
+                {
+                    int IdTypePartenaires = nomPartenaire.TypePartenaire;
 
+                    if(IdTypePartenaires == 1)
+                    {
+                        nomTypePartenaire = "equipementier";
+                    }
+                    else
+                    {
+                        nomTypePartenaire = "club";
+                    }
+                }
+            }
             return nomTypePartenaire;
 
         }
-
+        /**/
     }
 }
