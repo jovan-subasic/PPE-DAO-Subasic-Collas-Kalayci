@@ -67,7 +67,7 @@ namespace PPE_DAO_S_C_K
 
                 id: int.Parse(reader[0].ToString()),
                 nom: reader[1].ToString(),
-                typePartenaire: int.Parse(reader[0].ToString()));
+                typePartenaire: int.Parse(reader[2].ToString()));
 
                 lesPartenaires.Add(P);
 
