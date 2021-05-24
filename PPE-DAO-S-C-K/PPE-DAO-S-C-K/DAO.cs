@@ -59,7 +59,10 @@ namespace PPE_DAO_S_C_K
 
             foreach (var Stand in lesStands)
             {
-                cbx_stands.Items.Add(Stand.Nom);
+                if (Stand.Id_partenaires == 0)
+                {
+                    cbx_stands.Items.Add(Stand.Nom);
+                }
             }
         }
         #endregion
@@ -761,5 +764,37 @@ namespace PPE_DAO_S_C_K
         }
 
         #endregion
+
+        private void cbx_stands_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_partenaire_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DAOStand DAOdbStand = new DAOStand();
+            DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+
+            String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
+
+            String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_stands.SelectedItem.ToString());
+
+            int montantDepartInt = int.Parse(montantDepart);
+
+            if (NomTypePartenaire == "equipementier")
+            {
+                String montantFinal = montantDepart;
+                lbl_prix.Text = montantFinal;
+            }
+            else 
+            {
+                int montantFinalInt = montantDepartInt * 2;
+                String montantFinal = montantFinalInt.ToString();
+
+                lbl_prix.Text = montantFinal;
+            }
+
+            
+        }
     }
 }

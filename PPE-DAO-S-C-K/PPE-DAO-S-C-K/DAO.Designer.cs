@@ -837,6 +837,7 @@
             this.cbx_partenaire.Name = "cbx_partenaire";
             this.cbx_partenaire.Size = new System.Drawing.Size(292, 32);
             this.cbx_partenaire.TabIndex = 10;
+            this.cbx_partenaire.SelectedValueChanged += new System.EventHandler(this.cbx_partenaire_SelectedValueChanged);
             // 
             // label10
             // 
@@ -855,6 +856,7 @@
             this.cbx_stands.Name = "cbx_stands";
             this.cbx_stands.Size = new System.Drawing.Size(292, 32);
             this.cbx_stands.TabIndex = 13;
+            this.cbx_stands.SelectedValueChanged += new System.EventHandler(this.cbx_stands_SelectedValueChanged);
             // 
             // label11
             // 
@@ -872,9 +874,9 @@
             this.lbl_prix.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_prix.Location = new System.Drawing.Point(226, 209);
             this.lbl_prix.Name = "lbl_prix";
-            this.lbl_prix.Size = new System.Drawing.Size(31, 18);
+            this.lbl_prix.Size = new System.Drawing.Size(16, 18);
             this.lbl_prix.TabIndex = 15;
-            this.lbl_prix.Text = "prix";
+            this.lbl_prix.Text = "p";
             // 
             // Maison_des_ligues
             // 
