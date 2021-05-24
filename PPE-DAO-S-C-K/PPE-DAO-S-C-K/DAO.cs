@@ -39,12 +39,27 @@ namespace PPE_DAO_S_C_K
         {
             remplirList();
 
+            DAOStand daoStand = new DAOStand();
             DAOPartenaire dp = new DAOPartenaire();
             lesTypesPartenaires = dp.listeTypePartenaire();
 
             foreach (var typePartenaire in lesTypesPartenaires)
             {
                 cbx_typePartenaire.Items.Add(typePartenaire.Nom);
+            }
+
+            lesPartenaires = dp.listePartenaire();
+
+            foreach (var Partenaire in lesPartenaires)
+            {
+                cbx_partenaire.Items.Add(Partenaire.Nom);
+            }
+
+            lesStands = daoStand.listeStand();
+
+            foreach (var Stand in lesStands)
+            {
+                cbx_stands.Items.Add(Stand.Nom);
             }
         }
         #endregion
@@ -572,7 +587,14 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
-        
+
+            txt_Nalle.Clear();
+            txt_Nordre.Clear();
+            txt_montantFacture.Clear();
+            txt_nomStand.Clear();
+            tbx_nbrSiege.Clear();
+            tbx_nbrSiege.Clear();
+
         }
 
         #endregion
@@ -597,6 +619,8 @@ namespace PPE_DAO_S_C_K
         {
 
         }
+
+        #region Caractère numérique seulement
 
         private void txt_Nalle_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -645,6 +669,10 @@ namespace PPE_DAO_S_C_K
             }
         }
 
+        #endregion
+
+        #region Création Partenaire
+
         private void Btn_creationPartenaire_Click(object sender, EventArgs e)
         {
             if (0 != txt_nomPartenaire.Text.Length &&
@@ -669,6 +697,8 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
+
+            #endregion
         }
     }
 }

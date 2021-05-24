@@ -47,6 +47,34 @@ namespace PPE_DAO_S_C_K
             return lesTypesPartenaires;
         }
 
+        public List<Partenaire> listePartenaire()
+        {
+            List<Partenaire> lesPartenaires = new List<Partenaire>();
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            String req = "select * from partenaires;";
+            SqlDataReader reader = db.excecSQLRead(req);
+
+
+
+            while (reader.Read())
+            {
+                Partenaire P = new Partenaire(
+
+                id: int.Parse(reader[0].ToString()),
+                nom: reader[1].ToString(),
+                typePartenaire: int.Parse(reader[0].ToString()));
+
+                lesPartenaires.Add(P);
+
+
+            }
+
+            return lesPartenaires;
+        }
+
         public int getIdTypePartenaire(string type)
         {
 

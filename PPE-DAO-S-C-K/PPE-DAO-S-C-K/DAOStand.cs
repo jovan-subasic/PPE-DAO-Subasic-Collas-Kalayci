@@ -36,5 +36,38 @@ namespace PPE_DAO_S_C_K
 
             return idMax;
         }
+
+        public List<Stand> listeStand()
+        {
+            List<Stand> lesStands = new List<Stand>();
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            String req = "select * from stands;";
+            SqlDataReader reader = db.excecSQLRead(req);
+
+
+
+            while (reader.Read())
+            {
+                Stand St = new Stand(
+
+                id: int.Parse(reader[0].ToString()),
+                idAllee: reader[1].ToString(),
+                idOrdre: reader[2].ToString(),
+                id_equipement: int.Parse(reader[3].ToString()),
+                montantFacture: reader[4].ToString(),
+                nom: reader[5].ToString(),        
+                id_partenaires: int.Parse(reader[6].ToString()));
+
+
+                lesStands.Add(St);
+
+
+            }
+
+            return lesStands;
+        }
     }
 }
