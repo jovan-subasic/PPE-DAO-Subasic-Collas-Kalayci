@@ -37,6 +37,8 @@ namespace PPE_DAO_S_C_K
         #region Formulaire M2L
         private void Maison_des_ligues_Load(object sender, EventArgs e)
         {
+
+            initBddDonnee();
             remplirList();
 
             DAOStand daoStand = new DAOStand();
@@ -469,6 +471,19 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Méthodes  
+
+        public void initBddDonnee()
+        {
+            Participant unP = new Participant();
+            Atelier unA = new Atelier();
+
+            // on verifie seulement sur 2 tables de la bdd pour savoir si elle est vide 
+            if (unP.allParticipant().Count() < 1 && unA.allAteliers().Count() < 1)
+            {
+             // insertJeuDeTest(); 
+            }
+        }
+
         public void remplirList()
         {
             Participant unP = new Participant();
@@ -477,13 +492,86 @@ namespace PPE_DAO_S_C_K
             lesParticipants = unP.allParticipant();
             lesAteliers = unA.allAteliers();
         }
+        public void insertJeuDeTest()
+        {
+            DAOFactory db = new DAOFactory();
+            db.connecter();
 
+            // on s'assure qu'il n'y a pas de donnée, puis en les recreers 
+            String req = "" 
+            + "DELETE FROM dbo.atelier; "
+            + "DELETE FROM Date; "
+            + "DELETE FROM equipements; "
+            + "DELETE FROM intervenir; "
+            + "DELETE FROM Intervention; "
+            + "DELETE FROM partenaires; "
+            + "DELETE FROM participants; "
+            + "DELETE FROM participer; "
+            + "DELETE FROM stands; "
+            + "DELETE FROM themes; "
+            + "DELETE FROM typePartenaire; "
 
+            + "SET IDENTITY_INSERT dbo.atelier ON"
+            + "INSERT INTO ASL.dbo.atelier(id, nom, capacite, id_participants) VALUES"
+            + "(1, 'La Maison des Ligues et son projet', 50, 1),"
+            + "(2, 'Observatoire du metier des sports', 80, 1),"
+            + "(3, 'Le fonctionnement de la Maison des Ligues', 70, 1),"
+            + "(4, 'Le sport lorrain et les collectivités', 60, 1),"
+            + "(5, 'Les outils à disposition et remis aux clubs', 40, 1),"
+            + "(6, 'Développement durable', 90, 1); "
 
+            + "INSERT INTO ASL.dbo.Date (id, date_debut, date_fin) VALUES"
+            + "(id, date_debut, date_fin), "
+            + "(id, date_debut, date_fin), "
+            + "(id, date_debut, date_fin), "
+            + "(id, date_debut, date_fin), "
+            + "(id, date_debut, date_fin), "
+            + "(id, date_debut, date_fin); "
 
+            + "INSERT INTO ASL.dbo.equipements (connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis) VALUES"
+            + "(connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis), "
+            + "(connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis); "
 
+            + "INSERT INTO ASL.dbo.intervenir (email, id) VALUES"
+            + "(email, id), "
+            + "(email, id); "
 
+            + "INSERT INTO ASL.dbo.Intervention (email, id) VALUES"
+            + "(email, id), "
+            + "(email, id); "
 
+            + "INSERT INTO ASL.dbo.partenaires (nom, typePartenaire) VALUES"
+            + "(nom, typePartenaire), "
+            + "(nom, typePartenaire); "
+
+            + "INSERT INTO ASL.dbo.participants (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
+            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
+            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
+            + "(nom, prenom, adresse, portable, type, nombre_Participation); "
+
+            + "INSERT INTO ASL.dbo.participer (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
+            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
+            + "(nom, prenom, adresse, portable, type, nombre_Participation); "
+
+            + "INSERT INTO ASL.dbo.posseder (id, id_stands) VALUES"
+            + "(id, id_stands), "
+            + "(id, id_stands); "
+
+            + "INSERT INTO ASL.dbo.stands (idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
+            + "(idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface), "
+            + "(idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface); "
+
+            + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
+            + "(nom, id_atelier), "
+            + "(nom, id_atelier); "
+
+            + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
+            + "(id, nom), "
+            + "(id, nom); "
+            ;
+
+            db.execSQLWrite(req);
+        }
 
         #endregion
 
