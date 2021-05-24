@@ -508,7 +508,7 @@ namespace PPE_DAO_S_C_K
                 int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
-                int id_partenaire = lesPartenaires.Count; 
+                int id_partenaire = 0; 
 
                 if(cbx_connexionReseauFilaire.Checked)
                 {
@@ -575,7 +575,8 @@ namespace PPE_DAO_S_C_K
                                 DAOdbStand.bddUpdateID(),
                                 txt_montantFacture.Text,
                                 txt_nomStand.Text,
-                                id_partenaire
+                                id_partenaire,
+                                txt_surface.Text
                                 );
                 lesStands.Add(Sd);
                 Sd.ajoutdbStand();
@@ -592,8 +593,13 @@ namespace PPE_DAO_S_C_K
             txt_Nordre.Clear();
             txt_montantFacture.Clear();
             txt_nomStand.Clear();
+            txt_surface.Clear();
             tbx_nbrSiege.Clear();
-            tbx_nbrSiege.Clear();
+            cbx_connexionReseauFilaire.Checked = false;
+            cbx_bar.Checked = false;
+            cbx_salonReception.Checked = false;
+            cbx_cabineEssayage.Checked = false;
+            cbx_tablesFournis.Checked = false;
 
         }
 
@@ -697,6 +703,10 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
+
+            txt_nomPartenaire.Clear();
+            cbx_typePartenaire.Items.Clear();
+            cbx_typePartenaire.ResetText();
 
             #endregion
         }

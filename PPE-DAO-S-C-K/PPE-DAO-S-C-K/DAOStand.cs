@@ -15,7 +15,8 @@ namespace PPE_DAO_S_C_K
                          + unStand.Equipement + "' , '"
                          + unStand.MontantFacture + "' , '"
                          + unStand.Nom + "' , '"
-                         + unStand.Id_partenaires + "' );";
+                         + unStand.Id_partenaires + "' , '"
+                         + unStand.Surface + "' );";
 
             DAOFactory daoAddStand = new DAOFactory();
             daoAddStand.connecter();
@@ -58,8 +59,9 @@ namespace PPE_DAO_S_C_K
                 idOrdre: reader[2].ToString(),
                 id_equipement: int.Parse(reader[3].ToString()),
                 montantFacture: reader[4].ToString(),
-                nom: reader[5].ToString(),        
-                id_partenaires: int.Parse(reader[6].ToString()));
+                nom: reader[5].ToString(),
+                id_partenaires: int.Parse(reader[6].ToString()),
+                surface: reader[7].ToString());
 
 
                 lesStands.Add(St);
