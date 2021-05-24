@@ -63,6 +63,8 @@ namespace PPE_DAO_S_C_K
             {
                 cbx_stands.Items.Add(Stand.Nom);
             }
+
+            
         }
         #endregion
 
@@ -690,6 +692,22 @@ namespace PPE_DAO_S_C_K
             cbx_cabineEssayage.Checked = false;
             cbx_tablesFournis.Checked = false;
 
+            cbx_partenaire.Items.Clear();
+            cbx_partenaire.ResetText();
+
+            foreach (var Partenaire in lesPartenaires)
+            {
+                cbx_partenaire.Items.Add(Partenaire.Nom);
+            }
+
+            cbx_stands.Items.Clear();
+            cbx_stands.ResetText();
+
+            foreach (var Stand in lesStands)
+            {
+                cbx_stands.Items.Add(Stand.Nom);
+            }
+
         }
 
         #endregion
@@ -794,10 +812,24 @@ namespace PPE_DAO_S_C_K
             }
 
             txt_nomPartenaire.Clear();
-            cbx_typePartenaire.Items.Clear();
             cbx_typePartenaire.ResetText();
 
-            
+            cbx_partenaire.Items.Clear();
+            cbx_partenaire.ResetText();
+
+            foreach (var Partenaire in lesPartenaires)
+            {
+                cbx_partenaire.Items.Add(Partenaire.Nom);
+            }
+
+            cbx_stands.Items.Clear();
+            cbx_stands.ResetText();
+
+            foreach (var Stand in lesStands)
+            {
+                cbx_stands.Items.Add(Stand.Nom);
+            }
+
         }
         #endregion
 
@@ -836,25 +868,25 @@ namespace PPE_DAO_S_C_K
                     DAOdbStand.ModifierStand(idPartenaire, montantFinal, idStand);
                 }
 
-                cbx_stands.Items.Clear();
-                cbx_partenaire.Items.Clear();
-
-
-
             }
             else
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
-
+            cbx_stands.ResetText();
+            cbx_partenaire.ResetText();
+  
         }
 
         #endregion
+
 
         private void cbx_stands_SelectedValueChanged(object sender, EventArgs e)
         {
 
         }
+
+        #region SelectedValueChanged 
 
         private void cbx_partenaire_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -886,6 +918,13 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez selectionner un Stand ");
             }
+        }
+
+        #endregion
+
+        private void GrB_creationPartenaire_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
