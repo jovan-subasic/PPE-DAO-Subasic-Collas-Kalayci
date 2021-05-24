@@ -17,13 +17,14 @@ namespace PPE_DAO_S_C_K
         private String montantFacture;
         private String nom;
         private int id_partenaires;
+        private String surface;
 
 
         #endregion
 
         #region constructeur
 
-        public Stand(int id, String idAllee, String idOrdre, int id_equipement, String montantFacture, string nom, int id_partenaires)
+        public Stand(int id, String idAllee, String idOrdre, int id_equipement, String montantFacture, String nom, int id_partenaires, String surface)
         {
             this.id = id;
             this.idAllee = idAllee;
@@ -32,7 +33,7 @@ namespace PPE_DAO_S_C_K
             this.montantFacture = montantFacture;
             this.nom = nom;
             this.id_partenaires = id_partenaires;
-
+            this.surface = surface;
         }
 
         #endregion
@@ -64,7 +65,7 @@ namespace PPE_DAO_S_C_K
             get => montantFacture; set => montantFacture = value;
         }
 
-        public string Nom
+        public String Nom
         {
             get => nom; set => nom = value;
         }
@@ -73,6 +74,11 @@ namespace PPE_DAO_S_C_K
         {
             get => id_partenaires; set => id_partenaires = value;
         }
+        public String Surface
+        {
+            get => surface; set => surface = value;
+        }
+
 
 
 

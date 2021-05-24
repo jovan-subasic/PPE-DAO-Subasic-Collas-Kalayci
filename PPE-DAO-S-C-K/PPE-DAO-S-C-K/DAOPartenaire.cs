@@ -8,6 +8,8 @@ namespace PPE_DAO_S_C_K
     class DAOPartenaire
     {
         private List<TypePartenaire> lesIdTypesPartenaires = new List<TypePartenaire>();
+        private List<Partenaire> lesIdPartenaires = new List<Partenaire>();
+
 
         public void AjouterPartenaire(Partenaire unPartenaire)
         {
@@ -47,11 +49,38 @@ namespace PPE_DAO_S_C_K
             return lesTypesPartenaires;
         }
 
+        public List<Partenaire> listePartenaire()
+        {
+            List<Partenaire> lesPartenaires = new List<Partenaire>();
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            String req = "select * from partenaires;";
+            SqlDataReader reader = db.excecSQLRead(req);
+
+
+
+            while (reader.Read())
+            {
+                Partenaire P = new Partenaire(
+
+                id: int.Parse(reader[0].ToString()),
+                nom: reader[1].ToString(),
+                typePartenaire: int.Parse(reader[0].ToString()));
+
+                lesPartenaires.Add(P);
+
+
+            }
+
+            return lesPartenaires;
+        }
+
         public int getIdTypePartenaire(string type)
         {
 
-            DAOPartenaire dp = new DAOPartenaire();
-            lesIdTypesPartenaires = dp.listeTypePartenaire();
+            lesIdTypesPartenaires = listeTypePartenaire();
 
             foreach (var nomtypePartenaire in lesIdTypesPartenaires)
             {
@@ -62,6 +91,49 @@ namespace PPE_DAO_S_C_K
             }
 
             return 0;
+        }
+
+
+        public int getIdPartenaire(string type)
+        {
+
+            lesIdPartenaires = listePartenaire();
+
+            foreach (var nomPartenaire in lesIdPartenaires)
+            {
+                if (nomPartenaire.Nom == type)
+                {
+                    return nomPartenaire.Id;
+                }
+            }
+
+            return 0;
+        }
+
+        public String getNomTypePartenaire(string nom)
+        {
+
+            lesIdPartenaires = listePartenaire();
+            String nomTypePartenaire;
+
+            foreach (var nomPartenaire in lesIdPartenaires)
+            {
+                if (nomPartenaire.Nom == nom)
+                {
+                    int IdTypePartenaires = nomPartenaire.TypePartenaire;
+
+                    if(IdTypePartenaires == 1)
+                    {
+                        nomTypePartenaire = "equipementier";
+                    }
+                    else
+                    {
+                        nomTypePartenaire = "club";
+                    }
+                }
+            }
+            return nomTypePartenaire;
+
         }
 
     }

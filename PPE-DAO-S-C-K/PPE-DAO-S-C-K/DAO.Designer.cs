@@ -42,6 +42,7 @@
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.GrB_equipement = new System.Windows.Forms.GroupBox();
+            this.tbx_nbrSiege = new System.Windows.Forms.TextBox();
             this.lbl_nbrSiege = new System.Windows.Forms.Label();
             this.cbx_cabineEssayage = new System.Windows.Forms.CheckBox();
             this.cbx_tablesFournis = new System.Windows.Forms.CheckBox();
@@ -95,7 +96,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tbx_nbrSiege = new System.Windows.Forms.TextBox();
+            this.GrB_affectation = new System.Windows.Forms.GroupBox();
+            this.Btn_affectationStand = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbx_partenaire = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbx_stands = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbl_prix = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -109,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ListeParticipant)).BeginInit();
             this.tabPagePartenaire.SuspendLayout();
             this.GrB_creationPartenaire.SuspendLayout();
+            this.GrB_affectation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -271,6 +280,14 @@
             this.GrB_equipement.TabIndex = 11;
             this.GrB_equipement.TabStop = false;
             this.GrB_equipement.Text = "Equipement";
+            // 
+            // tbx_nbrSiege
+            // 
+            this.tbx_nbrSiege.Location = new System.Drawing.Point(149, 208);
+            this.tbx_nbrSiege.Name = "tbx_nbrSiege";
+            this.tbx_nbrSiege.Size = new System.Drawing.Size(100, 29);
+            this.tbx_nbrSiege.TabIndex = 8;
+            this.tbx_nbrSiege.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_nbrSiege_KeyPress);
             // 
             // lbl_nbrSiege
             // 
@@ -705,6 +722,7 @@
             // 
             // tabPagePartenaire
             // 
+            this.tabPagePartenaire.Controls.Add(this.GrB_affectation);
             this.tabPagePartenaire.Controls.Add(this.GrB_creationPartenaire);
             this.tabPagePartenaire.Location = new System.Drawing.Point(4, 22);
             this.tabPagePartenaire.Name = "tabPagePartenaire";
@@ -731,7 +749,7 @@
             // 
             // Btn_creationPartenaire
             // 
-            this.Btn_creationPartenaire.Location = new System.Drawing.Point(69, 209);
+            this.Btn_creationPartenaire.Location = new System.Drawing.Point(79, 233);
             this.Btn_creationPartenaire.Name = "Btn_creationPartenaire";
             this.Btn_creationPartenaire.Size = new System.Drawing.Size(186, 71);
             this.Btn_creationPartenaire.TabIndex = 12;
@@ -775,13 +793,90 @@
             this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
             // 
-            // tbx_nbrSiege
+            // GrB_affectation
             // 
-            this.tbx_nbrSiege.Location = new System.Drawing.Point(149, 208);
-            this.tbx_nbrSiege.Name = "tbx_nbrSiege";
-            this.tbx_nbrSiege.Size = new System.Drawing.Size(100, 29);
-            this.tbx_nbrSiege.TabIndex = 8;
-            this.tbx_nbrSiege.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_nbrSiege_KeyPress);
+            this.GrB_affectation.Controls.Add(this.lbl_prix);
+            this.GrB_affectation.Controls.Add(this.label11);
+            this.GrB_affectation.Controls.Add(this.cbx_stands);
+            this.GrB_affectation.Controls.Add(this.Btn_affectationStand);
+            this.GrB_affectation.Controls.Add(this.label9);
+            this.GrB_affectation.Controls.Add(this.cbx_partenaire);
+            this.GrB_affectation.Controls.Add(this.label10);
+            this.GrB_affectation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.GrB_affectation.Location = new System.Drawing.Point(445, 45);
+            this.GrB_affectation.Name = "GrB_affectation";
+            this.GrB_affectation.Size = new System.Drawing.Size(429, 343);
+            this.GrB_affectation.TabIndex = 1;
+            this.GrB_affectation.TabStop = false;
+            this.GrB_affectation.Text = "Affectation des Stands";
+            // 
+            // Btn_affectationStand
+            // 
+            this.Btn_affectationStand.Location = new System.Drawing.Point(112, 249);
+            this.Btn_affectationStand.Name = "Btn_affectationStand";
+            this.Btn_affectationStand.Size = new System.Drawing.Size(186, 71);
+            this.Btn_affectationStand.TabIndex = 12;
+            this.Btn_affectationStand.Text = "Affecter";
+            this.Btn_affectationStand.UseVisualStyleBackColor = true;
+            this.Btn_affectationStand.Click += new System.EventHandler(this.Btn_affectationStand_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 151);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 18);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Partenaires :";
+            // 
+            // cbx_partenaire
+            // 
+            this.cbx_partenaire.FormattingEnabled = true;
+            this.cbx_partenaire.Location = new System.Drawing.Point(131, 144);
+            this.cbx_partenaire.Name = "cbx_partenaire";
+            this.cbx_partenaire.Size = new System.Drawing.Size(292, 32);
+            this.cbx_partenaire.TabIndex = 10;
+            this.cbx_partenaire.SelectedValueChanged += new System.EventHandler(this.cbx_partenaire_SelectedValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(18, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 18);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Stands :";
+            // 
+            // cbx_stands
+            // 
+            this.cbx_stands.FormattingEnabled = true;
+            this.cbx_stands.Location = new System.Drawing.Point(131, 61);
+            this.cbx_stands.Name = "cbx_stands";
+            this.cbx_stands.Size = new System.Drawing.Size(292, 32);
+            this.cbx_stands.TabIndex = 13;
+            this.cbx_stands.SelectedValueChanged += new System.EventHandler(this.cbx_stands_SelectedValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(69, 209);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(124, 18);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Montant Facturé :";
+            // 
+            // lbl_prix
+            // 
+            this.lbl_prix.AutoSize = true;
+            this.lbl_prix.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_prix.Location = new System.Drawing.Point(226, 209);
+            this.lbl_prix.Name = "lbl_prix";
+            this.lbl_prix.Size = new System.Drawing.Size(16, 18);
+            this.lbl_prix.TabIndex = 15;
+            this.lbl_prix.Text = "p";
             // 
             // Maison_des_ligues
             // 
@@ -812,6 +907,8 @@
             this.tabPagePartenaire.ResumeLayout(false);
             this.GrB_creationPartenaire.ResumeLayout(false);
             this.GrB_creationPartenaire.PerformLayout();
+            this.GrB_affectation.ResumeLayout(false);
+            this.GrB_affectation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,6 +983,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_nomPartenaire;
         private System.Windows.Forms.TextBox tbx_nbrSiege;
+        private System.Windows.Forms.GroupBox GrB_affectation;
+        private System.Windows.Forms.Label lbl_prix;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbx_stands;
+        private System.Windows.Forms.Button Btn_affectationStand;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbx_partenaire;
+        private System.Windows.Forms.Label label10;
     }
 }
 

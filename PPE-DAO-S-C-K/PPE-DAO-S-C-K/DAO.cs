@@ -39,12 +39,30 @@ namespace PPE_DAO_S_C_K
         {
             remplirList();
 
+            DAOStand daoStand = new DAOStand();
             DAOPartenaire dp = new DAOPartenaire();
             lesTypesPartenaires = dp.listeTypePartenaire();
 
             foreach (var typePartenaire in lesTypesPartenaires)
             {
                 cbx_typePartenaire.Items.Add(typePartenaire.Nom);
+            }
+
+            lesPartenaires = dp.listePartenaire();
+
+            foreach (var Partenaire in lesPartenaires)
+            {
+                cbx_partenaire.Items.Add(Partenaire.Nom);
+            }
+
+            lesStands = daoStand.listeStand();
+
+            foreach (var Stand in lesStands)
+            {
+                if (Stand.Id_partenaires == 0)
+                {
+                    cbx_stands.Items.Add(Stand.Nom);
+                }
             }
         }
         #endregion
@@ -494,7 +512,7 @@ namespace PPE_DAO_S_C_K
                 int id_equipement = lesEquipements.Count; // pour que l'id sont la nouvelle derniere valeur
                 id = id + 1 ;
 
-                int id_partenaire = lesPartenaires.Count; 
+                int id_partenaire = 0; 
 
                 if(cbx_connexionReseauFilaire.Checked)
                 {
@@ -561,7 +579,8 @@ namespace PPE_DAO_S_C_K
                                 DAOdbStand.bddUpdateID(),
                                 txt_montantFacture.Text,
                                 txt_nomStand.Text,
-                                id_partenaire
+                                id_partenaire,
+                                txt_surface.Text
                                 );
                 lesStands.Add(Sd);
                 Sd.ajoutdbStand();
@@ -573,7 +592,19 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
-        
+
+            txt_Nalle.Clear();
+            txt_Nordre.Clear();
+            txt_montantFacture.Clear();
+            txt_nomStand.Clear();
+            txt_surface.Clear();
+            tbx_nbrSiege.Clear();
+            cbx_connexionReseauFilaire.Checked = false;
+            cbx_bar.Checked = false;
+            cbx_salonReception.Checked = false;
+            cbx_cabineEssayage.Checked = false;
+            cbx_tablesFournis.Checked = false;
+
         }
 
         #endregion
@@ -598,6 +629,8 @@ namespace PPE_DAO_S_C_K
         {
 
         }
+
+        #region Caractère numérique seulement
 
         private void txt_Nalle_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -646,6 +679,10 @@ namespace PPE_DAO_S_C_K
             }
         }
 
+        #endregion
+
+        #region Création Partenaire
+
         private void Btn_creationPartenaire_Click(object sender, EventArgs e)
         {
             if (0 != txt_nomPartenaire.Text.Length &&
@@ -670,6 +707,95 @@ namespace PPE_DAO_S_C_K
             {
                 MessageBox.Show(" Veuillez remplir tous les champs ");
             }
+
+            txt_nomPartenaire.Clear();
+            cbx_typePartenaire.Items.Clear();
+            cbx_typePartenaire.ResetText();
+
+            
+        }
+        #endregion
+
+        #region Affectation Stand
+        private void Btn_affectationStand_Click(object sender, EventArgs e)
+        {
+
+            if (0 != cbx_stands.Text.Length &&
+                0 != cbx_partenaire.Text.Length)
+            {
+                DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+                DAOStand DAOdbStand = new DAOStand();
+
+
+                int idStand = DAOdbStand.getIdStand(cbx_stands.SelectedItem.ToString());
+
+                int idPartenaire = DAOdbPartenaire.getIdPartenaire(cbx_partenaire.SelectedItem.ToString());
+
+                String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
+
+                int montantDepartInt = int.Parse(montantDepart);
+
+                String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_partenaire.SelectedItem.ToString());
+
+                if (NomTypePartenaire == "equipementier")
+                {
+                    String montantFinal = montantDepart;
+
+                    DAOdbStand.ModifierStand(idPartenaire, montantFinal, idStand);
+                }
+                else
+                {
+                    int montantFinalInt = montantDepartInt * 2;
+                    String montantFinal = montantFinalInt.ToString();
+
+                    DAOdbStand.ModifierStand(idPartenaire, montantFinal, idStand);
+                }
+
+                cbx_stands.Items.Clear();
+                cbx_partenaire.Items.Clear();
+
+
+
+            }
+            else
+            {
+                MessageBox.Show(" Veuillez remplir tous les champs ");
+            }
+
+        }
+
+        #endregion
+
+        private void cbx_stands_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_partenaire_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DAOStand DAOdbStand = new DAOStand();
+            DAOPartenaire DAOdbPartenaire = new DAOPartenaire();
+
+            String montantDepart = DAOdbStand.getMontantStand(cbx_stands.SelectedItem.ToString());
+
+            String NomTypePartenaire = DAOdbPartenaire.getNomTypePartenaire(cbx_partenaire.SelectedItem.ToString());
+
+            int montantDepartInt = int.Parse(montantDepart);
+
+            if (NomTypePartenaire == "equipementier")
+            {
+                String montantFinal = montantDepart;
+                lbl_prix.Text = montantFinal;
+            }
+            else 
+            {
+                int montantFinalInt = montantDepartInt * 2;
+                String montantFinal = montantFinalInt.ToString();
+
+                lbl_prix.Text = montantFinal;
+            }
+
+            
         }
     }
 }
