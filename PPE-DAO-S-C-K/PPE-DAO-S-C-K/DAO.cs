@@ -220,6 +220,12 @@ namespace PPE_DAO_S_C_K
                             }
                             pt.inscriptiondbParticipe(); // permets l'inscription en bdd table participer
                         }
+                        // remise a 0 des champs du formulaire 
+                        txt_modifInscriptionNom.Text = "";
+                        txt_modifInscriptionPrenom.Text = "";
+                        txt_modifInscriptionAdresse.Text = "";
+                        txt_modifInscriptionNumTel.Text = "";
+                        txt_modifInscriptionMail.Text = "";
                     }
                     #endregion
 
@@ -275,12 +281,7 @@ namespace PPE_DAO_S_C_K
                     }
                     #endregion
 
-                    // remise a 0 des champs du formulaire 
-                    txt_modifInscriptionNom.Text = "" ; 
-                    txt_modifInscriptionPrenom.Text = "" ; 
-                    txt_modifInscriptionAdresse.Text = "" ; 
-                    txt_modifInscriptionNumTel.Text = "" ; 
-                    txt_modifInscriptionMail.Text = "" ;
+
                 }
                 else // il y a un ou plusieurs messages d'erreur a retourner ! 
                 {
