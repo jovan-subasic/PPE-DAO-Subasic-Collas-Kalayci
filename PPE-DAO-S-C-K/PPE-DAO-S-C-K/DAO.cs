@@ -528,8 +528,10 @@ namespace PPE_DAO_S_C_K
             + "(id, date_debut, date_fin); "
 
             + "INSERT INTO ASL.dbo.equipements (connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis) VALUES"
-            + "(connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis), "
-            + "(connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis); "
+            + "(1, 1, 0, 0, 10, 1), "
+            + "(1, 0, 0, 0, 15, 1), "
+            + "(1, 0, 0, 0, 7, 1), "
+            + "(1, 1, 1, 1, 20, 1); "
 
             + "INSERT INTO ASL.dbo.intervenir (email, id) VALUES"
             + "(email, id), "
@@ -540,8 +542,10 @@ namespace PPE_DAO_S_C_K
             + "(email, id); "
 
             + "INSERT INTO ASL.dbo.partenaires (nom, typePartenaire) VALUES"
-            + "(nom, typePartenaire), "
-            + "(nom, typePartenaire); "
+            + "(Partenaire1, 1), "
+            + "(Partenaire2, 1), "
+            + "(Partenaire3, 2), "
+            + "(Partenaire4, 2); "
 
             + "INSERT INTO ASL.dbo.participants (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
             + "(nom, prenom, adresse, portable, type, nombre_Participation), "
@@ -557,16 +561,18 @@ namespace PPE_DAO_S_C_K
             + "(id, id_stands); "
 
             + "INSERT INTO ASL.dbo.stands (idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
-            + "(idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface), "
-            + "(idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface); "
+            + "(1, 1, 1, 150, Stand1, 0, 30), "
+            + "(2, 2, 2, 220, Stand2, 0, 45), "
+            + "(3, 3, 3, 110, Stand3, 0, 25), "
+            + "(4, 4, 4, 400, Stand4, 0, 60); "
 
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
             + "(nom, id_atelier), "
             + "(nom, id_atelier); "
 
             + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
-            + "(id, nom), "
-            + "(id, nom); "
+            + "(1, equipementier), "
+            + "(2, club); "
             ;
 
             db.execSQLWrite(req);
