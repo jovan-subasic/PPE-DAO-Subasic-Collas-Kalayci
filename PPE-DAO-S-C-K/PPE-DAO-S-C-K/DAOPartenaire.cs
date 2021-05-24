@@ -110,29 +110,30 @@ namespace PPE_DAO_S_C_K
             return 0;
         }
 
-        public String getNomTypePartenaire(string type)
+        public String getNomTypePartenaire(string nom)
         {
 
             lesIdPartenaires = listePartenaire();
+            String nomTypePartenaire;
 
             foreach (var nomPartenaire in lesIdPartenaires)
             {
-                if (nomPartenaire.Nom == type)
+                if (nomPartenaire.Nom == nom)
                 {
                     int IdTypePartenaires = nomPartenaire.TypePartenaire;
 
                     if(IdTypePartenaires == 1)
                     {
-                        return "equipementier";
+                        nomTypePartenaire = "equipementier";
                     }
                     else
                     {
-                        return "club";
+                        nomTypePartenaire = "club";
                     }
                 }
             }
+            return nomTypePartenaire;
 
-            return "";
         }
 
     }
