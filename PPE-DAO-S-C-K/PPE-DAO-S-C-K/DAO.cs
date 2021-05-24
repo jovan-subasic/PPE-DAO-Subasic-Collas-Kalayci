@@ -533,11 +533,16 @@ namespace PPE_DAO_S_C_K
             + "(1, 0, 0, 0, 7, 1), "
             + "(1, 1, 1, 1, 20, 1); "
 
-            + "INSERT INTO ASL.dbo.intervenir (email, id) VALUES"
+            + "INSERT INTO ASL.dbo.participants (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
+            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
+            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
+            + "(nom, prenom, adresse, portable, type, nombre_Participation); "
+
+            + "INSERT INTO ASL.dbo.Intervention (email, id) VALUES"
             + "(email, id), "
             + "(email, id); "
 
-            + "INSERT INTO ASL.dbo.Intervention (email, id) VALUES"
+            + "INSERT INTO ASL.dbo.intervenir (email, id) VALUES"
             + "(email, id), "
             + "(email, id); "
 
@@ -547,24 +552,19 @@ namespace PPE_DAO_S_C_K
             + "(Partenaire3, 2), "
             + "(Partenaire4, 2); "
 
-            + "INSERT INTO ASL.dbo.participants (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
-            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
-            + "(nom, prenom, adresse, portable, type, nombre_Participation), "
-            + "(nom, prenom, adresse, portable, type, nombre_Participation); "
-
             + "INSERT INTO ASL.dbo.participer (nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
             + "(nom, prenom, adresse, portable, type, nombre_Participation), "
             + "(nom, prenom, adresse, portable, type, nombre_Participation); "
-
-            + "INSERT INTO ASL.dbo.posseder (id, id_stands) VALUES"
-            + "(id, id_stands), "
-            + "(id, id_stands); "
 
             + "INSERT INTO ASL.dbo.stands (idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
             + "(1, 1, 1, 150, Stand1, 0, 30), "
             + "(2, 2, 2, 220, Stand2, 0, 45), "
             + "(3, 3, 3, 110, Stand3, 0, 25), "
             + "(4, 4, 4, 400, Stand4, 0, 60); "
+
+            + "INSERT INTO ASL.dbo.posseder (id, id_stands) VALUES"
+            + "(id, id_stands), "
+            + "(id, id_stands); "
 
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
             + "(nom, id_atelier), "
