@@ -109,12 +109,12 @@ namespace PPE_DAO_S_C_K
 
             return 0;
         }
-
+        
         public String getNomTypePartenaire(string nom)
         {
 
             lesIdPartenaires = listePartenaire();
-            String nomTypePartenaire;
+            String nomTypePartenaire = "";
 
             foreach (var nomPartenaire in lesIdPartenaires)
             {
@@ -135,6 +135,6 @@ namespace PPE_DAO_S_C_K
             return nomTypePartenaire;
 
         }
-
+        /**/
     }
 }
