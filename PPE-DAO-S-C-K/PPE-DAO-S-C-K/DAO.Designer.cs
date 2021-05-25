@@ -217,10 +217,11 @@
             // 
             // cbx_ChoixAteliers
             // 
+            this.cbx_ChoixAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_ChoixAteliers.FormattingEnabled = true;
             this.cbx_ChoixAteliers.Location = new System.Drawing.Point(176, 49);
             this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
-            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(261, 32);
+            this.cbx_ChoixAteliers.Size = new System.Drawing.Size(261, 23);
             this.cbx_ChoixAteliers.TabIndex = 1;
             // 
             // lab_ThemeAteliers
