@@ -216,7 +216,10 @@ namespace PPE_DAO_S_C_K
                          + unParticipant.Type + "' , '"
                          + unParticipant.NbParticipant + "' );" +
 
-                         "insert into intervenir values " + unParticipant.Id + ", '"
+                         "insert into intervention values " + unParticipant.Email + ", '"
+                         + 1 + "' ;" 
+                         
+                         +"insert into intervenir values " + unParticipant.Id + ", '"
                          + unParticipant.Email + "' ;"; 
 
             DAOFactory db = new DAOFactory();

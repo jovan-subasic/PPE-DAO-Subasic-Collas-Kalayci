@@ -460,8 +460,14 @@ namespace PPE_DAO_S_C_K
             txt_modifInscriptionNumTel.Text = "";
             txt_modifInscriptionMail.Text = "";
 
+            int rebout = 0; 
+            while (rebout < CLB_inscriptionModificationAtelier.Items.Count)
+            {
+                CLB_inscriptionModificationAtelier.SetItemChecked(rebout, false);
+                rebout++; 
+            }
 
-            if(cbx_inscriptionModif_Id.SelectedIndex != 0)
+            if (cbx_inscriptionModif_Id.SelectedIndex != 0)
             {
                             
                 Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex-1);
@@ -496,7 +502,7 @@ namespace PPE_DAO_S_C_K
 
                         while (a <lesAteliers.Count)
                         {
-                            if (lesAteliers[a].Equals(atelier))
+                            if (lesAteliers[a].Id.Equals(atelier.Id))
                             {
                                  index = a;
                                  
