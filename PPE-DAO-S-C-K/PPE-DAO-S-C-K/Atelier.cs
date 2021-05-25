@@ -75,7 +75,7 @@ namespace PPE_DAO_S_C_K
         public void participe()
         {
             DAOAtelier db = new DAOAtelier();
-            db.dbParticipe(this); 
+            db.dbParticipantunAtelier(this); 
         }
         #endregion
 

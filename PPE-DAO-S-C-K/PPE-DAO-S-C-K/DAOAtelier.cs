@@ -15,7 +15,6 @@ namespace PPE_DAO_S_C_K
 
 
         // méthode qui génére la liste de tous les ateliers.
-
         public List<Atelier> tousLesAteliers()
         {
             // on  veut recuperai la liste de tous les participants et les rangers dans leurs Class : 
@@ -185,7 +184,7 @@ namespace PPE_DAO_S_C_K
         } // fin tousLesAteliers()
 
         // permets de définir la liste de participant a un atelier 
-        public void dbParticipe( Atelier unAtelier )
+        public void dbParticipantunAtelier( Atelier unAtelier )
         {
             Participant unP = new Participant();
             List<Participant> listParticipents = unP.allParticipant();

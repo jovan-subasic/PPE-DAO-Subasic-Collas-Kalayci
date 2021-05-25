@@ -405,7 +405,9 @@ namespace PPE_DAO_S_C_K
         {
             try
             {
-
+                if(cbx_choix_liste_Participant.Items.Count < lesAteliers.Count())
+                {
+                                    
                 int i = 0;
                 while (i < lesAteliers.Count())
                 {
@@ -416,6 +418,7 @@ namespace PPE_DAO_S_C_K
 
                 cbx_choix_liste_Participant.Items.Add("Tous les participant");
                 cbx_choix_liste_Participant.SelectedItem = "Tous les participant";
+                }
             }
             catch (Exception ex)
             {

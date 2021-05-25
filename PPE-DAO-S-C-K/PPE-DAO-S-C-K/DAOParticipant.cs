@@ -183,7 +183,10 @@ namespace PPE_DAO_S_C_K
             /**/
              return laListe;
         } // fin getAllParticipant()
+
         #region execution BDD inscription 
+
+        // inscript un participant en BDD
         public void executeSQLinscription(Participant unParticipant)
         {
 
@@ -201,7 +204,7 @@ namespace PPE_DAO_S_C_K
             db.connecter();
             db.execSQLWrite(req); 
         } 
-        
+        // inscript un Benevole en BDD
         public void executeSQLinscription(Benevoles unParticipant)
         {
            
@@ -221,6 +224,7 @@ namespace PPE_DAO_S_C_K
             db.execSQLWrite(req); 
         }
 
+        // ajoute une collection d'atelier a un participant pour la table participer : plusieurs nouvelles occurences possible
         public void dbAjoutAtelier(Participant unParticipant, List<Atelier> lesAteliers)
         {
             unParticipant.updateID();
@@ -240,11 +244,13 @@ namespace PPE_DAO_S_C_K
                 db.execSQLWrite(req);
                 i++; 
             }
-        }  
-        // ne va servir que lors de la creation d'un nouveau benevoles dans la bdd
-        // va update l'id pour qu'il colle a celui en bdd puis va 
+        }
+
+        // ajoute une collection d'atelier a un participant pour la table participer : plusieurs nouvelles occurences possible
         public void dbAjoutAtelier(Benevoles unParticipant, List<Atelier> lesAteliers)
         {
+            // ne va servir que lors de la creation d'un nouveau benevoles dans la bdd
+            // va update l'id pour qu'il colle a celui en bdd puis va 
             unParticipant.updateID();
             DAOFactory db = new DAOFactory();
             db.connecter();
@@ -263,7 +269,7 @@ namespace PPE_DAO_S_C_K
                 i++;
             }
         }
-
+        // recupere l'id du dernier participant crée en bdd pour le réaffecté au dernier participant inscript en local
         public void bddUpdateID(Participant unParticipant)
         {
             DAOFactory db = new DAOFactory();
@@ -275,6 +281,7 @@ namespace PPE_DAO_S_C_K
             reader.Read(); 
             unParticipant.Id = int.Parse(reader[0].ToString()); 
         }
+        // recupere l'id du dernier Benevoles crée en bdd pour le réaffecté au dernier Benevoles inscript en local
         public void bddUpdateID(Benevoles unParticipant)
         {
             DAOFactory db = new DAOFactory();
@@ -289,6 +296,8 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region modification BDD
+
+        // modifie un participant en bdd
         public void executeSQLmodifInscription(Participant unParticipant )
         {
             String req = "update participants set "
@@ -304,6 +313,8 @@ namespace PPE_DAO_S_C_K
             db.connecter();
             db.execSQLWrite(req);
         }
+
+        // modifie un Benevoles en bdd
         public void executeSQLmodifInscription(Benevoles unB)
         {
             String req = "update participants set "
@@ -324,6 +335,7 @@ namespace PPE_DAO_S_C_K
             db.execSQLWrite(req);
         }
 
+        // recree les occurences de la table participer en bdd pour correspondre au derniere modification. 
         public void executeParticipe(Participant unP)
         {
             Atelier unA; 
@@ -331,9 +343,7 @@ namespace PPE_DAO_S_C_K
             db.connecter();
 
             String req = "Delete From participer where id = " + unP.Id + " ;";
-            /*
-            String req = "Delete From participer where EXISTS " +
-            "( select * from participer where id = " + unP.Id + ");";*/
+
             db.execSQLWrite(req);
 
             int i = 0;
@@ -348,20 +358,32 @@ namespace PPE_DAO_S_C_K
 
 
         }
+
+        // recree les occurences de la table participer en bdd pour correspondre au derniere modification. 
+        public void executeParticipe(Benevoles unB)
+        {
+            Atelier unA; 
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+
+            String req = "Delete From participer where id = " + unB.Id + " ;";
+
+            db.execSQLWrite(req);
+
+            int i = 0;
+            while ( i < unB.LesAtelier.Count)
+            {
+                unA = unB.LesAtelier.ElementAt(i); 
+                req = "insert into participer values (" + unB.Id + ", "
+                + unA.Id + ") ;";
+                i++ ;
+                db.execSQLWrite(req);
+            }
+
+
+        }
         #endregion
 
         #endregion
-
-
-        /* CODE GENERER LES ATELIERS 
-          
-        SET IDENTITY_INSERT dbo.atelier ON
-        INSERT INTO ASL.dbo.atelier(id,nom,capacite,id_participants) VALUES 
-        (1,'La Maison des Ligues et son projet',50,1),
-        (2,'Observatoire du metier des sports',80,1),
-        (3,'Le fonctionnement de la Maison des Ligues',70,1),
-        (4,'Le sport lorrain et les collectivités',60,1),
-        (5,'Les outils à disposition et remis aux clubs',40,1),
-        (6,'Développement durable',90,1); /**/
     }
 }
