@@ -661,6 +661,15 @@ namespace PPE_DAO_S_C_K
 
             + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL; "
 
+            + "SET IDENTITY_INSERT dbo.participants ON "
+            + "INSERT INTO ASL.dbo.participants (id, nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
+            + "(1, 'Cypth', 'Patrick', '12 rue des Participants', '0147258369', 'Participant', 0), "
+            + "(2, 'Vole', 'Bene', '12 rue des Benevoles', '0123456789', 'Benevoles', 0), "
+            + "(3, 'Lee', 'Paul', '12 avenue fairy', '0369258741', 'Intervenant', 0), "
+            + "(4, 'Dupon', 'Valentin', '12 rue des Intervenant', '0987654321', 'Intervenant', 0), "
+            + "(5, 'hide', 'yoshi', '12 rue des Marioles', '0147963285', 'Participant', 0), "
+            + "(6, 'Durand', 'Richard', '12 rue des halles', '0987654321', 'Participant', 0); "
+
             + " SET IDENTITY_INSERT dbo.atelier ON "
             + "INSERT INTO ASL.dbo.atelier(id, nom, capacite, id_participants) VALUES"
             + "(1, 'La Maison des Ligues et son projet', 50, 3), "
@@ -683,15 +692,6 @@ namespace PPE_DAO_S_C_K
             + "(1, 0, 0, 0, 15, 1), "
             + "(1, 0, 0, 0, 7, 1), "
             + "(1, 1, 1, 1, 20, 1); "
-
-            + "SET IDENTITY_INSERT dbo.participants ON "
-            + "INSERT INTO ASL.dbo.participants (id, nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
-            + "(1, 'Cypth', 'Patrick', '12 rue des Participants', '0147258369', 'Participant', 0), "
-            + "(2, 'Vole', 'Bene', '12 rue des Benevoles', '0123456789', 'Benevoles', 0), "
-            + "(3, 'Lee', 'Paul', '12 avenue fairy', '0369258741', 'Intervenant', 0), "
-            + "(4, 'Dupon', 'Valentin', '12 rue des Intervenant', '0987654321', 'Intervenant', 0), "
-            + "(5, 'hide', 'yoshi', '12 rue des Marioles', '0147963285', 'Participant', 0), "
-            + "(6, 'Durand', 'Richard', '12 rue des halles', '0987654321', 'Participant', 0); "
 
             + "INSERT INTO ASL.dbo.Intervention (email, id) VALUES"
             + "('paul.lee@yahoo.com', 1), "
