@@ -626,7 +626,7 @@ namespace PPE_DAO_S_C_K
             // on verifie seulement sur 2 tables de la bdd pour savoir si elle est vide 
             if (unP.allParticipant().Count() < 1 && unA.allAteliers().Count() < 1)
             {
-             // insertJeuDeTest(); 
+              insertJeuDeTest(); 
             }
         }
 
@@ -710,10 +710,10 @@ namespace PPE_DAO_S_C_K
             + "('valentin.dupon@orange.com', 4); "
 
             + "INSERT INTO ASL.dbo.partenaires (nom, typePartenaire) VALUES"
-            + "(Partenaire1, 1), "
-            + "(Partenaire2, 1), "
-            + "(Partenaire3, 2), "
-            + "(Partenaire4, 2); "
+            + "('Partenaire1', 1), "
+            + "('Partenaire2', 1), "
+            + "('Partenaire3', 2), "
+            + "('Partenaire4', 2); "
 
             + "INSERT INTO ASL.dbo.participer (id, id_atelier) VALUES"
             + "(1, 1), "
@@ -726,14 +726,16 @@ namespace PPE_DAO_S_C_K
             + "(6, 6); "
 
             + "INSERT INTO ASL.dbo.stands (idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
-            + "(1, 1, 1, 150, Stand1, 0, 30), "
-            + "(2, 2, 2, 220, Stand2, 0, 45), "
-            + "(3, 3, 3, 110, Stand3, 0, 25), "
-            + "(4, 4, 4, 400, Stand4, 0, 60); "
+            + "(1, 1, 1, 150, 'Stand1', 0, 30), "
+            + "(2, 2, 2, 220, 'Stand2', 0, 45), "
+            + "(3, 3, 3, 110, 'Stand3', 0, 25), "
+            + "(4, 4, 4, 400, 'Stand4', 0, 60); "
 
             + "INSERT INTO ASL.dbo.posseder (id, id_stands) VALUES"
-            + "(id, id_stands), "
-            + "(id, id_stands); "
+            + "(1, 1), "
+            + "(2, 2), "
+            + "(3, 3), "
+            + "(4, 4); "
 
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
             + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l''environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
@@ -744,8 +746,8 @@ namespace PPE_DAO_S_C_K
             + "(-Les enjeux climatiques, énergétiques et économiques -Sport et développement durable -Démarches fédérales -Echanges', 6); "
 
             + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
-            + "(1, equipementier), "
-            + "(2, club); "
+            + "(1, 'equipementier'), "
+            + "(2, 'club'); "
             ;
 
             db.execSQLWrite(req);
