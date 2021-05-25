@@ -36,8 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
@@ -104,6 +102,16 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btn_DGAteliers = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.DGV_Ateliers = new System.Windows.Forms.DataGridView();
+            this.ID_Atelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_NomDeAtelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Capacite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Intervanant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_afficheAteliers = new System.Windows.Forms.Button();
+            this.lab_ThemeAteliers = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -118,6 +126,7 @@
             this.tabPagePartenaire.SuspendLayout();
             this.GrB_affectation.SuspendLayout();
             this.GrB_creationPartenaire.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Ateliers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -136,6 +145,8 @@
             // tabPageAteliers
             // 
             this.tabPageAteliers.Controls.Add(this.groupBox1);
+            this.tabPageAteliers.Controls.Add(this.lab_ThemeAteliers);
+            this.tabPageAteliers.Controls.Add(this.DGV_Ateliers);
             this.tabPageAteliers.Location = new System.Drawing.Point(4, 22);
             this.tabPageAteliers.Name = "tabPageAteliers";
             this.tabPageAteliers.Padding = new System.Windows.Forms.Padding(3);
@@ -147,17 +158,19 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_DGAteliers);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.btn_afficheAteliers);
             this.groupBox1.Controls.Add(this.cbx_ChoixAteliers);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(17, 15);
+            this.groupBox1.Location = new System.Drawing.Point(6, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(492, 402);
+            this.groupBox1.Size = new System.Drawing.Size(492, 389);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -165,7 +178,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 213);
+            this.label4.Location = new System.Drawing.Point(38, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 6;
@@ -173,7 +186,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(169, 210);
+            this.textBox3.Location = new System.Drawing.Point(169, 151);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 7;
@@ -204,31 +217,15 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(169, 174);
+            this.textBox2.Location = new System.Drawing.Point(169, 115);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(169, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(103, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Nom";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 177);
+            this.label2.Location = new System.Drawing.Point(92, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
@@ -878,6 +875,82 @@
             this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
             // 
+            // btn_DGAteliers
+            // 
+            this.btn_DGAteliers.Location = new System.Drawing.Point(173, 290);
+            this.btn_DGAteliers.Name = "btn_DGAteliers";
+            this.btn_DGAteliers.Size = new System.Drawing.Size(96, 23);
+            this.btn_DGAteliers.TabIndex = 18;
+            this.btn_DGAteliers.Text = "Affiche DGV";
+            this.btn_DGAteliers.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(169, 196);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 17;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(86, 203);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Horaires";
+            // 
+            // DGV_Ateliers
+            // 
+            this.DGV_Ateliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Ateliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_Atelier,
+            this.col_NomDeAtelier,
+            this.col_Capacite,
+            this.col_Intervanant});
+            this.DGV_Ateliers.Location = new System.Drawing.Point(537, 56);
+            this.DGV_Ateliers.Name = "DGV_Ateliers";
+            this.DGV_Ateliers.Size = new System.Drawing.Size(343, 150);
+            this.DGV_Ateliers.TabIndex = 14;
+            // 
+            // ID_Atelier
+            // 
+            this.ID_Atelier.HeaderText = "ID";
+            this.ID_Atelier.Name = "ID_Atelier";
+            // 
+            // col_NomDeAtelier
+            // 
+            this.col_NomDeAtelier.HeaderText = "Nom";
+            this.col_NomDeAtelier.Name = "col_NomDeAtelier";
+            // 
+            // col_Capacite
+            // 
+            this.col_Capacite.HeaderText = "Capacite";
+            this.col_Capacite.Name = "col_Capacite";
+            // 
+            // col_Intervanant
+            // 
+            this.col_Intervanant.HeaderText = "Intervenant";
+            this.col_Intervanant.Name = "col_Intervanant";
+            // 
+            // btn_afficheAteliers
+            // 
+            this.btn_afficheAteliers.Location = new System.Drawing.Point(347, 36);
+            this.btn_afficheAteliers.Name = "btn_afficheAteliers";
+            this.btn_afficheAteliers.Size = new System.Drawing.Size(112, 23);
+            this.btn_afficheAteliers.TabIndex = 13;
+            this.btn_afficheAteliers.Text = "Affiche ateliers";
+            this.btn_afficheAteliers.UseVisualStyleBackColor = true;
+            // 
+            // lab_ThemeAteliers
+            // 
+            this.lab_ThemeAteliers.AutoSize = true;
+            this.lab_ThemeAteliers.Location = new System.Drawing.Point(534, 270);
+            this.lab_ThemeAteliers.Name = "lab_ThemeAteliers";
+            this.lab_ThemeAteliers.Size = new System.Drawing.Size(35, 13);
+            this.lab_ThemeAteliers.TabIndex = 15;
+            this.lab_ThemeAteliers.Text = "label7";
+            // 
             // Maison_des_ligues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -889,6 +962,7 @@
             this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
+            this.tabPageAteliers.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPageStand.ResumeLayout(false);
@@ -909,6 +983,7 @@
             this.GrB_affectation.PerformLayout();
             this.GrB_creationPartenaire.ResumeLayout(false);
             this.GrB_creationPartenaire.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Ateliers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -924,9 +999,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabPage tabPageListeParticipant;
         private System.Windows.Forms.Label lab_Choix_Liste;
         private System.Windows.Forms.ComboBox cbx_choix_liste_Participant;
@@ -991,6 +1064,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbx_partenaire;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btn_DGAteliers;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btn_afficheAteliers;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lab_ThemeAteliers;
+        private System.Windows.Forms.DataGridView DGV_Ateliers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Atelier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_NomDeAtelier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Capacite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Intervanant;
     }
 }
 
