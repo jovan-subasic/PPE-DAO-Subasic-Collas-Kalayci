@@ -181,7 +181,7 @@ namespace PPE_DAO_S_C_K
                                 lab_ThemeAteliers.Text = "-Logiciels de gestion des compétitions" + Environment.NewLine + "-Présentation du document << arbitrage en images >>" + Environment.NewLine + "-Labellisation des clubs" + Environment.NewLine + "-Aménagement des équipements" + Environment.NewLine;
                                 break;
                             case "Développement durable":
-                                lab_ThemeAteliers.Text = "lol" + "/n" + "lol" + "-Les enjeux climatiques, énergétiques et économiques" + Environment.NewLine + "-Sport et développement durable" + Environment.NewLine + "-Démarches fédérales" + Environment.NewLine + "-Echanges";
+                                lab_ThemeAteliers.Text = "-Les enjeux climatiques, énergétiques et économiques" + Environment.NewLine + "-Sport et développement durable" + Environment.NewLine + "-Démarches fédérales" + Environment.NewLine + "-Echanges";
                                 break;
                             default:
                                 lab_ThemeAteliers.Text = "";
