@@ -626,7 +626,7 @@ namespace PPE_DAO_S_C_K
             // on verifie seulement sur 2 tables de la bdd pour savoir si elle est vide 
             if (unP.allParticipant().Count() < 1 && unA.allAteliers().Count() < 1)
             {
-              insertJeuDeTest(); 
+              //insertJeuDeTest(); 
             }
         }
 
@@ -659,9 +659,9 @@ namespace PPE_DAO_S_C_K
             + "DELETE FROM themes; "
             + "DELETE FROM typePartenaire; "
 
-            + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL;"
+            + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL; "
 
-            + "SET IDENTITY_INSERT dbo.atelier ON"
+            + " SET IDENTITY_INSERT dbo.atelier ON "
             + "INSERT INTO ASL.dbo.atelier(id, nom, capacite, id_participants) VALUES"
             + "(1, 'La Maison des Ligues et son projet', 50, 3), "
             + "(2, 'Observatoire du metier des sports', 80, 3), "
@@ -684,7 +684,7 @@ namespace PPE_DAO_S_C_K
             + "(1, 0, 0, 0, 7, 1), "
             + "(1, 1, 1, 1, 20, 1); "
 
-            + "SET IDENTITY_INSERT dbo.participants ON"
+            + "SET IDENTITY_INSERT dbo.participants ON "
             + "INSERT INTO ASL.dbo.participants (id, nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
             + "(1, 'Cypth', 'Patrick', '12 rue des Participants', '0147258369', 'Participant', 0), "
             + "(2, 'Vole', 'Bene', '12 rue des Benevoles', '0123456789', 'Benevoles', 0), "
@@ -738,8 +738,8 @@ namespace PPE_DAO_S_C_K
             + "(4, 4); "
 
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
-            + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l''environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
-            + "('-Observation et analyse de l'encadrement actuel -Proposition de nouveaux schémas d'organisation -Profils types -Pratiques innovantes -Critères et seuils nécessaires à la pérennité de l'emploi -Avantages et inconvénients du métier d'enseignant', 2), "
+            + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
+            + "('-Observation et analyse de l encadrement actuel -Proposition de nouveaux schémas d organisation -Profils types -Pratiques innovantes -Critères et seuils nécessaires à la pérennité de l emploi -Avantages et inconvénients du métier d enseignant', 2), "
             + "('-Création (obligations légales) -Gestion du personnel, de la structure et des conflits -Relations internes, externes avec les départements et les fédérations -Conventions -Partenariats', 3), "
             + "('-Relations entre les collectivités et les clubs -Subventions -Communication', 4), "
             + "('-Logiciels de gestion des compétitions -Présentation du document << arbitrage en images >> -Labellisation des clubs -Aménagement des équipements', 5), "
