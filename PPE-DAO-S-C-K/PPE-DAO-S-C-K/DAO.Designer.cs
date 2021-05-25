@@ -698,7 +698,7 @@
             this.cbx_choix_liste_Participant.FormattingEnabled = true;
             this.cbx_choix_liste_Participant.Location = new System.Drawing.Point(348, 87);
             this.cbx_choix_liste_Participant.Name = "cbx_choix_liste_Participant";
-            this.cbx_choix_liste_Participant.Size = new System.Drawing.Size(206, 28);
+            this.cbx_choix_liste_Participant.Size = new System.Drawing.Size(376, 28);
             this.cbx_choix_liste_Participant.TabIndex = 1;
             this.cbx_choix_liste_Participant.SelectedIndexChanged += new System.EventHandler(this.cbx_choix_liste_Participant_SelectedIndexChanged);
             // 

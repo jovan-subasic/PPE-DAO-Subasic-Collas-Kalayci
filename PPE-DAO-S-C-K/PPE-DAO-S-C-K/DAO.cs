@@ -267,7 +267,7 @@ namespace PPE_DAO_S_C_K
                 #region verification 
                 // verifie la validiter du Prenom et du Nom
                 // /[a-zA-Z]+/g
-                Regex myString = new Regex(@"^\s*[a-zA-Z]+\s*$", RegexOptions.IgnoreCase);
+                Regex myString = new Regex(@"^\s*[a-zA-Z]+(\s?[-]\s?[a-zA-Z]+)?\s*$", RegexOptions.IgnoreCase);
 
                 // verifie la validiter du num de telephone 
                 // ^(0|\+33)[1-9]( *[0-9]{2}){4}$
@@ -300,6 +300,10 @@ namespace PPE_DAO_S_C_K
                 }if (cbx_modifInscreptionType.SelectedItem == null || cbx_modifInscreptionType.Items.Contains(cbx_modifInscreptionType.SelectedItem) == false)
                 {// si le type selectionner n'existe pas 
                     erreur += Environment.NewLine + " erreur : type selectionner invalide ! "; 
+
+                }if (CLB_inscriptionModificationAtelier.CheckedItems.Count > 5 )
+                {// si le type selectionner n'existe pas 
+                    erreur += Environment.NewLine + " erreur : nombres d'ateliers inscrit trop elevez ( + de 5) ! "; 
 
                 }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
@@ -536,7 +540,9 @@ namespace PPE_DAO_S_C_K
         {
             try
             {
-
+                if(cbx_choix_liste_Participant.Items.Count < lesAteliers.Count())
+                {
+                                    
                 int i = 0;
                 while (i < lesAteliers.Count())
                 {
@@ -547,6 +553,7 @@ namespace PPE_DAO_S_C_K
 
                 cbx_choix_liste_Participant.Items.Add("Tous les participant");
                 cbx_choix_liste_Participant.SelectedItem = "Tous les participant";
+                }
             }
             catch (Exception ex)
             {
