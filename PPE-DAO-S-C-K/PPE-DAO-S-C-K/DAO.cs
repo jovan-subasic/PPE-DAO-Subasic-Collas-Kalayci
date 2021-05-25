@@ -20,6 +20,7 @@ namespace PPE_DAO_S_C_K
         private List<Atelier> lesAteliers = new List<Atelier>();
         private List<TypePartenaire> lesTypesPartenaires = new List<TypePartenaire>();
         private List<Partenaire> lesPartenaires = new List<Partenaire>();
+        private List<Theme> lesThemes = new List<Theme>();
 
         private bool connexionReseauFilaire;
         private bool bar;
@@ -69,11 +70,11 @@ namespace PPE_DAO_S_C_K
         #endregion
 
         #region Ateliers
-
-        private void btn_afficheAteliers_Click(object sender, EventArgs e)
+        private void tabPageAteliers_Enter(object sender, EventArgs e)
         {
             if (cbx_ChoixAteliers.Items.Count < lesAteliers.Count())
             {
+
                 try
                 {
 
@@ -86,18 +87,116 @@ namespace PPE_DAO_S_C_K
                     }
 
                     /*cbx_ChoixAteliers.Items.Add("");
-                    cbx_ChoixAteliers.SelectedItem = "Tous les participant";*/
+                    cbx_ChoixAteliers.SelectedItem = "";*/
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            //cbx_ChoixAteliers.Items.Add(" Atelier : ");
-
+        }
+        private void btn_afficheLesAteliers_Click(object sender, EventArgs e)
+        {
+           
 
         }
 
+        private void btn_DGAteliers_Click_1(object sender, EventArgs e)
+        {
+            
+            /*try
+            {
+
+                int i = 3;
+
+
+                DAOTheme dt = new DAOTheme();
+                Theme unT = new Theme();
+                List<String> laListe = new List<String>();
+                i = 1;
+                foreach (Theme unT2 in lesThemes)
+                {
+                    unT2.allThemes2(i);
+                    lab_ThemeAteliers.Text = unT2.Nom;
+                    //lab_ThemeAteliers.Text = "gr0000000000000000000";
+                    i++;
+                }
+                    
+             
+                    
+                
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
+        }
+
+        /*private void btn_afficheTheme_Click(object sender, EventArgs e)
+        {
+            cbx_ChoixAteliers.Items.Add("ggfh");
+            lab_ThemeAteliers.Text = "gr";
+        }*/
+        private void btn_afficheTheme_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cbx_ChoixAteliers.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Veuillez choisir un atelier");
+            }
+
+            else
+            {
+                foreach (Atelier unA in lesAteliers)
+                {
+                    if (cbx_ChoixAteliers.SelectedItem.ToString() == unA.Nom)
+                    {
+                        DGV_ListeParticipant.ClearSelection();
+                        DGV_ListeParticipant.Rows.Clear();
+                        DGV_Ateliers.Rows.Add(unA.Id, unA.Nom, unA.Capacite, unA.Intervenant);
+                        txt_Capacite.Text = unA.Capacite.ToString();
+                       // lab_ThemeAteliers.Text = unA.Nom;
+                        lab_nomAtelier.Text = unA.Nom;
+                        string ateliers = cbx_ChoixAteliers.Text;
+                        switch (ateliers)
+                        {
+                            case "La Maison des Ligues et son projet":
+                                lab_ThemeAteliers.Text = "-Diagnostic et identification des critères de la ligue " + Environment.NewLine + "-Analyse systémique de l'environnement" + Environment.NewLine + "-Méthodologie de mise en oeuvre du projet " +
+                                                    Environment.NewLine + "-Actions solidaires et innovantes " + Environment.NewLine + "-Financement Outils et documentation " + Environment.NewLine + "-Valoriser et communiquer sur le projet";
+                                break;
+
+                            case "Observatoire du metier des sports":
+                                lab_ThemeAteliers.Text = "-Observation et analyse de l'encadrement actuel" + Environment.NewLine + "-Proposition de nouveaux schémas d'organisation " + Environment.NewLine + "-Profils types " + Environment.NewLine + "-Pratiques innovantes " + Environment.NewLine + "-Critères et seuils nécessaires à la pérennité de l'emploi " + Environment.NewLine + "-Avantages et inconvénients du métier d'enseignant ";
+                                break;
+
+                            case "Le fonctionnement de la Maison des Ligues":
+                                lab_ThemeAteliers.Text = "Création (obligations légales) " + Environment.NewLine + "-Gestion du personnel, de la structure et des conflits " + Environment.NewLine + "-Relations internes, externes avec les départements et les fédérations " + Environment.NewLine + "-Conventions " + Environment.NewLine + "-Partenariats";
+                                break;
+
+                            case "Le sport lorrain et les collectivités":
+                                lab_ThemeAteliers.Text = "-Relations entre les collectivités et les clubs " + Environment.NewLine + "-Subventions" + Environment.NewLine + "-Communication";
+                                break;
+                            case "Les outils à disposition et remis aux clubs":
+                                lab_ThemeAteliers.Text = "-Logiciels de gestion des compétitions" + Environment.NewLine + "-Présentation du document << arbitrage en images >>" + Environment.NewLine + "-Labellisation des clubs" + Environment.NewLine + "-Aménagement des équipements" + Environment.NewLine;
+                                break;
+                            case "Développement durable":
+                                lab_ThemeAteliers.Text = "lol" + "/n" + "lol" + "-Les enjeux climatiques, énergétiques et économiques" + Environment.NewLine + "-Sport et développement durable" + Environment.NewLine + "-Démarches fédérales" + Environment.NewLine + "-Echanges";
+                                break;
+                            default:
+                                lab_ThemeAteliers.Text = "";
+                                break;
+                        }
+                    }
+                   
+
+
+                }
+
+                
+            }
+
+        }
         #endregion
 
         #region Inscription 
@@ -519,9 +618,11 @@ namespace PPE_DAO_S_C_K
         {
             Participant unP = new Participant();
             Atelier unA = new Atelier();
+            Theme unT = new Theme();
 
             lesParticipants = unP.allParticipant();
             lesAteliers = unA.allAteliers();
+            lesThemes = unT.allThemes();
         }
         public void insertJeuDeTest()
         {
@@ -988,5 +1089,27 @@ namespace PPE_DAO_S_C_K
         {
 
         }
+
+        private void btn_afficheAteliers_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lab_ThemeAteliers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        /* private void btn_afficheLesAteliers_Click(object sender, EventArgs e)
+         {
+
+         }*/
+
+        /* private void btn_DGAteliers_Click_1(object sender, EventArgs e)
+         {
+
+         }*/
     }
 }
