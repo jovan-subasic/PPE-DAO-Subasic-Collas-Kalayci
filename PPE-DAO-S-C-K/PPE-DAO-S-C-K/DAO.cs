@@ -43,7 +43,7 @@ namespace PPE_DAO_S_C_K
 
             DAOStand daoStand = new DAOStand();
             DAOPartenaire dp = new DAOPartenaire();
-            lesTypesPartenaires = dp.listeTypePartenaire();
+            /*lesTypesPartenaires = dp.listeTypePartenaire();
 
             foreach (var typePartenaire in lesTypesPartenaires)
             {
@@ -62,10 +62,42 @@ namespace PPE_DAO_S_C_K
             foreach (var Stand in lesStands)
             {
                 cbx_stands.Items.Add(Stand.Nom);
-            }
+            }*/
 
             
         }
+        #endregion
+
+        #region Ateliers
+
+        private void btn_afficheAteliers_Click(object sender, EventArgs e)
+        {
+            if (cbx_ChoixAteliers.Items.Count < lesAteliers.Count())
+            {
+                try
+                {
+
+                    int i = 0;
+                    while (i < lesAteliers.Count())
+                    {
+                        Atelier unA = lesAteliers.ElementAt(i);
+                        cbx_ChoixAteliers.Items.Add(unA.Nom);
+                        i++;
+                    }
+
+                    /*cbx_ChoixAteliers.Items.Add("");
+                    cbx_ChoixAteliers.SelectedItem = "Tous les participant";*/
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            //cbx_ChoixAteliers.Items.Add(" Atelier : ");
+
+
+        }
+
         #endregion
 
         #region Inscription 
@@ -510,13 +542,15 @@ namespace PPE_DAO_S_C_K
             + "DELETE FROM themes; "
             + "DELETE FROM typePartenaire; "
 
+            + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL;"
+
             + "SET IDENTITY_INSERT dbo.atelier ON"
             + "INSERT INTO ASL.dbo.atelier(id, nom, capacite, id_participants) VALUES"
-            + "(1, 'La Maison des Ligues et son projet', 50, 1), "
-            + "(2, 'Observatoire du metier des sports', 80, 1), "
-            + "(3, 'Le fonctionnement de la Maison des Ligues', 70, 1), "
-            + "(4, 'Le sport lorrain et les collectivités', 60, 1), "
-            + "(5, 'Les outils à disposition et remis aux clubs', 40, 1), "
+            + "(1, 'La Maison des Ligues et son projet', 50, 3), "
+            + "(2, 'Observatoire du metier des sports', 80, 3), "
+            + "(3, 'Le fonctionnement de la Maison des Ligues', 70, 3), "
+            + "(4, 'Le sport lorrain et les collectivités', 60, 4), "
+            + "(5, 'Les outils à disposition et remis aux clubs', 40, 5), "
             + "(6, 'Développement durable', 90, 1); "
 
             + "INSERT INTO ASL.dbo.Date (id, date_debut, date_fin) VALUES"
@@ -585,8 +619,12 @@ namespace PPE_DAO_S_C_K
             + "(id, id_stands); "
 
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
-            + "(nom, id_atelier), "
-            + "(nom, id_atelier); "
+            + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l''environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
+            + "('-Observation et analyse de l'encadrement actuel -Proposition de nouveaux schémas d'organisation -Profils types -Pratiques innovantes -Critères et seuils nécessaires à la pérennité de l'emploi -Avantages et inconvénients du métier d'enseignant', 2), "
+            + "('-Création (obligations légales) -Gestion du personnel, de la structure et des conflits -Relations internes, externes avec les départements et les fédérations -Conventions -Partenariats', 3), "
+            + "('-Relations entre les collectivités et les clubs -Subventions -Communication', 4), "
+            + "('-Logiciels de gestion des compétitions -Présentation du document << arbitrage en images >> -Labellisation des clubs -Aménagement des équipements', 5), "
+            + "(-Les enjeux climatiques, énergétiques et économiques -Sport et développement durable -Démarches fédérales -Echanges', 6); "
 
             + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
             + "(1, equipementier), "
