@@ -390,12 +390,13 @@ namespace PPE_DAO_S_C_K
                         {
                             Participant unP = lesParticipants.ElementAt(cbx_inscriptionModif_Id.SelectedIndex - 1);// la collection est decaler de 1 
                             Benevoles bs = (Benevoles)unP;
+                            String exMail = bs.Email; 
                             bs.Prenom = txt_modifInscriptionPrenom.Text;
                             bs.Adresse = txt_modifInscriptionAdresse.Text;
                             bs.Portable = txt_modifInscriptionNumTel.Text;
                             bs.Type = cbx_modifInscreptionType.Text;
                             bs.Email = txt_modifInscriptionMail.Text;
-                            bs.modifParticipant();
+                            bs.modifParticipant(exMail);
 
                             unP.LesAtelier.Clear(); // permets de reset la liste d'atelier
                             int i = 0;

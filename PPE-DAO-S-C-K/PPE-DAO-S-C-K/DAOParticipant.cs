@@ -298,7 +298,7 @@ namespace PPE_DAO_S_C_K
         #region modification BDD
 
         // modifie un participant en bdd
-        public void executeSQLmodifInscription(Participant unParticipant )
+        public void executeSQLmodifInscription(Participant unParticipant, String exMail = null )
         {
             String req = "update participants set "
              + " nom = '" + unParticipant.Nom + "' , "
@@ -315,9 +315,10 @@ namespace PPE_DAO_S_C_K
         }
 
         // modifie un Benevoles en bdd
-        public void executeSQLmodifInscription(Benevoles unB)
+        public void executeSQLmodifInscription(Benevoles unB, String exMail = null)
         {
-            String req = "update participants set "
+
+             String req = "update participants set "
              + " nom = '" + unB.Nom + "' , "
              + "prenom = '" + unB.Prenom + "' , "
              + "adresse = '" + unB.Adresse + "' , "
@@ -326,7 +327,11 @@ namespace PPE_DAO_S_C_K
              + "nombre_Participation = " + unB.NbParticipant
              + "where id = " + unB.Id + " ;" +
 
-                         " update intervenir set "
+                         " update intervention set "
+                         + " email = '" + unB.Email + "' " 
+                         + "where email =" + exMail + " ;"
+                         
+                         +" update intervenir set "
                          + " email = '" + unB.Email + "' " 
                          + "where id ="+ unB.Id + " ;";
 
