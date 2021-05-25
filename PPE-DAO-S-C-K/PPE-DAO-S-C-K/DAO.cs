@@ -44,7 +44,7 @@ namespace PPE_DAO_S_C_K
 
             DAOStand daoStand = new DAOStand();
             DAOPartenaire dp = new DAOPartenaire();
-            /*lesTypesPartenaires = dp.listeTypePartenaire();
+            lesTypesPartenaires = dp.listeTypePartenaire();
 
             foreach (var typePartenaire in lesTypesPartenaires)
             {
@@ -63,7 +63,7 @@ namespace PPE_DAO_S_C_K
             foreach (var Stand in lesStands)
             {
                 cbx_stands.Items.Add(Stand.Nom);
-            }*/
+            }
 
             
         }
