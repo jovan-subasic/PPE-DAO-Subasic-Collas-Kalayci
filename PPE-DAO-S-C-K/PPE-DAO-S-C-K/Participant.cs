@@ -103,7 +103,8 @@ namespace PPE_DAO_S_C_K
             this.lesAtelier.Remove(atelier);
         }
 
-        // Appel la fonction dbAjoutAtelier(Participant ou Benevoles, Liste <Atelier>) de DAOParticipant pour modifier une occurence de la table participer en BDD
+        // Appel la fonction dbAjoutAtelier(Participant ou Benevoles, Liste <Atelier>)
+        // de DAOParticipant pour modifier une occurence de la table participer en BDD
         public void inscriptiondbParticipe(List<Atelier> mesAteliers = null)
         {
             if (mesAteliers is null)
