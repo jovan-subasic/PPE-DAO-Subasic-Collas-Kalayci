@@ -172,7 +172,7 @@ namespace PPE_DAO_S_C_K
 
                 }if (CLB_inscriptionModificationAtelier.CheckedItems.Count > 5 )
                 {// si le type selectionner n'existe pas 
-                    erreur += Environment.NewLine + " erreur : nombres d'ateliers inscript trop elevez ( + de 5) ! "; 
+                    erreur += Environment.NewLine + " erreur : nombres d'ateliers inscrit trop elevez ( + de 5) ! "; 
 
                 }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
