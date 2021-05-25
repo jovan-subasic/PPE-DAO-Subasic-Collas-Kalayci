@@ -431,6 +431,7 @@ namespace PPE_DAO_S_C_K
                             }
                             unP.dbParticipe();
                         }
+                        MessageBox.Show(" Modification effectué avec succès ! "); 
                     }
                     #endregion
 
