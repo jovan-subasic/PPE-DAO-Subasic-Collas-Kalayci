@@ -86,8 +86,7 @@ namespace PPE_DAO_S_C_K
                         i++;
                     }
 
-                    /*cbx_ChoixAteliers.Items.Add("");
-                    cbx_ChoixAteliers.SelectedItem = "";*/
+                   
                 }
                 catch (Exception ex)
                 {
