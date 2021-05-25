@@ -469,7 +469,7 @@ namespace PPE_DAO_S_C_K
                 txt_modifInscriptionNom.Text = unP.Nom;
                 txt_modifInscriptionPrenom.Text = unP.Prenom;
                 txt_modifInscriptionNumTel.Text = unP.Portable;
-
+               
                
                 if (cbx_modifInscreptionType.Items.Contains(unP.Type))
                 {
@@ -477,7 +477,7 @@ namespace PPE_DAO_S_C_K
 
                 }
 
-                #region nouvelle occurence 
+               
                 if (unP.LesAtelier is null)
                 {
                    
@@ -497,23 +497,25 @@ namespace PPE_DAO_S_C_K
                         {
                             if (lesAteliers[a].Equals(atelier))
                             {
-                                 index = a; 
+                                 index = a;
+                                 
                             }
+                            a++;
                         }
                         
                         CLB_inscriptionModificationAtelier.SetItemChecked(index, true);
 
                         i++; 
                     }
-
+                   
                 }
-                #endregion
+                
 
                 if (unP.Type == "Benevole")
                 {
                     Benevoles unB = (Benevoles)unP;
                     txt_modifInscriptionMail.Text = unB.Email;
-                }
+                }/**/
             }
 
         }

@@ -107,21 +107,21 @@ namespace PPE_DAO_S_C_K
                    reader[18].ToString().Length > 0)
                 {
                                     
-                     idP = int.Parse(reader[12].ToString());
-                     nomP = reader[13].ToString();
-                     prenomP = reader[14].ToString();
-                     adresseP = reader[15].ToString();
-                     portableP = reader[16].ToString();
-                     typeP = reader[17].ToString();
+                     idP = int.Parse(reader[13].ToString());
+                     nomP = reader[14].ToString();
+                     prenomP = reader[15].ToString();
+                     adresseP = reader[16].ToString();
+                     portableP = reader[17].ToString();
+                     typeP = reader[18].ToString();
                     // nbParticipation = int.Parse(reader[18].ToString());
                 }
 
                 // sert si l'inscript est un Benevole 
                 String emailB;
-                if (reader[21].ToString().Length > 0)
+                if (reader[20].ToString().Length > 0)
                 {
-                    emailB = reader[21].ToString();
-                }
+                    emailB = reader[20].ToString();
+                } 
                 else
                 {
                     emailB = "impossible";
@@ -153,7 +153,7 @@ namespace PPE_DAO_S_C_K
 
                         Ar.ajouterParticipant(pt);
                     }
-                    else // sinonil s'agit d'un Benevole
+                    else // sinon il s'agit d'un Benevole
                     {
 
                         Benevoles bs = new Benevoles(idP,
