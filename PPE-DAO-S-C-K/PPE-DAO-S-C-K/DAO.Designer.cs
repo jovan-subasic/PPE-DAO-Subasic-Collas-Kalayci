@@ -30,18 +30,20 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAteliers = new System.Windows.Forms.TabPage();
+            this.lab_nomAtelier = new System.Windows.Forms.Label();
             this.GRB_Ateliers = new System.Windows.Forms.GroupBox();
+            this.btn_afficheTheme = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Capacite = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.lab_ThemeAteliers = new System.Windows.Forms.Label();
             this.DGV_Ateliers = new System.Windows.Forms.DataGridView();
             this.ID_Atelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_NomDeAtelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Capacite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Intervanant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
             this.GrB_equipement = new System.Windows.Forms.GroupBox();
@@ -107,8 +109,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btn_afficheTheme = new System.Windows.Forms.Button();
-            this.lab_nomAtelier = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.GRB_Ateliers.SuspendLayout();
@@ -156,6 +156,15 @@
             this.tabPageAteliers.Click += new System.EventHandler(this.tabPageAteliers_Click);
             this.tabPageAteliers.Enter += new System.EventHandler(this.tabPageAteliers_Enter);
             // 
+            // lab_nomAtelier
+            // 
+            this.lab_nomAtelier.AutoSize = true;
+            this.lab_nomAtelier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_nomAtelier.Location = new System.Drawing.Point(6, 28);
+            this.lab_nomAtelier.Name = "lab_nomAtelier";
+            this.lab_nomAtelier.Size = new System.Drawing.Size(0, 24);
+            this.lab_nomAtelier.TabIndex = 16;
+            // 
             // GRB_Ateliers
             // 
             this.GRB_Ateliers.Controls.Add(this.btn_afficheTheme);
@@ -170,6 +179,16 @@
             this.GRB_Ateliers.TabIndex = 8;
             this.GRB_Ateliers.TabStop = false;
             this.GRB_Ateliers.Text = "Les Ateliers";
+            // 
+            // btn_afficheTheme
+            // 
+            this.btn_afficheTheme.Location = new System.Drawing.Point(91, 248);
+            this.btn_afficheTheme.Name = "btn_afficheTheme";
+            this.btn_afficheTheme.Size = new System.Drawing.Size(222, 63);
+            this.btn_afficheTheme.TabIndex = 19;
+            this.btn_afficheTheme.Text = "Voir les Informations";
+            this.btn_afficheTheme.UseVisualStyleBackColor = true;
+            this.btn_afficheTheme.Click += new System.EventHandler(this.btn_afficheTheme_Click);
             // 
             // label4
             // 
@@ -204,23 +223,13 @@
             this.cbx_ChoixAteliers.Size = new System.Drawing.Size(261, 32);
             this.cbx_ChoixAteliers.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(358, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Thème :";
-            // 
             // lab_ThemeAteliers
             // 
             this.lab_ThemeAteliers.AutoSize = true;
-            this.lab_ThemeAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_ThemeAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_ThemeAteliers.Location = new System.Drawing.Point(452, 13);
             this.lab_ThemeAteliers.Name = "lab_ThemeAteliers";
-            this.lab_ThemeAteliers.Size = new System.Drawing.Size(0, 24);
+            this.lab_ThemeAteliers.Size = new System.Drawing.Size(0, 15);
             this.lab_ThemeAteliers.TabIndex = 15;
             this.lab_ThemeAteliers.Click += new System.EventHandler(this.lab_ThemeAteliers_Click);
             // 
@@ -256,6 +265,16 @@
             // 
             this.col_Intervanant.HeaderText = "Intervenant";
             this.col_Intervanant.Name = "col_Intervanant";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(358, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 24);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Thème :";
             // 
             // tabPageStand
             // 
@@ -900,25 +919,6 @@
             this.txt_nomPartenaire.Name = "txt_nomPartenaire";
             this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
-            // 
-            // btn_afficheTheme
-            // 
-            this.btn_afficheTheme.Location = new System.Drawing.Point(91, 248);
-            this.btn_afficheTheme.Name = "btn_afficheTheme";
-            this.btn_afficheTheme.Size = new System.Drawing.Size(222, 63);
-            this.btn_afficheTheme.TabIndex = 19;
-            this.btn_afficheTheme.Text = "Voir les Informations";
-            this.btn_afficheTheme.UseVisualStyleBackColor = true;
-            this.btn_afficheTheme.Click += new System.EventHandler(this.btn_afficheTheme_Click);
-            // 
-            // lab_nomAtelier
-            // 
-            this.lab_nomAtelier.AutoSize = true;
-            this.lab_nomAtelier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_nomAtelier.Location = new System.Drawing.Point(6, 28);
-            this.lab_nomAtelier.Name = "lab_nomAtelier";
-            this.lab_nomAtelier.Size = new System.Drawing.Size(0, 24);
-            this.lab_nomAtelier.TabIndex = 16;
             // 
             // Maison_des_ligues
             // 
