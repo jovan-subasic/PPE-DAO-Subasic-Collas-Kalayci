@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAteliers = new System.Windows.Forms.TabPage();
             this.lab_nomAtelier = new System.Windows.Forms.Label();
@@ -88,11 +90,6 @@
             this.lab_Choix_Liste = new System.Windows.Forms.Label();
             this.cbx_choix_liste_Participant = new System.Windows.Forms.ComboBox();
             this.DGV_ListeParticipant = new System.Windows.Forms.DataGridView();
-            this.ID_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Type_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPagePartenaire = new System.Windows.Forms.TabPage();
             this.GrB_affectation = new System.Windows.Forms.GroupBox();
             this.lbl_prix = new System.Windows.Forms.Label();
@@ -109,6 +106,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ID_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Type_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.liste_Ateliers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
             this.GRB_Ateliers.SuspendLayout();
@@ -730,38 +733,19 @@
             this.col_Type_Participant,
             this.col_Nom_Participant,
             this.Col_Prenom_Participant,
-            this.Col_Adresse_Participant});
-            this.DGV_ListeParticipant.Location = new System.Drawing.Point(149, 268);
+            this.Col_Adresse_Participant,
+            this.liste_Ateliers});
+            this.DGV_ListeParticipant.EnableHeadersVisualStyles = false;
+            this.DGV_ListeParticipant.Location = new System.Drawing.Point(119, 268);
             this.DGV_ListeParticipant.Name = "DGV_ListeParticipant";
-            this.DGV_ListeParticipant.Size = new System.Drawing.Size(575, 150);
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_ListeParticipant.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGV_ListeParticipant.RowTemplate.Height = 70;
+            this.DGV_ListeParticipant.RowTemplate.ReadOnly = true;
+            this.DGV_ListeParticipant.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_ListeParticipant.Size = new System.Drawing.Size(638, 150);
             this.DGV_ListeParticipant.TabIndex = 0;
-            // 
-            // ID_Participant
-            // 
-            this.ID_Participant.HeaderText = "N°";
-            this.ID_Participant.Name = "ID_Participant";
-            this.ID_Participant.Width = 50;
-            // 
-            // col_Type_Participant
-            // 
-            this.col_Type_Participant.HeaderText = "Type";
-            this.col_Type_Participant.Name = "col_Type_Participant";
-            this.col_Type_Participant.Width = 65;
-            // 
-            // col_Nom_Participant
-            // 
-            this.col_Nom_Participant.HeaderText = "Nom";
-            this.col_Nom_Participant.Name = "col_Nom_Participant";
-            // 
-            // Col_Prenom_Participant
-            // 
-            this.Col_Prenom_Participant.HeaderText = "Prenom";
-            this.Col_Prenom_Participant.Name = "Col_Prenom_Participant";
-            // 
-            // Col_Adresse_Participant
-            // 
-            this.Col_Adresse_Participant.HeaderText = "Adresse";
-            this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
+            this.DGV_ListeParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ListeParticipant_CellContentClick);
             // 
             // tabPagePartenaire
             // 
@@ -921,6 +905,51 @@
             this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
             // 
+            // ID_Participant
+            // 
+            this.ID_Participant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID_Participant.Frozen = true;
+            this.ID_Participant.HeaderText = "N°";
+            this.ID_Participant.Name = "ID_Participant";
+            this.ID_Participant.Width = 50;
+            // 
+            // col_Type_Participant
+            // 
+            this.col_Type_Participant.Frozen = true;
+            this.col_Type_Participant.HeaderText = "Type";
+            this.col_Type_Participant.Name = "col_Type_Participant";
+            this.col_Type_Participant.Width = 65;
+            // 
+            // col_Nom_Participant
+            // 
+            this.col_Nom_Participant.Frozen = true;
+            this.col_Nom_Participant.HeaderText = "Nom";
+            this.col_Nom_Participant.Name = "col_Nom_Participant";
+            // 
+            // Col_Prenom_Participant
+            // 
+            this.Col_Prenom_Participant.Frozen = true;
+            this.Col_Prenom_Participant.HeaderText = "Prenom";
+            this.Col_Prenom_Participant.Name = "Col_Prenom_Participant";
+            // 
+            // Col_Adresse_Participant
+            // 
+            this.Col_Adresse_Participant.Frozen = true;
+            this.Col_Adresse_Participant.HeaderText = "Adresse";
+            this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
+            // 
+            // liste_Ateliers
+            // 
+            this.liste_Ateliers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.liste_Ateliers.DefaultCellStyle = dataGridViewCellStyle1;
+            this.liste_Ateliers.FillWeight = 300F;
+            this.liste_Ateliers.Frozen = true;
+            this.liste_Ateliers.HeaderText = "Ateliers";
+            this.liste_Ateliers.Name = "liste_Ateliers";
+            this.liste_Ateliers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.liste_Ateliers.Width = 66;
+            // 
             // Maison_des_ligues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -973,11 +1002,6 @@
         private System.Windows.Forms.Label lab_Choix_Liste;
         private System.Windows.Forms.ComboBox cbx_choix_liste_Participant;
         private System.Windows.Forms.DataGridView DGV_ListeParticipant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Participant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Type_Participant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Nom_Participant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Prenom_Participant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Adresse_Participant;
         private System.Windows.Forms.GroupBox GrB_modificationInscription;
         private System.Windows.Forms.CheckedListBox CLB_inscriptionModificationAtelier;
         private System.Windows.Forms.TextBox txt_modifInscriptionMail;
@@ -1041,6 +1065,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Intervanant;
         private System.Windows.Forms.Button btn_afficheTheme;
         private System.Windows.Forms.Label lab_nomAtelier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Participant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Type_Participant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Nom_Participant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Prenom_Participant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Adresse_Participant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn liste_Ateliers;
     }
 }
 

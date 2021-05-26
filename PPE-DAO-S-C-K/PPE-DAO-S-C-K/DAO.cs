@@ -589,7 +589,18 @@ namespace PPE_DAO_S_C_K
                 while (i < lesParticipants.Count)
                 {
                     Participant unP = lesParticipants.ElementAt(i);
-                    DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                    String nomAteliers = ""; 
+                    int indexA = 0; 
+                    while (indexA < unP.LesAtelier.Count)
+                    {
+                        Atelier collectionA = unP.LesAtelier.ElementAt(indexA);
+                        nomAteliers += collectionA.Nom + Environment.NewLine;
+
+                        indexA += 2; 
+                    }
+                    
+                    DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse, nomAteliers);
 
                     i++; 
                 }
@@ -1151,6 +1162,11 @@ namespace PPE_DAO_S_C_K
         private void lab_ThemeAteliers_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DGV_ListeParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // inutil 
         }
 
 
