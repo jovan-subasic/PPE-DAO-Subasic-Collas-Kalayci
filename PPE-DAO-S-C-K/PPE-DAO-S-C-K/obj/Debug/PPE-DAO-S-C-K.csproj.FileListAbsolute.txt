@@ -39,3 +39,13 @@ C:\Users\Julien\Downloads\PPEDAOGIT\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K
 C:\Users\Julien\Downloads\PPEDAOGIT\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.CoreCompileInputs.cache
 C:\Users\Julien\Downloads\PPEDAOGIT\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.exe
 C:\Users\Julien\Downloads\PPEDAOGIT\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.pdb
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe.config
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.pdb
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csprojAssemblyReference.cache
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.Maison_des_ligues.resources
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.Properties.Resources.resources
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.GenerateResource.cache
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.CoreCompileInputs.cache
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.exe
+C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.pdb

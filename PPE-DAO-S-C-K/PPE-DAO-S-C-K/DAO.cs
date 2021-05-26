@@ -645,6 +645,12 @@ namespace PPE_DAO_S_C_K
             DAOFactory db = new DAOFactory();
             db.connecter();
 
+            /************** Attention ******************/
+            /* pour pouvoir reutiliser SET IDENTITY_INSERT dbo.uneTable on; 
+            /* il faut d'abord utiliser SET IDENTITY_INSERT dbo.uneTable off; 
+            /*
+            /* de toute façon preferer toujours utiliser SET IDENTITY_INSERT dbo.uneTable off;par securiter 
+            */
             // on s'assure qu'il n'y a pas de donnée, puis en les recreers 
             String req = "" 
             + "DELETE FROM dbo.atelier; "
@@ -659,9 +665,24 @@ namespace PPE_DAO_S_C_K
             + "DELETE FROM themes; "
             + "DELETE FROM typePartenaire; "
 
-            + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL;"
+            + "ALTER TABLE dbo.themes ALTER COLUMN nom VARCHAR(350) NOT NULL; "
 
-            + "SET IDENTITY_INSERT dbo.atelier ON"
+
+            + "SET IDENTITY_INSERT dbo.participants on;  "
+
+            + "INSERT INTO ASL.dbo.participants (id, nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
+            + "(1, 'Cypth', 'Patrick', '12 rue des Participants', '0147258369', 'Participant', 0), "
+            + "(2, 'Vole', 'Bene', '12 rue des Benevoles', '0123456789', 'Benevole', 0), "
+            + "(3, 'Lee', 'Paul', '12 avenue fairy', '0369258741', 'Intervenant', 0), "
+            + "(4, 'Dupon', 'Valentin', '12 rue des Intervenant', '0987654321', 'Intervenant', 0), "
+            + "(5, 'hide', 'yoshi', '12 rue des Marioles', '0147963285', 'Participant', 0), "
+            + "(6, 'Durand', 'Richard', '12 rue des halles', '0987654321', 'Participant', 0); "
+
+             + "SET IDENTITY_INSERT dbo.participants off;  "
+
+
+            + " SET IDENTITY_INSERT dbo.atelier on; "
+
             + "INSERT INTO ASL.dbo.atelier(id, nom, capacite, id_participants) VALUES"
             + "(1, 'La Maison des Ligues et son projet', 50, 3), "
             + "(2, 'Observatoire du metier des sports', 80, 3), "
@@ -670,28 +691,25 @@ namespace PPE_DAO_S_C_K
             + "(5, 'Les outils à disposition et remis aux clubs', 40, 5), "
             + "(6, 'Développement durable', 90, 1); "
 
+            + " SET IDENTITY_INSERT dbo.atelier off; "
+
             + "INSERT INTO ASL.dbo.Date (id, date_debut, date_fin) VALUES"
-            + "(1, '2021-09-12 8-00-00', '2021-09-12 14-00-00'), "
-            + "(2, '2021-09-12 14-00-00', '2021-09-12 20-00-00'), "
-            + "(3, '2021-09-13 8-00-00', '2021-09-13 14-00-00'), "
-            + "(4, '2021-09-13 14-00-00', '2021-09-13 20-00-00'), "
-            + "(5, '2021-09-14 8-00-00', '2021-09-14 14-00-00'), "
-            + "(6, '2021-09-14 14-00-00', '2021-09-14 20-00-00'); "
+            + "(1, 2021-09-12-8-00-00, 2021-09-12-14-00-00), "
+            + "(2, 2021-09-12-14-00-00, 2021-09-12-20-00-00), "
+            + "(3, 2021-09-13-8-00-00, 2021-09-13-14-00-00), "
+            + "(4, 2021-09-13-14-00-00, 2021-09-13-20-00-00), "
+            + "(5, 2021-09-14-8-00-00, 2021-09-14-14-00-00), "
+            + "(6, 2021-09-14-14-00-00, 2021-09-14-20-00-00); "
 
-            + "INSERT INTO ASL.dbo.equipements (connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis) VALUES"
-            + "(1, 1, 0, 0, 10, 1), "
-            + "(1, 0, 0, 0, 15, 1), "
-            + "(1, 0, 0, 0, 7, 1), "
-            + "(1, 1, 1, 1, 20, 1); "
 
-            + "SET IDENTITY_INSERT dbo.participants ON"
-            + "INSERT INTO ASL.dbo.participants (id, nom, prenom, adresse, portable, type, nombre_Participation) VALUES"
-            + "(1, 'Cypth', 'Patrick', '12 rue des Participants', '0147258369', 'Participant', 0), "
-            + "(2, 'Vole', 'Bene', '12 rue des Benevoles', '0123456789', 'Benevoles', 0), "
-            + "(3, 'Lee', 'Paul', '12 avenue fairy', '0369258741', 'Intervenant', 0), "
-            + "(4, 'Dupon', 'Valentin', '12 rue des Intervenant', '0987654321', 'Intervenant', 0), "
-            + "(5, 'hide', 'yoshi', '12 rue des Marioles', '0147963285', 'Participant', 0), "
-            + "(6, 'Durand', 'Richard', '12 rue des halles', '0987654321', 'Participant', 0); "
+            + " SET IDENTITY_INSERT dbo.equipements on; "
+            + "INSERT INTO ASL.dbo.equipements (id, connexionReseauFilaire, bar, salonReception, cabineEssayage, nbrSiege, tablesFournis) VALUES"
+            + "(1, 1, 1, 0, 0, 10, 1), "
+            + "(2, 1, 0, 0, 0, 15, 1), "
+            + "(3, 1, 0, 0, 0, 7, 1), "
+            + "(4, 1, 1, 1, 1, 20, 1); "
+            + " SET IDENTITY_INSERT dbo.equipements off; "
+
 
             + "INSERT INTO ASL.dbo.Intervention (email, id) VALUES"
             + "('paul.lee@yahoo.com', 1), "
@@ -701,6 +719,7 @@ namespace PPE_DAO_S_C_K
             + "('valentin.dupon@free.fr', 5), "
             + "('valentin.dupon@orange.com', 6); "
 
+
             + "INSERT INTO ASL.dbo.intervenir (email, id) VALUES"
             + "('paul.lee@yahoo.com', 3), "
             + "('paul.lee@free.fr', 3), "
@@ -709,11 +728,19 @@ namespace PPE_DAO_S_C_K
             + "('valentin.dupon@free.fr', 4), "
             + "('valentin.dupon@orange.com', 4); "
 
-            + "INSERT INTO ASL.dbo.partenaires (nom, typePartenaire) VALUES"
-            + "('Partenaire1', 1), "
-            + "('Partenaire2', 1), "
-            + "('Partenaire3', 2), "
-            + "('Partenaire4', 2); "
+
+            + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
+            + "(1, 'equipementier'), "
+            + "(2, 'club'); "
+
+            + " SET IDENTITY_INSERT dbo.partenaires on; "
+            + "INSERT INTO ASL.dbo.partenaires (id, nom, typePartenaire) VALUES"
+            + "(1, 'Partenaire1', 1), "
+            + "(2, 'Partenaire2', 1), "
+            + "(3, 'Partenaire3', 2), "
+            + "(4, 'Partenaire4', 2); "
+            + " SET IDENTITY_INSERT dbo.partenaires off; "
+
 
             + "INSERT INTO ASL.dbo.participer (id, id_atelier) VALUES"
             + "(1, 1), "
@@ -725,11 +752,15 @@ namespace PPE_DAO_S_C_K
             + "(6, 1), "
             + "(6, 6); "
 
-            + "INSERT INTO ASL.dbo.stands (idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
-            + "(1, 1, 1, 150, 'Stand1', 0, 30), "
-            + "(2, 2, 2, 220, 'Stand2', 0, 45), "
-            + "(3, 3, 3, 110, 'Stand3', 0, 25), "
-            + "(4, 4, 4, 400, 'Stand4', 0, 60); "
+
+            + " SET IDENTITY_INSERT dbo.stands on; "
+            + "INSERT INTO ASL.dbo.stands (id, idAllee, idOrdre, equipement, montantFacture, nom, id_partenaires, surface) VALUES"
+            + "(1, 1, 1, 1, 150, 'Stand1', 0, 30), "
+            + "(2, 2, 2, 2, 220, 'Stand2', 0, 45), "
+            + "(3, 3, 3, 3, 110, 'Stand3', 0, 25), "
+            + "(4, 4, 4, 4, 400, 'Stand4', 0, 60); "
+            + " SET IDENTITY_INSERT dbo.stands off; "
+
 
             + "INSERT INTO ASL.dbo.posseder (id, id_stands) VALUES"
             + "(1, 1), "
@@ -737,17 +768,16 @@ namespace PPE_DAO_S_C_K
             + "(3, 3), "
             + "(4, 4); "
 
+
             + "INSERT INTO ASL.dbo.themes (nom, id_atelier) VALUES"
-            + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l''environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
-            + "('-Observation et analyse de l'encadrement actuel -Proposition de nouveaux schémas d'organisation -Profils types -Pratiques innovantes -Critères et seuils nécessaires à la pérennité de l'emploi -Avantages et inconvénients du métier d'enseignant', 2), "
+            + "('-Diagnostic et identification des critères de la ligue - Analyse systémique de l environnement - Méthodologie de mise en oeuvre du projet - Actions solidaires et innovantes - Financement Outils et documentation - Valoriser et communiquer sur le projet',1), "
+            + "('-Observation et analyse de l encadrement actuel -Proposition de nouveaux schémas d organisation -Profils types -Pratiques innovantes -Critères et seuils nécessaires à la pérennité de l emploi -Avantages et inconvénients du métier d enseignant', 2), "
             + "('-Création (obligations légales) -Gestion du personnel, de la structure et des conflits -Relations internes, externes avec les départements et les fédérations -Conventions -Partenariats', 3), "
             + "('-Relations entre les collectivités et les clubs -Subventions -Communication', 4), "
             + "('-Logiciels de gestion des compétitions -Présentation du document << arbitrage en images >> -Labellisation des clubs -Aménagement des équipements', 5), "
-            + "(-Les enjeux climatiques, énergétiques et économiques -Sport et développement durable -Démarches fédérales -Echanges', 6); "
+            + "('-Les enjeux climatiques, énergétiques et économiques -Sport et développement durable -Démarches fédérales -Echanges', 6); "
 
-            + "INSERT INTO ASL.dbo.typePartenaire (id, nom) VALUES"
-            + "(1, 'equipementier'), "
-            + "(2, 'club'); "
+
             ;
 
             db.execSQLWrite(req);
