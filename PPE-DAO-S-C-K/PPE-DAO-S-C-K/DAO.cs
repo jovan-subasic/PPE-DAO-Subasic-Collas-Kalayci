@@ -645,6 +645,12 @@ namespace PPE_DAO_S_C_K
             DAOFactory db = new DAOFactory();
             db.connecter();
 
+            /************** Attention ******************/
+            /* pour pouvoir reutiliser SET IDENTITY_INSERT dbo.uneTable on; 
+            /* il faut d'abord utiliser SET IDENTITY_INSERT dbo.uneTable off; 
+            /*
+            /* de toute façon preferer toujours utiliser SET IDENTITY_INSERT dbo.uneTable off;par securiter 
+            */
             // on s'assure qu'il n'y a pas de donnée, puis en les recreers 
             String req = "" 
             + "DELETE FROM dbo.atelier; "
