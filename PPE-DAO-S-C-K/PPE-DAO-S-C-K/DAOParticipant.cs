@@ -213,14 +213,14 @@ namespace PPE_DAO_S_C_K
                          + unParticipant.Prenom + "' , '"
                          + unParticipant.Adresse + "' , '"
                          + unParticipant.Portable + "' , '"
-                         + unParticipant.Type + "' , '"
-                         + unParticipant.NbParticipant + "' );" +
+                         + unParticipant.Type + "' , "
+                         + unParticipant.NbParticipant + " );" +
 
-                         "insert into intervention values " + unParticipant.Email + ", '"
-                         + 1 + "' ;" 
+                         "insert into intervention values ('" + unParticipant.Email + "' , "
+                         + 1 + ") ;" 
                          
-                         +"insert into intervenir values " + unParticipant.Id + ", '"
-                         + unParticipant.Email + "' ;"; 
+                         +"insert into intervenir values ('" + unParticipant.Email + "', "
+                         + unParticipant.Id + ") ;"; 
 
             DAOFactory db = new DAOFactory();
             db.connecter(); 

@@ -204,12 +204,13 @@ namespace PPE_DAO_S_C_K
             int i = 0;
             int unId;
 
-            if(cbx_inscriptionModif_Id.Items.Count < lesParticipants.Count())
+            if(cbx_inscriptionModif_Id.Items.Count < lesParticipants.Count()+1)
             {
+                // on s'assure qu'on ne va pas avoir de duplication de la liste 
+                cbx_inscriptionModif_Id.Items.Clear(); 
 
-            
                 // ajoute la possibilite de cree un participants 
-               cbx_inscriptionModif_Id.Items.Add("New inscription");
+                cbx_inscriptionModif_Id.Items.Add("New inscription");
 
                 // par default on selectionne le fait de realiser une nouvelle inscription 
                cbx_inscriptionModif_Id.SelectedIndex = 0;
@@ -327,7 +328,7 @@ namespace PPE_DAO_S_C_K
                         int id = lesParticipants.Count; // pour que l'id soit la nouvelle derniere valeur
                                                         // de l'attribue id de la liste lesParticipants. 
 
-                        if (cbx_modifInscreptionType.Items.Equals("Benevole")) // verif s'il s'agit d'un Benevole
+                        if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole")) // verif s'il s'agit d'un Benevole
                         {
                             // construit un objet Benevole et Participant
                             Benevoles bs = new Benevoles(
