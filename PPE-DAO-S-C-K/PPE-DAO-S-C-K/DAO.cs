@@ -304,7 +304,11 @@ namespace PPE_DAO_S_C_K
                 {// si le type selectionner n'existe pas 
                     erreur += Environment.NewLine + " erreur : nombres d'ateliers inscrit trop elevez ( + de 5) ! "; 
 
-                }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
+                }if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole") && CLB_inscriptionModificationAtelier.CheckedItems.Count < 1 )
+                {// si le nombre d'atelier est inferieur a 1 pour un Benevole 
+                    erreur += Environment.NewLine + " erreur : un Benevoles doit être liée a au moins un atelier ! "; 
+
+                }if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
                     erreur += Environment.NewLine + " erreur : mail invalide ! ";
                     
@@ -396,9 +400,8 @@ namespace PPE_DAO_S_C_K
                             bs.Portable = txt_modifInscriptionNumTel.Text;
                             bs.Type = cbx_modifInscreptionType.Text;
                             bs.Email = txt_modifInscriptionMail.Text;
-                            bs.modifParticipant(exMail);
 
-                            unP.LesAtelier.Clear(); // permets de reset la liste d'atelier
+                            bs.LesAtelier.Clear(); // permets de reset la liste d'atelier
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
@@ -407,7 +410,8 @@ namespace PPE_DAO_S_C_K
                                 bs.ajouterAtelier(unA);
                                 i++;
                             }
-                            bs.dbParticipe();
+                            bs.modifParticipant();
+                            bs.dbParticipe(exMail);
 
                         }
                         else // construit un objet Participant uniquement.

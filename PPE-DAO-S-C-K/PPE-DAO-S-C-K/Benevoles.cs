@@ -41,5 +41,12 @@ namespace PPE_DAO_S_C_K
         #region Getter & Setter
         public string Email { get => email; set => email = value; }
         #endregion
+
+        public void dbParticipe(String exMail = null)
+        {
+            DAOParticipant db = new DAOParticipant();
+            db.executeParticipe(this, exMail);
+
+        }
     }
 }
