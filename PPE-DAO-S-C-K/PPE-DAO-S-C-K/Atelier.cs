@@ -49,6 +49,9 @@ namespace PPE_DAO_S_C_K
         public void ajouterParticipant(Participant participant)
         {
             this.participants.Add(participant); 
+        } public void ajouterParticipant(Benevoles benevole)
+        {
+            this.participants.Add(benevole); 
         }
 
         // Supprimer un participant 

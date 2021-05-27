@@ -709,7 +709,7 @@
             this.lab_Choix_Liste.AutoSize = true;
             this.lab_Choix_Liste.Cursor = System.Windows.Forms.Cursors.Default;
             this.lab_Choix_Liste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lab_Choix_Liste.Location = new System.Drawing.Point(210, 95);
+            this.lab_Choix_Liste.Location = new System.Drawing.Point(200, 38);
             this.lab_Choix_Liste.Name = "lab_Choix_Liste";
             this.lab_Choix_Liste.Size = new System.Drawing.Size(132, 20);
             this.lab_Choix_Liste.TabIndex = 2;
@@ -719,7 +719,7 @@
             // 
             this.cbx_choix_liste_Participant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cbx_choix_liste_Participant.FormattingEnabled = true;
-            this.cbx_choix_liste_Participant.Location = new System.Drawing.Point(348, 87);
+            this.cbx_choix_liste_Participant.Location = new System.Drawing.Point(355, 30);
             this.cbx_choix_liste_Participant.Name = "cbx_choix_liste_Participant";
             this.cbx_choix_liste_Participant.Size = new System.Drawing.Size(376, 28);
             this.cbx_choix_liste_Participant.TabIndex = 1;
@@ -736,14 +736,14 @@
             this.Col_Adresse_Participant,
             this.liste_Ateliers});
             this.DGV_ListeParticipant.EnableHeadersVisualStyles = false;
-            this.DGV_ListeParticipant.Location = new System.Drawing.Point(119, 268);
+            this.DGV_ListeParticipant.Location = new System.Drawing.Point(78, 106);
             this.DGV_ListeParticipant.Name = "DGV_ListeParticipant";
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGV_ListeParticipant.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DGV_ListeParticipant.RowTemplate.Height = 70;
             this.DGV_ListeParticipant.RowTemplate.ReadOnly = true;
             this.DGV_ListeParticipant.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV_ListeParticipant.Size = new System.Drawing.Size(638, 150);
+            this.DGV_ListeParticipant.Size = new System.Drawing.Size(722, 312);
             this.DGV_ListeParticipant.TabIndex = 0;
             this.DGV_ListeParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ListeParticipant_CellContentClick);
             // 

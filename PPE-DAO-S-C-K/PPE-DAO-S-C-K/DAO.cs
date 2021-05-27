@@ -621,7 +621,25 @@ namespace PPE_DAO_S_C_K
                     {
 
                         Participant unP = unA.Participants.ElementAt(i);
-                        DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                        int indexP = 0; 
+                        while (indexP < lesParticipants.Count)
+                        {
+                            if(unP.Id.Equals(lesParticipants.ElementAt(indexP).Id)) {
+                                unP = lesParticipants.ElementAt(indexP);
+                            }
+                            indexP++; 
+                        }
+                        String nomAteliers = "";
+                        int indexA = 0;
+                        while (indexA < unP.LesAtelier.Count)
+                        {
+                            Atelier collectionA = unP.LesAtelier.ElementAt(indexA);
+                            nomAteliers += collectionA.Id + " : " + collectionA.Nom + Environment.NewLine;
+
+                            indexA++;
+                        }
+                        DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse, nomAteliers);
 
                         i++;
                     }
