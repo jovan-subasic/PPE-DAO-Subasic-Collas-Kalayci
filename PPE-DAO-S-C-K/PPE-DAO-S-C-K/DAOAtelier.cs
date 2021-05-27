@@ -175,7 +175,34 @@ namespace PPE_DAO_S_C_K
                 }
                 else
                 {
-                    // il ne se passe rien 
+                    int indexA = 0;
+                    while (indexA < laListe.Count)
+                    {
+                        Atelier unA = laListe.ElementAt(indexA);
+                        if(unA.Id == Ar.Id)
+                        {
+                            Boolean cancel = false; 
+                            int indexP = 0; 
+                            while (indexP < unA.Participants.Count)
+                            { 
+                                // verifie si les id sont identique, 
+                                // si oui le participant est deja dans la liste de l'atelier
+                                if (unA.Participants.ElementAt(indexP).Id.Equals(Ar.Participants.ElementAt(0).Id))
+                                {
+                                    cancel = true; 
+                                }
+                                indexP++; 
+                            }
+                            // ne reste faux que si le participants n'est pas deja inscript a l'atelier
+                            if ( cancel == false) 
+                            {
+                                                            
+                            unA.ajouterParticipant(Ar.Participants.ElementAt(0));
+                            }
+                        }
+                        indexA++; 
+                    }
+                        
                 }
 
 

@@ -147,10 +147,10 @@ namespace PPE_DAO_S_C_K
 
         #region Modification Participant
         // Appel la fonction executeSQLmodifInscription(Participant ou Benevole) de DAOParticipant pour modifier une occurence de la table participants en BDD
-        public void modifParticipant(String exMail = null)
+        public void modifParticipant()
         {
             DAOParticipant db = new DAOParticipant();
-            db.executeSQLmodifInscription(this, exMail);
+            db.executeSQLmodifInscription(this);
         }
         #endregion
 

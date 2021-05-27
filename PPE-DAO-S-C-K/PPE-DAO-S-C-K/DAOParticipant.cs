@@ -175,7 +175,26 @@ namespace PPE_DAO_S_C_K
                             pt = laListe[laListe.Count() - 1]; // ou recup le dernier element de la liste
 
                             bs = (Benevoles)pt; // on lui rend sont type Benevole
-                            bs.ajouterAtelier(Ar); // on ajoute l'atelier a la liste d'ateliers 
+
+                            int indexA = 0;
+                            Boolean cancel = false; // passer a true si l'atelier est deja dans la collection 
+                            while (indexA < bs.LesAtelier.Count)
+                            { // permets de verifier si l'id de l'atelier est deja dans la collection 
+                                Atelier testAtelier = bs.LesAtelier.ElementAt(indexA);
+
+                                if (Ar.Id == testAtelier.Id)
+                                {
+                                    cancel = true; // empeche l'atelier de s'ajouter a la collection
+                                }
+                                indexA++; 
+                            }
+                            if(cancel == false) // verifie si l'atelier peu etre ajouter
+                            {
+                                                            
+                            // on ajoute l'atelier a la liste d'ateliers 
+                            bs.ajouterAtelier(Ar);
+                            }
+
                         }
                     }
                 }
@@ -213,14 +232,14 @@ namespace PPE_DAO_S_C_K
                          + unParticipant.Prenom + "' , '"
                          + unParticipant.Adresse + "' , '"
                          + unParticipant.Portable + "' , '"
-                         + unParticipant.Type + "' , '"
-                         + unParticipant.NbParticipant + "' );" +
+                         + unParticipant.Type + "' , "
+                         + unParticipant.NbParticipant + " );" +
 
-                         "insert into intervention values " + unParticipant.Email + ", '"
-                         + 1 + "' ;" 
+                         "insert into intervention values ('" + unParticipant.Email + "' , "
+                         + 1 + ") ;" 
                          
-                         +"insert into intervenir values " + unParticipant.Id + ", '"
-                         + unParticipant.Email + "' ;"; 
+                         +"insert into intervenir values ('" + unParticipant.Email + "', "
+                         + unParticipant.Id + ") ;"; 
 
             DAOFactory db = new DAOFactory();
             db.connecter(); 
@@ -250,27 +269,38 @@ namespace PPE_DAO_S_C_K
         }
 
         // ajoute une collection d'atelier a un participant pour la table participer : plusieurs nouvelles occurences possible
-        public void dbAjoutAtelier(Benevoles unParticipant, List<Atelier> lesAteliers)
+        public void dbAjoutAtelier(Benevoles unBenevole, List<Atelier> lesAteliers)
         {
             // ne va servir que lors de la creation d'un nouveau benevoles dans la bdd
             // va update l'id pour qu'il colle a celui en bdd puis va 
-            unParticipant.updateID();
+            unBenevole.updateID();
             DAOFactory db = new DAOFactory();
             db.connecter();
 
+            String req; 
             int i = 0 ; 
             while (lesAteliers.Count > i)
             {
                 Atelier unA = lesAteliers[i];
 
-                String req = "insert into participer values ( '"
-                    + unParticipant.Id + "' , '"
-                    + unA.Id + "' ); ";
+                req = "insert into participer values ( '"
+                    + unBenevole.Id + "' , '"
+                    + unA.Id + "' ); "
 
+                    + " insert into intervention values ( "
+                    + " ' " + unBenevole.Email + " ' , "
+                    + unA.Id + " ) ; "
+                    ;
 
                 db.execSQLWrite(req);
                 i++;
             }
+
+            req = " insert into intervenir values ( "
+                + " '" + unBenevole.Email + " ' , "
+                + unBenevole.Id + " ) ; ";
+
+            db.execSQLWrite(req);
         }
         // recupere l'id du dernier participant crée en bdd pour le réaffecté au dernier participant inscript en local
         public void bddUpdateID(Participant unParticipant)
@@ -301,7 +331,7 @@ namespace PPE_DAO_S_C_K
         #region modification BDD
 
         // modifie un participant en bdd
-        public void executeSQLmodifInscription(Participant unParticipant, String exMail = null )
+        public void executeSQLmodifInscription(Participant unParticipant)
         {
             String req = "update participants set "
              + " nom = '" + unParticipant.Nom + "' , "
@@ -318,7 +348,7 @@ namespace PPE_DAO_S_C_K
         }
 
         // modifie un Benevoles en bdd
-        public void executeSQLmodifInscription(Benevoles unB, String exMail = null)
+        public void executeSQLmodifInscription(Benevoles unB)
         {
 
              String req = "update participants set "
@@ -328,15 +358,8 @@ namespace PPE_DAO_S_C_K
              + "portable = '" + unB.Portable + "' , "
              + "type = '" + unB.Type + "' , "
              + "nombre_Participation = " + unB.NbParticipant
-             + "where id = " + unB.Id + " ;" +
-
-                         " update intervention set "
-                         + " email = '" + unB.Email + "' " 
-                         + "where email =" + exMail + " ;"
-                         
-                         +" update intervenir set "
-                         + " email = '" + unB.Email + "' " 
-                         + "where id ="+ unB.Id + " ;";
+             + "where id = " + unB.Id + " ;" 
+            ;
 
             DAOFactory db = new DAOFactory();
             db.connecter();
@@ -344,7 +367,7 @@ namespace PPE_DAO_S_C_K
         }
 
         // recree les occurences de la table participer en bdd pour correspondre au derniere modification. 
-        public void executeParticipe(Participant unP)
+        public void executeParticipe(Participant unP, String exMail = null)
         {
             Atelier unA; 
             DAOFactory db = new DAOFactory();
@@ -368,26 +391,50 @@ namespace PPE_DAO_S_C_K
         }
 
         // recree les occurences de la table participer en bdd pour correspondre au derniere modification. 
-        public void executeParticipe(Benevoles unB)
+        public void executeParticipe(Benevoles unB, String exMail = null)
         {
             Atelier unA; 
             DAOFactory db = new DAOFactory();
             db.connecter();
 
-            String req = "Delete From participer where id = " + unB.Id + " ;";
+            // on detruire les occurences  
+            String req = "Delete From participer where id = " + unB.Id + " ;"
+
+            + " delete From intervenir "
+            + " where email ='" + exMail + "' ;"
+
+            + " delete From intervention "
+            + "where email ='" + exMail + "' ;"
+            ;
 
             db.execSQLWrite(req);
 
+
             int i = 0;
+
+            // on les recrees grace a une boucle 
             while ( i < unB.LesAtelier.Count)
             {
                 unA = unB.LesAtelier.ElementAt(i); 
                 req = "insert into participer values (" + unB.Id + ", "
-                + unA.Id + ") ;";
+                + unA.Id + ") ;"
+
+                + " insert into intervention values ( "
+                + " '" + unB.Email + " ' , "
+                + unA.Id + " ) ; "
+                
+
+                ;
+
                 i++ ;
                 db.execSQLWrite(req);
             }
 
+            req = " insert into intervenir values ( "
+            + " '" + unB.Email + " ' , "
+            + unB.Id + " ) ; ";
+
+            db.execSQLWrite(req);
 
         }
         #endregion

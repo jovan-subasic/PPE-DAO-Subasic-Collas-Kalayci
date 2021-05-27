@@ -204,12 +204,13 @@ namespace PPE_DAO_S_C_K
             int i = 0;
             int unId;
 
-            if(cbx_inscriptionModif_Id.Items.Count < lesParticipants.Count())
+            if(cbx_inscriptionModif_Id.Items.Count < lesParticipants.Count()+1)
             {
+                // on s'assure qu'on ne va pas avoir de duplication de la liste 
+                cbx_inscriptionModif_Id.Items.Clear(); 
 
-            
                 // ajoute la possibilite de cree un participants 
-               cbx_inscriptionModif_Id.Items.Add("New inscription");
+                cbx_inscriptionModif_Id.Items.Add("New inscription");
 
                 // par default on selectionne le fait de realiser une nouvelle inscription 
                cbx_inscriptionModif_Id.SelectedIndex = 0;
@@ -304,7 +305,11 @@ namespace PPE_DAO_S_C_K
                 {// si le type selectionner n'existe pas 
                     erreur += Environment.NewLine + " erreur : nombres d'ateliers inscrit trop elevez ( + de 5) ! "; 
 
-                }if (cbx_modifInscreptionType.Items.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
+                }if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole") && CLB_inscriptionModificationAtelier.CheckedItems.Count < 1 )
+                {// si le nombre d'atelier est inferieur a 1 pour un Benevole 
+                    erreur += Environment.NewLine + " erreur : un Benevoles doit être liée a au moins un atelier ! "; 
+
+                }if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole") && myMail.IsMatch(txt_modifInscriptionMail.Text) == false)
                 {// si le mail n'est pas bon 
                     erreur += Environment.NewLine + " erreur : mail invalide ! ";
                     
@@ -323,7 +328,7 @@ namespace PPE_DAO_S_C_K
                         int id = lesParticipants.Count; // pour que l'id soit la nouvelle derniere valeur
                                                         // de l'attribue id de la liste lesParticipants. 
 
-                        if (cbx_modifInscreptionType.Items.Equals("Benevole")) // verif s'il s'agit d'un Benevole
+                        if (cbx_modifInscreptionType.SelectedItem.Equals("Benevole")) // verif s'il s'agit d'un Benevole
                         {
                             // construit un objet Benevole et Participant
                             Benevoles bs = new Benevoles(
@@ -396,9 +401,8 @@ namespace PPE_DAO_S_C_K
                             bs.Portable = txt_modifInscriptionNumTel.Text;
                             bs.Type = cbx_modifInscreptionType.Text;
                             bs.Email = txt_modifInscriptionMail.Text;
-                            bs.modifParticipant(exMail);
 
-                            unP.LesAtelier.Clear(); // permets de reset la liste d'atelier
+                            bs.LesAtelier.Clear(); // permets de reset la liste d'atelier
                             int i = 0;
                             while (i < CLB_inscriptionModificationAtelier.CheckedItems.Count)
                             {
@@ -407,7 +411,8 @@ namespace PPE_DAO_S_C_K
                                 bs.ajouterAtelier(unA);
                                 i++;
                             }
-                            bs.dbParticipe();
+                            bs.modifParticipant();
+                            bs.dbParticipe(exMail);
 
                         }
                         else // construit un objet Participant uniquement.
@@ -584,7 +589,18 @@ namespace PPE_DAO_S_C_K
                 while (i < lesParticipants.Count)
                 {
                     Participant unP = lesParticipants.ElementAt(i);
-                    DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                    String nomAteliers = ""; 
+                    int indexA = 0; 
+                    while (indexA < unP.LesAtelier.Count)
+                    {
+                        Atelier collectionA = unP.LesAtelier.ElementAt(indexA);
+                        nomAteliers += collectionA.Id + " : "+ collectionA.Nom + Environment.NewLine;
+
+                        indexA++; 
+                    }
+                    
+                    DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse, nomAteliers);
 
                     i++; 
                 }
@@ -605,7 +621,25 @@ namespace PPE_DAO_S_C_K
                     {
 
                         Participant unP = unA.Participants.ElementAt(i);
-                        DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse);
+
+                        int indexP = 0; 
+                        while (indexP < lesParticipants.Count)
+                        {
+                            if(unP.Id.Equals(lesParticipants.ElementAt(indexP).Id)) {
+                                unP = lesParticipants.ElementAt(indexP);
+                            }
+                            indexP++; 
+                        }
+                        String nomAteliers = "";
+                        int indexA = 0;
+                        while (indexA < unP.LesAtelier.Count)
+                        {
+                            Atelier collectionA = unP.LesAtelier.ElementAt(indexA);
+                            nomAteliers += collectionA.Id + " : " + collectionA.Nom + Environment.NewLine;
+
+                            indexA++;
+                        }
+                        DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse, nomAteliers);
 
                         i++;
                     }
@@ -1146,6 +1180,11 @@ namespace PPE_DAO_S_C_K
         private void lab_ThemeAteliers_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DGV_ListeParticipant_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // inutil 
         }
 
 
