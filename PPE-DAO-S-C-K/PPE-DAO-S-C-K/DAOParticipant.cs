@@ -175,7 +175,26 @@ namespace PPE_DAO_S_C_K
                             pt = laListe[laListe.Count() - 1]; // ou recup le dernier element de la liste
 
                             bs = (Benevoles)pt; // on lui rend sont type Benevole
-                            bs.ajouterAtelier(Ar); // on ajoute l'atelier a la liste d'ateliers 
+
+                            int indexA = 0;
+                            Boolean cancel = false; // passer a true si l'atelier est deja dans la collection 
+                            while (indexA < bs.LesAtelier.Count)
+                            { // permets de verifier si l'id de l'atelier est deja dans la collection 
+                                Atelier testAtelier = bs.LesAtelier.ElementAt(indexA);
+
+                                if (Ar.Id == testAtelier.Id)
+                                {
+                                    cancel = true; // empeche l'atelier de s'ajouter a la collection
+                                }
+                                indexA++; 
+                            }
+                            if(cancel == false) // verifie si l'atelier peu etre ajouter
+                            {
+                                                            
+                            // on ajoute l'atelier a la liste d'ateliers 
+                            bs.ajouterAtelier(Ar);
+                            }
+
                         }
                     }
                 }

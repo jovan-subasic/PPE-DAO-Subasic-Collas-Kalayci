@@ -595,9 +595,9 @@ namespace PPE_DAO_S_C_K
                     while (indexA < unP.LesAtelier.Count)
                     {
                         Atelier collectionA = unP.LesAtelier.ElementAt(indexA);
-                        nomAteliers += collectionA.Nom + Environment.NewLine;
+                        nomAteliers += collectionA.Id + " : "+ collectionA.Nom + Environment.NewLine;
 
-                        indexA += 2; 
+                        indexA++; 
                     }
                     
                     DGV_ListeParticipant.Rows.Add(unP.Id, unP.Type, unP.Nom, unP.Prenom, unP.Adresse, nomAteliers);

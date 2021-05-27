@@ -944,9 +944,9 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.liste_Ateliers.DefaultCellStyle = dataGridViewCellStyle1;
             this.liste_Ateliers.FillWeight = 300F;
-            this.liste_Ateliers.Frozen = true;
             this.liste_Ateliers.HeaderText = "Ateliers";
             this.liste_Ateliers.Name = "liste_Ateliers";
+            this.liste_Ateliers.ReadOnly = true;
             this.liste_Ateliers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.liste_Ateliers.Width = 66;
             // 
