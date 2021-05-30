@@ -235,6 +235,17 @@ namespace PPE_DAO_S_C_K
             }
 
         }
+        public void executeSQLmodifAtelier(Atelier unAtelier)
+        {
+            String req = "update atelier  set "
+             + " nom = '" + unAtelier.Nom + "' , "
+             + "capacite = " + unAtelier.Capacite
+             + " where id = " + unAtelier.Id + " ;";
+
+            DAOFactory db = new DAOFactory();
+            db.connecter();
+            db.execSQLWrite(req);
+        }
 
         #endregion
     }

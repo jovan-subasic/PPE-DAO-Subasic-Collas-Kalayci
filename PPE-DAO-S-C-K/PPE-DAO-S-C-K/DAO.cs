@@ -67,6 +67,12 @@ namespace PPE_DAO_S_C_K
 
             
         }
+
+        private void Maison_des_ligues_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+            Application.Exit();
+        }
         #endregion
 
         #region Ateliers
@@ -86,7 +92,7 @@ namespace PPE_DAO_S_C_K
                         i++;
                     }
 
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -94,15 +100,107 @@ namespace PPE_DAO_S_C_K
                 }
             }
         }
+        private void btn_modifAtelier_Click(object sender, EventArgs e)
+        {
+
+
+            //cbx_ChoixAteliers.Items.Clear(); // permets de reset la liste d'atelier
+
+
+            String erreur = "";
+            if (
+                 "" != txt_nomAtelierModif.Text &&
+                 "" != txt_CapaAtelierModif.Text
+                )
+            {
+                /****************** on realise toute les verification neccessaire pour valider les champs de formulaire ********************/
+
+                // verifie la validiter du Nom et de la capacité
+
+                Regex myString = new Regex(@"^\s*[a-zA-Z]+(\s?[-]\s?[a-zA-Z]+)?\s*$", RegexOptions.IgnoreCase);
+
+
+
+                Regex myCapa = new Regex(@"^[0-9]*$", RegexOptions.IgnoreCase);
+
+                if (cbx_ChoixAteliers.SelectedItem == null || cbx_ChoixAteliers.Items.Contains(cbx_ChoixAteliers.SelectedItem.ToString()) == false)
+                {
+                    erreur += Environment.NewLine + " erreur : Veuillez selectionner un atelier dans la liste 'Choix des Atelier' ! ";
+                }
+
+
+
+                if (txt_nomAtelierModif.Text.Length >= 50 || myString.IsMatch(txt_nomAtelierModif.Text) == false)
+                { // si le nom n'est pas bon 
+                    erreur += Environment.NewLine + " erreur : Nom invalide -> Evitez les chiffres ! ";
+
+                    if (txt_CapaAtelierModif.Text.Length >= 10 || myCapa.IsMatch(txt_CapaAtelierModif.Text) == false)
+                    {
+                        erreur += Environment.NewLine + " erreur : Capacité invalide -> Evitez les lettres ! ";
+
+                    }
+
+                }
+
+                if (erreur.Length < 1)
+
+                {
+                    Atelier unA = lesAteliers.ElementAt(cbx_ChoixAteliers.SelectedIndex);
+                    unA.Nom = txt_nomAtelierModif.Text;
+                    unA.Capacite = int.Parse(txt_CapaAtelierModif.Text);
+                    cbx_ChoixAteliers.SelectedIndex = -1;
+                    cbx_ChoixAteliers.Items.Clear(); // permets de reset la liste d'atelier
+                    txt_Capacite.Text = "";
+
+                    if (cbx_ChoixAteliers.Items.Count < lesAteliers.Count())
+                    {
+
+                        try
+                        {
+
+                            int i = 0;
+                            while (i < lesAteliers.Count())
+                            {
+                                Atelier unAtelier = lesAteliers.ElementAt(i);
+                                cbx_ChoixAteliers.Items.Add(unAtelier.Nom);
+                                i++;
+                            }
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    // modifier l'atelier 
+                    unA.modifAtelier();
+                    MessageBox.Show(" Modification effectué avec succès ! ");
+
+
+                }
+                else // il y a un ou plusieurs messages d'erreur a retourner ! 
+                {
+                    MessageBox.Show("Liste des erreurs rencontrer : " + Environment.NewLine + erreur);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(" un champs n\'est pas renseigné ");
+            }
+        }
+
         private void btn_afficheLesAteliers_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
         private void btn_DGAteliers_Click_1(object sender, EventArgs e)
         {
-            
+
             /*try
             {
 
@@ -151,50 +249,69 @@ namespace PPE_DAO_S_C_K
                 {
                     if (cbx_ChoixAteliers.SelectedItem.ToString() == unA.Nom)
                     {
-                        DGV_ListeParticipant.ClearSelection();
-                        DGV_ListeParticipant.Rows.Clear();
-                        DGV_Ateliers.Rows.Add(unA.Id, unA.Nom, unA.Capacite, unA.Intervenant);
+                        DGV_Ateliers.ClearSelection();
+                        DGV_Ateliers.Rows.Clear();
+
+                        DGV_Ateliers.Rows.Add(unA.Id, unA.Nom, unA.Capacite);
                         txt_Capacite.Text = unA.Capacite.ToString();
-                       // lab_ThemeAteliers.Text = unA.Nom;
+                        // lab_ThemeAteliers.Text = unA.Nom;
                         lab_nomAtelier.Text = unA.Nom;
-                        string ateliers = cbx_ChoixAteliers.Text;
+                        int ateliers = cbx_ChoixAteliers.SelectedIndex;
                         switch (ateliers)
                         {
-                            case "La Maison des Ligues et son projet":
+                            case 0:
                                 lab_ThemeAteliers.Text = "-Diagnostic et identification des critères de la ligue " + Environment.NewLine + "-Analyse systémique de l'environnement" + Environment.NewLine + "-Méthodologie de mise en oeuvre du projet " +
                                                     Environment.NewLine + "-Actions solidaires et innovantes " + Environment.NewLine + "-Financement Outils et documentation " + Environment.NewLine + "-Valoriser et communiquer sur le projet";
                                 break;
 
-                            case "Observatoire du metier des sports":
+                            case 1:
                                 lab_ThemeAteliers.Text = "-Observation et analyse de l'encadrement actuel" + Environment.NewLine + "-Proposition de nouveaux schémas d'organisation " + Environment.NewLine + "-Profils types " + Environment.NewLine + "-Pratiques innovantes " + Environment.NewLine + "-Critères et seuils nécessaires à la pérennité de l'emploi " + Environment.NewLine + "-Avantages et inconvénients du métier d'enseignant ";
                                 break;
 
-                            case "Le fonctionnement de la Maison des Ligues":
+                            case 2:
                                 lab_ThemeAteliers.Text = "Création (obligations légales) " + Environment.NewLine + "-Gestion du personnel, de la structure et des conflits " + Environment.NewLine + "-Relations internes, externes avec les départements et les fédérations " + Environment.NewLine + "-Conventions " + Environment.NewLine + "-Partenariats";
                                 break;
 
-                            case "Le sport lorrain et les collectivités":
+                            case 3:
                                 lab_ThemeAteliers.Text = "-Relations entre les collectivités et les clubs " + Environment.NewLine + "-Subventions" + Environment.NewLine + "-Communication";
                                 break;
-                            case "Les outils à disposition et remis aux clubs":
+                            case 4:
                                 lab_ThemeAteliers.Text = "-Logiciels de gestion des compétitions" + Environment.NewLine + "-Présentation du document << arbitrage en images >>" + Environment.NewLine + "-Labellisation des clubs" + Environment.NewLine + "-Aménagement des équipements" + Environment.NewLine;
                                 break;
-                            case "Développement durable":
+                            case 5:
                                 lab_ThemeAteliers.Text = "-Les enjeux climatiques, énergétiques et économiques" + Environment.NewLine + "-Sport et développement durable" + Environment.NewLine + "-Démarches fédérales" + Environment.NewLine + "-Echanges";
                                 break;
                             default:
                                 lab_ThemeAteliers.Text = "";
                                 break;
                         }
+
+
                     }
-                   
+
+
 
 
                 }
+                //cbx_ChoixAteliers.SelectedIndex = -1;
 
-                
             }
 
+        }
+        private void btn_RedirectAtelier_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(cbx_ChoixAteliers.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Veuillez choisir un atelier");
+            }
+
+            else
+            {
+                this.tabControl1.SelectedTab = tabPageListeParticipant;
+                cbx_choix_liste_Participant.SelectedItem = " Atelier : " + cbx_ChoixAteliers.SelectedItem;
+
+            }
         }
         #endregion
 
@@ -686,16 +803,17 @@ namespace PPE_DAO_S_C_K
             /* de toute façon preferer toujours utiliser SET IDENTITY_INSERT dbo.uneTable off;par securiter 
             */
             // on s'assure qu'il n'y a pas de donnée, puis en les recreers 
-            String req = "" 
+            String req = ""
             + "DELETE FROM dbo.atelier; "
             + "DELETE FROM Date; "
+            + "DELETE FROM posseder; "
             + "DELETE FROM equipements; "
+            + "DELETE FROM participants; "
             + "DELETE FROM intervenir; "
             + "DELETE FROM Intervention; "
             + "DELETE FROM partenaires; "
-            + "DELETE FROM participants; "
-            + "DELETE FROM participer; "
             + "DELETE FROM stands; "
+            + "DELETE FROM participer; "
             + "DELETE FROM themes; "
             + "DELETE FROM typePartenaire; "
 
@@ -1186,6 +1304,12 @@ namespace PPE_DAO_S_C_K
         {
             // inutil 
         }
+
+        
+
+
+
+
 
 
 

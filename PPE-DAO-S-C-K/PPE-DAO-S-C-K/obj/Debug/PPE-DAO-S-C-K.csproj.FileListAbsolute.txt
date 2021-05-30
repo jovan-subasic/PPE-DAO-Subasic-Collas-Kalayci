@@ -49,3 +49,14 @@ C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO
 C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.exe
 C:\Users\Poste\Source\Repos\jovan-subasic\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.pdb
 C:\Users\Flobomax\Documents\BTS SIO\2eme-anner\Informatique\Informatique\Programmation Objet\C#\PPE\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.AssemblyReference.cache
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe.config
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.exe
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\bin\Debug\PPE-DAO-S-C-K.pdb
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csprojAssemblyReference.cache
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.Maison_des_ligues.resources
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.Properties.Resources.resources
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.GenerateResource.cache
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.csproj.CoreCompileInputs.cache
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.exe
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE-DAO-S-C-K.pdb
+K:\ExamenBTS\ppe\CsharpFinale2\PPE-DAO-Subasic-Collas-Kalayci\PPE-DAO-S-C-K\PPE-DAO-S-C-K\obj\Debug\PPE_DAO_S_C_K.FormLogin.resources

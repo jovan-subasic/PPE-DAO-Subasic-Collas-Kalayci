@@ -28,23 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAteliers = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lab_ThemeAteliers = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lab_nomAtelier = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.GRB_modif_atelier = new System.Windows.Forms.GroupBox();
+            this.btn_modifAtelier = new System.Windows.Forms.Button();
+            this.Capacité = new System.Windows.Forms.Label();
+            this.Nom = new System.Windows.Forms.Label();
+            this.txt_CapaAtelierModif = new System.Windows.Forms.TextBox();
+            this.txt_nomAtelierModif = new System.Windows.Forms.TextBox();
             this.GRB_Ateliers = new System.Windows.Forms.GroupBox();
             this.btn_afficheTheme = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Capacite = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_ChoixAteliers = new System.Windows.Forms.ComboBox();
-            this.lab_ThemeAteliers = new System.Windows.Forms.Label();
             this.DGV_Ateliers = new System.Windows.Forms.DataGridView();
-            this.ID_Atelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_NomDeAtelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Capacite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Intervanant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageStand = new System.Windows.Forms.TabPage();
             this.GrB_creationStand = new System.Windows.Forms.GroupBox();
@@ -90,6 +97,12 @@
             this.lab_Choix_Liste = new System.Windows.Forms.Label();
             this.cbx_choix_liste_Participant = new System.Windows.Forms.ComboBox();
             this.DGV_ListeParticipant = new System.Windows.Forms.DataGridView();
+            this.ID_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Type_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.liste_Ateliers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPagePartenaire = new System.Windows.Forms.TabPage();
             this.GrB_affectation = new System.Windows.Forms.GroupBox();
             this.lbl_prix = new System.Windows.Forms.Label();
@@ -106,14 +119,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nomPartenaire = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ID_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Type_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Nom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Prenom_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Adresse_Participant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.liste_Ateliers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Atelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_nomAtelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Capacite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageAteliers.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.GRB_modif_atelier.SuspendLayout();
             this.GRB_Ateliers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Ateliers)).BeginInit();
             this.tabPageStand.SuspendLayout();
@@ -144,9 +157,12 @@
             // 
             // tabPageAteliers
             // 
-            this.tabPageAteliers.Controls.Add(this.lab_nomAtelier);
+            this.tabPageAteliers.Controls.Add(this.groupBox2);
+            this.tabPageAteliers.Controls.Add(this.groupBox1);
+            this.tabPageAteliers.Controls.Add(this.label3);
+            this.tabPageAteliers.Controls.Add(this.button1);
+            this.tabPageAteliers.Controls.Add(this.GRB_modif_atelier);
             this.tabPageAteliers.Controls.Add(this.GRB_Ateliers);
-            this.tabPageAteliers.Controls.Add(this.lab_ThemeAteliers);
             this.tabPageAteliers.Controls.Add(this.DGV_Ateliers);
             this.tabPageAteliers.Controls.Add(this.label2);
             this.tabPageAteliers.Location = new System.Drawing.Point(4, 22);
@@ -159,14 +175,121 @@
             this.tabPageAteliers.Click += new System.EventHandler(this.tabPageAteliers_Click);
             this.tabPageAteliers.Enter += new System.EventHandler(this.tabPageAteliers_Enter);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lab_ThemeAteliers);
+            this.groupBox2.Location = new System.Drawing.Point(462, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(429, 221);
+            this.groupBox2.TabIndex = 26;
+            this.groupBox2.TabStop = false;
+            // 
+            // lab_ThemeAteliers
+            // 
+            this.lab_ThemeAteliers.AutoSize = true;
+            this.lab_ThemeAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_ThemeAteliers.Location = new System.Drawing.Point(6, 25);
+            this.lab_ThemeAteliers.Name = "lab_ThemeAteliers";
+            this.lab_ThemeAteliers.Size = new System.Drawing.Size(0, 13);
+            this.lab_ThemeAteliers.TabIndex = 15;
+            this.lab_ThemeAteliers.Click += new System.EventHandler(this.lab_ThemeAteliers_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lab_nomAtelier);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(354, 46);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Les Ateliers";
+            // 
             // lab_nomAtelier
             // 
             this.lab_nomAtelier.AutoSize = true;
-            this.lab_nomAtelier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_nomAtelier.Location = new System.Drawing.Point(6, 28);
+            this.lab_nomAtelier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_nomAtelier.Location = new System.Drawing.Point(6, 16);
             this.lab_nomAtelier.Name = "lab_nomAtelier";
-            this.lab_nomAtelier.Size = new System.Drawing.Size(0, 24);
+            this.lab_nomAtelier.Size = new System.Drawing.Size(0, 15);
             this.lab_nomAtelier.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(522, 327);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(336, 24);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Vous serez rédiriger dans la page Liste";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(587, 362);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(213, 51);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "afficher les participants";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btn_RedirectAtelier_Click);
+            // 
+            // GRB_modif_atelier
+            // 
+            this.GRB_modif_atelier.Controls.Add(this.btn_modifAtelier);
+            this.GRB_modif_atelier.Controls.Add(this.Capacité);
+            this.GRB_modif_atelier.Controls.Add(this.Nom);
+            this.GRB_modif_atelier.Controls.Add(this.txt_CapaAtelierModif);
+            this.GRB_modif_atelier.Controls.Add(this.txt_nomAtelierModif);
+            this.GRB_modif_atelier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GRB_modif_atelier.Location = new System.Drawing.Point(10, 291);
+            this.GRB_modif_atelier.Name = "GRB_modif_atelier";
+            this.GRB_modif_atelier.Size = new System.Drawing.Size(427, 175);
+            this.GRB_modif_atelier.TabIndex = 18;
+            this.GRB_modif_atelier.TabStop = false;
+            this.GRB_modif_atelier.Text = "Modification (choisir un atelier dans l\'affichage)";
+            // 
+            // btn_modifAtelier
+            // 
+            this.btn_modifAtelier.Location = new System.Drawing.Point(226, 131);
+            this.btn_modifAtelier.Name = "btn_modifAtelier";
+            this.btn_modifAtelier.Size = new System.Drawing.Size(124, 38);
+            this.btn_modifAtelier.TabIndex = 4;
+            this.btn_modifAtelier.Text = "Modifier";
+            this.btn_modifAtelier.UseVisualStyleBackColor = true;
+            this.btn_modifAtelier.Click += new System.EventHandler(this.btn_modifAtelier_Click);
+            // 
+            // Capacité
+            // 
+            this.Capacité.AutoSize = true;
+            this.Capacité.Location = new System.Drawing.Point(46, 81);
+            this.Capacité.Name = "Capacité";
+            this.Capacité.Size = new System.Drawing.Size(83, 24);
+            this.Capacité.TabIndex = 3;
+            this.Capacité.Text = "Capacité";
+            // 
+            // Nom
+            // 
+            this.Nom.AutoSize = true;
+            this.Nom.Location = new System.Drawing.Point(52, 34);
+            this.Nom.Name = "Nom";
+            this.Nom.Size = new System.Drawing.Size(51, 24);
+            this.Nom.TabIndex = 2;
+            this.Nom.Text = "Nom";
+            // 
+            // txt_CapaAtelierModif
+            // 
+            this.txt_CapaAtelierModif.Location = new System.Drawing.Point(166, 81);
+            this.txt_CapaAtelierModif.Name = "txt_CapaAtelierModif";
+            this.txt_CapaAtelierModif.Size = new System.Drawing.Size(100, 29);
+            this.txt_CapaAtelierModif.TabIndex = 1;
+            // 
+            // txt_nomAtelierModif
+            // 
+            this.txt_nomAtelierModif.Location = new System.Drawing.Point(166, 31);
+            this.txt_nomAtelierModif.Name = "txt_nomAtelierModif";
+            this.txt_nomAtelierModif.Size = new System.Drawing.Size(100, 29);
+            this.txt_nomAtelierModif.TabIndex = 0;
             // 
             // GRB_Ateliers
             // 
@@ -176,18 +299,18 @@
             this.GRB_Ateliers.Controls.Add(this.label1);
             this.GRB_Ateliers.Controls.Add(this.cbx_ChoixAteliers);
             this.GRB_Ateliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GRB_Ateliers.Location = new System.Drawing.Point(3, 128);
+            this.GRB_Ateliers.Location = new System.Drawing.Point(6, 55);
             this.GRB_Ateliers.Name = "GRB_Ateliers";
-            this.GRB_Ateliers.Size = new System.Drawing.Size(443, 333);
+            this.GRB_Ateliers.Size = new System.Drawing.Size(443, 232);
             this.GRB_Ateliers.TabIndex = 8;
             this.GRB_Ateliers.TabStop = false;
-            this.GRB_Ateliers.Text = "Les Ateliers";
+            this.GRB_Ateliers.Text = "Affichage";
             // 
             // btn_afficheTheme
             // 
-            this.btn_afficheTheme.Location = new System.Drawing.Point(91, 248);
+            this.btn_afficheTheme.Location = new System.Drawing.Point(230, 161);
             this.btn_afficheTheme.Name = "btn_afficheTheme";
-            this.btn_afficheTheme.Size = new System.Drawing.Size(222, 63);
+            this.btn_afficheTheme.Size = new System.Drawing.Size(188, 50);
             this.btn_afficheTheme.TabIndex = 19;
             this.btn_afficheTheme.Text = "Voir les Informations";
             this.btn_afficheTheme.UseVisualStyleBackColor = true;
@@ -196,7 +319,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 161);
+            this.label4.Location = new System.Drawing.Point(6, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 24);
             this.label4.TabIndex = 6;
@@ -204,7 +327,7 @@
             // 
             // txt_Capacite
             // 
-            this.txt_Capacite.Location = new System.Drawing.Point(176, 161);
+            this.txt_Capacite.Location = new System.Drawing.Point(179, 105);
             this.txt_Capacite.Name = "txt_Capacite";
             this.txt_Capacite.Size = new System.Drawing.Size(54, 29);
             this.txt_Capacite.TabIndex = 7;
@@ -220,55 +343,34 @@
             // 
             // cbx_ChoixAteliers
             // 
+            this.cbx_ChoixAteliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_ChoixAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_ChoixAteliers.FormattingEnabled = true;
-            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(176, 49);
+            this.cbx_ChoixAteliers.Location = new System.Drawing.Point(176, 55);
             this.cbx_ChoixAteliers.Name = "cbx_ChoixAteliers";
             this.cbx_ChoixAteliers.Size = new System.Drawing.Size(261, 23);
             this.cbx_ChoixAteliers.TabIndex = 1;
             // 
-            // lab_ThemeAteliers
-            // 
-            this.lab_ThemeAteliers.AutoSize = true;
-            this.lab_ThemeAteliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_ThemeAteliers.Location = new System.Drawing.Point(452, 13);
-            this.lab_ThemeAteliers.Name = "lab_ThemeAteliers";
-            this.lab_ThemeAteliers.Size = new System.Drawing.Size(0, 15);
-            this.lab_ThemeAteliers.TabIndex = 15;
-            this.lab_ThemeAteliers.Click += new System.EventHandler(this.lab_ThemeAteliers_Click);
-            // 
             // DGV_Ateliers
             // 
+            this.DGV_Ateliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_Ateliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGV_Ateliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Ateliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Atelier,
-            this.col_NomDeAtelier,
-            this.col_Capacite,
-            this.col_Intervanant});
-            this.DGV_Ateliers.Location = new System.Drawing.Point(459, 174);
+            this.col_nomAtelier,
+            this.col_Capacite});
+            this.DGV_Ateliers.Location = new System.Drawing.Point(471, 233);
             this.DGV_Ateliers.Name = "DGV_Ateliers";
-            this.DGV_Ateliers.Size = new System.Drawing.Size(440, 298);
+            this.DGV_Ateliers.Size = new System.Drawing.Size(428, 73);
             this.DGV_Ateliers.TabIndex = 14;
-            // 
-            // ID_Atelier
-            // 
-            this.ID_Atelier.HeaderText = "ID";
-            this.ID_Atelier.Name = "ID_Atelier";
-            // 
-            // col_NomDeAtelier
-            // 
-            this.col_NomDeAtelier.HeaderText = "Nom";
-            this.col_NomDeAtelier.Name = "col_NomDeAtelier";
-            // 
-            // col_Capacite
-            // 
-            this.col_Capacite.HeaderText = "Capacite";
-            this.col_Capacite.Name = "col_Capacite";
-            // 
-            // col_Intervanant
-            // 
-            this.col_Intervanant.HeaderText = "Intervenant";
-            this.col_Intervanant.Name = "col_Intervanant";
             // 
             // label2
             // 
@@ -738,14 +840,59 @@
             this.DGV_ListeParticipant.EnableHeadersVisualStyles = false;
             this.DGV_ListeParticipant.Location = new System.Drawing.Point(78, 106);
             this.DGV_ListeParticipant.Name = "DGV_ListeParticipant";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV_ListeParticipant.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_ListeParticipant.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DGV_ListeParticipant.RowTemplate.Height = 70;
             this.DGV_ListeParticipant.RowTemplate.ReadOnly = true;
             this.DGV_ListeParticipant.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DGV_ListeParticipant.Size = new System.Drawing.Size(722, 312);
             this.DGV_ListeParticipant.TabIndex = 0;
             this.DGV_ListeParticipant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ListeParticipant_CellContentClick);
+            // 
+            // ID_Participant
+            // 
+            this.ID_Participant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID_Participant.Frozen = true;
+            this.ID_Participant.HeaderText = "N°";
+            this.ID_Participant.Name = "ID_Participant";
+            this.ID_Participant.Width = 50;
+            // 
+            // col_Type_Participant
+            // 
+            this.col_Type_Participant.Frozen = true;
+            this.col_Type_Participant.HeaderText = "Type";
+            this.col_Type_Participant.Name = "col_Type_Participant";
+            this.col_Type_Participant.Width = 65;
+            // 
+            // col_Nom_Participant
+            // 
+            this.col_Nom_Participant.Frozen = true;
+            this.col_Nom_Participant.HeaderText = "Nom";
+            this.col_Nom_Participant.Name = "col_Nom_Participant";
+            // 
+            // Col_Prenom_Participant
+            // 
+            this.Col_Prenom_Participant.Frozen = true;
+            this.Col_Prenom_Participant.HeaderText = "Prenom";
+            this.Col_Prenom_Participant.Name = "Col_Prenom_Participant";
+            // 
+            // Col_Adresse_Participant
+            // 
+            this.Col_Adresse_Participant.Frozen = true;
+            this.Col_Adresse_Participant.HeaderText = "Adresse";
+            this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
+            // 
+            // liste_Ateliers
+            // 
+            this.liste_Ateliers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.liste_Ateliers.DefaultCellStyle = dataGridViewCellStyle2;
+            this.liste_Ateliers.FillWeight = 300F;
+            this.liste_Ateliers.HeaderText = "Ateliers";
+            this.liste_Ateliers.Name = "liste_Ateliers";
+            this.liste_Ateliers.ReadOnly = true;
+            this.liste_Ateliers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.liste_Ateliers.Width = 66;
             // 
             // tabPagePartenaire
             // 
@@ -905,50 +1052,23 @@
             this.txt_nomPartenaire.Size = new System.Drawing.Size(190, 29);
             this.txt_nomPartenaire.TabIndex = 8;
             // 
-            // ID_Participant
+            // ID_Atelier
             // 
-            this.ID_Participant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ID_Participant.Frozen = true;
-            this.ID_Participant.HeaderText = "N°";
-            this.ID_Participant.Name = "ID_Participant";
-            this.ID_Participant.Width = 50;
+            this.ID_Atelier.HeaderText = "ID";
+            this.ID_Atelier.Name = "ID_Atelier";
+            this.ID_Atelier.Width = 45;
             // 
-            // col_Type_Participant
+            // col_nomAtelier
             // 
-            this.col_Type_Participant.Frozen = true;
-            this.col_Type_Participant.HeaderText = "Type";
-            this.col_Type_Participant.Name = "col_Type_Participant";
-            this.col_Type_Participant.Width = 65;
+            this.col_nomAtelier.HeaderText = "Nom";
+            this.col_nomAtelier.Name = "col_nomAtelier";
+            this.col_nomAtelier.Width = 59;
             // 
-            // col_Nom_Participant
+            // col_Capacite
             // 
-            this.col_Nom_Participant.Frozen = true;
-            this.col_Nom_Participant.HeaderText = "Nom";
-            this.col_Nom_Participant.Name = "col_Nom_Participant";
-            // 
-            // Col_Prenom_Participant
-            // 
-            this.Col_Prenom_Participant.Frozen = true;
-            this.Col_Prenom_Participant.HeaderText = "Prenom";
-            this.Col_Prenom_Participant.Name = "Col_Prenom_Participant";
-            // 
-            // Col_Adresse_Participant
-            // 
-            this.Col_Adresse_Participant.Frozen = true;
-            this.Col_Adresse_Participant.HeaderText = "Adresse";
-            this.Col_Adresse_Participant.Name = "Col_Adresse_Participant";
-            // 
-            // liste_Ateliers
-            // 
-            this.liste_Ateliers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.liste_Ateliers.DefaultCellStyle = dataGridViewCellStyle1;
-            this.liste_Ateliers.FillWeight = 300F;
-            this.liste_Ateliers.HeaderText = "Ateliers";
-            this.liste_Ateliers.Name = "liste_Ateliers";
-            this.liste_Ateliers.ReadOnly = true;
-            this.liste_Ateliers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.liste_Ateliers.Width = 66;
+            this.col_Capacite.HeaderText = "Capacite";
+            this.col_Capacite.Name = "col_Capacite";
+            this.col_Capacite.Width = 77;
             // 
             // Maison_des_ligues
             // 
@@ -958,10 +1078,17 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Maison_des_ligues";
             this.Text = "Maison des ligues";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Maison_des_ligues_FormClosed);
             this.Load += new System.EventHandler(this.Maison_des_ligues_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAteliers.ResumeLayout(false);
             this.tabPageAteliers.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.GRB_modif_atelier.ResumeLayout(false);
+            this.GRB_modif_atelier.PerformLayout();
             this.GRB_Ateliers.ResumeLayout(false);
             this.GRB_Ateliers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Ateliers)).EndInit();
@@ -1059,10 +1186,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lab_ThemeAteliers;
         private System.Windows.Forms.DataGridView DGV_Ateliers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Atelier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_NomDeAtelier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Capacite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Intervanant;
         private System.Windows.Forms.Button btn_afficheTheme;
         private System.Windows.Forms.Label lab_nomAtelier;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Participant;
@@ -1071,6 +1194,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Prenom_Participant;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Adresse_Participant;
         private System.Windows.Forms.DataGridViewTextBoxColumn liste_Ateliers;
+        private System.Windows.Forms.GroupBox GRB_modif_atelier;
+        private System.Windows.Forms.Button btn_modifAtelier;
+        private System.Windows.Forms.Label Capacité;
+        private System.Windows.Forms.Label Nom;
+        private System.Windows.Forms.TextBox txt_CapaAtelierModif;
+        private System.Windows.Forms.TextBox txt_nomAtelierModif;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Atelier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_nomAtelier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Capacite;
     }
 }
 

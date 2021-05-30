@@ -53,6 +53,12 @@
     <Compile Include="DAOStand.cs" />
     <Compile Include="DAOTheme.cs" />
     <Compile Include="Equipement.cs" />
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partenaire.cs" />
     <Compile Include="Stand.cs" />
     <Compile Include="DAOAtelier.cs" />
@@ -72,6 +78,9 @@
     <EmbeddedResource Include="DAO.resx">
       <DependentUpon>DAO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mligues.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prohfileicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\secureicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

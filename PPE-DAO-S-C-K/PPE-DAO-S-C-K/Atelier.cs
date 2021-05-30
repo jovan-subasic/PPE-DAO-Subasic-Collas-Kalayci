@@ -83,7 +83,11 @@ namespace PPE_DAO_S_C_K
             db.dbParticipantunAtelier(this); 
         }
         #endregion
-
+        public void modifAtelier()
+        {
+            DAOAtelier da = new DAOAtelier();
+            da.executeSQLmodifAtelier(this);
+        }
         #endregion
     }
 }
