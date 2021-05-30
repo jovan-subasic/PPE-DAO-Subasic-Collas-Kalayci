@@ -16,7 +16,8 @@ namespace PPE_DAO_S_C_K
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Maison_des_ligues());
+            //Application.Run(new Maison_des_ligues());
+            Application.Run(new FormLogin());
         }
     }
 }
